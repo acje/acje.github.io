@@ -1,4 +1,8 @@
 
-You reached this page 200 > 400
+So you reached this page
+
+I guess 200 > 400?
 
 Now what?
+
+http://acje.github.io/CISQ-Model

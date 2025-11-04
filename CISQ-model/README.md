@@ -27,3 +27,5 @@ For behaviour in an information system, such as a service, we have the same four
 - The CISQ-model deliberately use the wording “basic” security quality, as opposed to “atomic” or “axiomatic” because these qualities may very well be broken down even further, just like the atom. This can be trivially shown for availability with the concepts of time, completeness and (network) partitioning in distributed systems all contributing their own aspects of availability. In other words the CISQ-model is more like the composed building blocks of the periodic table and less like the standard model of physics.
 
 ### The Model
+
+![CISQ-Model](http://acje.github.io/CISQ-model/Screenshot 2025-11-04 at 20.51.20.png)

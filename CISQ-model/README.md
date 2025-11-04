@@ -28,4 +28,4 @@ For behaviour in an information system, such as a service, we have the same four
 
 ### The Model
 
-![CISQ-Model](http://acje.github.io/CISQ-model/Screenshot 2025-11-04 at 20.51.20.png)
+![CISQ-Model](CISQ-model/Screenshot 2025-11-04 at 20.51.20.png)

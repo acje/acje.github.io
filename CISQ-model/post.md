@@ -32,7 +32,7 @@ For behaviour in an information system, such as a service, we have the same four
 
 ### Notable remarks
 
-- Integrity and authenticity are both considered as discrete and absolute, whereas availability and control are continuous and open-ended. This has important consequences for how we can reason about information security. For instance the control quality will always be subject to “force majure”, no mater how well the system is designed and the availability quality can span towards infinite time, hence making absolute guarantees difficult to define. (Check for correctness: For instance an electronic arbiter does not have an upper bound on the time it needs to decide which signal arrived first, but the probability that it hasn’t decided yet is asymptotical to zero.)
+- Integrity and authenticity are both considered as discrete and absolute, whereas availability and control are continuous and open-ended. This has important consequences for how we can reason about information security. For instance the control quality will always be subject to “force majure” situations like an asteroide or government agency taking down your service, no mater how well the system is designed. The availability quality can span towards infinite time, hence making absolute guarantees difficult to define.
 - The CISQ-model deliberately use the wording “basic” security quality, as opposed to “atomic” or “axiomatic” because these qualities may very well be broken down even further, just like the atom. This can be trivially shown for availability with the concepts of time, completeness and (network) partitioning in distributed systems all contributing their own aspects of availability. In other words the CISQ-model is more like the composed building blocks of the periodic table and less like the standard model of physics.
 
 ### The model in depth
@@ -41,7 +41,7 @@ The CISQ-model uses composition to expand the four basic security qualities (Int
 
 ![CISQ-table](CISQ-table.png)
 
-Visualizing the composition of four aspects is not easy to get right. This view shows how we can simplify the model by splitting the model into to separate views. One model for systems that are controlled, typically by an organization and the other for public domain objects such as certificates.
+Visualizing the composition of four aspects is not easy to get right. This view shows how we can simplify the model by splitting the model into two separate views. One model for systems that are controlled, typically by an organization and the other for public domain objects such as certificates.
 
 ![CISQ-Model](CISQ-3-model-views.png)
 

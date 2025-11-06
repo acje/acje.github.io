@@ -7,6 +7,6 @@
 
 [Substack](https://anderscj.substack.com/)
 
-[A case against the CIA triad - Substack](https://anderscj.substack.com/p/a-case-against-the-cia-triad)
+[A case against the CIA triad](https://anderscj.substack.com/p/a-case-against-the-cia-triad)
 
 [Liberal democracies needs a new compute stack](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)

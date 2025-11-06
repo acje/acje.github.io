@@ -7,3 +7,4 @@
 
 [Substack](https://anderscj.substack.com/)
 
+[A case against the CIA triad - Substack](https://anderscj.substack.com/p/a-case-against-the-cia-triad)

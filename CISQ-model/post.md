@@ -81,4 +81,4 @@ These definitions are a work in progress. two principles are important:
 
 **Authenticity** - Origin of information and behaviour is from its purported source
 
-**Unreliability** - Not capable of providing security qualities
+**Unreliability** - Not capable of providing security qualities for information and behaviour

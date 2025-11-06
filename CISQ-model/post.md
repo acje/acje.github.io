@@ -4,7 +4,7 @@
 
 ### What is the CISQ-model?
 
-The CISQ-model (Composing Information Security Qualities) builds on the hypothesis that there are exactly four basic security qualities. Integrity, Authenticity, Availability and Control. A total of 16 qualities can be composed from these four basic qualities, if we include the “none” quality and the four basic qualities them selves. The most useful subset of the model when dealing with a service is shown below.
+The CISQ-model (Composing Information Security Qualities) builds on the hypothesis that there are exactly four basic security qualities. **Integrity, Authenticity, Availability and Control**. A total of 16 qualities can be composed from these four basic qualities, if we include the “none” quality and the four basic qualities them selves. The most useful subset of the model when dealing with a service is shown below.
 
 ![CISQ-model-simplified](CISQ-model-simplified.png)
 

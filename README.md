@@ -1,8 +1,9 @@
 
-So you reached this page
+# Index
 
-I guess 200 > 400?
+[CISQ-Model](https://acje.github.io/CISQ-model/post)
 
-Now what?
+[Linkedin](https://www.linkedin.com/in/anders-jensen-481a3374/)
 
-<https://acje.github.io/CISQ-model/post>
+[Substack](https://anderscj.substack.com/)
+

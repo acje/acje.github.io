@@ -10,7 +10,7 @@ The CISQ-model (Composing Information Security Qualities) builds on the hypothes
 
 ### Why do we need more information security acronyms?
 
-_"Rather than trying to change the world, change how people see the world. Because when they see the world differently, they behave differently and that will change the world" - Rory Sutherland_
+*"Rather than trying to change the world, change how people see the world. Because when they see the world differently, they behave differently and that will change the world" - Rory Sutherland*
 
 The goal is to create a vocabulary for information security that covers the field of component security qualities as much as possible while minimising overlap and ambiguity. Non-goals include legal, ethical and societal issues as well as describing system level properties such as defence in depth, resilience and isolation.
 
@@ -44,3 +44,41 @@ The CISQ-model uses composition to expand the four basic security qualities (Int
 Visualizing the composition of four aspects is not easy to get right. This view shows how we can simplify the model by splitting the model into to separate views. One model for systems that are controlled, typically by an organization and the other for public domain objects such as certificates.
 
 ![CISQ-Model](CISQ-3-model-views.png)
+
+### Vocabulary of the CISQ-Model
+
+These definitions are a work in progress. two principles are important:
+- Keep the definitions as short as possible, which is easier since the overloading of terms are much less than in the CIA-triad.
+- Symetry between information and behavior across all terms
+
+**Reliability** – Trustworthy information and behaviour
+
+**Sustainability** - Ability to maintain information and behaviour
+
+**Confidentiality** - Access to information and behaviour being exclusively limited to authorized entities
+
+**Authority** - Power to grant access to information and behaviour
+
+**Accountability** - Assurance of the correctness, completeness and origin of information and behaviour
+
+**Durability** - Ability to withstand damage of integrity of information and behaviour
+
+**Credibility** - Verified information and behaviour
+
+**Control** - Power to physically or logically influence information and behaviour
+
+**Certifiability** - Ability to prove validity of information and behaviour
+
+**Utility** - Usefulness of information and behaviour
+
+**Veracity** - Accuracy of information and behaviour
+
+**Availability** - Timely access to information and behaviour
+
+**Traceability** - Ability to discover where and how information and behaviour was made
+
+**Integrity** - Preserving correctness and completeness of information and behaviour
+
+**Authenticity** - Origin of information and behaviour is from its purported source
+
+**Unreliability** - Not capable of providing security qualities

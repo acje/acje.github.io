@@ -28,4 +28,4 @@ For behaviour in an information system, such as a service, we have the same four
 
 ### The Model
 
-![CISQ-Model](CISQ-model.png)
+![CISQ-Model](CISQ-3-models-view.png)

@@ -12,7 +12,7 @@ The CISQ-model (Composing Information Security Qualities) builds on the hypothes
 
 *"Rather than trying to change the world, change how people see the world. Because when they see the world differently, they behave differently and that will change the world" - Rory Sutherland*
 
-The goal is to create a vocabulary for information security that covers the field of component security qualities as much as possible while minimising overlap and ambiguity. Non-goals include legal, ethical and societal issues as well as describing system level properties such as defence in depth, resilience and isolation.
+The goal is to create a vocabulary for information security that covers the field of component security qualities as much as possible while minimising overlap and ambiguity. Non-goals include legal, ethical and societal issues as well as describing system level properties such as defence in depth, resilience and isolation. [A lengty tale of system level properties may interest you](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
 
 ### Foundations
 

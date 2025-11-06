@@ -49,7 +49,7 @@ Visualizing the composition of four aspects is not easy to get right. This view 
 
 These definitions are a work in progress. two principles are important:
 - Keep the definitions as short as possible, which is easier since the overloading of terms are much less than in the CIA-triad.
-- Symetry between information and behavior across all terms
+- Symmetry between information and behavior across all terms
 
 **Reliability** – Trustworthy information and behaviour
 

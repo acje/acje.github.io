@@ -3,6 +3,8 @@
 
 [Scaling agile](https://acje.github.io/scaled_agile/post)
 
+[Alignment and autonomy](https://github.com/acje/Alignment_autonomy)
+
 [CISQ-Model](https://acje.github.io/CISQ-model/post)
 
 # Posts on other media

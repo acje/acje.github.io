@@ -20,6 +20,7 @@ For the rest of this post I will proceed to explain:
     * Some alignment scales speed. Turning alignment to 0 or 11 creates traps of local optmization
 * Lesson two - Manage second order effects of success
     * Kent Beck — behavior and structure
+    ![Behavior and structure](behavior_structure.png)
     * Risks
     * Opportunities
 * Places to innovate

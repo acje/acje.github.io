@@ -6,7 +6,7 @@ TLDR; Obtaining massive improvements in speed, domain knowledge and short term v
 * First lesson - Speed is surprisingly a substitute for direction, but it doesn´t scale vell alone.
 * Second lesson - Managing the second order effects of success. Producing new assets creates risks and opportunities hiding or missing in the structure of your implementations.
 
-[Work in progress]
+# Work in progress
 
 For the rest of this post I will proceed to explain:
 * What we actually did to create a productive digitalization org.

@@ -1,14 +1,18 @@
 
-# Index
+# Github posts
 
 [Scaling agile](https://acje.github.io/scaled_agile/post)
 
 [CISQ-Model](https://acje.github.io/CISQ-model/post)
 
-[Linkedin](https://www.linkedin.com/in/anders-jensen-481a3374/)
-
-[Substack](https://anderscj.substack.com/)
+# Posts on other media
 
 [A case against the CIA triad](https://anderscj.substack.com/p/a-case-against-the-cia-triad)
 
 [Liberal democracies needs a new compute stack](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
+
+# Other media
+
+[Linkedin](https://www.linkedin.com/in/anders-jensen-481a3374/)
+
+[Substack](https://anderscj.substack.com/)

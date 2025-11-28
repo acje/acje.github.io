@@ -26,14 +26,18 @@ For the rest of this post I will proceed to explain:
     ![Behavior and structure](behavior_structure.png)
 
     * Risks as second order effects of successfully creating new assets
-    ![Behavior and structure](protection_production.png)
+    ![Production vs protection](protection_production.png)
 
     * Opportunities
 
 # Improvements
 * Places to innovate
     * The Art of Action — directed opportunism
+        * Hierarchy of cascading intent
+        * Institute backbrief
     * Alignment and autonomy
+    ![Decision making at scale](Decision_making_at_scale.png)
+    See [Alignment and autonomy](https://github.com/acje/Alignment_autonomy) for more details
 
 * Managing costs of transition
     * Organizational costs

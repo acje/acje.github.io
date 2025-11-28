@@ -33,12 +33,16 @@ For the rest of this post I will proceed to explain:
 # Improvements
 * Places to innovate
     * The Art of Action — directed opportunism
+        * Operational gaps
+        ![Decision making at scale](three_gaps.png)
+        [Three Critical Gaps](https://medium.com/10x-curiosity/taking-the-project-management-theme-one-step-further-and-examining-why-the-agile-styles-of-project-5ec97cb2eb37)
+
         * Hierarchy of cascading intent
         * Institute backbrief
     * Alignment and autonomy
 
     ![Decision making at scale](Decision_making_at_scale.png)
-    See [Alignment and autonomy](https://github.com/acje/Alignment_autonomy) for more details
+    See [Alignment and autonomy](https://github.com/acje/Alignment_autonomy) for more details (self-reference)
 
 * Managing costs of transition
     * Organizational costs

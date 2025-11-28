@@ -1,5 +1,5 @@
 # Scaling Agile - Lessons Observed
-These are my notes on how an organisation transformed quickly from hardly being able to run a handfull of digitalization projects in parallell and only creating value from them sporadically, into a fast moving agile organizsation. I have observed this type of transition twise in the role of architect in two different organisations both with tens of projects or teams running in parallel. The first transition was targeting the SAFe-Framework. The second transition was a much more deliberate and tailored approach. This will be the topic of these notes, but I might reference the first transition explicitly where appropriate.
+These are my notes on how an organisation transformed quickly from hardly being able to run a handfull of digitalization projects in parallell and only creating value from them sporadically, into a fast moving agile organizsation. I have observed this type of transition twise in the role of architect in two different organisations both with tens of projects or teams running in parallel. The first transition was targeting the SAFe-Framework. The second transition was a much more deliberate and tailored approach. The deliberate and tailored transition will be the main topic of these notes, but I might reference the first transition explicitly where appropriate.
 
 # Summary
 Obtaining massive improvements in speed, domain knowledge and short term value creation was very doable. Just follow "Accellerate" and implement stream aligned teams and plattform teams from "Team topologies". Then make sure your teams gets a clear "mission" described while protecting them from strong internal forces that will want to deliver change tickets to the teams. The lessons here are however more subtle and deals with two separate aspects that arise when scaling agile organisations;
@@ -36,7 +36,7 @@ For the rest of this post I will proceed to explain:
         * Hierarchy of cascading intent
         * Institute backbrief
     * Alignment and autonomy
-    
+
     ![Decision making at scale](Decision_making_at_scale.png)
     See [Alignment and autonomy](https://github.com/acje/Alignment_autonomy) for more details
 

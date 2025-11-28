@@ -2,7 +2,7 @@
 These are my notes on how an organisation transformed quickly from hardly being able to run a handfull of digitalization projects in parallell and only creating value from them sporadically, into a fast moving agile organizsation. I have observed this type of transition twise in the role of architect in two different organisations both with tens of projects or teams running in parallel. The first transition was targeting the SAFe-Framework. The second transition was a much more deliberate and tailored approach. This will be the topic of these notes, but I might reference the first transition explicitly where appropriate.
 
 # Summary
-Obtaining massive improvements in speed, domain knowledge and short term value creation was very doable. Just follow "Accellerate" and implement stream aligned teams and plattform teams from "Team topologies". Then make sure your teams gets a clear "mission" described while protecting them from strong internal forces that will want to deliver change tickets to the teams. The lessons here are however more subtle and deals with tow classes of problems that arise when scaling agile organisations;
+Obtaining massive improvements in speed, domain knowledge and short term value creation was very doable. Just follow "Accellerate" and implement stream aligned teams and plattform teams from "Team topologies". Then make sure your teams gets a clear "mission" described while protecting them from strong internal forces that will want to deliver change tickets to the teams. The lessons here are however more subtle and deals with two separate aspects that arise when scaling agile organisations;
 * First lesson - Speed is surprisingly a substitute for direction, but it doesn´t scale vell alone.
 * Second lesson - Managing the second order effects of success. Producing new assets creates risks and opportunities hiding or missing in the structure of your implementations.
 
@@ -24,7 +24,10 @@ For the rest of this post I will proceed to explain:
 * Second lesson - Managing the second order effects of success. Producing new assets creates risks and opportunities hiding or missing in the structure of your implementations.
     * Kent Beck — behavior and structure
     ![Behavior and structure](behavior_structure.png)
-    * Risks
+
+    * Risks as second order effects of successfully creating new assets
+    ![Behavior and structure](protection_production.png)
+
     * Opportunities
 
 # Improvements

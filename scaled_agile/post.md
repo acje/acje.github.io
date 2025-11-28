@@ -36,6 +36,7 @@ For the rest of this post I will proceed to explain:
         * Hierarchy of cascading intent
         * Institute backbrief
     * Alignment and autonomy
+    
     ![Decision making at scale](Decision_making_at_scale.png)
     See [Alignment and autonomy](https://github.com/acje/Alignment_autonomy) for more details
 

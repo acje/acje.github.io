@@ -28,7 +28,8 @@ For the rest of this post I will proceed to explain:
     * Risks as second order effects of successfully creating new assets
     ![Production vs protection](protection_production.png)
 
-    * Opportunities
+    * Managing Opportunities with Architecture
+    * Architecture is one of those things that has a tendency to get "thrown out with the bath water" when organisations move to agile methodologies.
 
 # Improvements
 * Places to innovate

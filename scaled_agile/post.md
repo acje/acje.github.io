@@ -1,4 +1,4 @@
-# Scaling Agile - Lessons Observed
+# Scaling Agile
 These are my notes on how an organisation transformed quickly from hardly being able to run a handfull of digitalization projects in parallell and only creating value from them sporadically, into a fast moving agile organizsation. I have observed this type of transition twise in the role of architect in two different organisations both with tens of projects or teams running in parallel. The first transition was targeting the SAFe-Framework. The second transition was a much more deliberate and tailored approach. The deliberate and tailored transition will be the main topic of these notes, but I might reference the first transition explicitly where appropriate.
 
 # Summary

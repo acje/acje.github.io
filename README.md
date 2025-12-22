@@ -1,4 +1,4 @@
-Welcome til my Github hosted blogspace. I organize my posts by topic and they will be updated when I get new or better ideas. I might post on linkedin or substack to reference these posts when there are major updates, but these are the documents where i maintain the bigger ideas that will take time to mature.
+Welcome til my Github hosted blog. I organize my posts by topic and they will be updated when I get new or better ideas. I might post on Linkedin or Substack to reference these posts when there are major updates, but these are the documents where I maintain the bigger ideas that will take time to mature.
 
 ## Agile
 
@@ -24,7 +24,7 @@ Welcome til my Github hosted blogspace. I organize my posts by topic and they wi
 
 [Fiber semantics. Event sourcing for complex domains](https://github.com/acje/Fiber-semantics)
 
-## My other media accounts
+#### My other media accounts
 
 [Linkedin](https://www.linkedin.com/in/anders-jensen-481a3374/)
 

@@ -1,4 +1,4 @@
-Welcome til my Github hosted blogspace. I organize my posts by topic and they will be updated when I get new or better ideas. I might post on linkedin og substack to reference these posts when there are major updates, but these are my reference documents on the bigger ideas.
+Welcome til my Github hosted blogspace. I organize my posts by topic and they will be updated when I get new or better ideas. I might post on linkedin or substack to reference these posts when there are major updates, but these are the documents where i maintain the bigger ideas that will take time to mature.
 
 ## Agile
 

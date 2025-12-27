@@ -7,7 +7,7 @@ Obtaining massive improvements in speed, domain knowledge and short-term value c
 The lessons discussed here are however more subtle and deals with two separate aspects that arise from the initial success of scaling agile organisations.
 * First lesson - Speed is surprisingly a substitute for direction, but speed alone doesn´t scale well alone.
 * Second lesson - Managing the second order effects of success. Producing new assets creates risks and opportunities hiding or missing in the structure of your implementations.
-* Third lesson/hypothesis - Mission command: backbrief to empower the relation between stakeholders and productteams. This is still a hypothesis.
+* Third lesson/hypothesis - Within the consept of "mission command" use the backbrief to empower the relation between stakeholders and productteams.
 
 # __ Work in progress __
 For the rest of this post I will proceed to explain:
@@ -46,6 +46,7 @@ For the rest of this post I will proceed to explain:
     * Alignment and autonomy
 
     ![Decision making at scale](Decision_making_at_scale.png)
+  
     See [Alignment and autonomy](https://github.com/acje/Alignment_autonomy) for more details (self-reference)
 
 * Managing costs of transition

@@ -4,8 +4,8 @@ These are my notes on how an organisation transformed from hardly being able to 
 # Summary
 Obtaining massive improvements in speed, domain knowledge and short-term value creation is very doable. Following the practices from "Accelerate" and implement stream aligned teams and platform teams from "Team topologies" are well established techniques by now. Then make sure your teams gets a clear "mission" limited to a reasonably sized business domain, while protecting them from strong internal forces that will want to deliver change tickets to the teams. 
 
-The lessons discussed here are however more subtle and deals with two separate aspects that arise from the initial success of scaling agile organisations.
-* First lesson - Speed is surprisingly a substitute for direction, but speed alone doesn´t scale well alone.
+The lessons discussed here are more subtle and deals with aspects that arise from the success of scaling agile organisations.
+* First lesson - Speed is surprisingly a substitute for direction, but speed alone doesn´t scale well.
 * Second lesson - Managing the second order effects of success. Producing new assets creates risks and opportunities hiding or missing in the structure of your implementations.
 * Third lesson/hypothesis - Within the consept of "mission command" use the backbrief to empower the relation between stakeholders and productteams.
 

@@ -7,7 +7,7 @@ Obtaining massive improvements in speed, domain knowledge and short-term value c
 The lessons discussed here are more subtle and deals with aspects that arise from the success of scaling agile organizations.
 * First lesson - Speed is surprisingly a substitute for direction, but speed alone doesn´t scale well.
 * Second lesson - Managing the second order effects of success. Producing new assets creates risks and opportunities hiding or missing in the structure of your implementations.
-* Third lesson/hypothesis - Within the concept of "mission command" use the backbrief to empower the relation between stakeholders and productteams.
+* Third lesson/hypothesis - Within the concept of "mission command" use the backbrief to empower the relation between stakeholders and product teams.
 
 # __ Work in progress __
 For the rest of this post I will proceed to explain:

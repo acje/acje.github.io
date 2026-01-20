@@ -49,6 +49,10 @@ The asserted principal necessities for an ecosystem that will create meaningfull
 * Maximally isolated components of least capability
 * Least privilege interfaces
 
+## Breakdown of the five principal necessities
+
+Here we will make a detailed analysis of the context, challenges, solutions and tempting non-solutions for each of the principal necessities.
+
 ## 1. Trusted supply chain
 
 With supply chain in this document, the following resources for the creation of information systems are included

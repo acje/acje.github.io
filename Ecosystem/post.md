@@ -1,5 +1,7 @@
 # An Ecosystem for Secure Information Systems
 
+**WARNING: This is a work in progress.**
+
 Employing Political Instruments and Architectural Constraints for the Ecosystem that builds our Critical National Infrastructure and Services.
 
 ## Summary
@@ -70,6 +72,8 @@ These supply chains are heavily relying on one of two kinds of deliveries that b
 * Alternatively create an ecosystem of multiple redundant national components and services that are interchangeable
 
 **Non-solutions:** Hope that the inherent leverage over national organizations and individual contributors will not be used against us during conflict.
+
+**WARNING: The article is not finished. From here onwards it is only a skeleton.**
 
 ## 2. Trusted hosting
 

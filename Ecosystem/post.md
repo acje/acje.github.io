@@ -2,27 +2,27 @@
 
 **WARNING: This is a work in progress.**
 
-Employing Political Instruments and Architectural Constraints for the Ecosystem that builds our Critical National Infrastructure and Services.
+Employing Political Instruments and Architectural Constraints for the Ecosystem that builds our all our Infrastructure and Services.
 
 ## Summary
 
-Critical infrastructure and services increasingly depend on information systems whose common vulnerable dependencies and inherent brittle design can create systemic vulnerabilities prone to cascading failures. The goal here is to describe an ecosystem that reduce systemic vulnerabilities to an acceptable level for all infrastructure and services. It will be  asserted that there are five principal necessities. By targeting the ecosystem rather than the information systems directly we create a situation where systems across all sectors of society benefits. This is done through politically mandated verifiable and trusted supply chains, hosting and operations. Further this must be combined with  architecture principles that limit blast radius and enforce least privilege integrations at all levels.
+ Infrastructure and services across all levels of criticality increasingly depend on information systems whose common vulnerable dependencies and inherent brittle design can create systemic vulnerabilities prone to cascading failures. The goal here is to describe an ecosystem that reduce systemic vulnerabilities to an acceptable level for all infrastructure and services. It will be asserted that such an ecosystem consists of five principal necessities. By targeting the ecosystem rather than the information systems directly we create a situation where systems across all sectors of society benefits. This is must be done through politically mandated verifiable and trusted supply chains, hosting and operations. Further this must be combined with  architecture principles that limit blast radius and enforce least privilege integrations at all levels.
 
 ## The fundamental challenge of increasing the number of inherently insecure and critical systems
 
-Times are changing with new rules that appear undefined at the moment. The systems and attitudes that got us here are unlikely to be the ones that will get us through it. For the purpose of this post I will defer the naming of the coming period to the historians. The adversary and its capabilities is not the big problem. The adversary is inevitable. The big problem is our own creation of a target rich environment of critically important systems with common vulnerabilities. There will be an adversary with the means and motivation to use the vulnerabilities against us. The additional risk posed by a nation state adversary is not its ability to exploit but its ability to coordinate  with other events. The list of attacks exploiting systemic weaknesses are many;  Stuxnet, SolarWinds, NotPetya, WannaCry, HeartBleed, Colonial Pipeline operations, Ukraine grid attacks and Salt Typhoon telecom attacks, to name a few famous examples.
+Times are changing with new geopolitical rules that appear undefined at the moment. The systems and attitudes that got us here are unlikely to be the ones that will get us through it. For the purpose of this post I will defer the naming of the coming period to the historians. When considering this looming challenge it is important to realize that the adversaries and their capabilities are not the significant source of the problem. The adversary is inevitable. The big problem is our own creation of a target rich environment of critically important systems with common vulnerabilities. There will eventually be an adversary with the means and motivation to use the vulnerabilities against us. The additional risk posed by a nation state adversary is not its ability to penetrate and exploit information systems, but its ability to coordinate  with other events. The list of historic attacks exploiting systemic weaknesses are many;  Stuxnet, NotPetya, WannaCry, HeartBleed, SolarWinds, Colonial Pipeline operations, Ukraine grid attacks and Salt Typhoon telecom attacks, to name a few famous examples. These kind of attacks will occur with uneven intervals, and the size of these attacks will grow proportionally to the number of available targets, because the size is largely a function of the environment, and less related to the attackers capabilities.
 
 ## Self-organized criticality
 
-Forest fires, avalanches and digital transformation may have one dangerous thing in common: Self-organizing to criticality. The spark that starts a large forest fire is not meaningfully different than the spark that does not. The snowflake that starts a large avalanche is not meaningfully different from those that do not. The meaningful difference is in the combined potential in the environment not the trigger event. The damage potential has built up over time from dead organic debris or snowflakes landing on top of each other. The trigger is just a statistically inevitable event, releasing the potential. This was described mathematically as “Self-organized criticality” by mathematicians Per Bak, Chao Tang and Kurt Wiesenfeld in 1987.
+Forest fires, avalanches and digital transformation may have one dangerous thing in common: Self-organizing to criticality. The spark that starts a large forest fire is not meaningfully different from the spark that does not. The snowflake that starts a large avalanche is not meaningfully different from those that do not. The meaningful difference is in the combined potential in the environment, not the trigger event. The damage potential has built up over time from dead organic debris or snowflakes landing on top of each other. The trigger is just a statistically inevitable event, releasing the potential. This was described mathematically as “Self-organized criticality” by mathematicians Per Bak, Chao Tang and Kurt Wiesenfeld in 1987.
 
-What I propose here is that forcefully engaging in digital transformation is highly likely to create a similar situation to forest fires and avalanches. This happens as we deploy an ever increasing number of inherently insecure systems across all critical sectors in our societies. Thereby creating a situation where a single event of shared vulnerability may trigger a ripple effect through our society, tearing down critical infrastructure and services like energy, communication, transportation, healthcare, and water supply.
+What I propose here is that forcefully engaging in digital transformation is highly likely to create a similar situation to forest fires and avalanches. This happens as we deploy an ever increasing number of inherently insecure systems across all critical sectors in our societies. Thereby creating a situation where a single mode of attack or shared vulnerability may trigger a ripple effect through our society. This could end up tearing down critical infrastructure and services like energy, communication, transportation, healthcare, and water supply.
 
 To counter this scenario I propose a strategic application of political and architectural constraints on the ecosystem that produces these systems. The following outlines the three political and two architectural pillars of an ecosystem for creation of meaningfully more secure information systems. These systems will not have absolutely zero risk, but they should reduce the risk to such a level that the risk is acceptable for use across all critical infrastructure and services.
 
 ## Critical and non-critical information systems are largely built the same
 
-Critical information system typically has more rigorous design, more controls are implemented and documented and more layers of isolation are typically implemented. Yet they tend to be built using the same services and components as non-critical systems. Because the functional needs are the same and there is rarely any gain in using lower grade software components or services in non-critical systems. The hardware may vary somewhat more in quantity and sometimes also in quality.
+Critical information system typically has more rigorous design, more controls are implemented and documented and more layers of isolation are typically implemented. Yet they tend to be built using the same services and components as non-critical systems. Because the when the functional needs are the same, there is rarely any gain in using lower grade software components or services in non-critical systems. The hardware may vary somewhat more in quantity and sometimes also in quality, but most systems attributes are software defined these days.
 
 ## A hierarchy of security aspects
 
@@ -34,7 +34,7 @@ In this post we are going to look into how we can understand and modify the ecos
 
 ## Necessities of an ecosystem that produce inherently secure systems
 
-These are the necessities that have been identified for an ecosystem to produce meaningfully more secure information systems. To highlight structure for the different audiences the necessities has been categorized into two different areas. The political necessities are about aspects of the ecosystem that typically will need multi-national political effort to achieve. The architectural necessities may also need political help to advance at reasonable pace, but caution need to be used when mandating use because technological breakthroughs may change how architecture should be shaped.
+Here we present the necessities that have been identified for an ecosystem to produce meaningfully more secure information systems. To highlight structure for the different audiences the necessities has been categorized into two different areas. The political necessities are about aspects of the ecosystem that typically will need multi-national political effort to achieve. The architectural necessities may also need political help to advance at reasonable pace, but caution need to be used when mandating use because technological breakthroughs may change how architecture should be shaped.
 
 The asserted principal necessities for an ecosystem that will create meaningfully more secure information systems are as follows.
 
@@ -55,21 +55,21 @@ With supply chain in this document, the following resources for the creation of 
 
 * Hardware
 * Software
-* Services, among these;
+* Services, notably among these;
   * Trust services such as Identity and Access Management (IAM)
     * Notably; Entra ID, Okta, AWS IAM, GCP IAM
   * Code and package repositories
     * Notably; Github, Docker/AWS/GCP/Azure container registries, NPM and other programming language specific repositories
 
-These supply chains are heavily relying on one of two kinds of deliveries that both present challenges for a non-US headquartered organization or non-US state:
+These supply chains are heavily relying on one of two kinds of actors that both present challenges for a non-US headquartered organization or non-US state:
 
 * Supply chains relying on national or multi-national technology companies, often US headquartered.
 * Supply chains relying on, often unpaid, individual open source contributors that may be both unidentified and vulnerable to pressure form nation state actors.
 
 ### Solutions to the trusted supply chain challenge
 
-* Create multi-national organizations among cooperating nations that provide components and services for the shared ecosystem in the categories mentioned here.
-* Alternatively create an ecosystem of multiple redundant national components and services that are interchangeable
+* Create multi-national organizations among cooperating nations that create and maintain components and services for the shared ecosystem in the categories mentioned here.
+* Alternatively create an ecosystem of multiple redundant national components and services that are interchangeable, but note that this will be extremely costly.
 
 **Non-solutions:** Hope that the inherent leverage over national organizations and individual contributors will not be used against us during conflict.
 

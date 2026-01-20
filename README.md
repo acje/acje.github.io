@@ -1,3 +1,5 @@
+# Welcome
+
 Welcome til my Github hosted pages. I organize my posts by topic and they will be updated when I get new or better ideas. I might post on Linkedin or Substack to reference these posts when there are major updates, but these are the documents where I maintain the bigger ideas that will take time to mature.
 
 ## Agile
@@ -7,6 +9,8 @@ Welcome til my Github hosted pages. I organize my posts by topic and they will b
 [Alignment and autonomy](https://github.com/acje/Alignment_autonomy)
 
 ## Systems and security
+
+[An Ecosystem for Secure Information Systems](https://acje.github.io/Ecosystem/post)
 
 [A case against the CIA triad](https://anderscj.substack.com/p/a-case-against-the-cia-triad)
 
@@ -20,11 +24,11 @@ Welcome til my Github hosted pages. I organize my posts by topic and they will b
 
 [Liberal democracies needs a new compute stack. Part 4 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-d56)
 
-[Structured service adressing. A new take on load balancing in IPv6](https://github.com/acje/structured-service-addressing)
+[Structured service addressing. A new take on load balancing in IPv6](https://github.com/acje/structured-service-addressing)
 
 [Fiber semantics. Event sourcing for complex domains](https://github.com/acje/Fiber-semantics)
 
-#### My other media accounts
+### My other media accounts
 
 [Linkedin](https://www.linkedin.com/in/anders-jensen-481a3374/)
 

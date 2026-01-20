@@ -11,7 +11,6 @@ The CISQ-model (Composing Information Security Qualities) builds on the hypothes
 ### Why do we need more information security acronyms?
 
 Although this model is much more complicated than the CIA-triad or even the STRIDE threat model, the CISQ-model presents an opportunity to approach information security in a way that can start at low complexity with only the four basic qualities, and then guides the user towards deeper understanding of their own system by introducing or eliminating security qualities. This is done by the composition. If a basic quality is important or seen as irrelevant for the system this insight can be used to guide attention to the higher order qualities composed form the basic qualities.
-
 *"Rather than trying to change the world, change how people see the world. Because when they see the world differently, they behave differently and that will change the world" - Rory Sutherland*
 
 The goal is to create a vocabulary for information security that covers the field of component security qualities as much as possible while minimizing overlap and ambiguity. Non-goals include legal, ethical and societal issues as well as describing system level properties such as defense in depth, resilience, anti-fragility and isolation. [A lengthy tale of system level properties may interest you](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
@@ -50,6 +49,7 @@ Visualizing the composition of four aspects is not easy to get right. This view 
 ### Vocabulary of the CISQ-Model
 
 These definitions are a work in progress. two principles are important:
+
 - Keep the definitions as short as possible, which is easier since the overloading of terms are much less than in the CIA-triad.
 - Symmetry between information and behavior across all terms
 

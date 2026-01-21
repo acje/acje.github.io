@@ -16,13 +16,13 @@ Times are changing with new geopolitical rules that appear undefined at the mome
 
 Forest fires, avalanches and digital transformation may have one dangerous thing in common: Self-organizing to criticality. The spark that starts a large forest fire is not meaningfully different from the spark that does not. The snowflake that starts a large avalanche is not meaningfully different from those that do not. The meaningful difference is in the combined potential in the environment, not the trigger event. The damage potential has built up over time from dead organic debris or snowflakes landing on top of each other. The trigger is just a statistically inevitable event, releasing the potential. This was described mathematically as “Self-organized criticality” by mathematicians Per Bak, Chao Tang and Kurt Wiesenfeld in 1987.
 
-What I propose here is that forcefully engaging in digital transformation is highly likely to create a similar situation to forest fires and avalanches. This happens as we deploy an ever increasing number of inherently insecure systems across all critical sectors in our societies. Thereby creating a situation where a single mode of attack or shared vulnerability may trigger a ripple effect through our society. This could end up tearing down critical infrastructure and services like energy, communication, transportation, healthcare, and water supply.
+What I propose here is that forcefully engaging in digital transformation is highly likely to create a similar situation to forest fires and avalanches. This happens as we deploy an ever increasing number of inherently insecure systems across all critical sectors in our societies. Thereby creating a situation where a single mode of attack or shared vulnerability may trigger a ripple effect through our society. This could end up tearing down critical infrastructure and services like energy, communication, healthcare, finance, transportation, and water supply.
 
-To counter this scenario I propose a strategic application of political and architectural constraints on the ecosystem that produces these systems. The following outlines the three political and two architectural pillars of an ecosystem for creation of meaningfully more secure information systems. These systems will not have absolutely zero risk, but they should reduce the risk to such a level that the risk is acceptable for use across all critical infrastructure and services.
+To counter this scenario I propose a strategic application of political instruments and architectural constraints on the ecosystem that produces these systems. The following outlines the three political and two architectural pillars of an ecosystem for creation of meaningfully more secure information systems. These systems will not have absolutely zero risk, but they should reduce the risk to such a level that the risk is acceptable for use across all critical infrastructure and services.
 
 ## Critical and non-critical information systems are largely built the same
 
-Critical information system typically has more rigorous design, more controls are implemented and documented and more layers of isolation are typically implemented. Yet they tend to be built using the same services and components as non-critical systems. Because the when the functional needs are the same, there is rarely any gain in using lower grade software components or services in non-critical systems. The hardware may vary somewhat more in quantity and sometimes also in quality, but most systems attributes are software defined these days.
+Critical information system typically has more rigorous design, more controls are implemented and documented and more layers of isolation are typically implemented. Yet they tend to be built using the same services and components as non-critical systems. When the functional needs are the same, there is rarely any gain in using lower grade software components or services in non-critical systems. The hardware may vary somewhat more in quantity and sometimes also in quality, but most systems attributes are software defined these days.
 
 ## A hierarchy of security aspects
 
@@ -64,6 +64,7 @@ With supply chain in this document, the following resources for the creation of 
     * Notably; Entra ID, Okta, AWS IAM, GCP IAM
   * Code and package repositories
     * Notably; Github, Docker/AWS/GCP/Azure container registries, NPM and other programming language specific repositories
+  * Build systems
 
 These supply chains are heavily relying on one of two kinds of actors that both present challenges for a non-US headquartered organization or non-US state:
 
@@ -97,7 +98,7 @@ Challenges
 With operations in this document, the following resources for the creation of information systems are included
 
 * Personnel
-* IaaS
+* Infrastructure as a Service (IaaS) and Platform as a Service (PaaS)
 * External operations
 
 Challenges

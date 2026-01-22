@@ -1,6 +1,6 @@
 # An Ecosystem for Secure Information Systems
 
-**WARNING: This is a work in progress.**
+**This is part 1 of 3 in this series.**
 
 Employing Political Instruments and Architectural Constraints for the Ecosystem that builds all our Infrastructure and Services.
 
@@ -26,7 +26,7 @@ Critical information system typically has more rigorous design, more controls ar
 
 ## A hierarchy of security aspects
 
-Where we intervene is of importance for how far we can reach. A simplified model for how to understand how information systems are created, managed and cause security outcomes may be helpful. The ecosystem consists of all the available services, components and trained personnel that goes into creating information systems. The systems themselves are created from what is available at their time of creation and during their period of maintenance. These systems cause security events such as unexpected downtime due to internal, natural or adversarial actions on the system. Dependent on the systems ability to withstand these actions and the organizations ability to react, we get security outcomes. In this post we will look at actions we can take at the ecosystem level to create a situation where all new and actively maintained systems can be made to produce meaningfully better security outcomes. When we intervene at this level we are more likely to maximize impact compared to intervening at lower levels of this model.
+Where we intervene is of importance for how far we can reach. A simplified model of how to understand how information systems are created, managed and cause security outcomes, may be helpful. The ecosystem consists of all the available services, components and trained personnel that goes into creating information systems. The systems themselves are created from what is available at their time of creation and during their period of maintenance. These systems cause security events such as unexpected downtime due to internal, natural or adversarial actions on the system. Dependent on the systems ability to withstand these actions and the organizations ability to react, we get security outcomes. In this post we will look at actions we can take at the ecosystem level to create a situation where all new and actively maintained systems can be made to produce meaningfully better security outcomes. When we intervene at this level we are more likely to maximize impact compared to intervening at lower levels of this model.
 
 Ecosystem -> information systems -> security events -> security outcomes
 
@@ -34,7 +34,7 @@ In this post we are going to look into how we can understand and modify the ecos
 
 ## Necessities of an ecosystem that produce inherently secure systems
 
-Here we present the necessities that have been identified for an ecosystem to produce meaningfully more secure information systems. To highlight structure for the different audiences the necessities has been categorized into two different areas. The political necessities are about aspects of the ecosystem that typically will need multi-national political effort to achieve. The architectural necessities may also need political help to advance at reasonable pace, but caution need to be used when mandating use because technological breakthroughs may change how architecture should be shaped.
+Here we present the necessities that have been identified for an ecosystem to produce meaningfully more secure information systems. To highlight structure for the different audiences the necessities has been categorized into two different areas. The political necessities are about aspects of the ecosystem that typically will need multi-national political effort to achieve. The architectural necessities may also need political help to advance at reasonable pace, but caution need to be used when mandating their use because technological breakthroughs may change how architecture should be shaped.
 
 The asserted principal necessities for an ecosystem that will create meaningfully more secure information systems are as follows.
 
@@ -49,88 +49,6 @@ The asserted principal necessities for an ecosystem that will create meaningfull
 * Maximally isolated components of least capability
 * Least privilege interfaces
 
-## Breakdown of the five principal necessities
+## Upcoming parts in this series
 
-Here we will make a detailed analysis of the context, challenges, solutions and tempting non-solutions for each of the principal necessities.
-
-## 1. Trusted supply chain
-
-With supply chain in this document, the following resources for the creation of information systems are included
-
-* Hardware
-* Software
-* Services, notably among these;
-  * Trust services such as Identity and Access Management (IAM)
-    * Notably; Entra ID, Okta, AWS IAM, GCP IAM
-  * Code and package repositories
-    * Notably; Github, Docker/AWS/GCP/Azure container registries, NPM and other programming language specific repositories
-  * Build systems
-
-These supply chains are heavily relying on one of two kinds of actors that both present challenges for a non-US headquartered organization or non-US state:
-
-* Supply chains relying on national or multi-national technology companies, often US headquartered.
-* Supply chains relying on, often unpaid, individual open source contributors that may be both unidentified and vulnerable to pressure form nation state actors.
-
-### Solutions to the trusted supply chain challenge
-
-* Create multi-national organizations among cooperating nations that create and maintain components and services for the shared ecosystem in the categories mentioned here.
-* Alternatively create an ecosystem of multiple redundant national components and services that are interchangeable, but note that this will be extremely costly.
-
-**Non-solutions:** Hope that the inherent leverage over national organizations and individual contributors will not be used against us during conflict.
-
-**WARNING: The article is not finished. From here onwards it is only a skeleton.**
-
-## 2. Trusted hosting
-
-With hosting in this document, the following resources for the creation of information systems are included
-
-* Platforms
-  * Notably; AWS, Azure, GCP (all US headquartered)
-* Infrastructure
-* Housing
-
-Challenges
-
-### Solutions to the trusted hosting challenge
-
-## 3. Trusted operations
-
-With operations in this document, the following resources for the creation of information systems are included
-
-* Personnel
-* Infrastructure as a Service (IaaS) and Platform as a Service (PaaS)
-* External operations
-
-Challenges
-
-### Solutions to the trusted operations challenge
-
-## 4. Maximally isolated components of least capability
-
-With components in this document, the following resources for the creation of information systems are included
-
-Challenges
-
-### Solutions to the components challenge
-
-* Web assembly component - fast & sandboxed
-
-Non-solutions
-
-* Third party code - technically ok, but impractical to control
-* Library - not sandboxed
-* Script language (Lua, embedded JS engine) - inefficient
-
-## 5. Least privilege interfaces
-
-With interfaces in this document, the following resources for the creation of information systems are included
-
-Challenges
-
-### Solutions to the interface challenge
-
-Clearly define interfaces derived from function signatures of exposed functions.
-
-## Final thoughts
-
-Doable
+In the next two parts I will break down how the political and architectural necessities in detail

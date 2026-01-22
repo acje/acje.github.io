@@ -2,7 +2,7 @@
 
 **This is part 1 of 3 in this series.**
 
-Employing Political Instruments and Architectural Constraints for the Ecosystem that builds all our Infrastructure and Services.
+Employing political instruments and architectural constraints to reshape the ecosystem that builds all our digital infrastructure and services.
 
 ## Summary
 

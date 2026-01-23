@@ -1,15 +1,18 @@
 # An Ecosystem for Secure Information Systems
 
-**This is part 2 of 3 in this series.**
+| Published 2026-01-24  | An Ecosystem for Secure Information Systems - Part 2 Political means |
+| :---                  |                                                                 ---: |
+|                       |                                                   Updated 2026-01-24 |
 
-Published: yyyy-mm-dd
+[Previous: An Ecosystem for Secure Information Systems - Part 1](<https://acje.github.io/Ecosystem/post>)
 
----
-<div align="right">
-Updated yyyy-mm-dd
-</div>
+Part 1 argued that pervasive deployment of inherently insecure systems has created a target‑rich environment prone to self‑organized criticality, where small triggers can cascade into large societal failures. The remedy is ecosystem‑level action: politically mandated, verifiable trust across supply chains, hosting, and operations, reinforced by architectural constraints such as isolation and least‑privilege interfaces.
 
-## Breakdown of the five principal necessities
+This part turns that argument into action. Embracing a builder’s mindset, we focus on constructing institutional capacity and concrete mechanisms that make trust durable under stress. The goal is to replace fragile dependencies with redundancy, verifiable assurance, and the ability to build at scale across cooperating nations.
+
+## Breakdown of the three principal political necessities
+
+Reshaping the ecosystem that creates our information systems will most likely require political will to both regulate and fund some of the most fundamental components in our shared ecosystem. Many of these components do not generate
 
 Here we will make a detailed analysis of the context, challenges, solutions and tempting non-solutions for each of the principal necessities.
 
@@ -65,3 +68,21 @@ With operations in this document, the following resources for the creation of in
 Challenges
 
 ### Solutions to the trusted operations challenge
+
+## Other posts in category Systems and security
+
+[A case against the CIA triad](https://anderscj.substack.com/p/a-case-against-the-cia-triad)
+
+[CISQ-Model of security qualities](https://acje.github.io/CISQ-model/post)
+
+[Liberal democracies needs a new compute stack. Part 1 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
+
+[Liberal democracies needs a new compute stack. Part 2 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-2fd)
+
+[Liberal democracies needs a new compute stack. Part 3 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-523)
+
+[Liberal democracies needs a new compute stack. Part 4 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-d56)
+
+[Structured service addressing. A new take on load balancing in IPv6](https://github.com/acje/structured-service-addressing)
+
+[Fiber semantics. Event sourcing for complex domains](https://github.com/acje/Fiber-semantics)

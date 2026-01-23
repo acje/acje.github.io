@@ -1,15 +1,10 @@
 # An Ecosystem for Secure Information Systems
 
-**This is part 1 of 3 in this series.**
+Employing political instruments and architectural constraints to reshape the ecosystem that builds our digital infrastructure and services.
 
- Employing political instruments and architectural constraints to reshape the ecosystem that builds all our digital infrastructure and services.
-
-Published: 2026-01-22
-
----
-<div align="right">
-Updated 2026-01-23
-</div>
+| Published 2026-01-22  | An Ecosystem for Secure Information Systems - Part 1 Introduction |
+| :---                  |                                                              ---: |
+|                       |                                                Updated 2026-01-24 |
 
 ## Summary
 
@@ -19,7 +14,7 @@ Infrastructure and services across all levels of criticality increasingly depend
 
 Times are changing with new geopolitical rules that appear undefined at the moment. The systems and attitudes that got us here are unlikely to be the ones that will get us through it. For the purpose of this post I will defer the naming of the coming period to the historians. When considering this looming challenge it is important to realize that the adversaries and their capabilities are not the significant source of the problem. The adversary is inevitable. The big problem is our own creation of a target rich environment of critically important systems with common vulnerabilities. There will eventually be an adversary with the means and motivation to use the vulnerabilities against us. The additional risk posed by a nation state adversary is not its ability to penetrate and exploit information systems, but its ability to coordinate  with other events. The list of historic attacks exploiting systemic weaknesses are many;  Stuxnet, NotPetya, WannaCry, HeartBleed, SolarWinds, Colonial Pipeline operations, Ukraine grid attacks and Salt Typhoon telecom attacks, to name a few famous examples. These kind of attacks will occur with uneven intervals, and the size of these attacks will grow proportionally to the number of available targets, because the size is largely a function of the environment, and less related to the attackers capabilities.
 
-## Self-organized criticality
+### Self-organized criticality
 
 Forest fires, avalanches and digital transformation may have one dangerous thing in common: Self-organizing to criticality. The spark that starts a large forest fire is not meaningfully different from the spark that does not. The snowflake that starts a large avalanche is not meaningfully different from those that do not. The meaningful difference is in the combined potential in the environment, not the trigger event. The damage potential has built up over time from dead organic debris or snowflakes landing on top of each other. The trigger is just a statistically inevitable event, releasing the potential. This was described mathematically as “Self-organized criticality” by mathematicians Per Bak, Chao Tang and Kurt Wiesenfeld in 1987.
 
@@ -27,7 +22,7 @@ What I propose here is that forcefully engaging in digital transformation is hig
 
 To counter this scenario I propose a strategic application of political instruments and architectural constraints on the ecosystem that produces these systems. The following outlines the three political and two architectural pillars of an ecosystem for creation of meaningfully more secure information systems. These systems will not have absolutely zero risk, but they should reduce the risk to such a level that the risk is acceptable for use across all critical infrastructure and services.
 
-## Critical and non-critical information systems are largely built the same
+### Critical and non-critical information systems are largely built the same
 
 Critical information system typically has more rigorous design, more controls are implemented and documented and more layers of isolation are typically implemented. Yet they tend to be built using the same services and components as non-critical systems. When the functional needs are the same, there is rarely any gain in using lower grade software components or services in non-critical systems. The hardware may vary somewhat more in quantity and sometimes also in quality, but most systems attributes are software defined these days.
 
@@ -60,11 +55,13 @@ The asserted principal necessities for an ecosystem that will create meaningfull
 
 In the next two parts I will break down the political and architectural necessities in more detail.
 
+[Todo Next: An Ecosystem for Secure Information Systems - Part 2 Political means](<hxxps://acje.github.io/Ecosystem/post>)
+
 ## Other posts in category Systems and security
 
 [A case against the CIA triad](https://anderscj.substack.com/p/a-case-against-the-cia-triad)
 
-[CISQ-Model](https://acje.github.io/CISQ-model/post)
+[CISQ-Model of security qualities](https://acje.github.io/CISQ-model/post)
 
 [Liberal democracies needs a new compute stack. Part 1 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
 

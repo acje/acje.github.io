@@ -1,6 +1,6 @@
 # Welcome
 
-Welcome til my Github hosted pages. I organize my posts by topic and they will be updated when I get new or better ideas. I might post on Linkedin or Substack to reference these posts when there are major updates, but these are the documents where I maintain the bigger ideas that will take time to mature.
+Welcome to my Github hosted pages. I organize my posts by topic and they will be updated when I get new or better ideas. I might post on Linkedin or Substack to reference these posts when there are major updates, but these are the documents where I maintain the bigger ideas that will take time to mature.
 
 ## Agile
 
@@ -14,7 +14,7 @@ Welcome til my Github hosted pages. I organize my posts by topic and they will b
 
 [A case against the CIA triad](https://anderscj.substack.com/p/a-case-against-the-cia-triad)
 
-[CISQ-Model](https://acje.github.io/CISQ-model/post)
+[CISQ-Model of security qualities](https://acje.github.io/CISQ-model/post)
 
 [Liberal democracies needs a new compute stack. Part 1 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
 

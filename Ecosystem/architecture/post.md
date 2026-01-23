@@ -1,3 +1,14 @@
+# An Ecosystem for Secure Information Systems
+
+**This is part 3 of 3 in this series.**
+
+Published: yyyy-mm-dd
+
+---
+<div align="right">
+Updated yyyy-mm-dd
+</div>
+
 ## 4. Maximally isolated components of least capability
 
 With components in this document, the following resources for the creation of information systems are included
@@ -26,4 +37,4 @@ Clearly define interfaces derived from function signatures of exposed functions.
 
 ## Final thoughts
 
-Doable
+Doable. formal verification as explored nin the 60ies and 70ies was never going to be a big part of secure informations systems and the later strategy of "enumerating badness", that is the creation of software that catalogs anything that is unwanted such as viruses, worms, software behavior was never going to be more than a temporary stop gap.

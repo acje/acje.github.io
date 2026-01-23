@@ -2,7 +2,14 @@
 
 **This is part 1 of 3 in this series.**
 
-Employing political instruments and architectural constraints to reshape the ecosystem that builds all our digital infrastructure and services.
+ Employing political instruments and architectural constraints to reshape the ecosystem that builds all our digital infrastructure and services.
+
+Published: 2026-01-22
+
+---
+<div align="right">
+Updated 2026-01-23
+</div>
 
 ## Summary
 
@@ -51,7 +58,7 @@ The asserted principal necessities for an ecosystem that will create meaningfull
 
 ## Upcoming parts in this series
 
-In the next two parts I will break down how the political and architectural necessities in detail
+In the next two parts I will break down the political and architectural necessities in more detail.
 
 ## Other posts in category Systems and security
 

@@ -1,3 +1,13 @@
+# An Ecosystem for Secure Information Systems
+
+**This is part 2 of 3 in this series.**
+
+Published: yyyy-mm-dd
+
+---
+<div align="right">
+Updated yyyy-mm-dd
+</div>
 
 ## Breakdown of the five principal necessities
 

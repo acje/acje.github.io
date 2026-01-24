@@ -1,6 +1,6 @@
 # An Ecosystem for Secure Information Systems
 
-Employing political instruments and architectural constraints to reshape the ecosystem that builds our digital infrastructure and services.
+*Employing political instruments and architectural constraints to reshape the ecosystem that builds our digital infrastructure and services.*
 
 <style>
     table {
@@ -14,7 +14,7 @@ Employing political instruments and architectural constraints to reshape the eco
 
 ## Summary
 
-Infrastructure and services across all levels of criticality increasingly depend on information systems whose common vulnerable dependencies and inherent brittle design can create systemic vulnerabilities prone to cascading failures. The goal here is to describe an ecosystem that reduces systemic vulnerabilities to an acceptable level for all infrastructure and services. It will be asserted that such an ecosystem consists of five principal necessities. By targeting the ecosystem rather than the information systems directly we create a situation where systems across all sectors of society benefit. This must be done through politically mandated verifiable and trusted supply chains, hosting and operations. Further this must be combined with  architecture principles that limit blast radius and enforce least privilege integrations at all levels.
+Infrastructure and services across all levels of criticality increasingly depend on information systems whose common vulnerable dependencies and inherent brittle design can create systemic vulnerabilities prone to cascading failures. The goal here is to describe an ecosystem that reduces systemic vulnerabilities to an acceptable level for all infrastructure and services. Describing how existing information systems can be secured is not a goal, in fact it is assumed to be impossible. Still the defeatism that prevails in parts of the IT industry, that we simply can not have inherently secure systems, is equally rejected. It will be asserted that such an ecosystem consists of five principal necessities. By targeting the ecosystem rather than the information systems directly, we create a new situation where systems across all sectors of society benefit. This must be done through politically mandated, verifiable and trusted supply chains, hosting and operations. Further this must be combined with architecture principles that limit blast radius by employing isolation as a defense in depth strategy and rigidly enforce least privilege integrations at all levels.
 
 ## The fundamental challenge of increasing the number of inherently insecure and critical systems
 
@@ -61,7 +61,7 @@ The asserted principal necessities for an ecosystem that will create meaningfull
 
 In the next two parts I will break down the political and architectural necessities in more detail.
 
-[TODO Next: An Ecosystem for Secure Information Systems - Part 2 Political means](<https://acje.github.io/Ecosystem/political>)
+[TODO Next: An Ecosystem for Secure Information Systems - Part 2 Political means](<hxxps://acje.github.io/Ecosystem/political>)
 
 ## Other posts in category Systems and security
 

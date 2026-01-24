@@ -1,5 +1,11 @@
 # An Ecosystem for Secure Information Systems
 
+<style>
+    table {
+        width: 100%;
+    }
+</style>
+
 | Published 2026-01-24  | An Ecosystem for Secure Information Systems - Part 2 Political means |
 | :---                  |                                                                 ---: |
 |                       |                                                   Updated 2026-01-24 |
@@ -68,6 +74,12 @@ With operations in this document, the following resources for the creation of in
 Challenges
 
 ### Solutions to the trusted operations challenge
+
+## Upcoming parts in this series
+
+In the next part I will break down the architectural necessities in more detail.
+
+[TODO Next: An Ecosystem for Secure Information Systems - Part 3 architectural constraints](<https://acje.github.io/Ecosystem/architecture>)
 
 ## Other posts in category Systems and security
 

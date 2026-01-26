@@ -34,7 +34,7 @@ Critical information system typically has more rigorous design, more controls ar
 
 ## A hierarchy of security aspects
 
-Where we intervene is of importance for how far we can reach. A simplified model of how to understand how information systems are created, managed and cause security outcomes, may be helpful. The ecosystem consists of all the available services, components and trained personnel that goes into creating information systems. The systems themselves are created from what is available at their time of creation and during their period of maintenance. These systems cause security events such as unexpected downtime due to internal, natural or adversarial actions on the system. Dependent on the systems ability to withstand these actions and the organizations ability to react, we get security outcomes. In this post we will look at actions we can take at the ecosystem level to create a situation where all new and actively maintained systems can be made to produce meaningfully better security outcomes. When we intervene at this level we are more likely to maximize impact compared to intervening at lower levels of this model.
+Where we intervene is of importance for how far we can reach. A simplified model for how to understand how information systems are created, managed and cause security outcomes, may be helpful. The ecosystem consists of all the available services, components and trained personnel that goes into creating information systems. The systems themselves are created from what is available at their time of creation and during their period of maintenance. These information systems cause security events such as unexpected downtime due to internal, natural or adversarial actions on the system. Dependent on the systems ability to withstand these actions and the organizations ability plan for and react to these events, we get security outcomes. In this post we will look at actions we can take at the ecosystem level to create a situation where all new and actively maintained systems can be made to produce meaningfully better security outcomes. When we intervene at this level we are more likely to maximize impact compared to intervening at lower levels of this model.
 
 Ecosystem -> information systems -> security events -> security outcomes
 
@@ -42,7 +42,7 @@ In this post we are going to look into how we can understand and modify the ecos
 
 ## Necessities of an ecosystem that produce inherently secure systems
 
-Here we present the necessities that have been identified for an ecosystem to produce meaningfully more secure information systems. To highlight structure for the different audiences the necessities has been categorized into two different areas. The political necessities are about aspects of the ecosystem that typically will need multi-national political effort to achieve. The architectural necessities may also need political help to advance at reasonable pace, but caution need to be used when mandating their use because technological breakthroughs may change how architecture should be shaped.
+To highlight structure for the different audiences the necessities has been categorized into two different areas. The political necessities are about aspects of the ecosystem that typically will need multi-national political effort to achieve. The architectural necessities may also need political help to advance at reasonable pace, but caution need to be used when mandating their use because technological breakthroughs may change how architecture should be shaped.
 
 The asserted principal necessities for an ecosystem that will create meaningfully more secure information systems are as follows.
 
@@ -59,7 +59,7 @@ The asserted principal necessities for an ecosystem that will create meaningfull
 
 ## Upcoming parts in this series
 
-In the next two parts I will break down the political and architectural necessities in more detail.
+In the next two parts I will break down the political and architectural necessities in more detail. This includes defining the scope of each principal necessity, the challenges inherent to the context and some possible solutions and "near enemy" non-solutions.
 
 [TODO Next: An Ecosystem for Secure Information Systems - Part 2 Political means](<hxxps://acje.github.io/Ecosystem/political>)
 

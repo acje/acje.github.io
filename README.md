@@ -10,7 +10,7 @@ Welcome to my Github hosted pages. I organize my posts by topic and they will be
 
 ## Systems and security
 
-[An Ecosystem for Secure Information Systems](https://acje.github.io/Ecosystem/post)
+[An Ecosystem for Secure Information Systems](https://acje.github.io/Ecosystem)
 
 [A case against the CIA triad](https://anderscj.substack.com/p/a-case-against-the-cia-triad)
 

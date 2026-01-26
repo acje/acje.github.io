@@ -1,11 +1,5 @@
 # An Ecosystem for Secure Information Systems
 
-<style>
-    table {
-        width: 100%;
-    }
-</style>
-
 | Published 2026-mm-dd  | An Ecosystem for Secure Information Systems - Part 3 Architectural constraints |
 | :---                  |                                                                           ---: |
 |                       |                                                             Updated 2026-mm-dd |

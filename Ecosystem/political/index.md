@@ -1,16 +1,10 @@
 # An Ecosystem for Secure Information Systems
 
-<style>
-    table {
-        width: 100%;
-    }
-</style>
-
 | Published 2026-mm-dd  | An Ecosystem for Secure Information Systems - Part 2 Political means |
 | :---                  |                                                                 ---: |
 |                       |                                                   Updated 2026-mm-dd |
 
-[Previous: An Ecosystem for Secure Information Systems - Part 1](<https://acje.github.io/Ecosystem>)
+[Previous: An Ecosystem for Secure Information Systems - Part 1 Introduction](<https://acje.github.io/Ecosystem>)
 
 Part 1 argued that pervasive deployment of inherently insecure systems has created a target‑rich environment prone to self‑organized criticality, where small triggers can cascade into large societal failures. The remedy is ecosystem‑level action: politically mandated, verifiable trust across supply chains, hosting, and operations, reinforced by architectural constraints such as isolation and least‑privilege interfaces.
 

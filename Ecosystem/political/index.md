@@ -6,9 +6,9 @@
     }
 </style>
 
-| Published 2026-01-24  | An Ecosystem for Secure Information Systems - Part 2 Political means |
+| Published 2026-mm-dd  | An Ecosystem for Secure Information Systems - Part 2 Political means |
 | :---                  |                                                                 ---: |
-|                       |                                                   Updated 2026-01-24 |
+|                       |                                                   Updated 2026-mm-dd |
 
 [Previous: An Ecosystem for Secure Information Systems - Part 1](<https://acje.github.io/Ecosystem/post>)
 

@@ -10,7 +10,7 @@
 
 | Published 2026-01-22  | An Ecosystem for Secure Information Systems - Part 1 Introduction |
 | :---                  |                                                              ---: |
-|                       |                                                Updated 2026-01-24 |
+|                       |                                                Updated 2026-01-26 |
 
 ## Summary
 

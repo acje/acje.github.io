@@ -2,12 +2,6 @@
 
 *Employing political instruments and architectural constraints to reshape the ecosystem that builds our digital infrastructure and services.*
 
-<style>
-    table {
-        width: 100%;
-    }
-</style>
-
 | Published 2026-01-22  | An Ecosystem for Secure Information Systems - Part 1 Introduction |
 | :---                  |                                                              ---: |
 |                       |                                                Updated 2026-01-26 |

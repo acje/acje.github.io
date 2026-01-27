@@ -31,11 +31,17 @@ Every security quality has a corresponding threat; denial of service, tampering,
 
 At maturity level two we introduce some common higher order qualities that are composed of two or three pilar qualities from maturity level one.
 
+| ![CISQ security model version 1.0](CISQ-maturity-l2.png) |
+|                      :--:                                |
+|  Maturity level two of the CISQ security model           |
+
 **Utility** - Usefulness of information and behavior
 
 **Confidentiality** - Access to information and behavior being exclusively limited to authorized entities
 
 **Accountability** - Assurance of the correctness, completeness and origin of information and behavior
+
+The security qualities at level two has these corresponding threats; Information contortion, information disclosure, non-repudiation.
 
 ## Maturity level three
 

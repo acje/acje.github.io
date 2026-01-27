@@ -63,7 +63,7 @@ These definitions are a work in progress. two principles are important:
 
 **Accountability** - Assurance of the correctness, completeness and origin of information and behavior
 
-**Durability** - Ability to withstand damage of integrity of information and behavior
+**Durability** - Ability to withstand integrity degradation of information and behavior
 
 **Credibility** - Verified information and behavior
 

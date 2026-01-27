@@ -49,7 +49,7 @@ At maturity level three we introduce more accurate definition of concepts. Incre
 
 **Authority** - Power to grant access to information and behavior
 
-**Durability** - Ability to withstand damage of integrity of information and behavior
+**Durability** - Ability to withstand integrity degradation of information and behavior
 
 **Credibility** - Verified information and behavior
 

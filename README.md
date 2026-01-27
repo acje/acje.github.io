@@ -12,9 +12,11 @@ Welcome to my Github hosted pages. I organize my posts by topic and they will be
 
 [An Ecosystem for Secure Information Systems](https://acje.github.io/Ecosystem)
 
+[CISQ-Model of security qualities](https://acje.github.io/CISQ-maturity)
+
 [A case against the CIA triad](https://anderscj.substack.com/p/a-case-against-the-cia-triad)
 
-[CISQ-Model of security qualities](https://acje.github.io/CISQ-model/post)
+[CISQ-Model of security qualities](https://acje.github.io/CISQ-model)
 
 [Liberal democracies needs a new compute stack. Part 1 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
 

@@ -12,7 +12,7 @@ Welcome to my Github hosted pages. I organize my posts by topic and they will be
 
 [An Ecosystem for Secure Information Systems](https://acje.github.io/Ecosystem)
 
-[CISQ-Model of security qualities](https://acje.github.io/CISQ-maturity)
+[Maturity levels in the CISQ security model](https://acje.github.io/CISQ-maturity)
 
 [A case against the CIA triad](https://anderscj.substack.com/p/a-case-against-the-cia-triad)
 

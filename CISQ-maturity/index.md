@@ -28,7 +28,7 @@ The four pillar security qualities are:
 
 *Corresponding threat category*: Denial of service
 
-*Typical security controls*: Rate limiting, traffic scrubbing, resource pooling, traffoc shaping (ACL, WAF), load balancing
+*Typical security controls*: Rate limiting, traffic scrubbing, resource pooling, traffic shaping (ACL, WAF), load balancing
 
 **Integrity** - Preserving correctness and completeness of information and behavior
 

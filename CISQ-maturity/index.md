@@ -2,38 +2,55 @@
 
 | ![CISQ security model version 1.0](CISQ.png) |
 |                      :--:                    |
-|  The CISQ security model version 1.0         |
+|  *The CISQ security model version 1.0*       |
 
 ## Introducing the model
 
-In this post I will lay down how an organization can reason about the security of an information system by traversing maturity levels of the CISQ security model. You can read mode about the model here;
-[CISQ-Model of security qualities](https://acje.github.io/CISQ-model)
+The Composing Information Security Qualities (CISQ) model is created by combining insights and definitions from the [CIA triad](https://en.wikipedia.org/wiki/Information_security#CIA_triad), [Parkerian Hexad](https://en.wikipedia.org/wiki/Parkerian_Hexad) and [STRIDE threat model](https://en.wikipedia.org/wiki/STRIDE_model). The result is a model of four pillar security qualities and eleven composed security qualities. Each security quality has a corresponding threat category inspired by the STRIDE threat model. You can read mode about the model here; [CISQ-Model of security qualities](https://acje.github.io/CISQ-model)
 
-The CISQ security model can be a bit daunting at first. With its four pilar qualities and a further eleven composed security qualities it totals 15 different concepts.
+The CISQ security model can be a bit daunting at first. To make the model more approachable, this document describes a step by step maturity model that introduces the model by introducing the four pillars and then building further on top of these in a systematic manner.
 
 ## Maturity level one
 
-At the first level the four pilar qualities are evaluated in the context of the system. These qualities will be important to evaluate for any system and they make up the foundations for all the other security concepts at any maturity level.
+At the first level the four pillar qualities are evaluated in the context of the system. These qualities will be important to evaluate for any system and they make up the foundations for all the other security concepts at any maturity level.
 
-The four pilar security qualities are:
+| ![CISQ security model version 1.0](CISQ-maturity-l1.png) |
+|                      :--:                                |
+|  *Maturity level one of the CISQ security model*         |
+
+The four pillar security qualities are:
 
 **Availability** - Timely access to information and behavior
 
+Corresponding threat category: Denial of service
+
+Typical security controls: Rate limiting, Traffic scrubbing, Resource pooling, input validation (ACL, WAF), load balancing
+
 **Integrity** - Preserving correctness and completeness of information and behavior
+
+Corresponding threat category: Tampering
+
+Typical security controls:Input validation, Hash functions, Session management, separation of duties
 
 **Control** - Power to physically or logically influence information and behavior
 
+Corresponding threat category: Elevation of privilege
+
+Typical security controls: Principle of least privilege, patch management, logging and auditing
+
 **Authenticity** - Origin of information and behavior is from its purported source
 
-Every security quality has a corresponding threat; denial of service, tampering, elevation of privilege, spoofing.
+Corresponding threat category: Spoofing
+
+Typical security controls: Multi-Factor Authentication, signatures, certificates
 
 ## Maturity level two
 
-At maturity level two we introduce some common higher order qualities that are composed of two or three pilar qualities from maturity level one.
+At maturity level two we introduce some common higher order qualities that are composed of two or three pillar qualities from maturity level one.
 
 | ![CISQ security model version 1.0](CISQ-maturity-l2.png) |
 |                      :--:                                |
-|  Maturity level two of the CISQ security model           |
+|  *Maturity level two of the CISQ security model*         |
 
 **Utility** - Usefulness of information and behavior
 

@@ -28,13 +28,13 @@ The four pillar security qualities are:
 
 *Corresponding threat category*: Denial of service
 
-*Typical security controls*: Rate limiting, Traffic scrubbing, Resource pooling, input validation (ACL, WAF), load balancing
+*Typical security controls*: Rate limiting, traffic scrubbing, resource pooling, traffoc shaping (ACL, WAF), load balancing
 
 **Integrity** - Preserving correctness and completeness of information and behavior
 
 *Corresponding threat category*: Tampering
 
-*Typical security controls*: Input validation, Hash functions, Session management, separation of duties
+*Typical security controls*: Input validation, hash functions, session management, separation of duties
 
 **Control** - Power to physically or logically influence information and behavior
 
@@ -46,7 +46,7 @@ The four pillar security qualities are:
 
 *Corresponding threat category*: Spoofing
 
-*Typical security controls*: Multi-Factor Authentication, signatures, certificates
+*Typical security controls*: Multi-factor authentication (MFA), signatures, certificates
 
 ## Maturity level two
 
@@ -76,8 +76,6 @@ At maturity level two we introduce some common higher order qualities that are c
 
 ## Maturity level three
 
-Maturity level three is TODO.
-
 At maturity level three we introduce more accurate definition of concepts. Increasing your depth of conceptual understanding may help develop and categorize security controls (not to be confused with the *control quality* in the CISQ model).
 
 | ![CISQ security model version 1.0](CISQ-maturity-l3.png) |
@@ -92,7 +90,7 @@ At maturity level three we introduce more accurate definition of concepts. Incre
 
 **Durability** - Ability to withstand integrity degradation of information and behavior
 
-**Credibility** - Verified information and behavior
+**Credibility** - Ability to verify information and behavior
 
 **Certifiability** - Ability to prove validity of information and behavior
 

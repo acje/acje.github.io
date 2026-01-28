@@ -23,21 +23,25 @@ The four pillar security qualities are:
 **Availability** - Timely access to information and behavior
 
 *Corresponding threat category*: Denial of service
+
 *Typical security controls*: Rate limiting, Traffic scrubbing, Resource pooling, input validation (ACL, WAF), load balancing
 
 **Integrity** - Preserving correctness and completeness of information and behavior
 
 *Corresponding threat category*: Tampering
+
 *Typical security controls*: Input validation, Hash functions, Session management, separation of duties
 
 **Control** - Power to physically or logically influence information and behavior
 
 *Corresponding threat category*: Elevation of privilege
+
 *Typical security controls*: Principle of least privilege, patch management, logging and auditing
 
 **Authenticity** - Origin of information and behavior is from its purported source
 
 *Corresponding threat category*: Spoofing
+
 *Typical security controls*: Multi-Factor Authentication, signatures, certificates
 
 ## Maturity level two
@@ -51,16 +55,19 @@ At maturity level two we introduce some common higher order qualities that are c
 **Utility** - Usefulness of information and behavior
 
 *Corresponding threat category*: Information contortion
+
 *Typical security controls*: API management, type checks
 
 **Confidentiality** - Access to information and behavior being exclusively limited to authorized entities
 
 *Corresponding threat category*: Information disclosure
+
 *Typical security controls*: Encryption, Access control lists (ACLs), Data loss prevention (DLP), data classification policies
 
 **Accountability** - Assurance of the correctness, completeness and origin of information and behavior
 
 *Corresponding threat category*: Non-repudiation
+
 *Typical security controls*: Signatures, public key infrastructure (PKI), Audit trails and logs, message authentication codes (MACs), digital contracts, hashing, trusted third parties
 
 ## Maturity level three

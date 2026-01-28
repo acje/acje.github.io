@@ -80,6 +80,10 @@ Maturity level three is TODO.
 
 At maturity level three we introduce more accurate definition of concepts. Increasing your depth of conceptual understanding may help develop and categorize security controls (not to be confused with the *control quality* in the CISQ model).
 
+| ![CISQ security model version 1.0](CISQ-maturity-l3.png) |
+|                      :--:                                |
+|  *Maturity level two of the CISQ security model*         |
+
 **Reliability** – Trustworthy information and behavior
 
 **Sustainability** - Ability to maintain information and behavior
@@ -92,6 +96,6 @@ At maturity level three we introduce more accurate definition of concepts. Incre
 
 **Certifiability** - Ability to prove validity of information and behavior
 
-**Assurance** - Positive declaration of information and behavior
+**Assurability** - Ability to positively confirm information and behavior
 
 **Traceability** - Ability to discover where and how information and behavior was made

@@ -10,6 +10,10 @@ The Composing Information Security Qualities (CISQ) model is created by combinin
 
 The CISQ security model can be a bit daunting at first. To make the model more approachable, this document describes a step by step maturity model that introduces the model by introducing the four pillars and then building further on top of these in a systematic manner.
 
+## How to use the model
+
+The CISQ-model structures the vocabulary of security qualities. These are qualities we want to protect when working with information systems. When performing a risk assessment such as mandated in ISO/IEC 27005, the CISQ model may be of help when establishing the context and when doing risk identification. If you use threat modelling to identify risk, then CISQ can replace or enhance the STRIDE model in this situation.
+
 ## Maturity level one
 
 At the first level the four pillar qualities are evaluated in the context of the system. These qualities will be important to evaluate for any system and they make up the foundations for all the other security concepts at any maturity level.

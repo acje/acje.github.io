@@ -8,7 +8,7 @@
 
 The Composing Information Security Qualities (CISQ) model is created by combining insights and definitions from the [CIA triad](https://en.wikipedia.org/wiki/Information_security#CIA_triad), [Parkerian Hexad](https://en.wikipedia.org/wiki/Parkerian_Hexad), and [STRIDE threat model](https://en.wikipedia.org/wiki/STRIDE_model). The result is a model of four primary security qualities and eleven composed security qualities. Each security quality has a corresponding threat category inspired by the STRIDE threat model. You can read more about previous work on the model here: [CISQ-Model of security qualities](https://acje.github.io/CISQ-model). Please note that previous work on this model may deviate somewhat, as we have made changes to use the most familiar terms for qualities and threats.
 
-The CISQ model describes *security qualities*: positive, naturally emerging qualities we want to preserve in information objects or in the information and behavior of information systems. The CISQ model does not describe systemic qualities that emerge in the relations between components or within systems, nor does it deal with human-made concepts like legal, ethical, or societal issues. This is why the simplified view of the CISQ model can also be flanked by these two distinct concepts as shown further down below.
+The CISQ model describes *security qualities*: positive, naturally emerging qualities we want to preserve in information objects or in the information and behavior of information systems. The CISQ model does not describe systemic qualities that emerge in the relationships between components or within systems, nor does it deal with human-made concepts like legal, ethical, or societal issues. This is why the simplified view of the CISQ model can also be flanked by these two distinct concepts, as shown below.
 
 The CISQ security model can be a bit daunting at first. To make the model more approachable, this document presents a step-by-step maturity model, starting with the four primary qualities and then building on them in a systematic manner.
 
@@ -18,7 +18,7 @@ The CISQ model structures the vocabulary of security qualities. These are qualit
 
 ## Maturity level one
 
-At the first level, the four primary qualities are evaluated in the context of the system. These qualities are important to evaluate for any system, and they form the foundation for all the other security concepts at any maturity level. Note that we talk about the *control quality* here, borrowed from the Parkerian Hexad, not to be confused with security controls.
+At the first level, the four primary qualities are evaluated in the context of the system. These qualities are important to evaluate for any system, and they form the foundation for all the other security concepts at any maturity level. Note that we refer to the *control quality* here—borrowed from the Parkerian Hexad—not to be confused with security controls.
 
 | ![CISQ security model version 1.0](CISQ-maturity-l1.png) |
 |                      :--:                                |
@@ -44,7 +44,7 @@ Integrity ensures information and system behavior remain correct, complete, and 
 
 **Control** - Power to physically or logically influence information and behavior
 
-CISQ’s primary control security quality mirrors "Possession or Control" in the Parkerian Hexad. At its core the control security quality is all about agency. To what extent can someone or something influence an information system. This quality is also special in that it does not apply to public domain information objects and as such creates a dichotomy in the CISQ model with public domain information objects on one side and information systems on the other side. In modern information system control is often shared with other teams and organizations. Typical situations include cloud hosting or smart phones where manufacturers, hosting providers, operators and users all has some degree of influence on the systems. Effectively managing control prevents unauthorized manipulation or limits blast radius when some barriers fail.
+CISQ’s primary control security quality mirrors "Possession or Control" in the Parkerian Hexad. At its core, the control security quality is all about agency. It concerns the extent to which someone or something can influence an information system. This quality is also special in that it does not apply to public‑domain information objects and, as such, creates a dichotomy in the CISQ model, with public‑domain information objects on one side and information systems on the other side. In modern information systems, control is often shared with other teams and organizations. Typical situations include cloud hosting or smartphones, where manufacturers, hosting providers, operators, and users all have some degree of influence on the systems. Effectively managing control prevents unauthorized manipulation and limits the blast radius when barriers fail.
 
 *Corresponding threat category*: Elevation of privilege — unauthorized gain of permissions enabling control, break‑glass workflows
 
@@ -70,7 +70,7 @@ Maturity level two can be represented in the simplified view.
 
 | ![CISQ security model version 1.0](CISQ-transformation.png)                                       |
 |                      :--:                                                                         |
-|  *CISQ security model has a base view implementing all maturity levels and a simplified overview* |
+|  *The CISQ security model has a base view covering all maturity levels and a simplified overview* |
 
 Together with related perspectives, this is a useful representation and starting point for most teams managing information systems. The higher maturity levels are meant for security professionals and infrastructure or platform teams focusing on a deeper understanding of their security posture.
 
@@ -120,13 +120,13 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 
 *Corresponding threat category*: Misinformation — deceptive or misleading content undermining verification
 
-*Typical security controls*: Cryptographic signatures, certificate pinning, PKI validation, trusted timestamping, source verification policies, tamper-evident logging, content validation workflows, reputation/trust lists.
+*Typical security controls*: Cryptographic signatures, certificate pinning, PKI validation, trusted timestamping, source verification policies, tamper-evident logging, content validation workflows, reputation/trust lists
 
 **Certifiability** – Ability to prove the validity of information and behavior
 
 *Corresponding threat category*: Invalid attestation — unverifiable or untrusted proofs of validity
 
-*Typical security controls*: Third‑party audits and certifications (ISO, SOC 2), attestation frameworks (TPM/TEE remote attestation), formal verification/conformance testing, reproducible builds, SBOMs and supply chain attestations, notarization/trusted registries.
+*Typical security controls*: Third‑party audits and certifications (ISO, SOC 2), attestation frameworks (TPM/TEE remote attestation), formal verification/conformance testing, reproducible builds, SBOMs and supply chain attestations, notarization/trusted registries
 
 **Assurance** – (Assurability) Ability to positively confirm information and behavior
 
@@ -138,7 +138,7 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 
 *Corresponding threat category*: Obfuscation — concealed provenance or tampered production trails
 
-*Typical security controls*: Traceability: structured logging with correlation IDs, distributed tracing (OpenTelemetry), append‑only/immutable logs, cryptographic log signing, data lineage catalogs, version control and change history, chain‑of‑custody procedures.
+*Typical security controls*: Structured logging with correlation IDs, distributed tracing (OpenTelemetry), append‑only/immutable logs, cryptographic log signing, data lineage catalogs, version control and change history, chain‑of‑custody procedures
 
 **Usefulness** – Ability to work with the format of information and behavior
 
@@ -148,7 +148,7 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 
 ## Maturity level four
 
-At level four, we define the sole quality composing all four primary qualities. The most prominent systems to create technical guarantees for all four qualities would be smart contracts running on blockchains. However, it is not necessary that all qualities are technical guarantees. Many organizations deliver very good reliability as a combination of technical, process, and organizational measures. Financial institutions are typical examples of such systems where all aspects come together to create a level of trust where customers are happy to turn over control of their assets to these organizations.
+At level four, we define the sole quality composing all four primary qualities. The most prominent systems to create technical guarantees for all four qualities would be smart contracts running on blockchains. However, it is not necessary for all qualities to be technical guarantees. Many organizations deliver very good reliability as a combination of technical, process, and organizational measures. Financial institutions are typical examples of such systems where all aspects come together to create a level of trust where customers are happy to hand over control of their assets to these organizations.
 
 | ![CISQ security model version 1.0](CISQ-maturity-l4.png) |
 |                      :--:                                |
@@ -156,9 +156,9 @@ At level four, we define the sole quality composing all four primary qualities. 
 
 **Reliability** – Trustworthy information and behavior
 
-*Corresponding threat category*: Dependability loss — systemic failures reducing trust in outcomes.
+*Corresponding threat category*: Dependability loss — systemic failures reducing trust in outcomes
 
-*Typical security controls*: transactional integrity, idempotency, distributed consensus, circuit breakers and retry/backoff, disaster recovery and business continuity plans, chaos engineering
+*Typical security controls*: Transactional integrity, idempotency, distributed consensus, circuit breakers and retry/backoff, disaster recovery and business continuity plans, chaos engineering
 
 ## Resources
 

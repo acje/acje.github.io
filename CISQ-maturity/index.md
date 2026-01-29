@@ -172,18 +172,18 @@ At level four, we define the sole quality composing all four primary qualities. 
 
 | Quality | Threat Category | MITRE ATT&CK Tactics |
 |---|---|---|
-| Availability | Denial of service | Impact |
-| Integrity | Tampering | Execution, Impact |
-| Control | Elevation of privilege | Discovery, Privilege Escalation, Persistence |
-| Authenticity | Spoofing | Resource Development, Initial Access |
-| Utility | Information contortion | Impact |
-| Confidentiality | Information disclosure | Collection, Exfiltration, Lateral Movement |
-| Non-repudiation | Repudiation | Defense Evasion |
-| Authorization | Traffic manipulation | Reconnaissance, Credential Access, Defense Evasion |
-| Durability | Data corruption | Impact |
-| Credibility | Misinformation | Impact |
-| Certifiability | Invalid attestation | Defense Evasion |
-| Assurance | Unverified behavior | Defense Evasion |
-| Traceability | Obfuscation | Defense Evasion |
-| Usefulness | Data misformatting | Impact |
-| Reliability | Dependability loss | Impact |
+| Availability | Denial of service — disruption or resource exhaustion preventing timely access | Impact |
+| Integrity | Tampering — unauthorized modification compromising correctness or completeness | Execution, Impact |
+| Control | Elevation of privilege — unauthorized gain of permissions enabling control, break‑glass workflows | Discovery, Privilege Escalation, Persistence |
+| Authenticity | Spoofing — impersonation of identities or sources | Resource Development, Initial Access |
+| Utility | Information contortion — distortion or incompatibility reducing ability to maintain or use | Impact |
+| Confidentiality | Information disclosure — unauthorized exposure of information or behavior | Collection, Exfiltration, Lateral Movement |
+| Non-repudiation | Repudiation — denial of actions or origins | Defense Evasion |
+| Authorization | Traffic manipulation — bypassing, shaping, or abusing traffic flows to evade or degrade controls | Credential Access, Defense Evasion |
+| Durability | Data corruption — integrity degradation of stored or transmitted data | Impact |
+| Credibility | Misinformation — deceptive or misleading content undermining verification | Impact |
+| Certifiability | Invalid attestation — unverifiable or untrusted proofs of validity | Defense Evasion |
+| Assurance | Unverified behavior — insufficient evidence to confirm claims or outcomes | Defense Evasion |
+| Traceability | Obfuscation — concealed provenance or tampered production trails | Defense Evasion |
+| Usefulness | Data misformatting — incompatible, ambiguous, or malformed representations | Impact |
+| Reliability | Dependability loss — systemic failures reducing trust in outcomes | Impact |

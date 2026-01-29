@@ -175,11 +175,11 @@ At level four, we define the sole quality composing all four primary qualities. 
 | Availability | Denial of service | Impact |
 | Integrity | Tampering | Execution, Impact |
 | Control | Elevation of privilege | Discovery, Privilege Escalation, Persistence |
-| Authenticity | Spoofing | Reconnaissance, Resource Development, Initial Access, Defense Evasion |
+| Authenticity | Spoofing | Resource Development, Initial Access |
 | Utility | Information contortion | Impact |
 | Confidentiality | Information disclosure | Collection, Exfiltration, Lateral Movement |
 | Non-repudiation | Repudiation | Defense Evasion |
-| Authorization | Traffic manipulation | Credential Access, Defense Evasion |
+| Authorization | Traffic manipulation | Reconnaissance, Credential Access, Defense Evasion |
 | Durability | Data corruption | Impact |
 | Credibility | Misinformation | Impact |
 | Certifiability | Invalid attestation | Defense Evasion |

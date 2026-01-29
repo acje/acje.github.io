@@ -1,8 +1,8 @@
 # Maturity levels in the CISQ security model
 
-| ![CISQ security model version 1.0](CISQ-L2-Overview.png)           |
+| ![CISQ security model version 1.0](CISQ-simplified-large.png)           |
 |                      :--:                                          |
-|  *CISQ security model v1.0, Maturity level 2, simplified overview* |
+|  *CISQ security model v1.0, Maturity level 2 simplified*           |
 
 ## Introducing the model
 
@@ -70,7 +70,7 @@ Together with related perspectives this is a usefull representation and starting
 |                      :--:                                          |
 |  *CISQ security model v1.0, Maturity level 2, simplified overview* |
 
-**Sustainability** – Ability to maintain information and behavior
+**Utility** – Ability to maintain information and behavior
 
 *Corresponding threat category*: Information contortion
 
@@ -98,8 +98,6 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 
 **Reliability** – Trustworthy information and behavior
 
-**Sustainability** – Ability to maintain information and behavior
-
 **Authority** – Power to grant access to information and behavior
 
 **Durability** – Ability to withstand degradation of integrity of information and behavior
@@ -112,4 +110,4 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 
 **Traceability** – Ability to discover where and how information and behavior were produced
 
-**Utility** - Usefulness of information and behavior
+**Usefulness** - Ability to work with format of information and behavior

@@ -98,20 +98,52 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 
 **Authority** – Power to grant access to information and behavior
 
+*Corresponding threat category*: Traffic manipulation
+
+*Typical security controls*: DDoS protection, rate limiting
+
 **Durability** – Ability to withstand degradation of the integrity of information and behavior
+
+*Corresponding threat category*: Data corruption
+
+*Typical security controls*: Automatic rebuild, forward error correction (FEC), error correction codes (ECC)
 
 **Credibility** – Ability to verify information and behavior
 
+*Corresponding threat category*: Misinformation
+
+*Typical security controls*:
+
 **Certifiability** – Ability to prove the validity of information and behavior
+
+*Corresponding threat category*:
+
+*Typical security controls*:
 
 **Assurance** – (Assurability) Ability to positively confirm information and behavior
 
+*Corresponding threat category*:
+
+*Typical security controls*:
+
 **Traceability** – Ability to discover where and how information and behavior were produced
 
+*Corresponding threat category*:
+
+*Typical security controls*:
+
 **Usefulness** – Ability to work with the format of information and behavior
+
+*Corresponding threat category*:
+
+*Typical security controls*:
 
 ## Maturity level four
 
 At level four we define the sole quality composing all four pillar qualities. The most prominent systems to create technical guarantees for all four qualities would be smart contracts running on block-chains. It is however not a necessity that all qualities are technical guarantees. Many organizations do deliver very good reliability as a combination of technical, process and organizational measures. Financial institutions would be typical examples of such systems where all aspects comes together to create a level of trust where customers are happy to turn over control of their assets to these organizations.
 
 **Reliability** – Trustworthy information and behavior
+
+*Corresponding threat category*:
+
+*Typical security controls*:

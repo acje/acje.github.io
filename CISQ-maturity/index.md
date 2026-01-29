@@ -147,3 +147,7 @@ At level four we define the sole quality composing all four pillar qualities. Th
 *Corresponding threat category*:
 
 *Typical security controls*:
+
+## Resources
+
+![Download Excalidraw file](CISQ.excalidraw)

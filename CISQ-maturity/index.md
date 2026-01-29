@@ -6,7 +6,9 @@
 
 ## Introducing the model
 
-The Composing Information Security Qualities (CISQ) model is created by combining insights and definitions from the [CIA triad](https://en.wikipedia.org/wiki/Information_security#CIA_triad), [Parkerian Hexad](https://en.wikipedia.org/wiki/Parkerian_Hexad), and [STRIDE threat model](https://en.wikipedia.org/wiki/STRIDE_model). The result is a model of four-pillar security qualities and eleven composed security qualities. Each security quality has a corresponding threat category inspired by the STRIDE threat model. You can read more about the model here: [CISQ-Model of security qualities](https://acje.github.io/CISQ-model)
+The Composing Information Security Qualities (CISQ) model is created by combining insights and definitions from the [CIA triad](https://en.wikipedia.org/wiki/Information_security#CIA_triad), [Parkerian Hexad](https://en.wikipedia.org/wiki/Parkerian_Hexad), and [STRIDE threat model](https://en.wikipedia.org/wiki/STRIDE_model). The result is a model of four-pillar security qualities and eleven composed security qualities. Each security quality has a corresponding threat category inspired by the STRIDE threat model. You can read more about previous work on the model here: [CISQ-Model of security qualities](https://acje.github.io/CISQ-model)
+
+The CISQ model describes *security qualities*, that is, positive naturally emerging qualities we want to preserve in information objects or in information and behavior of information systems. The CISQ model does not describe systemic qualities that emerge in relations between components or within systems and it also does not deal with manmade concepts like legal, ethical or societal issues. This is why tha simplified view of the CISQ model is flanked by these two distinct concepts.
 
 The CISQ security model can be a bit daunting at first. To make the model more approachable, this document presents a step-by-step maturity model, starting with the four pillars and then building on them in a systematic manner.
 
@@ -68,11 +70,11 @@ Together with related perspectives this is a usefull representation and starting
 |                      :--:                                          |
 |  *CISQ security model v1.0, Maturity level 2, simplified overview* |
 
-**Utility** - Usefulness of information and behavior
+**Sustainability** – Ability to maintain information and behavior
 
 *Corresponding threat category*: Information contortion
 
-*Typical security controls*: API management, type checks
+*Typical security controls*: API management, semantic versioning, type checks, independently deployable components
 
 **Confidentiality** - Access to information and behavior is exclusively limited to authorized entities
 
@@ -109,3 +111,5 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 **Assurance** – (Assurability) Ability to positively confirm information and behavior
 
 **Traceability** – Ability to discover where and how information and behavior were produced
+
+**Utility** - Usefulness of information and behavior

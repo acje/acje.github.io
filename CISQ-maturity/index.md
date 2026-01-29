@@ -30,7 +30,7 @@ The four pillar security qualities are:
 
 *Corresponding threat category*: Denial of service — disruption or resource exhaustion preventing timely access
 
-*Typical security controls*: Redundancy, capacity planning, rate limiting, traffic scrubbing and shaping (e.g., ACLs, WAFs), load balancing
+*Typical security controls*: Redundancy, capacity planning, load balancing
 
 **Integrity** - Preserving correctness and completeness of information and behavior
 
@@ -100,7 +100,7 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 
 *Corresponding threat category*: Traffic manipulation — interception or alteration of communications affecting access decisions
 
-*Typical security controls*: DDoS protection, rate limiting
+*Typical security controls*: DDoS protection, rate limiting, traffic scrubbing and shaping (e.g., ACLs, WAFs)
 
 **Durability** – Ability to withstand degradation of the integrity of information and behavior
 
@@ -112,13 +112,13 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 
 *Corresponding threat category*: Misinformation — deceptive or misleading content undermining verification
 
-*Typical security controls*:Credibility: cryptographic signatures, certificate pinning, PKI validation, trusted timestamping, source verification policies, tamper-evident logging, content validation workflows, reputation/trust lists.
+*Typical security controls*: Cryptographic signatures, certificate pinning, PKI validation, trusted timestamping, source verification policies, tamper-evident logging, content validation workflows, reputation/trust lists.
 
 **Certifiability** – Ability to prove the validity of information and behavior
 
 *Corresponding threat category*: Invalid attestation — unverifiable or untrusted proofs of validity
 
-*Typical security controls*:Certifiability: third‑party audits and certifications (ISO, SOC 2), attestation frameworks (TPM/TEE remote attestation), formal verification/conformance testing, reproducible builds, SBOMs and supply chain attestations, notarization/trusted registries.
+*Typical security controls*: Third‑party audits and certifications (ISO, SOC 2), attestation frameworks (TPM/TEE remote attestation), formal verification/conformance testing, reproducible builds, SBOMs and supply chain attestations, notarization/trusted registries.
 
 **Assurance** – (Assurability) Ability to positively confirm information and behavior
 

@@ -108,9 +108,9 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 |                      :--:                                |
 |  *Maturity level three of the CISQ security model*       |
 
-**Authority** – Power to grant access to information and behavior
+**Authorization** – Power to grant access to information and behavior
 
-*Corresponding threat category*: (review threat: Authority is the capacity to grant access) Traffic manipulation — interception or alteration of communications affecting access decisions
+*Corresponding threat category*: (review threat: Authorization is the capacity to grant access) Traffic manipulation — interception or alteration of communications affecting access decisions
 
 *Typical security controls*: DDoS protection, rate limiting, traffic scrubbing and shaping (e.g., ACLs, WAFs)
 
@@ -173,13 +173,13 @@ At level four, we define the sole quality composing all four primary qualities. 
 | Quality | Threat Category | MITRE ATT&CK Tactics |
 |---|---|---|
 | Availability | Denial of service | Impact |
-| Integrity | Tampering | Impact |
-| Control | Elevation of privilege | Privilege Escalation |
-| Authenticity | Spoofing | Initial Access, Defense Evasion |
+| Integrity | Tampering | Execution, Impact |
+| Control | Elevation of privilege | Discovery, Privilege Escalation, Persistence |
+| Authenticity | Spoofing | Reconnaissance, Resource Development, Initial Access, Defense Evasion |
 | Utility | Information contortion | Impact |
-| Confidentiality | Information disclosure | Exfiltration, Collection |
+| Confidentiality | Information disclosure | Collection, Exfiltration, Lateral Movement |
 | Non-repudiation | Repudiation | Defense Evasion |
-| Authority | Traffic manipulation | Credential Access, Command and Control |
+| Authorization | Traffic manipulation | Credential Access, Command and Control |
 | Durability | Data corruption | Impact |
 | Credibility | Misinformation | Impact |
 | Certifiability | Invalid attestation | Defense Evasion |

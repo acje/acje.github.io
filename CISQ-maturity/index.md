@@ -96,8 +96,6 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 |                      :--:                                |
 |  *Maturity level three of the CISQ security model*       |
 
-**Reliability** – Trustworthy information and behavior
-
 **Authority** – Power to grant access to information and behavior
 
 **Durability** – Ability to withstand degradation of the integrity of information and behavior
@@ -111,3 +109,9 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 **Traceability** – Ability to discover where and how information and behavior were produced
 
 **Usefulness** – Ability to work with the format of information and behavior
+
+## Maturity level four
+
+At level four we define the sole quality composing all four pillar qualities. The most prominent systems to create technical guarantees for all four qualities would be smart contracts running on block-chains. It is however not a necessity that all qualities are technical guarantees. Many organizations do deliver very good reliability as a combination of technical, process and organizational measures. Financial institutions would be typical examples of such systems where all aspects comes together to create a level of trust where customers are happy to turn over control of their assets to these organizations.
+
+**Reliability** – Trustworthy information and behavior

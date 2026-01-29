@@ -110,7 +110,7 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 
 **Authorization** – Power to grant access to information and behavior
 
-*Corresponding threat category*: (review threat: Authorization is the capacity to grant access) Traffic manipulation — interception or alteration of communications affecting access decisions
+*Corresponding threat category*: Defense evasion — bypassing, disabling, or degrading protective measures to evade detection or enforcement
 
 *Typical security controls*: DDoS protection, rate limiting, traffic scrubbing and shaping (e.g., ACLs, WAFs)
 
@@ -179,7 +179,7 @@ At level four, we define the sole quality composing all four primary qualities. 
 | Utility | Information contortion | Impact |
 | Confidentiality | Information disclosure | Collection, Exfiltration, Lateral Movement |
 | Non-repudiation | Repudiation | Defense Evasion |
-| Authorization | Traffic manipulation | Credential Access, Command and Control |
+| Authorization | Traffic manipulation | Credential Access, Defense Evasion |
 | Durability | Data corruption | Impact |
 | Credibility | Misinformation | Impact |
 | Certifiability | Invalid attestation | Defense Evasion |

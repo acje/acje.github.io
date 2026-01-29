@@ -168,29 +168,22 @@ At level four, we define the sole quality composing all four primary qualities. 
 
 [Download Excalidraw file](CISQ.excalidraw)
 
-## CISQ–ATT&CK–CWE Mapping
+## Qualities, Threat Categories, and MITRE ATT&CK Tactics
 
-The table below maps each CISQ security quality and its corresponding threat category to commonly referenced MITRE ATT&CK techniques/tactics and CWE weakness classes. These mappings are indicative, not exhaustive; selections should be tailored to the specific system, stack, and scenario.
-
-| Quality | Threat Category | Example MITRE ATT&CK (names) | Example CWE (names) |
-|---|---|---|---|
-| Availability | Denial of service | Network Denial of Service; Endpoint Denial of Service; Resource Hijacking | Uncontrolled Resource Consumption (CWE-400); Allocation of Resources Without Limits or Throttling (CWE-770) |
-| Integrity | Tampering | Data Manipulation; Modify Registry; Subvert Trust Controls | Improper Input Validation (CWE-20); Improper Verification of Cryptographic Signature (CWE-347); Insufficient Verification of Data Authenticity (CWE-345) |
-| Control | Elevation of privilege | Exploitation for Privilege Escalation; Abuse Elevation Control Mechanism; Valid Accounts | Improper Privilege Management (CWE-269); Incorrect Permission Assignment (CWE-732); Improper Access Control (CWE-284) |
-| Authenticity | Spoofing | Adversary-in-the-Middle; Masquerading; Phishing | Authentication Bypass by Spoofing (CWE-290); Improper Certificate Validation (CWE-295); Improper Verification of Cryptographic Signature (CWE-347) |
-| Utility | Information contortion | Data Manipulation; Modify Artifact; Inhibit System Recovery | Improper Input Validation (CWE-20); Improper Encoding or Escaping of Output (CWE-116); Improper Handling of Malformed Input (CWE-184) |
-| Confidentiality | Information disclosure | Exfiltration Over Web Services; Exfiltration Over C2 Channel; Data from Information Repositories | Exposure of Sensitive Information (CWE-200); Information Exposure Through Log Files (CWE-532); Cleartext Transmission of Sensitive Information (CWE-319) |
-| Non-repudiation | Repudiation | Indicator Removal on Host; Timestomping; Masquerading | Insufficient Logging & Monitoring (CWE-778); Improper Output Neutralization for Logs (CWE-117); Missing Critical Log Information (CWE-531) |
-| Authority | Traffic manipulation | Adversary-in-the-Middle; Network Sniffing; Proxy | Channel Accessible by Non-Endpoint (CWE-300); Cleartext Transmission of Sensitive Information (CWE-319); Improper Certificate Validation (CWE-295) |
-| Durability | Data corruption | Data Manipulation; Disk Wipe; Inhibit System Recovery | Out-of-bounds Write (CWE-787); Out-of-bounds Read (CWE-125); Protection Mechanism Failure (CWE-693) |
-| Credibility | Misinformation | Masquerading; Subvert Trust Controls; Spoofing | Origin Validation Error (CWE-346); Improper Verification of Cryptographic Signature (CWE-347); Missing Support for Integrity Check (CWE-353) |
-| Certifiability | Invalid attestation | Subvert Trust Controls; Code Signing Abuse; Certificate Theft/Forge | Improper Verification of Cryptographic Signature (CWE-347); Improper Certificate Validation (CWE-295); Insufficient Verification of Data Authenticity (CWE-345) |
-| Assurance | Unverified behavior | Impair Defenses; Disable Security Tools; Indicator Removal on Host | Insufficient Logging & Monitoring (CWE-778); Protection Mechanism Failure (CWE-693); Improper Handling of Exceptional Conditions (CWE-703) |
-| Traceability | Obfuscation | Obfuscated/Compressed Files and Information; Indicator Removal on Host; Timestomping | Insufficient Logging & Monitoring (CWE-778); Logging of Insufficient Information (CWE-117/531); Improper Restriction of Provenance/Lineage Data (general) |
-| Usefulness | Data misformatting | Data Manipulation; Modify Artifact; User Execution (malformed content) | Improper Input Validation (CWE-20); Use of Incorrectly-Resolved Name or Reference (CWE-706); Improper Data Validation Across Trust Boundaries (CWE-707) |
-| Reliability | Dependability loss | Service Stop; Defacement; Network/Endpoint Denial of Service | Protection Mechanism Failure (CWE-693); Uncontrolled Resource Consumption (CWE-400); Allocation Without Limits (CWE-770) |
-
-Notes:
-
-- ATT&CK items are listed by common technique/tactic names to avoid over‑specificity; select exact technique IDs during threat modeling as appropriate (e.g., Network DoS, Endpoint DoS, Adversary‑in‑the‑Middle).
-- CWE items reference widely used weakness classes; exact CWE selection should reflect concrete root causes identified in architecture/design or code.
+| Quality | Threat Category | MITRE ATT&CK Tactics |
+|---|---|---|
+| Availability | Denial of service | Impact |
+| Integrity | Tampering | Impact |
+| Control | Elevation of privilege | Privilege Escalation |
+| Authenticity | Spoofing | Initial Access, Defense Evasion |
+| Utility | Information contortion | Impact |
+| Confidentiality | Information disclosure | Exfiltration, Collection |
+| Non-repudiation | Repudiation | Defense Evasion |
+| Authority | Traffic manipulation | Credential Access, Command and Control |
+| Durability | Data corruption | Impact |
+| Credibility | Misinformation | Impact |
+| Certifiability | Invalid attestation | Defense Evasion |
+| Assurance | Unverified behavior | Defense Evasion |
+| Traceability | Obfuscation | Defense Evasion |
+| Usefulness | Data misformatting | Impact |
+| Reliability | Dependability loss | Impact |

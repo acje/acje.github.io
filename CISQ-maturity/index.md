@@ -1,16 +1,16 @@
 # Maturity levels in the CISQ security model
 
-| ![CISQ security model version 1.0](CISQ-simplified-large.png)  |
-|                      :--:                                      |
-|  *CISQ security model v1.0, Maturity level 2 simplified*       |
+| ![CISQ security model version 1.0](CISQ-simplified-large.png)                   |
+|                      :--:                                                       |
+|  *A good place to start: CISQ security model v1.0, Maturity level 2 simplified* |
 
 ## Introducing the model
 
-The Composing Information Security Qualities (CISQ) model is created by combining insights and definitions from the [CIA triad](https://en.wikipedia.org/wiki/Information_security#CIA_triad), [Parkerian Hexad](https://en.wikipedia.org/wiki/Parkerian_Hexad), and [STRIDE threat model](https://en.wikipedia.org/wiki/STRIDE_model). The result is a model of four pillar security qualities and eleven composed security qualities. Each security quality has a corresponding threat category inspired by the STRIDE threat model. You can read more about previous work on the model here: [CISQ-Model of security qualities](https://acje.github.io/CISQ-model). Please note that previous work on this model may deviate somewhat, as we have made changes to use the most familiar terms for qualities and threats.
+The Composing Information Security Qualities (CISQ) model is created by combining insights and definitions from the [CIA triad](https://en.wikipedia.org/wiki/Information_security#CIA_triad), [Parkerian Hexad](https://en.wikipedia.org/wiki/Parkerian_Hexad), and [STRIDE threat model](https://en.wikipedia.org/wiki/STRIDE_model). The result is a model of four primary security qualities and eleven composed security qualities. Each security quality has a corresponding threat category inspired by the STRIDE threat model. You can read more about previous work on the model here: [CISQ-Model of security qualities](https://acje.github.io/CISQ-model). Please note that previous work on this model may deviate somewhat, as we have made changes to use the most familiar terms for qualities and threats.
 
 The CISQ model describes *security qualities*: positive, naturally emerging qualities we want to preserve in information objects or in the information and behavior of information systems. The CISQ model does not describe systemic qualities that emerge in the relations between components or within systems, nor does it deal with human-made concepts like legal, ethical, or societal issues. This is why the simplified view of the CISQ model is flanked by these two distinct concepts.
 
-The CISQ security model can be a bit daunting at first. To make the model more approachable, this document presents a step-by-step maturity model, starting with the four pillars and then building on them in a systematic manner.
+The CISQ security model can be a bit daunting at first. To make the model more approachable, this document presents a step-by-step maturity model, starting with the four primary qualities and then building on them in a systematic manner.
 
 ## How to use the model
 
@@ -18,15 +18,17 @@ The CISQ model structures the vocabulary of security qualities. These are qualit
 
 ## Maturity level one
 
-At the first level, the four pillar qualities are evaluated in the context of the system. These qualities are important to evaluate for any system, and they form the foundation for all the other security concepts at any maturity level. Note that we talk about the *control quality* here, borrowed from the Parkerian Hexad, not to be confused with security controls.
+At the first level, the four primary qualities are evaluated in the context of the system. These qualities are important to evaluate for any system, and they form the foundation for all the other security concepts at any maturity level. Note that we talk about the *control quality* here, borrowed from the Parkerian Hexad, not to be confused with security controls.
 
 | ![CISQ security model version 1.0](CISQ-maturity-l1.png) |
 |                      :--:                                |
 |  *Maturity level one of the CISQ security model*         |
 
-The four pillar security qualities are:
+### The four primary security qualities
 
 **Availability** - Timely access to information and behavior
+
+Availability ensures users and systems can access information and execute required behavior when needed, despite failures, demand spikes, or maintenance. It emphasizes capacity, resilience, and graceful degradation by keeping services responsive under stress and recovering quickly when components fail. Strong availability practices combine demand forecasting and capacity planning, health checks and monitoring, redundancy and failover, load balancing and backpressure, rate limiting and circuit breakers, retry/backoff and queuing, and disaster recovery/business continuity. By preserving availability, teams minimize downtime, sustain essential operations, and maintain user trust.
 
 *Corresponding threat category*: Denial of service — disruption or resource exhaustion preventing timely access
 
@@ -34,11 +36,15 @@ The four pillar security qualities are:
 
 **Integrity** - Preserving correctness and completeness of information and behavior
 
+Integrity ensures information and system behavior remain correct, complete, and unaltered from their intended state across storage, transmission, and execution. It focuses on preventing, detecting, and recovering from unauthorized or accidental changes by maintaining invariants and verifying inputs, states, and outputs. Strong integrity practices combine validation and normalization, cryptographic hashes and signatures, transactional guarantees and idempotency, and separation of duties to reduce the chance and impact of tampering. By preserving integrity, teams can trust results, reason about changes, and safely automate decisions and actions.
+
 *Corresponding threat category*: Tampering — unauthorized modification compromising correctness or completeness
 
 *Typical security controls*: Input validation, hashing, session management, separation of duties
 
 **Control** - Power to physically or logically influence information and behavior
+
+In the Parkerian Hexad, Control sits alongside Possession: possession is physical or custodial holding of an asset (devices, credentials, keys, tokens), while control is the authorized capability to influence information and system behavior. CISQ’s control quality focuses on who may initiate operations, change states, or access administrative surfaces; possession emphasizes custody of the means of control (cryptographic material, admin credentials, hardware). Strong security separates possession from control where appropriate (e.g., encryption at rest, HSM‑bound keys, secure enclaves, break‑glass workflows) and maintains tight governance over both. Effective practices include least privilege and RBAC/ABAC, secrets and key management, hardware roots of trust, segregation of duties and just‑in‑time elevation, asset inventory and physical access controls, patch/configuration management, audited change channels, and continuous monitoring. Managing possession reduces theft/leakage of control artifacts; managing control limits blast radius and prevents unauthorized manipulation.
 
 *Corresponding threat category*: Elevation of privilege — unauthorized gain of permissions enabling control
 
@@ -46,13 +52,15 @@ The four pillar security qualities are:
 
 **Authenticity** - Information and behavior originate from their purported source
 
+Authenticity ensures information and system behavior truly originate from the claimed source and remain bound to that identity across creation, transmission, and execution. It focuses on identity proofing and binding, mutual verification, and provenance, resisting impersonation, spoofing, and forged artifacts. Strong authenticity practices combine robust identity lifecycle (enrollment, proofing, rotation, revocation), MFA and mutual TLS, cryptographic signatures and attestations, certificate management and pinning, secure channels and token binding, hardware‑backed keys (TPM/TEEs), and tamper‑evident logs to establish source and lineage. By preserving authenticity, teams can trust who or what produced actions and data, enabling accountable automation and safe delegation.
+
 *Corresponding threat category*: Spoofing — impersonation of identities or sources
 
 *Typical security controls*: Multi-factor authentication (MFA), signatures, certificates
 
 ## Maturity level two
 
-At maturity level two, we introduce some common higher-order qualities that are composed of the control quality and two of the other three pillar qualities from maturity level one.
+At maturity level two, we introduce some common higher-order qualities that are composed of the control quality and two of the other three primary qualities from maturity level one.
 
 | ![CISQ security model version 1.0](CISQ-maturity-l2.png) |
 |                      :--:                                |
@@ -140,7 +148,7 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 
 ## Maturity level four
 
-At level four, we define the sole quality composing all four pillar qualities. The most prominent systems to create technical guarantees for all four qualities would be smart contracts running on blockchains. However, it is not necessary that all qualities are technical guarantees. Many organizations deliver very good reliability as a combination of technical, process, and organizational measures. Financial institutions are typical examples of such systems where all aspects come together to create a level of trust where customers are happy to turn over control of their assets to these organizations.
+At level four, we define the sole quality composing all four primary qualities. The most prominent systems to create technical guarantees for all four qualities would be smart contracts running on blockchains. However, it is not necessary that all qualities are technical guarantees. Many organizations deliver very good reliability as a combination of technical, process, and organizational measures. Financial institutions are typical examples of such systems where all aspects come together to create a level of trust where customers are happy to turn over control of their assets to these organizations.
 
 | ![CISQ security model version 1.0](CISQ-maturity-l4.png) |
 |                      :--:                                |

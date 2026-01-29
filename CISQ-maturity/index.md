@@ -28,25 +28,25 @@ The four pillar security qualities are:
 
 **Availability** - Timely access to information and behavior
 
-*Corresponding threat category*: Denial of service
+*Corresponding threat category*: Denial of service — disruption or resource exhaustion preventing timely access
 
 *Typical security controls*: Redundancy, capacity planning, rate limiting, traffic scrubbing and shaping (e.g., ACLs, WAFs), load balancing
 
 **Integrity** - Preserving correctness and completeness of information and behavior
 
-*Corresponding threat category*: Tampering
+*Corresponding threat category*: Tampering — unauthorized modification compromising correctness or completeness
 
 *Typical security controls*: Input validation, hashing, session management, separation of duties
 
 **Control** - Power to physically or logically influence information and behavior
 
-*Corresponding threat category*: Elevation of privilege
+*Corresponding threat category*: Elevation of privilege — unauthorized gain of permissions enabling control
 
 *Typical security controls*: Principle of least privilege, patch management, logging and auditing
 
 **Authenticity** - Information and behavior originate from their purported source
 
-*Corresponding threat category*: Spoofing
+*Corresponding threat category*: Spoofing — impersonation of identities or sources
 
 *Typical security controls*: Multi-factor authentication (MFA), signatures, certificates
 
@@ -72,19 +72,19 @@ Together with related perspectives, this is a useful representation and starting
 
 **Utility** – Ability to maintain information and behavior
 
-*Corresponding threat category*: Information contortion
+*Corresponding threat category*: Information contortion — distortion or incompatibility reducing ability to maintain or use
 
 *Typical security controls*: API management, semantic versioning, type checks, independently deployable components
 
 **Confidentiality** - Access to information and behavior is limited exclusively to authorized entities
 
-*Corresponding threat category*: Information disclosure
+*Corresponding threat category*: Information disclosure — unauthorized exposure of information or behavior
 
 *Typical security controls*: Encryption, access control lists (ACLs), data loss prevention (DLP), data classification policies
 
 **Non-repudiation** - (Accountability) Assurance of the correctness, completeness, and origin of information and behavior
 
-*Corresponding threat category*: Repudiation
+*Corresponding threat category*: Repudiation — denial of actions or origins
 
 *Typical security controls*: Signatures, public key infrastructure (PKI), audit trails and logs, message authentication codes (MACs), digital contracts, hashing, trusted third parties
 
@@ -98,55 +98,59 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 
 **Authority** – Power to grant access to information and behavior
 
-*Corresponding threat category*: Traffic manipulation
+*Corresponding threat category*: Traffic manipulation — interception or alteration of communications affecting access decisions
 
 *Typical security controls*: DDoS protection, rate limiting
 
 **Durability** – Ability to withstand degradation of the integrity of information and behavior
 
-*Corresponding threat category*: Data corruption
+*Corresponding threat category*: Data corruption — integrity degradation of stored or transmitted data
 
 *Typical security controls*: Automatic rebuilding, forward error correction (FEC), error correction codes (ECC)
 
 **Credibility** – Ability to verify information and behavior
 
-*Corresponding threat category*: Misinformation
+*Corresponding threat category*: Misinformation — deceptive or misleading content undermining verification
 
-*Typical security controls*:
+*Typical security controls*:Credibility: cryptographic signatures, certificate pinning, PKI validation, trusted timestamping, source verification policies, tamper-evident logging, content validation workflows, reputation/trust lists.
 
 **Certifiability** – Ability to prove the validity of information and behavior
 
-*Corresponding threat category*:
+*Corresponding threat category*: Invalid attestation — unverifiable or untrusted proofs of validity
 
-*Typical security controls*:
+*Typical security controls*:Certifiability: third‑party audits and certifications (ISO, SOC 2), attestation frameworks (TPM/TEE remote attestation), formal verification/conformance testing, reproducible builds, SBOMs and supply chain attestations, notarization/trusted registries.
 
 **Assurance** – (Assurability) Ability to positively confirm information and behavior
 
-*Corresponding threat category*:
+*Corresponding threat category*: Unverified behavior — insufficient evidence to confirm claims or outcomes
 
 *Typical security controls*:
 
 **Traceability** – Ability to discover where and how information and behavior were produced
 
-*Corresponding threat category*:
+*Corresponding threat category*: Obfuscation — concealed provenance or tampered production trails
 
-*Typical security controls*:
+*Typical security controls*: Traceability: structured logging with correlation IDs, distributed tracing (OpenTelemetry), append‑only/immutable logs, cryptographic log signing, data lineage catalogs, version control and change history, chain‑of‑custody procedures.
 
 **Usefulness** – Ability to work with the format of information and behavior
 
-*Corresponding threat category*:
+*Corresponding threat category*: Data misformatting — incompatible, ambiguous, or malformed representations
 
-*Typical security controls*:
+*Typical security controls*: Schema registries and data dictionaries, strict typing and validation, canonical data models, format normalization and conversion, API versioning, compatibility testing
 
 ## Maturity level four
 
 At level four, we define the sole quality composing all four pillar qualities. The most prominent systems to create technical guarantees for all four qualities would be smart contracts running on blockchains. However, it is not necessary that all qualities are technical guarantees. Many organizations deliver very good reliability as a combination of technical, process, and organizational measures. Financial institutions are typical examples of such systems where all aspects come together to create a level of trust where customers are happy to turn over control of their assets to these organizations.
 
+| ![CISQ security model version 1.0](CISQ-maturity-l4.png) |
+|                      :--:                                |
+|  *Maturity level four of the CISQ security model*        |
+
 **Reliability** – Trustworthy information and behavior
 
-*Corresponding threat category*:
+*Corresponding threat category*: Dependability loss — systemic failures reducing trust in outcomes.
 
-*Typical security controls*:
+*Typical security controls*: transactional integrity, idempotency, distributed consensus, circuit breakers and retry/backoff, disaster recovery and business continuity plans, chaos engineering
 
 ## Resources
 

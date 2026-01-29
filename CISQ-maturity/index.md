@@ -1,8 +1,8 @@
 # Maturity levels in the CISQ security model
 
-| ![CISQ security model version 1.0](CISQ.png) |
-|                      :--:                    |
-|  *The CISQ security model version 1.0*       |
+| ![CISQ security model version 1.0](CISQ-maturity-l1.png) |
+|                      :--:                                |
+|  *The CISQ security model version 1.0*                   |
 
 ## Introducing the model
 

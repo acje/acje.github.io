@@ -8,7 +8,7 @@
 
 The Composing Information Security Qualities (CISQ) model is created by combining insights and definitions from the [CIA triad](https://en.wikipedia.org/wiki/Information_security#CIA_triad), [Parkerian Hexad](https://en.wikipedia.org/wiki/Parkerian_Hexad), and [STRIDE threat model](https://en.wikipedia.org/wiki/STRIDE_model). The result is a model of four primary security qualities and eleven composed security qualities. Each security quality has a corresponding threat category inspired by the STRIDE threat model. You can read more about previous work on the model here: [CISQ-Model of security qualities](https://acje.github.io/CISQ-model). Please note that previous work on this model may deviate somewhat, as we have made changes to use the most familiar terms for qualities and threats.
 
-The CISQ model describes *security qualities*: positive, naturally emerging qualities we want to preserve in information objects or in the information and behavior of information systems. The CISQ model does not describe systemic qualities that emerge in the relations between components or within systems, nor does it deal with human-made concepts like legal, ethical, or societal issues. This is why the simplified view of the CISQ model is flanked by these two distinct concepts.
+The CISQ model describes *security qualities*: positive, naturally emerging qualities we want to preserve in information objects or in the information and behavior of information systems. The CISQ model does not describe systemic qualities that emerge in the relations between components or within systems, nor does it deal with human-made concepts like legal, ethical, or societal issues. This is why the simplified view of the CISQ model can also be flanked by these two distinct concepts as shown further down below.
 
 The CISQ security model can be a bit daunting at first. To make the model more approachable, this document presents a step-by-step maturity model, starting with the four primary qualities and then building on them in a systematic manner.
 
@@ -44,19 +44,19 @@ Integrity ensures information and system behavior remain correct, complete, and 
 
 **Control** - Power to physically or logically influence information and behavior
 
-In the Parkerian Hexad, Control sits alongside Possession: possession is physical or custodial holding of an asset (devices, credentials, keys, tokens), while control is the authorized capability to influence information and system behavior. CISQ’s control quality focuses on who may initiate operations, change states, or access administrative surfaces; possession emphasizes custody of the means of control (cryptographic material, admin credentials, hardware). Strong security separates possession from control where appropriate (e.g., encryption at rest, HSM‑bound keys, secure enclaves, break‑glass workflows) and maintains tight governance over both. Effective practices include least privilege and RBAC/ABAC, secrets and key management, hardware roots of trust, segregation of duties and just‑in‑time elevation, asset inventory and physical access controls, patch/configuration management, audited change channels, and continuous monitoring. Managing possession reduces theft/leakage of control artifacts; managing control limits blast radius and prevents unauthorized manipulation.
+CISQ’s primary control security quality mirrors "Possession or Control" in the Parkerian Hexad. At its core the control security quality is all about agency. To what extent can someone or something influence an information system. This quality is also special in that it does not apply to public domain information objects and as such creates a dichotomy in the CISQ model with public domain information objects on one side and information systems on the other side. In modern information system control is often shared with other teams and organizations. Typical situations include cloud hosting or smart phones where manufacturers, hosting providers, operators and users all has some degree of influence on the systems. Effectively managing control prevents unauthorized manipulation or limits blast radius when some barriers fail.
 
-*Corresponding threat category*: Elevation of privilege — unauthorized gain of permissions enabling control
+*Corresponding threat category*: Elevation of privilege — unauthorized gain of permissions enabling control, break‑glass workflows
 
-*Typical security controls*: Principle of least privilege, patch management, logging and auditing
+*Typical security controls*: Principle of least privilege, patch management, logging and auditing, secure enclaves
 
 **Authenticity** - Information and behavior originate from their purported source
 
-Authenticity ensures information and system behavior truly originate from the claimed source and remain bound to that identity across creation, transmission, and execution. It focuses on identity proofing and binding, mutual verification, and provenance, resisting impersonation, spoofing, and forged artifacts. Strong authenticity practices combine robust identity lifecycle (enrollment, proofing, rotation, revocation), MFA and mutual TLS, cryptographic signatures and attestations, certificate management and pinning, secure channels and token binding, hardware‑backed keys (TPM/TEEs), and tamper‑evident logs to establish source and lineage. By preserving authenticity, teams can trust who or what produced actions and data, enabling accountable automation and safe delegation.
+Authenticity ensures information and system behavior truly originate from the claimed source and remain bound to that identity across creation, transmission, and execution. It focuses on identity proofing and binding, mutual verification, and provenance, resisting impersonation, spoofing, and forged artifacts. Strong authenticity practices combine robust identity lifecycle (enrollment, proofing, rotation, revocation), secure channels and token binding, and tamper‑evident logs to establish source and lineage. By preserving authenticity, teams can trust who or what produced actions and data, enabling accountable automation and safe delegation.
 
 *Corresponding threat category*: Spoofing — impersonation of identities or sources
 
-*Typical security controls*: Multi-factor authentication (MFA), signatures, certificates
+*Typical security controls*: Multi-factor authentication (MFA), signatures, certificate management and pinning, mutual transport layer security (mTLS)
 
 ## Maturity level two
 

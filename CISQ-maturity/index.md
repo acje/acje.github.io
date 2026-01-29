@@ -168,22 +168,22 @@ At level four, we define the sole quality composing all four primary qualities. 
 
 [Download Excalidraw file](CISQ.excalidraw)
 
-## Qualities, Threat Categories, and MITRE ATT&CK Tactics
+## Qualities, Threat Categories, MITRE ATT&CK Tactics, and CVE Types
 
-| Quality | Threat Category | MITRE ATT&CK Tactics |
-|---|---|---|
-| Availability | Denial of service — disruption or resource exhaustion preventing timely access | Impact |
-| Integrity | Tampering — unauthorized modification compromising correctness or completeness | Execution, Impact |
-| Control | Elevation of privilege — unauthorized gain of permissions enabling control, break‑glass workflows | Discovery, Privilege Escalation, Persistence |
-| Authenticity | Spoofing — impersonation of identities or sources | Resource Development, Initial Access |
-| Utility | Information contortion — distortion or incompatibility reducing ability to maintain or use | Impact |
-| Confidentiality | Information disclosure — unauthorized exposure of information or behavior | Collection, Exfiltration, Lateral Movement |
-| Non-repudiation | Repudiation — denial of actions or origins | Defense Evasion |
-| Authorization | Traffic manipulation — bypassing, shaping, or abusing traffic flows to evade or degrade controls | Credential Access, Defense Evasion |
-| Durability | Data corruption — integrity degradation of stored or transmitted data | Impact |
-| Credibility | Misinformation — deceptive or misleading content undermining verification | Impact |
-| Certifiability | Invalid attestation — unverifiable or untrusted proofs of validity | Defense Evasion |
-| Assurance | Unverified behavior — insufficient evidence to confirm claims or outcomes | Defense Evasion |
-| Traceability | Obfuscation — concealed provenance or tampered production trails | Defense Evasion |
-| Usefulness | Data misformatting — incompatible, ambiguous, or malformed representations | Impact |
-| Reliability | Dependability loss — systemic failures reducing trust in outcomes | Impact |
+| Quality | Threat Category | MITRE ATT&CK Tactics | CVE Vulnerabilities By Types |
+|---|---|---|---|
+| Availability | Denial of service — disruption or resource exhaustion preventing timely access | Impact | DoS/Resource Exhaustion (CWE-400, CWE-770) |
+| Integrity | Tampering — unauthorized modification compromising correctness or completeness | Execution, Impact | Injection (CWE-89, CWE-77), Path Traversal (CWE-22), Deserialization (CWE-502) |
+| Control | Elevation of privilege — unauthorized gain of permissions enabling control, break‑glass workflows | Discovery, Privilege Escalation, Persistence | Privilege Escalation (CWE-269), Incorrect Permission Assignment (CWE-266), Missing Authorization (CWE-862) |
+| Authenticity | Spoofing — impersonation of identities or sources | Resource Development, Initial Access | Improper Authentication (CWE-287), Improper Certificate Validation (CWE-295) |
+| Utility | Information contortion — distortion or incompatibility reducing ability to maintain or use | Impact | Interpretation/Type Conflicts (CWE-436, CWE-241), Inconsistent API Contracts |
+| Confidentiality | Information disclosure — unauthorized exposure of information or behavior | Collection, Exfiltration, Lateral Movement | Sensitive Information Exposure (CWE-200), Cleartext Transmission (CWE-319), Error Message Info Leak (CWE-209) |
+| Non-repudiation | Repudiation — denial of actions or origins | Defense Evasion | Insufficient Logging/Monitoring (CWE-778), Log Forging (CWE-117) |
+| Authorization | Traffic manipulation — bypassing, shaping, or abusing traffic flows to evade or degrade controls | Credential Access, Defense Evasion | HTTP Request Smuggling (CWE-444), MITM due to TLS validation flaws (CWE-295), Open Redirect (CWE-601) |
+| Durability | Data corruption — integrity degradation of stored or transmitted data | Impact | Memory/State Corruption (CWE-119, CWE-787), Integer Overflow/Wraparound (CWE-190) |
+| Credibility | Misinformation — deceptive or misleading content undermining verification | Impact | Improper Signature Verification (CWE-347), Insufficient Data Authenticity Verification (CWE-345) |
+| Certifiability | Invalid attestation — unverifiable or untrusted proofs of validity | Defense Evasion | Improper Certificate Validation (CWE-295), Missing Entity Authentication in Key Exchange (CWE-322), Weak Hash Algorithms (CWE-328) |
+| Assurance | Unverified behavior — insufficient evidence to confirm claims or outcomes | Defense Evasion | Improper Input Validation (CWE-20), Insufficient Data Authenticity Verification (CWE-345) |
+| Traceability | Obfuscation — concealed provenance or tampered production trails | Defense Evasion | Insufficient Logging (CWE-778), Log Forging/Neutralization Issues (CWE-117) |
+| Usefulness | Data misformatting — incompatible, ambiguous, or malformed representations | Impact | Deserialization of Untrusted Data (CWE-502), Improper Input Validation (CWE-20), Schema/Format Parsing Errors |
+| Reliability | Dependability loss — systemic failures reducing trust in outcomes | Impact | Race Conditions (CWE-362), Resource Exhaustion (CWE-400), Improper Exception Handling (CWE-703) |

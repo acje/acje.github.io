@@ -66,7 +66,7 @@ At maturity level two, we introduce some common higher-order qualities that are 
 
 **Non-repudiation** - (Accountability) Assurance of the correctness, completeness and origin of information and behavior
 
-*Corresponding threat category*: Non-repudiation
+*Corresponding threat category*: Repudiation
 
 *Typical security controls*: Signatures, public key infrastructure (PKI), audit trails and logs, message authentication codes (MACs), digital contracts, hashing, trusted third parties
 

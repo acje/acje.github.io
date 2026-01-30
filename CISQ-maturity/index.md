@@ -182,17 +182,17 @@ At level four, we define the sole quality that composes all four primary qualiti
 
 | Quality | Threat Category | CWE Classes (v4.19.1) |
 |---|---|---|
-| Availability | Denial of service — disruption or resource exhaustion preventing timely access | CWE-400: Uncontrolled Resource Consumption; CWE-770: Allocation of Resources Without Limits or Throttling |
-| Integrity | Tampering — unauthorized modification compromising correctness or completeness | CWE-89: SQL Injection; CWE-77: Command Injection; CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal'); CWE-502: Deserialization of Untrusted Data |
-| Control | Elevation of privilege — unauthorized gain of permissions enabling control, break‑glass workflows | CWE-269: Improper Privilege Management; CWE-266: Incorrect Privilege Assignment; CWE-862: Missing Authorization |
+| Availability | Denial of service — disruption or resource exhaustion preventing timely access | CWE-400: Uncontrolled Resource Consumption; CWE-404: Improper Resource Shutdown or Release |
+| Integrity | Tampering — unauthorized modification compromising correctness or completeness | CWE-707: Improper Neutralization; CWE-20: Improper Input Validation |
+| Control | Elevation of privilege — unauthorized gain of permissions enabling control, break‑glass workflows | CWE-284: Improper Access Control; CWE-269: Improper Privilege Management |
 | Authenticity | Spoofing — impersonation of identities or sources | CWE-287: Improper Authentication; CWE-295: Improper Certificate Validation |
 | Utility | Information contortion — distortion or incompatibility reducing ability to maintain or use | CWE-436: Interpretation Conflict; CWE-241: Improper Handling of Unexpected Data Type |
-| Confidentiality | Information disclosure — unauthorized exposure of information or behavior | CWE-200: Exposure of Sensitive Information to an Unauthorized Actor; CWE-319: Cleartext Transmission of Sensitive Information; CWE-209: Information Exposure Through an Error Message |
+| Confidentiality | Information disclosure — unauthorized exposure of information or behavior | CWE-200: Exposure of Sensitive Information to an Unauthorized Actor |
 | Non-repudiation | Repudiation — denial of actions or origins | CWE-778: Insufficient Logging; CWE-117: Improper Output Neutralization for Logs |
-| Authorization | Defense evasion — bypassing, disabling, or degrading protective measures to evade detection or enforcement | CWE-444: Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling'); CWE-295: Improper Certificate Validation; CWE-601: URL Redirection to Untrusted Site ('Open Redirect') |
-| Durability | Data corruption — integrity degradation of stored or transmitted data | CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer; CWE-787: Out-of-bounds Write; CWE-190: Integer Overflow or Wraparound |
+| Authorization | Defense evasion — bypassing, disabling, or degrading protective measures to evade detection or enforcement | CWE-285: Improper Authorization; CWE-284: Improper Access Control |
+| Durability | Data corruption — integrity degradation of stored or transmitted data | CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer; CWE-190: Integer Overflow or Wraparound |
 | Credibility | Misinformation — deceptive or misleading content undermining verification | CWE-347: Improper Verification of Cryptographic Signature; CWE-345: Insufficient Verification of Data Authenticity |
-| Certifiability | Invalid attestation — unverifiable or untrusted proofs of validity | CWE-295: Improper Certificate Validation; CWE-322: Key Exchange without Entity Authentication; CWE-328: Use of Weak Hash |
+| Certifiability | Invalid attestation — unverifiable or untrusted proofs of validity | CWE-295: Improper Certificate Validation; CWE-327: Use of a Broken or Risky Cryptographic Algorithm |
 | Assurance | Unverified behavior — insufficient evidence to confirm claims or outcomes | CWE-20: Improper Input Validation; CWE-345: Insufficient Verification of Data Authenticity |
 | Traceability | Obfuscation — concealed provenance or tampered production trails | CWE-778: Insufficient Logging; CWE-117: Improper Output Neutralization for Logs |
 | Usefulness | Data misformatting — incompatible, ambiguous, or malformed representations | CWE-502: Deserialization of Untrusted Data; CWE-20: Improper Input Validation |

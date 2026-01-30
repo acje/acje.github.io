@@ -178,23 +178,23 @@ At level four, we define the sole quality that composes all four primary qualiti
 
 ### Qualities, Composition, Threat
 
-| Quality         | Composition                                       | Threat                 |
-|---              |---                                                |---                     |
-| Availability    | Availability                                      | Denial of service      |
-| Integrity       | Integrity                                         | Tampering              |
-| Control         | Control                                           | Elevation of privilege |
-| Authenticity    | Authenticity                                      | Spoofing               |
-| Utility         | Availability ⊕ Integrity ⊕ Control                | Information contortion |
-| Confidentiality | Availability ⊕ Control ⊕ Authenticity             | Information disclosure |
-| Non-repudiation | Integrity ⊕ Control ⊕ Authenticity                | Repudiation            |
-| Authorization   | Availability ⊕ Control                            | Defense evasion        |
-| Durability      | Integrity ⊕ Control                               | Data corruption        |
-| Credibility     | Control ⊕ Authenticity                            | Misinformation         |
-| Certifiability  | Integrity ⊕ Control ⊕ Authenticity                | Invalid attestation    |
-| Assurance       | Availability ⊕ Integrity                          | Unverified behavior    |
-| Traceability    | Integrity ⊕ Authenticity                          | Obfuscation            |
-| Usefulness      | Availability ⊕ Integrity                          | Data misformatting     |
-| Reliability     | Availability ⊕ Integrity ⊕ Control ⊕ Authenticity | Dependability loss     |
+| lvl | Quality         | Composition                                       | Threat                 |
+|---  |---              |---                                                |---                     |
+| 1   | Availability    | Availability                                      | Denial of service      |
+| 1   | Integrity       | Integrity                                         | Tampering              |
+| 1   | Control         | Control                                           | Elevation of privilege |
+| 1   | Authenticity    | Authenticity                                      | Spoofing               |
+| 2   | Utility         | Availability ⊕ Integrity ⊕ Control                | Information contortion |
+| 2   | Confidentiality | Availability ⊕ Control ⊕ Authenticity             | Information disclosure |
+| 2   | Non-repudiation | Integrity ⊕ Control ⊕ Authenticity                | Repudiation            |
+| 3   | Authorization   | Availability ⊕ Control                            | Defense evasion        |
+| 3   | Durability      | Integrity ⊕ Control                               | Data corruption        |
+| 3   | Credibility     | Control ⊕ Authenticity                            | Misinformation         |
+| 3   | Certifiability  | Availability ⊕ Integrity ⊕ Authenticity           | Invalid attestation    |
+| 3   | Assurance       | Availability ⊕ Integrity                          | Unverified behavior    |
+| 3   | Traceability    | Integrity ⊕ Authenticity                          | Obfuscation            |
+| 3   | Usefulness      | Availability ⊕ Integrity                          | Data misformatting     |
+| 4   | Reliability     | Availability ⊕ Integrity ⊕ Control ⊕ Authenticity | Dependability loss     |
 
 ### Qualities, Threat Categories, and CWE Classes
 

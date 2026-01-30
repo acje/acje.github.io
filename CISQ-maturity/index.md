@@ -10,6 +10,12 @@ The Composing Information Security Qualities (CISQ) model is created by combinin
 
 The CISQ model describes *security qualities*: positive, naturally emerging qualities we want to preserve in information objects or in the information and behavior of information systems. The CISQ model does not describe systemic qualities that emerge in the relationships between components or within systems, nor does it deal with human-made concepts like legal, ethical, or societal issues. This is why the simplified view of the CISQ model can also be flanked by these two distinct concepts, as shown below.
 
+Together with related perspectives, this is a useful representation and starting point for most teams managing information systems. The higher maturity levels are meant for security professionals and infrastructure or platform teams focusing on a deeper understanding of their security posture.
+
+| ![CISQ security model version 1.0](CISQ-L2-Overview.png)           |
+|                      :--:                                          |
+|  *CISQ security model v1.0, Maturity level 2, simplified overview* |
+
 The CISQ security model can be a bit daunting at first. To make the model more approachable, this document presents a step-by-step maturity model, starting with the four primary qualities and then building on them in a systematic manner.
 
 ### Model concept “behavior”
@@ -18,7 +24,7 @@ Throughout this model, the phrase “information and behavior” is central. Beh
 
 ### Model concept “composition”
 
-A key concept in Composing Information Security Qualities (CISQ) is composition. The four primary security qualities (Availability, Integrity, Control, Authenticity) are composed to create new qualities. All 15 possible compositions are included in the model.
+A key concept in Composing Information Security Qualities (CISQ) is composition. The four primary security qualities (Availability, Integrity, Control, Authenticity) are composed to create new qualities. All 15 possible compositions are included in the model. The purpose of this is to achieve both completeness and ono-overlapping concepts. Though this has not been formally proven to be the case yet.
 
 ## How to use the model
 
@@ -79,12 +85,6 @@ Maturity level two can also be represented in the simplified view.
 | ![CISQ security model version 1.0](CISQ-transformation.png)                                       |
 |                      :--:                                                                         |
 |  *The CISQ security model has a base view covering all maturity levels and a simplified overview* |
-
-Together with related perspectives, this is a useful representation and starting point for most teams managing information systems. The higher maturity levels are meant for security professionals and infrastructure or platform teams focusing on a deeper understanding of their security posture.
-
-| ![CISQ security model version 1.0](CISQ-L2-Overview.png)           |
-|                      :--:                                          |
-|  *CISQ security model v1.0, Maturity level 2, simplified overview* |
 
 **Utility** – Ability to maintain information and behavior
 

@@ -20,11 +20,11 @@ The CISQ security model can be a bit daunting at first. To make the model more a
 
 ### Model concept “behavior”
 
-Throughout this model, the phrase “information and behavior” is central. Behavior here refers to any state transitions and observable actions in an information system. The significance of this is that the model does not limit itself to information but also applies to the behavior of a system, such as replying to a message, reading a sensor, or using an actuator.
+Throughout this model, the phrase “information and behavior” is central. Behavior here refers to any state transitions and observable actions in an information system. The significance is that the model does not limit itself only to information; it also applies to system behavior, such as replying to a message, reading a sensor, or using an actuator.
 
 ### Model concept “composition”
 
-A key concept in Composing Information Security Qualities (CISQ) is composition. The four primary security qualities (Availability, Integrity, Control, Authenticity) are composed to create new qualities. All 15 possible compositions are included in the model. The purpose of this is to achieve both completeness and non-overlapping concepts. Though this has not been formally proven to be the case yet.
+A key concept in Composing Information Security Qualities (CISQ) is composition. The four primary security qualities (Availability, Integrity, Control, Authenticity) are composed to create new qualities. All 15 possible compositions are included in the model, the 16th variant the empty set, is excluded. The purpose is to achieve both completeness and non-overlapping concepts. However, this has not yet been formally proven. Example: Non-repudiation = Control ⊕ Integrity ⊕ Authenticity
 
 ## How to use the model
 
@@ -80,7 +80,7 @@ At maturity level two, we introduce some common higher-order qualities that are 
 |                      :--:                                |
 |  *Maturity level two of the CISQ security model*         |
 
-Maturity level two can also be represented in the simplified view.
+Maturity level two is also represented in the simplified view.
 
 | ![CISQ security model version 1.0](CISQ-transformation.png)                                       |
 |                      :--:                                                                         |
@@ -108,7 +108,7 @@ Utility emphasizes maintainability, operability, and evolvability over time, fav
 
 ## Maturity level three
 
-At maturity level three, we introduce more accurate definitions of concepts. Increasing your depth of conceptual understanding may help you develop and categorize security controls (not to be confused with the *control quality* in the CISQ model).
+At maturity level three, we introduce more precise definitions of concepts. Increasing your depth of conceptual understanding may help you develop and categorize security controls (not to be confused with the *control quality* in the CISQ model).
 
 | ![CISQ security model version 1.0](CISQ-maturity-l3.png) |
 |                      :--:                                |
@@ -176,9 +176,29 @@ At level four, we define the sole quality that composes all four primary qualiti
 
 [Download Excalidraw file](CISQ.excalidraw)
 
-## Qualities, Threat Categories, and CWE Classes
+### Qualities, Composition, Threat
 
-CWE references follow CWE List v4.19.1 and are picked and placed by AI. These relations must be considered experimental
+| Quality         | Composition                                       | Threat                 |
+|---              |---                                                |---                     |
+| Availability    | Availability                                      | Denial of service      |
+| Integrity       | Integrity                                         | Tampering              |
+| Control         | Control                                           | Elevation of privilege |
+| Authenticity    | Authenticity                                      | Spoofing               |
+| Utility         | Availability ⊕ Integrity ⊕ Control                | Information contortion |
+| Confidentiality | Availability ⊕ Control ⊕ Authenticity             | Information disclosure |
+| Non-repudiation | Integrity ⊕ Control ⊕ Authenticity                | Repudiation            |
+| Authorization   | Availability ⊕ Control                            | Defense evasion        |
+| Durability      | Integrity ⊕ Control                               | Data corruption        |
+| Credibility     | Control ⊕ Authenticity                            | Misinformation         |
+| Certifiability  | Integrity ⊕ Control ⊕ Authenticity                | Invalid attestation    |
+| Assurance       | Availability ⊕ Integrity                          | Unverified behavior    |
+| Traceability    | Integrity ⊕ Authenticity                          | Obfuscation            |
+| Usefulness      | Availability ⊕ Integrity                          | Data misformatting     |
+| Reliability     | Availability ⊕ Integrity ⊕ Control ⊕ Authenticity | Dependability loss     |
+
+### Qualities, Threat Categories, and CWE Classes
+
+CWE references follow CWE List v4.19.1 and are selected and placed by AI. These relations must be considered experimental.
 
 | Quality | Threat Category | CWE Classes (v4.19.1) |
 |---|---|---|

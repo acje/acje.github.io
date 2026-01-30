@@ -176,7 +176,7 @@ At level four, we define the sole quality that composes all four primary qualiti
 
 [Download Excalidraw file](CISQ.excalidraw)
 
-### Qualities, Composition, Threat
+### Maturity level, Qualities, Composition, Threat
 
 | lvl | Quality         | Composition                                       | Threat                 |
 |---  |---              |---                                                |---                     |

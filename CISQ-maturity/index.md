@@ -178,7 +178,7 @@ At level four, we define the sole quality that composes all four primary qualiti
 
 ## Qualities, Threat Categories, and CWE Classes
 
-*CWE references follow CWE List v4.19.1.*
+CWE references follow CWE List v4.19.1 and are picked and placed by AI. These relations must be considered experimental
 
 | Quality | Threat Category | CWE Classes (v4.19.1) |
 |---|---|---|

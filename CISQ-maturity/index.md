@@ -6,15 +6,19 @@
 
 ## Introducing the model
 
-The Composing Information Security Qualities (CISQ) model is created by combining insights and definitions from the [CIA triad](https://en.wikipedia.org/wiki/Information_security#CIA_triad), [Parkerian Hexad](https://en.wikipedia.org/wiki/Parkerian_Hexad), and [STRIDE threat model](https://en.wikipedia.org/wiki/STRIDE_model). The result is a model of four primary security qualities and eleven composed security qualities. Each security quality has a corresponding threat category inspired by the STRIDE threat model. You can read more about prior work on the model here: [CISQ-Model of security qualities](https://acje.github.io/CISQ-model). Please note that prior work on this model may deviate somewhat from this version, as we have made changes to use more familiar terms for qualities and threats.
+The Composing Information Security Qualities (CISQ) model is created by combining insights and definitions from the [CIA triad](https://en.wikipedia.org/wiki/Information_security#CIA_triad), [Parkerian Hexad](https://en.wikipedia.org/wiki/Parkerian_Hexad), and [STRIDE threat model](https://en.wikipedia.org/wiki/STRIDE_model). The result is a model of four primary security qualities and eleven composed security qualities. Each security quality has a corresponding threat category inspired by the STRIDE threat model. You can read more about prior work on the model here: [CISQ-Model of security qualities](https://acje.github.io/CISQ-model). Please note that prior work on this model may differ somewhat from this version, as we have adopted more familiar terms for qualities and threats.
 
 The CISQ model describes *security qualities*: positive, naturally emerging qualities we want to preserve in information objects or in the information and behavior of information systems. The CISQ model does not describe systemic qualities that emerge in the relationships between components or within systems, nor does it deal with human-made concepts like legal, ethical, or societal issues. This is why the simplified view of the CISQ model can also be flanked by these two distinct concepts, as shown below.
 
 The CISQ security model can be a bit daunting at first. To make the model more approachable, this document presents a step-by-step maturity model, starting with the four primary qualities and then building on them in a systematic manner.
 
-### Definition of “behavior”
+### Model concept “behavior”
 
-Throughout this document, the phrase “information and behavior” is central. Behavior here refers to state transitions and observable actions in an information system.
+Throughout this model, the phrase “information and behavior” is central. Behavior here refers to any state transitions and observable actions in an information system. The significance of this is that the model does not limit itself to information but also applies to the behavior of a system, such as replying to a message, reading a sensor, or using an actuator.
+
+### Model concept “composition”
+
+A key concept in Composing Information Security Qualities (CISQ) is composition. The four primary security qualities (Availability, Integrity, Control, Authenticity) are composed to create new qualities. All 15 possible compositions are included in the model.
 
 ## How to use the model
 
@@ -48,7 +52,7 @@ Integrity ensures information and system behavior remain correct, complete, and 
 
 **Control** – Power to physically or logically influence information and behavior
 
-CISQ’s primary control security quality mirrors "Possession or Control" in the Parkerian Hexad. At its core, the control security quality is all about agency. It concerns the extent to which someone or something can influence an information system. This quality is also special in that it does not apply to widely dispersed information objects and, as such, creates a dichotomy in the CISQ model, with information objects not under exclusive control on one side and information systems on the other side. In modern information systems, control is often shared with other teams and organizations that together exert exclusive control. Typical situations include cloud hosting or smartphones, where manufacturers, hosting providers, operators, and users all have some degree of influence on the systems. Effectively managing control prevents unauthorized manipulation and limits the blast radius when barriers fail.
+CISQ’s primary control security quality mirrors "Possession or Control" in the Parkerian Hexad. At its core, the control security quality is all about agency. It concerns the extent to which someone or something can influence an information system. This quality is also special in that it does not apply to widely dispersed information objects and, as such, creates a dichotomy in the CISQ model, with information objects not under exclusive control on one side, and information systems on the other. In modern information systems, control is often shared among other teams and organizations that together exert exclusive control. Typical situations include cloud hosting or smartphones, where manufacturers, hosting providers, operators, and users all have some degree of influence on the systems. Effectively managing control prevents unauthorized manipulation and limits the blast radius when barriers fail.
 
 *Corresponding threat category*: Elevation of privilege — unauthorized gain of permissions enabling control, break‑glass workflows
 
@@ -156,7 +160,7 @@ Usefulness focuses on representational compatibility and format‑level interope
 
 ## Maturity level four
 
-At level four, we define the sole quality that composes all four primary qualities. The most prominent systems that create technical guarantees for all four qualities are smart contracts running on blockchains. However, not all qualities need to be backed by technical guarantees. Many organizations deliver very good reliability as a combination of technical, process, and organizational measures. Financial institutions are typical examples of such systems where all aspects come together to create a level of trust where customers are happy to hand over control of their assets to these organizations.
+At level four, we define the sole quality that composes all four primary qualities. The most prominent systems that create technical guarantees for all four qualities are smart contracts running on blockchains. However, not all qualities need to be backed by technical guarantees. Many organizations deliver very good reliability as a combination of technical, process, and organizational measures. Financial institutions are typical examples of such systems, where all aspects come together to create a level of trust, and customers are willing to hand over control of their assets to these organizations.
 
 | ![CISQ security model version 1.0](CISQ-maturity-l4.png) |
 |                      :--:                                |

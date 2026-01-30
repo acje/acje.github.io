@@ -6,7 +6,7 @@
 
 ## Introducing the model
 
-The Composing Information Security Qualities (CISQ) model is created by combining insights and definitions from the [CIA triad](https://en.wikipedia.org/wiki/Information_security#CIA_triad), [Parkerian Hexad](https://en.wikipedia.org/wiki/Parkerian_Hexad), and [STRIDE threat model](https://en.wikipedia.org/wiki/STRIDE_model). The result is a model of four primary security qualities and eleven composed security qualities. Each security quality has a corresponding threat category inspired by the STRIDE threat model. You can read more about previous work on the model here: [CISQ-Model of security qualities](https://acje.github.io/CISQ-model). Please note that previous work on this model may deviate somewhat, as we have made changes to use the most familiar terms for qualities and threats.
+The Composing Information Security Qualities (CISQ) model is created by combining insights and definitions from the [CIA triad](https://en.wikipedia.org/wiki/Information_security#CIA_triad), [Parkerian Hexad](https://en.wikipedia.org/wiki/Parkerian_Hexad), and [STRIDE threat model](https://en.wikipedia.org/wiki/STRIDE_model). The result is a model of four primary security qualities and eleven composed security qualities. Each security quality has a corresponding threat category inspired by the STRIDE threat model. You can read more about prior work on the model here: [CISQ-Model of security qualities](https://acje.github.io/CISQ-model). Please note that prior work on this model may deviate somewhat from this version, as we have made changes to use more familiar terms for qualities and threats.
 
 The CISQ model describes *security qualities*: positive, naturally emerging qualities we want to preserve in information objects or in the information and behavior of information systems. The CISQ model does not describe systemic qualities that emerge in the relationships between components or within systems, nor does it deal with human-made concepts like legal, ethical, or societal issues. This is why the simplified view of the CISQ model can also be flanked by these two distinct concepts, as shown below.
 
@@ -14,7 +14,7 @@ The CISQ security model can be a bit daunting at first. To make the model more a
 
 ### Definition of “behavior”
 
-Throughout this document the phrase “information and behavior” is central. Behavior here refers to state transitions and observable actions, in an information system.
+Throughout this document, the phrase “information and behavior” is central. Behavior here refers to state transitions and observable actions in an information system.
 
 ## How to use the model
 
@@ -48,7 +48,7 @@ Integrity ensures information and system behavior remain correct, complete, and 
 
 **Control** - Power to physically or logically influence information and behavior
 
-CISQ’s primary control security quality mirrors "Possession or Control" in the Parkerian Hexad. At its core, the control security quality is all about agency. It concerns the extent to which someone or something can influence an information system. This quality is also special in that it does not apply to widely dispersed information objects and, as such, creates a dichotomy in the CISQ model, with information objects not under exclusive control on one side and information systems on the other side. In modern information systems, control is often shared with other teams and organizations that together exerts exclusive control. Typical situations include cloud hosting or smartphones, where manufacturers, hosting providers, operators, and users all have some degree of influence on the systems. Effectively managing control prevents unauthorized manipulation and limits the blast radius when barriers fail.
+CISQ’s primary control security quality mirrors "Possession or Control" in the Parkerian Hexad. At its core, the control security quality is all about agency. It concerns the extent to which someone or something can influence an information system. This quality is also special in that it does not apply to widely dispersed information objects and, as such, creates a dichotomy in the CISQ model, with information objects not under exclusive control on one side and information systems on the other side. In modern information systems, control is often shared with other teams and organizations that together exert exclusive control. Typical situations include cloud hosting or smartphones, where manufacturers, hosting providers, operators, and users all have some degree of influence on the systems. Effectively managing control prevents unauthorized manipulation and limits the blast radius when barriers fail.
 
 *Corresponding threat category*: Elevation of privilege — unauthorized gain of permissions enabling control, break‑glass workflows
 
@@ -56,7 +56,7 @@ CISQ’s primary control security quality mirrors "Possession or Control" in the
 
 **Authenticity** - Information and behavior originate from their purported source
 
-Authenticity ensures information and system behavior truly originate from the claimed source and remain bound to that identity across creation, transmission, and execution. It focuses on identity proofing and binding, mutual verification, and provenance, resisting impersonation, spoofing, and forged artifacts. Strong authenticity practices combine robust identity lifecycle (enrollment, proofing, rotation, revocation), secure channels and token binding, and tamper‑evident logs to establish source and lineage. By preserving authenticity, teams can trust who or what produced actions and data, enabling accountable automation and safe delegation.
+Authenticity ensures information and system behavior truly originate from the claimed source and remain bound to that identity across creation, transmission, and execution. It focuses on identity proofing and binding, mutual verification, and provenance, resisting impersonation, spoofing, and forged artifacts. Strong authenticity practices combine a robust identity lifecycle (enrollment, proofing, rotation, revocation), secure channels and token binding, and tamper‑evident logs to establish source and lineage. By preserving authenticity, teams can trust who or what produced actions and data, enabling accountable automation and safe delegation.
 
 *Corresponding threat category*: Spoofing — impersonation of identities or sources
 
@@ -70,7 +70,7 @@ At maturity level two, we introduce some common higher-order qualities that are 
 |                      :--:                                |
 |  *Maturity level two of the CISQ security model*         |
 
-Maturity level two can be represented in the simplified view.
+Maturity level two can also be represented in the simplified view.
 
 | ![CISQ security model version 1.0](CISQ-transformation.png)                                       |
 |                      :--:                                                                         |
@@ -152,7 +152,7 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 
 ## Maturity level four
 
-At level four, we define the sole quality composing all four primary qualities. The most prominent systems to create technical guarantees for all four qualities would be smart contracts running on blockchains. However, it is not necessary for all qualities to be technical guarantees. Many organizations deliver very good reliability as a combination of technical, process, and organizational measures. Financial institutions are typical examples of such systems where all aspects come together to create a level of trust where customers are happy to hand over control of their assets to these organizations.
+At level four, we define the sole quality that composes all four primary qualities. The most prominent systems that create technical guarantees for all four qualities are smart contracts running on blockchains. However, not all qualities need to be backed by technical guarantees. Many organizations deliver very good reliability as a combination of technical, process, and organizational measures. Financial institutions are typical examples of such systems where all aspects come together to create a level of trust where customers are happy to hand over control of their assets to these organizations.
 
 | ![CISQ security model version 1.0](CISQ-maturity-l4.png) |
 |                      :--:                                |
@@ -170,7 +170,7 @@ At level four, we define the sole quality composing all four primary qualities. 
 
 ## Qualities, Threat Categories, MITRE ATT&CK Tactics, and CVE Types
 
-| Quality | Threat Category | MITRE ATT&CK Tactics | CVE Vulnerabilities By Types |
+| Quality | Threat Category | MITRE ATT&CK Tactics | CVE Vulnerabilities by Type |
 |---|---|---|---|
 | Availability | Denial of service — disruption or resource exhaustion preventing timely access | Impact | DoS/Resource Exhaustion (CWE-400, CWE-770) |
 | Integrity | Tampering — unauthorized modification compromising correctness or completeness | Execution, Impact | Injection (CWE-89, CWE-77), Path Traversal (CWE-22), Deserialization (CWE-502) |

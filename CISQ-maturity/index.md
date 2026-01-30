@@ -30,7 +30,7 @@ At the first level, the four primary qualities are evaluated in the context of t
 
 ### The four primary security qualities
 
-**Availability** - Timely access to information and behavior
+**Availability** – Timely access to information and behavior
 
 Availability ensures users and systems can access information and execute required behavior when needed, despite failures, demand spikes, or maintenance. It emphasizes capacity, resilience, and graceful degradation by keeping services responsive under stress and recovering quickly when components fail. Strong availability practices combine demand forecasting and capacity planning, health checks and monitoring, redundancy and failover, load balancing and backpressure, rate limiting and circuit breakers, retry/backoff and queuing, and disaster recovery/business continuity. By preserving availability, teams minimize downtime, sustain essential operations, and maintain user trust.
 
@@ -38,7 +38,7 @@ Availability ensures users and systems can access information and execute requir
 
 *Typical security controls*: Redundancy, capacity planning, load balancing
 
-**Integrity** - Preserving correctness and completeness of information and behavior
+**Integrity** – Preserving correctness and completeness of information and behavior
 
 Integrity ensures information and system behavior remain correct, complete, and unaltered from their intended state across storage, transmission, and execution. It focuses on preventing, detecting, and recovering from unauthorized or accidental changes by maintaining invariants and verifying inputs, states, and outputs. Strong integrity practices combine validation and normalization, cryptographic hashes and signatures, transactional guarantees and idempotency, and separation of duties to reduce the chance and impact of tampering. By preserving integrity, teams can trust results, reason about changes, and safely automate decisions and actions.
 
@@ -46,7 +46,7 @@ Integrity ensures information and system behavior remain correct, complete, and 
 
 *Typical security controls*: Input validation, hashing, session management, separation of duties
 
-**Control** - Power to physically or logically influence information and behavior
+**Control** – Power to physically or logically influence information and behavior
 
 CISQ’s primary control security quality mirrors "Possession or Control" in the Parkerian Hexad. At its core, the control security quality is all about agency. It concerns the extent to which someone or something can influence an information system. This quality is also special in that it does not apply to widely dispersed information objects and, as such, creates a dichotomy in the CISQ model, with information objects not under exclusive control on one side and information systems on the other side. In modern information systems, control is often shared with other teams and organizations that together exert exclusive control. Typical situations include cloud hosting or smartphones, where manufacturers, hosting providers, operators, and users all have some degree of influence on the systems. Effectively managing control prevents unauthorized manipulation and limits the blast radius when barriers fail.
 
@@ -54,7 +54,7 @@ CISQ’s primary control security quality mirrors "Possession or Control" in the
 
 *Typical security controls*: Principle of least privilege, patch management, logging and auditing, secure enclaves
 
-**Authenticity** - Information and behavior originate from their purported source
+**Authenticity** – Information and behavior originate from their purported source
 
 Authenticity ensures information and system behavior truly originate from the claimed source and remain bound to that identity across creation, transmission, and execution. It focuses on identity proofing and binding, mutual verification, and provenance, resisting impersonation, spoofing, and forged artifacts. Strong authenticity practices combine a robust identity lifecycle (enrollment, proofing, rotation, revocation), secure channels and token binding, and tamper‑evident logs to establish source and lineage. By preserving authenticity, teams can trust who or what produced actions and data, enabling accountable automation and safe delegation.
 
@@ -84,17 +84,19 @@ Together with related perspectives, this is a useful representation and starting
 
 **Utility** – Ability to maintain information and behavior
 
+Utility emphasizes maintainability, operability, and evolvability over time, favoring semantic stability, backward compatibility, and maintainable interfaces.
+
 *Corresponding threat category*: Information contortion — distortion or incompatibility reducing ability to maintain or use
 
 *Typical security controls*: API management, semantic versioning, type checks, independently deployable components
 
-**Confidentiality** - Access to information and behavior is limited exclusively to authorized entities
+**Confidentiality** – Access to information and behavior is limited exclusively to authorized entities
 
 *Corresponding threat category*: Information disclosure — unauthorized exposure of information or behavior
 
 *Typical security controls*: Encryption, access control lists (ACLs), data loss prevention (DLP), data classification policies
 
-**Non-repudiation** - Assurance of the correctness, completeness, and origin of information and behavior
+**Non-repudiation** – Assurance of the correctness, completeness, and origin of information and behavior
 
 *Corresponding threat category*: Repudiation — denial of actions or origins
 
@@ -136,7 +138,7 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 
 *Corresponding threat category*: Unverified behavior — insufficient evidence to confirm claims or outcomes
 
-*Typical security controls*:
+*Typical security controls*: Conformance and acceptance tests, runtime assertions, SLO/SLA monitoring and health checks
 
 **Traceability** – Ability to discover where and how information and behavior were produced
 
@@ -145,6 +147,8 @@ At maturity level three, we introduce more accurate definitions of concepts. Inc
 *Typical security controls*: Structured logging with correlation IDs, distributed tracing (OpenTelemetry), append‑only/immutable logs, cryptographic log signing, data lineage catalogs, version control and change history, chain‑of‑custody procedures
 
 **Usefulness** – Ability to work with the format of information and behavior
+
+Usefulness focuses on representational compatibility and format‑level interoperability, emphasizing schemas, canonicalization, and robust parsing.
 
 *Corresponding threat category*: Data misformatting — incompatible, ambiguous, or malformed representations
 
@@ -168,22 +172,24 @@ At level four, we define the sole quality that composes all four primary qualiti
 
 [Download Excalidraw file](CISQ.excalidraw)
 
-## Qualities, Threat Categories, and CVE Types
+## Qualities, Threat Categories, and CWE Classes
 
-| Quality | Threat Category | CVE Vulnerabilities by Type |
+*CWE references follow CWE List v4.19.1.*
+
+| Quality | Threat Category | CWE Classes (v4.19.1) |
 |---|---|---|
-| Availability | Denial of service — disruption or resource exhaustion preventing timely access | DoS/Resource Exhaustion (CWE-400, CWE-770) |
-| Integrity | Tampering — unauthorized modification compromising correctness or completeness | Injection (CWE-89, CWE-77), Path Traversal (CWE-22), Deserialization (CWE-502) |
-| Control | Elevation of privilege — unauthorized gain of permissions enabling control, break‑glass workflows | Privilege Escalation (CWE-269), Incorrect Permission Assignment (CWE-266), Missing Authorization (CWE-862) |
-| Authenticity | Spoofing — impersonation of identities or sources | Improper Authentication (CWE-287), Improper Certificate Validation (CWE-295) |
-| Utility | Information contortion — distortion or incompatibility reducing ability to maintain or use | Interpretation/Type Conflicts (CWE-436, CWE-241), Inconsistent API Contracts |
-| Confidentiality | Information disclosure — unauthorized exposure of information or behavior | Sensitive Information Exposure (CWE-200), Cleartext Transmission (CWE-319), Error Message Info Leak (CWE-209) |
-| Non-repudiation | Repudiation — denial of actions or origins | Insufficient Logging/Monitoring (CWE-778), Log Forging (CWE-117) |
-| Authorization | Traffic manipulation — bypassing, shaping, or abusing traffic flows to evade or degrade controls | HTTP Request Smuggling (CWE-444), MITM due to TLS validation flaws (CWE-295), Open Redirect (CWE-601) |
-| Durability | Data corruption — integrity degradation of stored or transmitted data | Memory/State Corruption (CWE-119, CWE-787), Integer Overflow/Wraparound (CWE-190) |
-| Credibility | Misinformation — deceptive or misleading content undermining verification | Improper Signature Verification (CWE-347), Insufficient Data Authenticity Verification (CWE-345) |
-| Certifiability | Invalid attestation — unverifiable or untrusted proofs of validity | Improper Certificate Validation (CWE-295), Missing Entity Authentication in Key Exchange (CWE-322), Weak Hash Algorithms (CWE-328) |
-| Assurance | Unverified behavior — insufficient evidence to confirm claims or outcomes | Improper Input Validation (CWE-20), Insufficient Data Authenticity Verification (CWE-345) |
-| Traceability | Obfuscation — concealed provenance or tampered production trails | Insufficient Logging (CWE-778), Log Forging/Neutralization Issues (CWE-117) |
-| Usefulness | Data misformatting — incompatible, ambiguous, or malformed representations | Deserialization of Untrusted Data (CWE-502), Improper Input Validation (CWE-20), Schema/Format Parsing Errors |
-| Reliability | Dependability loss — systemic failures reducing trust in outcomes | Race Conditions (CWE-362), Resource Exhaustion (CWE-400), Improper Exception Handling (CWE-703) |
+| Availability | Denial of service — disruption or resource exhaustion preventing timely access | CWE-400: Uncontrolled Resource Consumption; CWE-770: Allocation of Resources Without Limits or Throttling |
+| Integrity | Tampering — unauthorized modification compromising correctness or completeness | CWE-89: SQL Injection; CWE-77: Command Injection; CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal'); CWE-502: Deserialization of Untrusted Data |
+| Control | Elevation of privilege — unauthorized gain of permissions enabling control, break‑glass workflows | CWE-269: Improper Privilege Management; CWE-266: Incorrect Privilege Assignment; CWE-862: Missing Authorization |
+| Authenticity | Spoofing — impersonation of identities or sources | CWE-287: Improper Authentication; CWE-295: Improper Certificate Validation |
+| Utility | Information contortion — distortion or incompatibility reducing ability to maintain or use | CWE-436: Interpretation Conflict; CWE-241: Improper Handling of Unexpected Data Type |
+| Confidentiality | Information disclosure — unauthorized exposure of information or behavior | CWE-200: Exposure of Sensitive Information to an Unauthorized Actor; CWE-319: Cleartext Transmission of Sensitive Information; CWE-209: Information Exposure Through an Error Message |
+| Non-repudiation | Repudiation — denial of actions or origins | CWE-778: Insufficient Logging; CWE-117: Improper Output Neutralization for Logs |
+| Authorization | Defense evasion — bypassing, disabling, or degrading protective measures to evade detection or enforcement | CWE-444: Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling'); CWE-295: Improper Certificate Validation; CWE-601: URL Redirection to Untrusted Site ('Open Redirect') |
+| Durability | Data corruption — integrity degradation of stored or transmitted data | CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer; CWE-787: Out-of-bounds Write; CWE-190: Integer Overflow or Wraparound |
+| Credibility | Misinformation — deceptive or misleading content undermining verification | CWE-347: Improper Verification of Cryptographic Signature; CWE-345: Insufficient Verification of Data Authenticity |
+| Certifiability | Invalid attestation — unverifiable or untrusted proofs of validity | CWE-295: Improper Certificate Validation; CWE-322: Key Exchange without Entity Authentication; CWE-328: Use of Weak Hash |
+| Assurance | Unverified behavior — insufficient evidence to confirm claims or outcomes | CWE-20: Improper Input Validation; CWE-345: Insufficient Verification of Data Authenticity |
+| Traceability | Obfuscation — concealed provenance or tampered production trails | CWE-778: Insufficient Logging; CWE-117: Improper Output Neutralization for Logs |
+| Usefulness | Data misformatting — incompatible, ambiguous, or malformed representations | CWE-502: Deserialization of Untrusted Data; CWE-20: Improper Input Validation |
+| Reliability | Dependability loss — systemic failures reducing trust in outcomes | CWE-362: Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition'); CWE-400: Uncontrolled Resource Consumption; CWE-703: Improper Check or Handling of Exceptional Conditions |

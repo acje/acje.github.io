@@ -1,6 +1,6 @@
 # Maturity levels in the CISQ security model
 
-| ![CISQ security model version 1.0](CISQ-simplified.png)                   |
+| ![CISQ security model version 1.0](CISQ-simplified.png)                         |
 |                      :--:                                                       |
 |  *A good place to start: CISQ security model v1.0, Maturity level 2 simplified* |
 

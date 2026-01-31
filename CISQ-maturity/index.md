@@ -24,7 +24,9 @@ Throughout this model, the phrase “information and behavior” is central. Beh
 
 ### Model concept “composition”
 
-A key concept in Composing Information Security Qualities (CISQ) is composition. The four primary security qualities (Availability, Integrity, Control, Authenticity) are composed to create new qualities. All 15 possible compositions are included in the model, the 16th variant the empty set, is excluded. The purpose is to achieve both completeness and non-overlapping concepts. However, this has not yet been formally proven. Example: Non-repudiation = Control ⊕ Integrity ⊕ Authenticity
+A key concept in Composing Information Security Qualities (CISQ) is composition. The four primary security qualities (Availability, Integrity, Control, Authenticity) are composed to create new qualities. All 15 possible compositions are included in the model, the 16th variant the empty set, is excluded. The purpose is to achieve both completeness and non-overlapping concepts. However, this has not yet been formally proven. *Nature’s order is the foundation of our understanding.*
+
+Example: Non-repudiation = Control ⊕ Integrity ⊕ Authenticity.
 
 ## How to use the model
 
@@ -179,7 +181,7 @@ At level four, we define the sole quality that composes all four primary qualiti
 ### Maturity level, Qualities, Composition, Threat
 
 | lvl | Quality         | Composition                                       | Threat                 |
-|---  |---              |---                                                |---                     |
+|:--: |---              |---                                                |---                     |
 | 1   | Availability    | Availability                                      | Denial of service      |
 | 1   | Integrity       | Integrity                                         | Tampering              |
 | 1   | Control         | Control                                           | Elevation of privilege |

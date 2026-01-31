@@ -1,6 +1,6 @@
 # An Ecosystem for Secure Information Systems
 
-| Published 2026-mm-dd  | An Ecosystem for Secure Information Systems - Part 2 Political means |
+| Published 2026-mm-dd  | An Ecosystem for Sovereign Information Systems - Part 2 Political means |
 | :---                  |                                                                 ---: |
 |                       |                                                   Updated 2026-mm-dd |
 

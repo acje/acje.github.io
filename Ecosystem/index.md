@@ -1,14 +1,16 @@
-# An Ecosystem for Secure Information Systems
+# An Ecosystem for Sovereign Information Systems
 
 *Employing political instruments and architectural constraints to reshape the ecosystem that builds our digital infrastructure and services.*
 
-| Published 2026-01-22  | An Ecosystem for Secure Information Systems - Part 1 Introduction |
-| :---                  |                                                              ---: |
-|                       |                                                Updated 2026-01-26 |
+| Published 2026-01-22  | An Ecosystem for Sovereign Information Systems - Part 1 Introduction |
+| :---                  |                                                                 ---: |
+|                       |                                                   Updated 2026-01-31 |
 
 ## Summary
 
-Infrastructure and services across all levels of criticality increasingly depend on information systems whose common vulnerable dependencies and inherent brittle design can create systemic vulnerabilities prone to cascading failures. The goal here is to describe an ecosystem that reduces systemic vulnerabilities to an acceptable level for all infrastructure and services. Describing how existing information systems can be secured is not a goal, in fact it is assumed to be impossible. Still the defeatism that prevails in parts of the IT industry, that we simply can not have inherently secure systems, is equally rejected. It will be asserted that such an ecosystem consists of five principal necessities. By targeting the ecosystem rather than the information systems directly, we create a new situation where systems across all sectors of society benefit. This must be done through politically mandated, verifiable and trusted supply chains, hosting and operations. Further this must be combined with architecture principles that limit blast radius by employing isolation as a defense in depth strategy and rigidly enforce least privilege integrations at all levels.
+Infrastructure and essential services increasingly rely on information systems with shared vulnerabilities and inherent brittle design. This cocktail of pervasiveness, commonality and fragility creates conditions of systemic vulnerabilities prone to cascading failures.
+
+The aim is to describe an ecosystem that reduces systemic vulnerabilities to an acceptable level for all infrastructure and services. Describing how existing information systems can be sufficiently patched and remodelled to become sufficiently secured is not a goal, in fact it is assumed to be impossible. A real rupture needs to happen, and the old systems will not likely cross the chassm. Still the defeatism that prevails in parts of the IT industry, that we simply can not have inherently secure systems, is equally rejected in this series. It will be asserted that such an ecosystem consists of five principal necessities. By targeting the ecosystem rather than the information systems directly, we create a new situation where systems across all sectors of society benefit. This must be done through politically mandated, verifiable and trusted supply chains, hosting and operations. Further this must be combined with architecture principles that limit blast radius by employing isolation as a defense-in-depth strategy and rigidly enforce least privilege integrations at all levels.
 
 ## The fundamental challenge of increasing the number of inherently insecure and critical systems
 
@@ -42,18 +44,18 @@ The asserted principal necessities for an ecosystem that will create meaningfull
 
 ### Principal political necessities
 
-* Trusted supply chain
-* Trusted hosting
-* Trusted operations
+- Trusted supply chain
+- Trusted hosting
+- Trusted operations
 
 ### Principal architectural necessities
 
-* Maximally isolated components of least capability
-* Least privilege interfaces
+- Maximally isolated components of least capability
+- Least privilege interfaces
 
 ## Upcoming parts in this series
 
-In the next two parts I will break down the political and architectural necessities in more detail. This includes defining the scope of each principal necessity, the challenges inherent to the context and some possible solutions and "near enemy" non-solutions.
+In the next parts I will break down the political and architectural necessities in more detail, define scope, identify inherent challenges, and outline solutions and "near enemy" non-solutions.
 
 [TODO Next: An Ecosystem for Secure Information Systems - Part 2 Political means](<hxxps://acje.github.io/Ecosystem/political>)
 

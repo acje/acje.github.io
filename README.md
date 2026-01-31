@@ -10,7 +10,7 @@ Welcome to my Github hosted pages. I organize my posts by topic and they will be
 
 ## Systems and security
 
-[An Ecosystem for Secure Information Systems](https://acje.github.io/Ecosystem)
+[An Ecosystem for Sovereign Information Systems](https://acje.github.io/Ecosystem)
 
 [Maturity levels in the CISQ security model](https://acje.github.io/CISQ-maturity)
 

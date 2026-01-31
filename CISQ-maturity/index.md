@@ -1,6 +1,6 @@
 # Maturity levels in the CISQ security model
 
-| ![CISQ security model version 1.0](CISQ-simplified-large.png)                   |
+| ![CISQ security model version 1.0](CISQ-simplified.png)                   |
 |                      :--:                                                       |
 |  *A good place to start: CISQ security model v1.0, Maturity level 2 simplified* |
 
@@ -177,6 +177,8 @@ At level four, we define the sole quality that composes all four primary qualiti
 ## Resources
 
 [Download Excalidraw file](CISQ.excalidraw)
+
+[Download CISQ-simplified-large](CISQ-simplified-large.png)  
 
 ### Maturity level, Qualities, Composition, Threat
 

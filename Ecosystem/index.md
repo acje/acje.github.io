@@ -61,9 +61,7 @@ In the next parts I will break down the political and architectural necessities 
 
 ## Other posts in category Systems and security
 
-[A case against the CIA triad](https://anderscj.substack.com/p/a-case-against-the-cia-triad)
-
-[CISQ-Model of security qualities](https://acje.github.io/CISQ-model/post)
+[Maturity levels in the CISQ security model](https://acje.github.io/CISQ-maturity)
 
 [Liberal democracies needs a new compute stack. Part 1 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
 
@@ -72,7 +70,3 @@ In the next parts I will break down the political and architectural necessities 
 [Liberal democracies needs a new compute stack. Part 3 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-523)
 
 [Liberal democracies needs a new compute stack. Part 4 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-d56)
-
-[Structured service addressing. A new take on load balancing in IPv6](https://github.com/acje/structured-service-addressing)
-
-[Fiber semantics. Event sourcing for complex domains](https://github.com/acje/Fiber-semantics)

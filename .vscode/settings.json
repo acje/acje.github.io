@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "ABAC",
         "Assurability",
         "backpressure",
         "Certifiability",
@@ -9,6 +10,7 @@
         "Exfiltration",
         "misformatting",
         "Parkerian",
-        "timestamping"
+        "timestamping",
+        "vassalization"
     ]
 }

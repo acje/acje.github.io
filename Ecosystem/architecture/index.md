@@ -1,8 +1,8 @@
 # An Ecosystem for Secure Information Systems
 
-| Published 2026-mm-dd  | An Ecosystem for Sovereign Information Systems - Part 3 Architectural constraints |
-| :---                  |                                                                           ---: |
-|                       |                                                             Updated 2026-mm-dd |
+| Published 2026-mm-dd  | An Ecosystem for Sovereign Digital Nations - Part 3 Architectural constraints |
+| :---                  |                                                                          ---: |
+|                       |                                                            Updated 2026-mm-dd |
 
 ## 4. Maximally isolated components of least capability
 

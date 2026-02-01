@@ -118,9 +118,9 @@ At maturity level three, we introduce more precise definitions of concepts. Incr
 
 **Authorization** – Power to grant access to information and behavior
 
-*Corresponding threat category*: Defense evasion — bypassing, disabling, or degrading protective measures to evade detection or enforcement
+*Corresponding threat category*: Broken access control — missing or incorrect checks allow unauthorized actions or data access
 
-*Typical security controls*: DDoS protection, rate limiting, traffic scrubbing and shaping (e.g., ACLs, WAFs)
+*Typical security controls*: Policy‑based access control (RBAC/ABAC), centralized policy engines (e.g., OPA), deny‑by‑default and least privilege, resource‑scoped checks at API/service/data layers, tenant isolation, permission boundaries/guardrails, entitlement reviews and audited authorization decisions
 
 **Durability** – Ability to withstand degradation of the integrity of information and behavior
 
@@ -162,7 +162,21 @@ Usefulness focuses on representational compatibility and format‑level interope
 
 ## Maturity level four
 
-At level four, we define the sole quality that composes all four primary qualities. The most prominent systems that create technical guarantees for all four qualities are smart contracts running on blockchains. However, not all qualities need to be backed by technical guarantees. Many organizations deliver very good reliability as a combination of technical, process, and organizational measures. Financial institutions are typical examples of such systems, where all aspects come together to create a level of trust, and customers are willing to hand over control of their assets to these organizations.
+At level four, we define the sole quality that composes all four primary qualities. Reliability = Availability ⊕ Integrity ⊕ Control ⊕ Authenticity. The most prominent systems that create technical guarantees for all four qualities are smart contracts running on blockchains. However, not all qualities need to be backed by technical guarantees. Many organizations deliver very good reliability as a combination of technical, process, and organizational measures. Financial institutions are typical examples of such systems, where all aspects come together to create a level of trust such that customers are willing to hand over control of their assets to these organizations.
+
+As information systems continue to permeate into increasingly essential processes, the need to balance technological, organizational and process mechanisms increases. This document structures how to reduce the most significant risk mainly using technical means because this is in reality automation of risk mitigation and avoidance. Automation is generally cheaper and faster than the alternatives which are organizational and process mechanisms. However to manage the risk treatment of rare and niche risks we typically do not initiate with automation, rather we use p o
+
+### Using process for risk mitigation and avoidance
+
+Keeping humans in the loop is a major way of compensating with process. This could mean having humans evaluate the decision made by a system to check if it aligns with desired business outcomes such as fraud detection, application approval or rejection, state sanctioned revocation of private or business privileges including mandating use of state sanctioned violence to detain personnel.
+
+### Using organization for risk mitigation and avoidance
+
+Organizations mitigate risk through structure, clear decision rights, and accountable ownership. These mechanisms complement technical and process controls by establishing guardrails for change, prioritizing remediation, and defining escalation paths when constraints (legal, regulatory, budgetary, human) limit automation.
+
+Effective organizational control clarifies ownership of information and systems; separates building, risk oversight, and auditing into independent lines of defense; and enforces segregation of duties with dual control and break‑glass procedures. Policies and risk registers make risk appetite explicit and track treatment plans, while incident response and crisis management ensure prepared roles, rotations, playbooks, and communication. Business continuity planning, vendor governance, and supply‑chain assurance reduce concentration risk and ensure recoverability. Data governance assigns stewardship, classification, retention, and privacy impact assessments. Portfolio and budgeting processes fund remediation and resilience via risk‑based prioritization and reduction of operational debt.
+
+Organizational controls bound blast radius, enable predictable escalation, and sustain reliability at maturity level four—especially for rare or niche risks and constraints that cannot be fully automated.
 
 | ![CISQ security model version 1.0](CISQ-maturity-l4.png) |
 |                      :--:                                |
@@ -172,7 +186,7 @@ At level four, we define the sole quality that composes all four primary qualiti
 
 *Corresponding threat category*: Dependability loss — systemic failures reducing trust in outcomes
 
-*Typical security controls*: Transactional integrity, idempotency, distributed consensus, circuit breakers and retry/backoff, disaster recovery and business continuity plans, chaos engineering
+*Typical security controls*: Balance technological, organizational or process controls to compensate for weaknesses. Smart contacts, transactional integrity, idempotency, distributed consensus, circuit breakers and retry/backoff, disaster recovery and business continuity plans, chaos engineering
 
 ## Resources
 
@@ -191,7 +205,7 @@ At level four, we define the sole quality that composes all four primary qualiti
 | 2   | Utility         | Availability ⊕ Integrity ⊕ Control                | Information contortion |
 | 2   | Confidentiality | Availability ⊕ Control ⊕ Authenticity             | Information disclosure |
 | 2   | Non-repudiation | Integrity ⊕ Control ⊕ Authenticity                | Repudiation            |
-| 3   | Authorization   | Availability ⊕ Control                            | Defense evasion        |
+| 3   | Authorization   | Availability ⊕ Control                            | Broken access control  |
 | 3   | Durability      | Integrity ⊕ Control                               | Data corruption        |
 | 3   | Credibility     | Control ⊕ Authenticity                            | Misinformation         |
 | 3   | Certifiability  | Availability ⊕ Integrity ⊕ Authenticity           | Invalid attestation    |

@@ -1,10 +1,10 @@
-# An Ecosystem for Sovereign Information Systems
+# An Ecosystem for Sovereign Digital Nations
 
-*Employing political instruments and architectural constraints to reshape the ecosystem that builds our digital infrastructure and services.*
+*Breaking the chains of digital vassalization: Employing political instruments and architectural constraints to reshape the ecosystem that builds our digital infrastructure and services.*
 
-| Published 2026-01-22  | An Ecosystem for Sovereign Information Systems - Part 1 Introduction |
-| :---                  |                                                                 ---: |
-|                       |                                                   Updated 2026-01-31 |
+| Published 2026-01-22  | An Ecosystem for Sovereign Digital Nations - Part 1 Introduction |
+| :---                  |                                                             ---: |
+|                       |                                               Updated 2026-02-01 |
 
 ## Summary
 

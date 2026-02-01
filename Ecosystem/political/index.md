@@ -1,8 +1,8 @@
 # An Ecosystem for Secure Information Systems
 
-| Published 2026-mm-dd  | An Ecosystem for Sovereign Information Systems - Part 2 Political means |
-| :---                  |                                                                    ---: |
-|                       |                                                      Updated 2026-mm-dd |
+| Published 2026-mm-dd  | An Ecosystem for Sovereign Digital Nations - Part 2 Political means |
+| :---                  |                                                                ---: |
+|                       |                                                  Updated 2026-mm-dd |
 
 [Previous: An Ecosystem for Secure Information Systems - Part 1 Introduction](<https://acje.github.io/Ecosystem>)
 

@@ -1,3 +1,8 @@
+---
+title: "An Ecosystem for Sovereign Digital Nations"
+aliases:
+	- "/Ecosystem/"
+---
 # An Ecosystem for Sovereign Digital Nations
 
 *Breaking the chains of digital vassalage by employing political instruments and architectural constraints to reshape the ecosystem that builds our digital infrastructure and services.*

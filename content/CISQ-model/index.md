@@ -1,3 +1,8 @@
+---
+title: "A structured view on information security"
+aliases:
+	- "/CISQ-model/"
+---
 # A structured view on information security
 
 ## The CISQ-model hypothesis

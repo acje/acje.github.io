@@ -1,3 +1,8 @@
+---
+title: "Maturity levels in the CISQ security model"
+aliases:
+	- "/CISQ-maturity/"
+---
 # Maturity levels in the CISQ security model
 
 | ![CISQ security model version 1.0](CISQ-simplified.png)                         |

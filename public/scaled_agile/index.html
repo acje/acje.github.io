@@ -8,19 +8,23 @@ https://github.com/alex-shpak/hugo-book
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="Scaling Agile# These are my notes on how an organization transformed from hardly being able to run a handful of digitalization projects in parallel and only creating value from them sporadically, into a fast-moving agile organization. I have observed this type of transition twice in the role of architect in two different organizations, both with tens of projects and later, tens of teams running in parallel. The first transition was targeting the SAFe-Framework. The second transition was a much more deliberate and tailored approach. The deliberate and tailored transition will be the main topic of these notes, but I might reference the first transition explicitly where appropriate.
+">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/scaled_agile/">
   <meta property="og:site_name" content="acje.github.io">
-  <meta property="og:title" content="Scaled_agiles">
+  <meta property="og:title" content="Scaling Agile">
+  <meta property="og:description" content="Scaling Agile# These are my notes on how an organization transformed from hardly being able to run a handful of digitalization projects in parallel and only creating value from them sporadically, into a fast-moving agile organization. I have observed this type of transition twice in the role of architect in two different organizations, both with tens of projects and later, tens of teams running in parallel. The first transition was targeting the SAFe-Framework. The second transition was a much more deliberate and tailored approach. The deliberate and tailored transition will be the main topic of these notes, but I might reference the first transition explicitly where appropriate.">
   <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
 
 
-  <meta itemprop="name" content="Scaled_agiles">
+  <meta itemprop="name" content="Scaling Agile">
+  <meta itemprop="description" content="Scaling Agile# These are my notes on how an organization transformed from hardly being able to run a handful of digitalization projects in parallel and only creating value from them sporadically, into a fast-moving agile organization. I have observed this type of transition twice in the role of architect in two different organizations, both with tens of projects and later, tens of teams running in parallel. The first transition was targeting the SAFe-Framework. The second transition was a much more deliberate and tailored approach. The deliberate and tailored transition will be the main topic of these notes, but I might reference the first transition explicitly where appropriate.">
+  <meta itemprop="wordCount" content="782">
 
-<title>Scaled_agiles | acje.github.io</title>
+<title>Scaling Agile | acje.github.io</title>
 <link rel="icon" href="http://localhost:1313/favicon.png" >
 <link rel="manifest" href="http://localhost:1313/manifest.json">
 <link rel="canonical" href="http://localhost:1313/scaled_agile/">
@@ -28,13 +32,13 @@ https://github.com/alex-shpak/hugo-book
 
 
   <script defer src="http://localhost:1313/fuse.min.js"></script>
-  <script defer src="http://localhost:1313/en.search.min.9efe7bc3f26f986adb7a6033e96e1c4965ae3bfa717ddc97028fa78ed6f817da.js" integrity="sha256-nv57w/JvmGrbemAz6W4cSWWuO/pxfdyXAo&#43;njtb4F9o=" crossorigin="anonymous"></script>
+  <script defer src="http://localhost:1313/en.search.min.5324c80c307d0e16a0775b7782421eab72d3fa5ca44152ba263e56f410da25da.js" integrity="sha256-UyTIDDB9Dhagd1t3gkIeq3LT&#43;lykQVK6Jj5W9BDaJdo=" crossorigin="anonymous"></script>
 
 
 
   
 </head>
-<body dir="ltr" class="book-kind-section book-type-scaled_agile">
+<body dir="ltr" class="book-kind-page book-type-page">
   <input type="checkbox" class="hidden toggle" id="menu-control" />
   <input type="checkbox" class="hidden toggle" id="toc-control" />
   <main class="container flex">
@@ -103,21 +107,134 @@ https://github.com/alex-shpak/hugo-book
     <img src="http://localhost:1313/icons/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Scaled_agiles</h3>
+  <h3>Scaling Agile</h3>
 
   <label for="toc-control">
+    
+    <img src="http://localhost:1313/icons/toc.svg" class="book-icon" alt="Table of Contents" />
     
   </label>
 </div>
 
 
   
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#work-in-progress"><strong>Work in progress</strong></a></li>
+    <li><a href="#setting-the-context">Setting the context</a></li>
+    <li><a href="#observations">Observations</a></li>
+    <li><a href="#improvements">Improvements</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
  
       </header>
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><h1 id="scaling-agile">Scaling Agile<a class="anchor" href="#scaling-agile">#</a></h1>
+<p>These are my notes on how an organization transformed from hardly being able to run a handful of digitalization projects in parallel and only creating value from them sporadically, into a fast-moving agile organization. I have observed this type of transition twice in the role of architect in two different organizations, both with tens of projects and later, tens of teams running in parallel. The first transition was targeting the SAFe-Framework. The second transition was a much more deliberate and tailored approach. The deliberate and tailored transition will be the main topic of these notes, but I might reference the first transition explicitly where appropriate.</p>
+<h2 id="summary">Summary<a class="anchor" href="#summary">#</a></h2>
+<p>Obtaining massive improvements in speed, domain knowledge and short-term value creation is very doable. Following the practices from &ldquo;Accelerate&rdquo; and implement stream aligned teams and platform teams from &ldquo;Team topologies&rdquo; are well established techniques by now. Then make sure your teams gets a clear &ldquo;mission&rdquo; limited to a reasonably sized business domain, while protecting them from strong internal forces that will want to deliver change tickets to the teams.</p>
+<p>The lessons discussed here are more subtle and deals with aspects that arise from the success of scaling agile organizations.</p>
+<ul>
+<li>First lesson - Speed is surprisingly a substitute for direction, but speed alone doesn´t scale well.</li>
+<li>Second lesson - Managing the second order effects of success. Producing new assets creates risks and opportunities hiding or missing in the structure of your implementations.</li>
+<li>Third lesson/hypothesis - Within the concept of &ldquo;mission command&rdquo; use the backbrief to empower the relation between stakeholders and product teams.</li>
+</ul>
+<h2 id="work-in-progress"><strong>Work in progress</strong><a class="anchor" href="#work-in-progress">#</a></h2>
+<p>For the rest of this post I will proceed to explain:</p>
+<h2 id="setting-the-context">Setting the context<a class="anchor" href="#setting-the-context">#</a></h2>
+<ul>
+<li>What we actually did to create a productive digitalization org.
+<ul>
+<li>The humble beginnings; transition from projects to teams secures continuity in knowledge about the business domain and the produced asset, often referred to as the product.
+<ul>
+<li>Splitting stream aligned teams and platform teams to leverage scale.
+<ul>
+<li>This failed at first because the applications were too tightly coupled to the platform and this also caused the platform not to evolve into a capability with sufficiently self-service. The result was that we largely ended up with a 1:1 of platform and application effort. A redesign of the underlying application architecture and platform was needed.</li>
+<li>The second attempt yielded a almost fully self service platform and we even put some effort into not depending too deeply on custom cloud features. Architecture is not the scope here, but we largely created separate sandboxes for each system, relying heavily on self-hosted NATS on cloud VMs to create a communication mesh that also can persist streams of data. Other cloud services are freely chosen by the teams but they are incentivized to use containers and postgres-as-a-service. Run your own VM if you need something bespoke. The result is more like a 1:10 effort in platform and application, allowing us to scale up stream aligned teams while spending much less on creating and maintaining a platform.</li>
+</ul>
+</li>
+<li>Leadership and scale; We eventually got to working at the transition from both bottom and top, transforming the IT department first and the rest of the 1300 person organization is about to follow.There was however significant upfront effort over multiple years to create continuous deployment, container based runtimes, git as a service, team vs project awareness and so forth. When the two first teams were established a lot of the uncertainty was eliminated. We could do this! Luckily we had massive change of mindset in large parts og management around this time. Teams were to become the new normal. Projects had proven time and again that they delivered late or not at all and when they delivered there was almost instantly the need for a new project to fix everything that the first one got wrong.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="observations">Observations<a class="anchor" href="#observations">#</a></h2>
+<ul>
+<li>First lesson - Speed is surprisingly a substitute for direction, but it doesn´t scale well alone.
+<ul>
+<li>Bees and discovery: serendipity, 20% ignores plan/bee-dance</li>
+<li>Some alignment scales speed. Turning alignment to 0 or 11 creates traps of local optimization</li>
+</ul>
+</li>
+<li>Second lesson - Managing the second order effects of success. Producing new assets creates risks and opportunities hiding or missing in the structure of your implementations.
+<ul>
+<li>
+<p>Kent Beck — behavior and structure
+<img src="http://localhost:1313/scaled_agile/behavior_structure.png" alt="Behavior and structure" /></p>
+<ul>
+<li>
+<p>Risks as second order effects of successfully creating new assets
+<img src="http://localhost:1313/scaled_agile/protection_production.png" alt="Production vs protection" /></p>
+</li>
+<li>
+<p>Managing Opportunities with Architecture</p>
+</li>
+<li>
+<p>Architecture is one of those things that has a tendency to get &ldquo;thrown out with the bath water&rdquo; when organizations move to agile methodologies.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="improvements">Improvements<a class="anchor" href="#improvements">#</a></h2>
+<ul>
+<li>
+<p>Places to innovate</p>
+<ul>
+<li>The Art of Action — directed opportunism
+<ul>
+<li>
+<p>Operational gaps
+<img src="http://localhost:1313/scaled_agile/three_gaps.png" alt="Decision making at scale" />
+<a href="https://medium.com/10x-curiosity/taking-the-project-management-theme-one-step-further-and-examining-why-the-agile-styles-of-project-5ec97cb2eb37">Three Critical Gaps</a></p>
+</li>
+<li>
+<p>Hierarchy of cascading intent</p>
+</li>
+<li>
+<p>Institute backbrief</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Alignment and autonomy</p>
+<p><img src="http://localhost:1313/scaled_agile/Decision_making_at_scale.png" alt="Decision making at scale" /></p>
+<p>See <a href="https://github.com/acje/Alignment_autonomy">Alignment and autonomy</a> for more details (self-reference)</p>
+</li>
+<li>
+<p>Managing costs of transition</p>
+<ul>
+<li>Organizational costs</li>
+<li>Personal costs</li>
+</ul>
+</li>
+</ul>
+</article>
  
       
 
@@ -144,6 +261,10 @@ https://github.com/alex-shpak/hugo-book
  
         
   
+  <div class="book-comments">
+
+</div>
+  
  
         
         
@@ -161,6 +282,25 @@ https://github.com/alex-shpak/hugo-book
     </div>
 
     
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#work-in-progress"><strong>Work in progress</strong></a></li>
+    <li><a href="#setting-the-context">Setting the context</a></li>
+    <li><a href="#observations">Observations</a></li>
+    <li><a href="#improvements">Improvements</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
   
  
   </main>

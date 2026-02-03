@@ -8,7 +8,7 @@ Welcome to my Github hosted pages. I organize my posts by topic and they will be
 
 ## Agile
 
-[Scaling agile]({{< relref "scaled_agile/post.md" >}})
+[Scaling agile]({{< relref "scaled_agile/index.md" >}})
 
 [Alignment and autonomy](https://github.com/acje/Alignment_autonomy)
 

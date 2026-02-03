@@ -1,3 +1,8 @@
+---
+title: "Scaling Agile"
+aliases:
+  - "/scaled_agile/"
+---
 # Scaling Agile
 
 These are my notes on how an organization transformed from hardly being able to run a handful of digitalization projects in parallel and only creating value from them sporadically, into a fast-moving agile organization. I have observed this type of transition twice in the role of architect in two different organizations, both with tens of projects and later, tens of teams running in parallel. The first transition was targeting the SAFe-Framework. The second transition was a much more deliberate and tailored approach. The deliberate and tailored transition will be the main topic of these notes, but I might reference the first transition explicitly where appropriate.
@@ -32,10 +37,10 @@ For the rest of this post I will proceed to explain:
   * Some alignment scales speed. Turning alignment to 0 or 11 creates traps of local optimization
 * Second lesson - Managing the second order effects of success. Producing new assets creates risks and opportunities hiding or missing in the structure of your implementations.
   * Kent Beck — behavior and structure
-    ![Behavior and structure](behavior_structure.png)
+    ![Behavior and structure](/scaled_agile/behavior_structure.png)
 
     * Risks as second order effects of successfully creating new assets
-    ![Production vs protection](protection_production.png)
+    ![Production vs protection](/scaled_agile/protection_production.png)
 
     * Managing Opportunities with Architecture
     * Architecture is one of those things that has a tendency to get "thrown out with the bath water" when organizations move to agile methodologies.
@@ -45,14 +50,14 @@ For the rest of this post I will proceed to explain:
 * Places to innovate
   * The Art of Action — directed opportunism
     * Operational gaps
-        ![Decision making at scale](three_gaps.png)
+        ![Decision making at scale](/scaled_agile/three_gaps.png)
         [Three Critical Gaps](https://medium.com/10x-curiosity/taking-the-project-management-theme-one-step-further-and-examining-why-the-agile-styles-of-project-5ec97cb2eb37)
 
     * Hierarchy of cascading intent
     * Institute backbrief
 * Alignment and autonomy
 
-    ![Decision making at scale](Decision_making_at_scale.png)
+    ![Decision making at scale](/scaled_agile/Decision_making_at_scale.png)
   
     See [Alignment and autonomy](https://github.com/acje/Alignment_autonomy) for more details (self-reference)
 

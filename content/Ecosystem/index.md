@@ -66,7 +66,7 @@ The asserted principal necessities for an ecosystem that will create meaningfull
 
 In the next parts I will break down the political and architectural necessities in more detail, define scope, identify inherent challenges, and outline solutions and "near enemy" non-solutions.
 
-[TODO Next: An Ecosystem for Secure Information Systems - Part 2 Political means](<hxxps://acje.github.io/Ecosystem/political>)
+[TODO Next: An Ecosystem for Secure Information Systems - Part 2 Political means](<https://acje.github.io/Ecosystem/political>)
 
 ## Other posts in category Systems and security
 

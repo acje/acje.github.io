@@ -1,0 +1,30 @@
+baseURL: "https://acje.github.io/"
+languageCode: "en-us"
+title: "acje.github.io"
+
+# Use a standard content directory to avoid scanning theme/public
+contentDir: "content"
+
+# Keep URLs working locally; CI overrides baseURL on deploy
+relativeURLs: true
+
+# Allow raw HTML in Markdown
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+# Disable generators you may not use yet
+disableKinds:
+  - RSS
+  - taxonomy
+  - term
+ 
+theme: "hugo-book"
+
+# Ignore folders that should not be part of content scanning
+ignoreFiles:
+  - '^themes/'
+  - '^public/'
+  - '^\.github/'
+  - '^\.vscode/'

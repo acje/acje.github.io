@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scaled_agiles on acje.github.io</title>
+    <link>http://localhost:1313/scaled_agile/</link>
+    <description>Recent content in Scaled_agiles on acje.github.io</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/scaled_agile/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/scaled_agile/post/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/scaled_agile/post/</guid>
+      <description>&lt;h1 id=&#34;scaling-agile&#34;&gt;Scaling Agile&lt;/h1&gt;&#xA;&lt;p&gt;These are my notes on how an organization transformed from hardly being able to run a handful of digitalization projects in parallel and only creating value from them sporadically, into a fast-moving agile organization. I have observed this type of transition twice in the role of architect in two different organizations, both with tens of projects and later, tens of teams running in parallel. The first transition was targeting the SAFe-Framework. The second transition was a much more deliberate and tailored approach. The deliberate and tailored transition will be the main topic of these notes, but I might reference the first transition explicitly where appropriate.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

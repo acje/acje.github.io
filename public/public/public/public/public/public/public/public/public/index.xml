@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>acje.github.io</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on acje.github.io</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/cisq-maturity/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cisq-maturity/</guid>
+      <description>&lt;h1 id=&#34;maturity-levels-in-the-cisq-security-model&#34;&gt;Maturity levels in the CISQ security model&lt;/h1&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;img src=&#34;CISQ-simplified.png&#34; alt=&#34;CISQ security model version 1.0&#34;&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;em&gt;A good place to start: CISQ security model v1.0, Maturity level 2 simplified&lt;/em&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;introducing-the-model&#34;&gt;Introducing the model&lt;/h2&gt;&#xA;&lt;p&gt;The Composing Information Security Qualities (CISQ) model is created by combining insights and definitions from the &lt;a href=&#34;https://en.wikipedia.org/wiki/Information_security#CIA_triad&#34;&gt;CIA triad&lt;/a&gt;, &lt;a href=&#34;https://en.wikipedia.org/wiki/Parkerian_Hexad&#34;&gt;Parkerian Hexad&lt;/a&gt;, and &lt;a href=&#34;https://en.wikipedia.org/wiki/STRIDE_model&#34;&gt;STRIDE threat model&lt;/a&gt;. The result is a model of four primary security qualities and eleven composed security qualities. Each security quality has a corresponding threat category inspired by the STRIDE threat model. You can read more about prior work on the model here: &lt;a href=&#34;https://acje.github.io/CISQ-model&#34;&gt;CISQ-Model of security qualities&lt;/a&gt;. Please note that prior work on this model may differ somewhat from this version, as we have adopted more familiar terms for qualities and threats.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/cisq-model/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cisq-model/</guid>
+      <description>&lt;h1 id=&#34;a-structured-view-on-information-security&#34;&gt;A structured view on information security&lt;/h1&gt;&#xA;&lt;h2 id=&#34;the-cisq-model-hypothesis&#34;&gt;The CISQ-model hypothesis&lt;/h2&gt;&#xA;&lt;h3 id=&#34;what-is-the-cisq-model&#34;&gt;What is the CISQ-model?&lt;/h3&gt;&#xA;&lt;p&gt;The CISQ-model (Composing Information Security Qualities) builds on the hypothesis that there are exactly four basic security qualities. &lt;strong&gt;Integrity, Authenticity, Availability and Control&lt;/strong&gt;. A total of 16 qualities can be composed from these four basic qualities, if we include the “none” quality and the four basic qualities them selves. The most useful subset of the model when dealing with a service is shown below.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/ecosystem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ecosystem/</guid>
+      <description>&lt;h1 id=&#34;an-ecosystem-for-sovereign-digital-nations&#34;&gt;An Ecosystem for Sovereign Digital Nations&lt;/h1&gt;&#xA;&lt;p&gt;&lt;em&gt;Breaking the chains of digital vassalage by employing political instruments and architectural constraints to reshape the ecosystem that builds our digital infrastructure and services.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;Published 2026-01-22&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: right&#34;&gt;An Ecosystem for Sovereign Digital Nations - Part 1 Introduction&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: right&#34;&gt;Updated 2026-02-01&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;&#xA;&lt;p&gt;Infrastructure and essential services increasingly rely on information systems with shared vulnerabilities and inherent brittle design. This cocktail of pervasiveness, commonality and fragility creates conditions of systemic vulnerabilities prone to cascading failures.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/readme/</guid>
+      <description>&lt;h1 id=&#34;welcome&#34;&gt;Welcome&lt;/h1&gt;&#xA;&lt;p&gt;Welcome to my Github hosted pages. I organize my posts by topic and they will be updated when I get new or better ideas. I might post on Linkedin or Substack to reference these posts when there are major updates, but these are the documents where I maintain the bigger ideas that will take time to mature.&lt;/p&gt;&#xA;&lt;h2 id=&#34;agile&#34;&gt;Agile&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://acje.github.io/scaled_agile/post&#34;&gt;Scaling agile&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/acje/Alignment_autonomy&#34;&gt;Alignment and autonomy&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;systems-and-security&#34;&gt;Systems and security&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://acje.github.io/Ecosystem&#34;&gt;An Ecosystem for Sovereign Information Systems&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/scaled_agile/post/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/scaled_agile/post/</guid>
+      <description>&lt;h1 id=&#34;scaling-agile&#34;&gt;Scaling Agile&lt;/h1&gt;&#xA;&lt;p&gt;These are my notes on how an organization transformed from hardly being able to run a handful of digitalization projects in parallel and only creating value from them sporadically, into a fast-moving agile organization. I have observed this type of transition twice in the role of architect in two different organizations, both with tens of projects and later, tens of teams running in parallel. The first transition was targeting the SAFe-Framework. The second transition was a much more deliberate and tailored approach. The deliberate and tailored transition will be the main topic of these notes, but I might reference the first transition explicitly where appropriate.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

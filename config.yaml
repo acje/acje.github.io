@@ -6,7 +6,6 @@ title: "acje.github.io"
 contentDir: "content"
 
 # Canonify URLs for GitHub Pages and avoid relative link pitfalls
-canonifyURLs: true
 relativeURLs: false
 
 # Allow raw HTML in Markdown
@@ -25,7 +24,6 @@ theme: "hugo-book"
 
 # Ignore folders that should not be part of content scanning
 ignoreFiles:
-  - '^themes/'
   - '^public/'
   - '^\.github/'
   - '^\.vscode/'

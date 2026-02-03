@@ -1,6 +1,6 @@
 # An Ecosystem for Sovereign Digital Nations
 
-*Breaking the chains of digital vassalization: Employing political instruments and architectural constraints to reshape the ecosystem that builds our digital infrastructure and services.*
+*Breaking the chains of digital vassalage by employing political instruments and architectural constraints to reshape the ecosystem that builds our digital infrastructure and services.*
 
 | Published 2026-01-22  | An Ecosystem for Sovereign Digital Nations - Part 1 Introduction |
 | :---                  |                                                             ---: |
@@ -52,6 +52,10 @@ The asserted principal necessities for an ecosystem that will create meaningfull
 
 - Maximally isolated components of least capability
 - Least privilege interfaces
+
+### Principal stewardship necessities
+
+- TODO
 
 ## Upcoming parts in this series
 

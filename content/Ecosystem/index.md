@@ -1,7 +1,7 @@
 ---
 title: "An Ecosystem for Sovereign Digital Nations"
 aliases:
-	- "/Ecosystem/"
+  - "/Ecosystem/"
 ---
 # An Ecosystem for Sovereign Digital Nations
 

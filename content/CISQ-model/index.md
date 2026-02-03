@@ -1,7 +1,7 @@
 ---
 title: "A structured view on information security"
 aliases:
-	- "/CISQ-model/"
+  - "/CISQ-model/"
 ---
 # A structured view on information security
 

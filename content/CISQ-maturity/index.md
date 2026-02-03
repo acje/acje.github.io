@@ -1,7 +1,7 @@
 ---
 title: "Maturity levels in the CISQ security model"
 aliases:
-	- "/CISQ-maturity/"
+  - "/CISQ-maturity/"
 ---
 # Maturity levels in the CISQ security model
 

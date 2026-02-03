@@ -24,7 +24,7 @@ Welcome to my GitHub hosted pages. I organize my posts by topic and they will be
 - [Structured service addressing. A new take on load balancing in IPv6](https://github.com/acje/structured-service-addressing)
 - [Fiber semantics. Event sourcing for complex domains](https://github.com/acje/Fiber-semantics)
 
-## My other media accounts
+## Media accounts
 
 - [LinkedIn](https://www.linkedin.com/in/anders-jensen-481a3374/)
 - [Substack](https://anderscj.substack.com/)

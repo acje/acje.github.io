@@ -5,8 +5,9 @@ title: "acje.github.io"
 # Use a standard content directory to avoid scanning theme/public
 contentDir: "content"
 
-# Keep URLs working locally; CI overrides baseURL on deploy
-relativeURLs: true
+# Canonify URLs for GitHub Pages and avoid relative link pitfalls
+canonifyURLs: true
+relativeURLs: false
 
 # Allow raw HTML in Markdown
 markup:

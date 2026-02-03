@@ -8,19 +8,19 @@ Welcome to my Github hosted pages. I organize my posts by topic and they will be
 
 ## Agile
 
-[Scaling agile](/scaled_agile/post/)
+[Scaling agile]({{< relref "scaled_agile/post.md" >}})
 
 [Alignment and autonomy](https://github.com/acje/Alignment_autonomy)
 
 ## Systems and security
 
-[An Ecosystem for Sovereign Information Systems](/Ecosystem/)
+[An Ecosystem for Sovereign Information Systems]({{< relref "Ecosystem/index.md" >}})
 
-[Maturity levels in the CISQ security model](/CISQ-maturity/)
+[Maturity levels in the CISQ security model]({{< relref "CISQ-maturity/index.md" >}})
 
 [A case against the CIA triad](https://anderscj.substack.com/p/a-case-against-the-cia-triad)
 
-[CISQ-Model of security qualities](/CISQ-model/)
+[CISQ-Model of security qualities]({{< relref "CISQ-model/index.md" >}})
 
 [Liberal democracies needs a new compute stack. Part 1 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
 

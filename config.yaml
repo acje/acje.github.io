@@ -28,3 +28,7 @@ ignoreFiles:
   - '^public/'
   - '^\.github/'
   - '^\.vscode/'
+
+caches:
+  images:
+    dir: :cacheDir/images

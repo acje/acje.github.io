@@ -29,8 +29,6 @@ Forceful digital transformation can do the same. We seed every sector with insec
 
 The fix is simple, not easy. Use politics and architecture to reshape the ecosystem that makes our systems. Three political and two architectural pillars follow. They will not erase risk. They will cut it to levels fit for critical infrastructure and services.
 
-To counter this scenario I propose a strategic application of political instruments and architectural constraints on the ecosystem that produces these systems. The following outlines the three political and two architectural pillars of an ecosystem for creation of meaningfully more secure information systems. These systems will not have absolutely zero risk, but they should reduce the risk to such a level that the risk is acceptable for use across all critical infrastructure and services.
-
 ### Critical and non-critical information systems are largely built the same
 
 Critical information system typically has more rigorous design, more controls are implemented and documented and more layers of isolation are typically implemented. Yet they tend to be built using the same services and components as non-critical systems. When the functional needs are the same, there is rarely any gain in using lower grade software components or services in non-critical systems. The hardware may vary somewhat more in quantity and sometimes also in quality, but most systems attributes are software defined these days.

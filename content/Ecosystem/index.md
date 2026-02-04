@@ -3,10 +3,9 @@ title: "An Ecosystem for Sovereign Digital Nations"
 aliases:
 
 - "/Ecosystem/"
-
 ---
 
-# An Ecosystem for Sovereign Digital Nations
+# An Ecosystem For Sovereign Digital Nations
 
 *Break digital vassalage. Use politics and architecture to reshape the systems that run our infrastructure and services. By targeting the ecosystem, every sector of society gains.*
 

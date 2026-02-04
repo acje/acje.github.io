@@ -1,5 +1,5 @@
 ---
-title: "An Ecosystem for Sovereign Digital Nations"
+title: "An Ecosystem For Sovereign Digital Nations"
 aliases:
 
 - "/Ecosystem/"
@@ -9,7 +9,7 @@ aliases:
 
 *Break digital vassalage. Use politics and architecture to reshape the systems that run our infrastructure and services. By targeting the ecosystem, every sector of society gains.*
 
-| Published 2026-01-22  | An Ecosystem for Sovereign Digital Nations - Part 1 Introduction |
+| Published 2026-01-22  | An Ecosystem For Sovereign Digital Nations - Part 1: Introduction |
 | :---                  |                                                             ---: |
 |                       |                                               Updated 2026-02-04 |
 
@@ -17,7 +17,7 @@ aliases:
 
 Our infrastructure runs on brittle, shared systems. They fail together. The cocktail of pervasiveness, commonality and fragility creates conditions of systemic vulnerabilities, prone to cascading failures.
 
-The aim is to describe an ecosystem that reduces systemic vulnerabilities to acceptable levels. Describing how existing information systems can be sufficiently patched and remodeled to become sufficiently secured is not a goal; in fact, it is assumed to be impossible. A real rupture needs to happen, and the old systems will not likely cross the chasm. Still, the defeatism that prevails in parts of the IT industry—that we simply cannot have inherently secure systems—is equally rejected in this series. It will be asserted that such an ecosystem consists of five principal necessities. By targeting the ecosystem, every sector of society gains. This must be done through politically mandated, verifiable and trusted: supply chains, hosting, and operations. Further, this must be combined with architecture principles that limit blast radius by employing isolation as a defense-in-depth strategy and rigidly enforce least-privilege integrations at all levels.
+The aim is to describe an ecosystem that reduces systemic vulnerabilities to acceptable levels. Describing how existing information systems can be sufficiently patched and remodeled to become sufficiently secured is not a goal; in fact, it is assumed to be impossible. A real rupture needs to happen, and the old systems will not likely cross the chasm. Still, the defeatism that prevails in parts of the IT industry—that we simply cannot have inherently secure systems—is equally rejected in this series. It will be asserted that such an ecosystem consists of five principal necessities. By targeting the ecosystem, every sector of society gains. This must be done through politically mandated, verifiable and trusted: supply chains, hosting, and operations. Further, this must be combined with architecture principles that limit blast radius by employing isolation as a defense-in-depth strategy and rigidly enforce least-privilege interfaces at all levels.
 
 ## The fundamental challenge of increasing the number of inherently insecure, critical systems
 
@@ -25,7 +25,7 @@ The geopolitical rules are changing. We do not yet know them. The systems and at
 
 ### Self-organized criticality
 
-Forest fires teach a hard rule: small sparks, big damage. The nature of the spark does not matter. The build‑up does. The spark is inevitable. Per Bak and others named it: self‑organized criticality.
+Forest fires teach a hard rule: small sparks, big damage. The nature of the spark does not matter. The buildup does. The spark is inevitable. Per Bak and others named it: self‑organized criticality.
 
 Forceful digital transformation can do the same. We seed every sector with insecure systems, thereby creating a situation where a single mode of attack or shared vulnerability may trigger a ripple effect through our society. This could end up tearing down critical infrastructure and services like energy, communication, healthcare, finance, transportation, and water supply.
 

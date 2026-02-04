@@ -1,10 +1,14 @@
 ---
 title: "An Ecosystem for Sovereign Digital Nations"
 aliases:
-  - "/Ecosystem/"
+
+- "/Ecosystem/"
+
 ---
 
-*Break digital vassalage. Use politics and architecture to reshape the systems that run our infrastructure and services.*
+# An Ecosystem for Sovereign Digital Nations
+
+*Break digital vassalage. Use politics and architecture to reshape the systems that run our infrastructure and services. By targeting the ecosystem, every sector of society gains.*
 
 | Published 2026-01-22  | An Ecosystem for Sovereign Digital Nations - Part 1 Introduction |
 | :---                  |                                                             ---: |
@@ -12,13 +16,13 @@ aliases:
 
 ## Summary
 
-Our infrastructure runs on brittle, shared systems. They fail together. This cocktail of pervasiveness, commonality and fragility creates conditions of systemic vulnerabilities, prone to cascading failures.
+Our infrastructure runs on brittle, shared systems. They fail together. The cocktail of pervasiveness, commonality and fragility creates conditions of systemic vulnerabilities, prone to cascading failures.
 
-The aim is to describe an ecosystem that reduces systemic vulnerabilities to an acceptable level for all infrastructure and services. Describing how existing information systems can be sufficiently patched and remodelled to become sufficiently secured is not a goal, in fact it is assumed to be impossible. A real rupture needs to happen, and the old systems will not likely cross the chassm. Still the defeatism that prevails in parts of the IT industry, that we simply can not have inherently secure systems, is equally rejected in this series. It will be asserted that such an ecosystem consists of five principal necessities. By targeting the ecosystem rather than the information systems directly, we create a new situation where systems across all sectors of society benefit. This must be done through politically mandated, verifiable and trusted supply chains, hosting and operations. Further this must be combined with architecture principles that limit blast radius by employing isolation as a defense-in-depth strategy and rigidly enforce least privilege integrations at all levels.
+The aim is to describe an ecosystem that reduces systemic vulnerabilities to acceptable levels. Describing how existing information systems can be sufficiently patched and remodelled to become sufficiently secured is not a goal, in fact it is assumed to be impossible. A real rupture needs to happen, and the old systems will not likely cross the chassm. Still the defeatism that prevails in parts of the IT industry, that we simply can not have inherently secure systems, is equally rejected in this series. It will be asserted that such an ecosystem consists of five principal necessities. By targeting the ecosystem, every sector of society gains. This must be done through politically mandated, verifiable and trusted; supply chains, hosting and operations. Further this must be combined with architecture principles that limit blast radius by employing isolation as a defense-in-depth strategy and rigidly enforce least privilege integrations at all levels.
 
 ## The fundamental challenge of increasing the number of inherently insecure and critical systems
 
-The geopolitical rules are changing. We do not yet know them. The systems and attitudes that got us here are unlikely to carry us through. For the purpose of this post I will defer the naming of the coming period to the historians. When considering this looming challenge it is important to realize that the adversaries and their capabilities are not the significant source of the problem. The adversary is inevitable. The big problem is our own creation of a target rich environment of critically important systems with common vulnerabilities. There will eventually be an adversary with the means and motivation to use the vulnerabilities against us. The additional risk posed by a nation state adversary is not its ability to penetrate and exploit information systems, but its ability to coordinate  with other events. The list of historic attacks exploiting systemic weaknesses are many;  Stuxnet, NotPetya, WannaCry, HeartBleed, SolarWinds, Colonial Pipeline operations, Ukraine grid attacks and Salt Typhoon telecom attacks, to name a few famous examples. These kind of attacks will occur with uneven intervals, and the size of these attacks will grow proportionally to the number of available targets, because the size is largely a function of the environment, and less related to the attackers capabilities.
+The geopolitical rules are changing. We do not yet know them. The systems and attitudes that got us here are unlikely to carry us through. For the purpose of this post I will defer the naming of the coming period to the historians. When considering this looming challenge it is important to realize that the adversaries and their capabilities are not the significant source of the problem. The adversary is inevitable. The big problem is our own creation of a target rich environment of critically important systems with common vulnerabilities. There will eventually be an adversary with the means and motivation to use the vulnerabilities against us. The additional risk posed by a nation state adversary is not its ability to penetrate and exploit information systems, but its ability to coordinate  with other events. The list of historic attacks exploiting systemic weaknesses are many;  Stuxnet, NotPetya, WannaCry, HeartBleed, SolarWinds, Colonial Pipeline operations, Ukraine grid attacks and Salt Typhoon telecom attacks, to name a few famous examples. These attacks come in uneven waves. Their size tracks the field of targets more than the skill of the attacker.
 
 ### Self-organized criticality
 
@@ -30,29 +34,29 @@ The fix is simple, not easy. Use politics and architecture to reshape the ecosys
 
 ### Critical and non-critical information systems are largely built the same
 
-Critical information system typically has more rigorous design, more controls are implemented and documented and more layers of isolation are typically implemented. Yet they tend to be built using the same services and components as non-critical systems. When the functional needs are the same, there is rarely any gain in using lower grade software components or services in non-critical systems. The hardware may vary somewhat more in quantity and sometimes also in quality, but most systems attributes are software defined these days.
+Critical systems add rigor and isolation. Yet they use the same components as non‑critical ones. When the functional needs are the same, there is rarely any gain in using lower grade software components or services in non-critical systems. The hardware may vary somewhat more in quantity and sometimes also in quality, but most systems attributes are software defined these days.
 
-## A hierarchy of security aspects
+## A hierarchy of security outcomes
 
-Where we intervene is of importance for how far we can reach. A simplified model for how to understand how information systems are created, managed and cause security outcomes, may be helpful. The ecosystem consists of all the available services, components and trained personnel that goes into creating information systems. The systems themselves are created from what is available at their time of creation and during their period of maintenance. These information systems cause security events such as unexpected downtime due to internal, natural or adversarial actions on the system. Dependent on the systems ability to withstand these actions and the organizations ability plan for and react to these events, we get security outcomes. In this post we will look at actions we can take at the ecosystem level to create a situation where all new and actively maintained systems can be made to produce meaningfully better security outcomes. When we intervene at this level we are more likely to maximize impact compared to intervening at lower levels of this model.
+Where we act matters. The ecosystem supplies parts and people. From it we build systems. Systems face security events from internal failure, nature, and adversary attacks. Security outcomes depend on system resilience and organizational response. Act at the ecosystem level to lift outcomes across the board.
 
-Ecosystem -> information systems -> security events -> security outcomes
+The ecosystem consists of all the available services, components and trained personnel that goes into creating information systems. The systems themselves are created from what is available at their time of creation and during their period of maintenance. These information systems cause security events such as unexpected downtime due to internal, natural or adversarial actions on the system. Dependent on the systems ability to withstand these actions and the organizations ability plan for and react to these events, we get security outcomes. In this post we will look at actions we can take at the ecosystem level to create a situation where all new and actively maintained systems can be made to produce meaningfully better security outcomes. When we intervene at this level we are more likely to maximize impact compared to intervening at lower levels of this model.
 
-In this post we are going to look into how we can understand and modify the ecosystem that functions as the basis for how information systems are created. Three political and two architectural necessities have been identified in an ecosystem that will produce meaningfully more secure information systems, suitable for the pervasive digitalization that finds its way into most sectors of critical infrastructure and services.
+Ecosystem → Information systems → Security events → Security outcomes
+
+We must change the ecosystem that shapes our systems. Three political and two architectural necessities will carry pervasive digitization with less risk.
 
 ## Necessities of an ecosystem that produce inherently secure systems
 
-To highlight structure for the different audiences the necessities has been categorized into two different areas. The political necessities are about aspects of the ecosystem that typically will need multi-national political effort to achieve. The architectural necessities may also need political help to advance at reasonable pace, but caution need to be used when mandating their use because technological breakthroughs may change how architecture should be shaped.
+We group necessities into politics and architecture. The political necessities will often require multi‑national action. Architecture may also need political help to advance at acceptable pace, but these mandates must leave room for change. Five necessities make digital systems meaningfully more secure and strengthens our digital sovereignty.
 
-The asserted principal necessities for an ecosystem that will create meaningfully more secure information systems are as follows.
-
-### Principal political necessities
+### Political necessities
 
 - Trusted supply chain
 - Trusted hosting
 - Trusted operations
 
-### Principal architectural necessities
+### Architectural necessities
 
 - Maximally isolated components of least capability
 - Least privilege interfaces

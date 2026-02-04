@@ -8,7 +8,7 @@ Welcome to my GitHub hosted pages. I organize my posts by topic and they will be
 
 ## Systems and security
 
-- [An Ecosystem for Sovereign Information Systems]({{< relref "Ecosystem/index.md" >}})
+- [An Ecosystem for Sovereign Digital Nations]({{< relref "Ecosystem/index.md" >}})
 - [Maturity levels in the CISQ security model]({{< relref "CISQ-maturity/index.md" >}})
 
 - [Liberal democracies needs a new compute stack. Part 1 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)

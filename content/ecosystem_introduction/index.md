@@ -1,11 +1,15 @@
 ---
-title: "An Ecosystem For Digital Sovereignty - Introduction"
+title: "Digital Sovereignty"
+description: "A pragmatic roadmap to reduce systemic digital risk via politically mandated supply chains, hosting, and operations, paired with isolation-first architectures."
 aliases:
 
 - "/ecosystem/"
+date: 2026-01-22
+lastmod: 2026-02-04
+
 ---
 
-# An Ecosystem For Digital Sovereignty - Introduction
+# Digital Sovereignty
 
 *Break digital vassalage. Use politics and architecture to reshape the systems that run our infrastructure and services. By targeting the ecosystem, every sector of society gains.*
 
@@ -31,7 +35,7 @@ The fix is simple—not easy. Use politics and architecture to reshape the ecosy
 
 ### Critical or Not, Built the Same
 
-Critical systems add rigor and isolation. Yet they use the same components as non‑critical ones. When the functional needs are the same, there is rarely any gain in using lower‑grade software components or services in non‑critical systems. The hardware may vary somewhat more in quantity and sometimes also in quality, but most system attributes are software‑defined these days.
+Critical systems add rigor and isolation. Yet they use the many of the same components as non‑critical ones. When the functional needs are the same, there is rarely any gain in using lower‑grade software components or services in non‑critical systems. The hardware may vary somewhat more in quantity and sometimes also in quality, but most system attributes are software‑defined these days.
 
 ## Where the Fight Is Won
 
@@ -64,12 +68,12 @@ In the next parts I will break down the political and architectural necessities 
 
 ## More to Read
 
-[Liberal democracies needs a new compute stack. Part 1 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
+[Liberal democracies need a new compute stack. Part 1 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
 
-[Liberal democracies needs a new compute stack. Part 2 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-2fd)
+[Liberal democracies need a new compute stack. Part 2 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-2fd)
 
-[Liberal democracies needs a new compute stack. Part 3 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-523)
+[Liberal democracies need a new compute stack. Part 3 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-523)
 
-[Liberal democracies needs a new compute stack. Part 4 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-d56)
+[Liberal democracies need a new compute stack. Part 4 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-d56)
 
 [Maturity levels in the CISQ security model](https://acje.github.io/CISQ-maturity)

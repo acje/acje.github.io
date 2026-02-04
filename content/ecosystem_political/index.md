@@ -1,8 +1,13 @@
+---
+title: "An Ecosystem For Sovereign Digital Nations - Political means"
+aliases:
+
+- "/ecosystem_political/"
+---
+
 # An Ecosystem for Secure Information Systems
 
-| Published 2026-mm-dd  | An Ecosystem for Sovereign Digital Nations - Part 2 Political means |
-| :---                  |                                                                ---: |
-|                       |                                                  Updated 2026-mm-dd |
+Published 2026-mm-dd, Updated 2026-mm-dd
 
 [Previous: An Ecosystem for Secure Information Systems - Part 1 Introduction](<https://acje.github.io/Ecosystem>)
 
@@ -72,23 +77,3 @@ Challenges
 ## Upcoming parts in this series
 
 In the next part I will break down the architectural necessities in more detail.
-
-[TODO Next: An Ecosystem for Secure Information Systems - Part 3 architectural constraints](<https://acje.github.io/Ecosystem/architecture>)
-
-## Other posts in category Systems and security
-
-[A case against the CIA triad](https://anderscj.substack.com/p/a-case-against-the-cia-triad)
-
-[CISQ-Model of security qualities](https://acje.github.io/CISQ-model/post)
-
-[Liberal democracies needs a new compute stack. Part 1 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
-
-[Liberal democracies needs a new compute stack. Part 2 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-2fd)
-
-[Liberal democracies needs a new compute stack. Part 3 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-523)
-
-[Liberal democracies needs a new compute stack. Part 4 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-d56)
-
-[Structured service addressing. A new take on load balancing in IPv6](https://github.com/acje/structured-service-addressing)
-
-[Fiber semantics. Event sourcing for complex domains](https://github.com/acje/Fiber-semantics)

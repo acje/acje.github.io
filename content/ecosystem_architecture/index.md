@@ -9,6 +9,8 @@ aliases:
 
 Published 2026-mm-dd, Updated 2026-mm-dd
 
+Scope is to point out the two most long term unappreciated aspects of computer engineering, not to enumerate every technical lever readily available to us. Hence there will not be a rich discussion about distributed computing. That topic is well covered and understood, albite complex.
+
 ## 4. Maximally isolated components of least capability
 
 With components in this document, the following resources for the creation of information systems are included

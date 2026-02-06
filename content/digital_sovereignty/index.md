@@ -13,7 +13,7 @@ lastmod: 2026-02-05
 
 *Break digital vassalage. Use politics and architecture to reshape the systems that run our infrastructure and services. By targeting the ecosystem, every sector of society gains.*
 
-Published 2026-01-22, Updated 2026-02-05
+Published 2026-01-22, Updated 2026-02-06
 
 ## The Risk We Built
 

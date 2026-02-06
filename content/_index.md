@@ -31,8 +31,3 @@ Welcome to my GitHub hosted pages. I organize my posts by topic and they will be
 
 - [LinkedIn](https://www.linkedin.com/in/anders-jensen-481a3374/)
 - [Substack](https://anderscj.substack.com/)
-
-## TODO
-
-- [An Ecosystem For Digital Sovereignty - Political means]({{< relref "ecosystem_political/index.md" >}})
-- [An Ecosystem For Digital Sovereignty - Architectural constraints]({{< relref "ecosystem_architecture/index.md" >}})

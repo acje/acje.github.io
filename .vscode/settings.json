@@ -13,6 +13,7 @@
         "Petya",
         "relref",
         "timestamping",
-        "vassalization"
+        "vassalization",
+        "Webassembly"
     ]
 }

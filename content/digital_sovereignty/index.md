@@ -3,7 +3,7 @@ title: "Digital Sovereignty"
 description: "A roadmap to reduce systemic digital risk via politically mandated supply chains, hosting, and operations, paired with isolation-first architectures."
 
 date: 2026-01-22
-lastmod: 2026-02-06
+lastmod: 2026-02-07
 
 ---
 
@@ -11,7 +11,7 @@ lastmod: 2026-02-06
 
 *Break digital vassalage. Use politics and architecture to reshape the systems that run our infrastructure and services. By targeting the ecosystem, every sector of society gains.*
 
-Published 2026-01-22, Updated 2026-02-06
+Published 2026-01-22, Updated 2026-02-07
 
 ## The Risk We Built
 
@@ -50,7 +50,7 @@ We group necessities into politics and architecture. The political necessities w
 
 ### Political Necessities
 
-Strategic and operational means to sustain our ability to build and maintain
+Strategic and operational means to sustain our ability to build and maintain systems.
 
 - Trusted supply chains
 - Trusted hosting
@@ -58,7 +58,7 @@ Strategic and operational means to sustain our ability to build and maintain
 
 ### Architectural Necessities
 
-Tactical means to create defendable systems
+Tactical means to create defensible systems.
 
 - Maximally isolated components of least capability
 - Least-privilege interfaces
@@ -80,24 +80,24 @@ The gains are scattered and late. The costs are close and now. This pulls buyers
 Of the three political necessities, this is the most potent for two reasons:
 
 - Not a lot has been done to improve the robustness of supply chains, whereas hosting and operations are more mature
-- The components available across supply chains are not delivering the necessary capabilities to build defendable information systems. But the solutions are emerging in the form of WebAssembly and the actor model.
+- The components available across supply chains are not delivering the necessary capabilities to build defensible information systems. But the solutions are emerging in the form of WebAssembly and the actor model.
 
 In this document, the supply chain encompasses hardware, software, and critical services that enable the creation and operation of information systems. These services include identity and access management, code and package repositories, container registries across major clouds, and build systems such as GitHub Actions.
 
-These supply chains rely heavily on national or multi‑national technology companies but also on small ad-hoc groups or even individual open‑source contributors who may be unpaid, unidentified, and vulnerable to pressure from nation‑state actors.
+These supply chains rely heavily on national or multinational technology companies but also on small ad-hoc groups or even individual open‑source contributors who may be unpaid, unidentified, and vulnerable to pressure from nation‑state actors.
 
 ### Solutions to the supply chain challenge
 
-Define a sovereign stack baseline: runtimes, frameworks, build systems, and registries with verifiable provenance.
-Publish reference implementations and compliance tests; make certification cheap and repeatable.
-Seed adoption through public services, then expand to regulated sectors.
-Require hosting/operations to support Wasm isolation and actor‑based service boundaries.
+- Define a sovereign stack baseline: runtimes, frameworks, build systems, and registries with verifiable provenance.
+- Publish reference implementations and compliance tests; make certification cheap and repeatable.
+- Seed adoption through public services, then expand to regulated sectors.
+- Require hosting and operations to support Wasm isolation and actor‑based service boundaries.
 
 - Set defaults through procurement in public and critical infrastructure builds; make these defaults the easiest path to pass audits.
 
 - Create a trusted supply chain; require provenance and reproducible builds.
 
-- Make risk visible: “systemic‑risk labels” on components and hosting providers; tie procurement points to lower‑risk stacks.
+- Make risk visible: “systemic-risk labels” on components and hosting providers; tie procurement points to lower-risk stacks.
 
 - Coordinate investment: pooled, multinational funding for reference runtimes, verification tools, and actor frameworks; reduce the upfront cost hump.
 
@@ -105,25 +105,25 @@ Require hosting/operations to support Wasm isolation and actor‑based service b
 
 ## 2. Trusted hosting
 
-Trusted hosting is sort of a new problem. We used to keep out data in our own buildings, but then the cloud happened. The cloud may or may not be cheaper. That discussion is really not very intelligible because it primarily depends on the technical debt, technical skill and appropriate framing of the transition by management of the cloud customer. The pricing model of the cloud provider is just adaptation to the market. The cloud is not really about cost but about speed, or opportunity cost, if you insist.
+Trusted hosting is sort of a new problem. We used to keep our data in our own buildings, but then the cloud happened. The cloud may or may not be cheaper. That discussion is not very intelligible because it primarily depends on the technical debt, technical skill, and framing of the transition by cloud-customer management. The pricing model of the cloud provider is just an adaptation to the market. The cloud is not really about cost but about speed, or opportunity cost, if you insist.
 
 ### Solutions to the hosting challenge
 
-Many cloud customers has experienced that once they have built an organization capable of building their own software rather than operating bought software, the cloud is not all that necessary. The agency gained form being able to build can be used to transition to any type of hosting, including your own. If however one has done a lift and shift ov legacy systems from the basement to the cloud it will be equally obvious that the lack of agency makes the cloud about at painful as the basement.
+Many cloud customers have experienced that once they have built an organization capable of building their own software rather than operating bought software, the cloud is not all that necessary. The agency gained from being able to build can be used to transition to any type of hosting, including your own. If, however, one has done a lift-and-shift of legacy systems from the basement to the cloud, it will be equally obvious that the lack of agency makes the cloud about as painful as the basement.
 
 The solution to the hosting problem is relatively simple for those who used the cloud transition to build agency.
 
 ## 3. Trusted operations
 
-Lastly we need to secure trusted operations and this is perhaps the lowest hanging fruit. Generally nations have been able to operate their own systems with vetted personnel for the most critical infrastructure and services by now. There is however some common flaws. Many providers of more complex systems has a tendency to require som kind of remote management solution. Some organizations also do not have the internal technical capacity to operate all their own infrastructure and services, and typically rely on third party providers to manage parts of their systems. This creates a market for common resources with wide spread access across many organizations.
+Lastly we need to secure trusted operations, and this is perhaps the lowest-hanging fruit. Generally nations have been able to operate their own systems with vetted personnel for the most critical infrastructure and services by now. There are, however, some common flaws. Many providers of more complex systems have a tendency to require some kind of remote management solution. Some organizations also do not have the internal technical capacity to operate all their own infrastructure and services, and typically rely on third-party providers to manage parts of their systems. This creates a market for common resources with widespread access across many organizations.
 
 ### Solutions to the operations challenge
 
-Vet personnel and build in house skills. This one is not hard to do.
+Vet personnel and build in-house skills. This one is not hard to do.
 
 ## Architectural Necessities Explained
 
-Scope is to point out the two most long term unappreciated aspects of computer engineering, not to enumerate every technical lever readily available to us. Hence there will not be a rich discussion about distributed computing. That topic is well covered and understood, albite complex.
+The scope is to point out the two most long-term, unappreciated aspects of computer engineering, not to enumerate every technical lever readily available to us. Hence there will not be a rich discussion about distributed computing. That topic is well covered and understood, albeit complex.
 
 ## 4. Maximally isolated components of least capability
 
@@ -141,21 +141,21 @@ may serve as a more comprehensive introduction to this topic. I will describe it
 - Make risk visible: “systemic‑risk labels” on components and hosting providers; tie procurement points to lower‑risk stacks.
 - Coordinate investment: pooled, multinational funding for reference runtimes, verification tools, and actor frameworks; reduce the upfront cost hump.
 - Realign incentives: liability and insurance discounts for isolation‑first architectures; penalties for shared‑risk dependencies.
-- Why WebAssembly + actor model fits the defensibility  goal because everything is sandboxed and there are no implicit interfaces
+- Why WebAssembly + actor model fits the defensibility goal: everything is sandboxed and there are no implicit interfaces.
 
 Wasm enables portable, sandboxed components with strong isolation, reducing blast radius and dependency on a single vendor.
 The actor model enforces least‑privilege interfaces and message‑passing boundaries; failures do not cascade easily.
 Together they match the “isolation‑first” architecture in the Digital Sovereignty roadmap, while fitting the political need for trusted supply chains, hosting, and operations.
-Practical roadmap (policy + architecture)
+Practical roadmap (policy + architecture):
 
 Define a sovereign stack baseline: Wasm runtimes, actor frameworks, build systems, and registries with verifiable provenance.
 Publish reference implementations and compliance tests; make certification cheap and repeatable.
 Seed adoption through public services, then expand to regulated sectors.
-Require hosting/operations to support Wasm isolation and actor‑based service boundaries.
+Require hosting and operations to support Wasm isolation and actor‑based service boundaries.
 
-Non-solutions
+Non-solutions:
 
-- Third party code - technically ok, but impractical to control
+- Third-party code - technically ok, but impractical to control
 - Library - not sandboxed
 - Script language (Lua, embedded JS engine) - inefficient
 
@@ -167,9 +167,9 @@ Clearly define interfaces derived from function signatures of exposed functions.
 
 ## Final thoughts
 
-Formal verification as explored in the 60ies and 70ies was never going to be a big part of secure information systems and the later strategy of "enumerating badness", that is the creation of software that catalogs anything that is unwanted such as viruses, worms, software behavior was never going to be more than a temporary stop gap.
+Formal verification as explored in the 1960s and 1970s was never going to be a big part of secure information systems, and the later strategy of "enumerating badness", that is the creation of software that catalogs anything that is unwanted such as viruses, worms, software behavior was never going to be more than a temporary stopgap.
 
-Defeatism is not necessary in information security. We been through formal verification and got overwhelmed by complexity. Enumerating badness and got overwhelmed by badness.
+Defeatism is not necessary in information security. We have been through formal verification and got overwhelmed by complexity. We enumerated badness and got overwhelmed by it.
 
 ## More to Read
 

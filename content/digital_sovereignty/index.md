@@ -114,7 +114,19 @@ Lastly, we need to secure trusted operations, and this is perhaps the lowest-han
 
 ### Solutions to the operations challenge
 
-Vet personnel and build in-house skills. This one is not hard to do.
+Vet personnel and build in-house skills. This one is not hard to do, but it must be structured and auditable by treating security as a management system, not a technical add-on.
+
+- Establish a security management system with clear ownership, risk acceptance authority, and periodic management reviews.
+- Classify information and services, then map classification to access control, segregation, and handling routines.
+- Enforce least-privilege operations: role-based access, short-lived credentials, and dual control for high-impact changes.
+- Reduce remote administration risk: require secure jump hosts, strong MFA, and time-boxed approvals with full session recording. Also work to avoid this type of risk by building in-house skills and refrain from buying systems that require remote administration.
+- Log everything that matters, centralize logs, and monitor for anomalies with clear escalation paths and response playbooks.
+- Practice incident response: run exercises, keep breach containment runbooks, and verify recovery with offline backups.
+- Require supplier and subcontractor controls: security clauses, audit rights, and minimum operational baselines.
+- Maintain continuity for critical services: redundant staffing, documented procedures, and tested failover.
+- Train and re-train: mandatory security awareness, operational drills, and role-specific competence requirements.
+
+These are operational guardrails, not bureaucracy. They are the minimum to keep control when systems are stressed or under attack.
 
 ## Architectural Necessities Explained
 

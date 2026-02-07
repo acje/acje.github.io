@@ -14,6 +14,7 @@
         "relref",
         "timestamping",
         "vassalization",
+        "WASI",
         "Webassembly"
     ]
 }

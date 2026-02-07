@@ -168,9 +168,16 @@ Non-solutions:
 
 ## 5. Least-privilege Interfaces
 
+Least-privilege interfaces should be the default contract surface for every component. WebAssembly (Wasm) with WASI provides a practical standard: modules start with no ambient authority and must be granted explicit, capability-scoped access to the host. This is a clear improvement over traditional APIs that inherit broad process privileges, shared file systems, and implicit network access, making boundaries fuzzy and over-permissive. With WASI, interface design is a policy lever: narrow, auditable capability sets replace sprawling API surfaces and reduce the cost of trust.
+
 ### Solutions to Least-privilege Interfaces
 
-Clearly define interfaces derived from exposed function signatures.
+Define interfaces as capability sets, not just function signatures; every call should map to a specific, auditable permission.
+Adopt WASI as the baseline host contract: no ambient authority, explicit grants for files, sockets, clocks, and randomness.
+Prefer capability-based handles over global namespaces; avoid implicit access to the host file system and network.
+Make interfaces small and versioned: narrow modules, stable IDs, and strict deprecation paths.
+Gate privileged capabilities behind policy checks, short-lived tokens, and runtime attestations.
+Require interface conformance tests and least-privilege audits as part of supply-chain certification.
 
 ## Final thoughts
 

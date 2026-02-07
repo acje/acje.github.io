@@ -19,7 +19,7 @@ Our infrastructure runs on brittle, shared systems. They fail together. The cock
 
 ## Fragile Systems, Everywhere
 
-The geopolitical rules are changing. We do not yet know them. The systems and attitudes that got us here are unlikely to carry us through. For the purpose of this article, I will defer the naming of the coming period to the historians. When considering this looming challenge it is important to realize that the adversaries and their capabilities are not the significant source of the problem. The adversary is inevitable. The big problem is our own creation of a target-rich environment of critically important systems with common vulnerabilities. There will eventually be an adversary with the means and motivation to exploit the vulnerabilities against us. The additional risk posed by a nation-state adversary is not its ability to penetrate and exploit information systems, but its ability to coordinate with other events. The list of historic attacks exploiting systemic weaknesses is long: Stuxnet, NotPetya, WannaCry, HeartBleed, SolarWinds, Colonial Pipeline operations, Ukraine energy grid attacks, and Salt Typhoon telecom attacks, to name a few famous examples. These attacks come in uneven waves. Their impact tracks the field of targets more than the skill of the attacker.
+The geopolitical rules are changing. We do not yet know them. The systems and attitudes that got us here are unlikely to carry us through. For the purpose of this article, I will defer the naming of the coming period to the historians. When considering this looming challenge, it is important to realize that the adversaries and their capabilities are not the significant source of the problem. The adversary is inevitable. The big problem is our own creation of a target-rich environment of critically important systems with common vulnerabilities. There will eventually be an adversary with the means and motivation to exploit the vulnerabilities against us. The additional risk posed by a nation-state adversary is not its ability to penetrate and exploit information systems, but its ability to coordinate with other events. The list of historic attacks exploiting systemic weaknesses is long: Stuxnet, NotPetya, WannaCry, Heartbleed, SolarWinds, the Colonial Pipeline attack, Ukraine energy grid attacks, and Salt Typhoon telecom attacks, to name a few famous examples. These attacks come in uneven waves. Their impact tracks the field of targets more than the skill of the attacker.
 
 ### Self-Organized Criticality
 
@@ -65,9 +65,9 @@ Tactical means to create defensible systems.
 
 ## Political Necessities Explained
 
-*A rising tide lifts all boats*
+*A rising tide lifts all boats.*
 
-We have created multinational organizations like ESA, CERN, and the ITER project to advance capabilities in space, science, and energy. Yet we build our societies, and even the aforementioned organizations, on digital components and services that are often built by a single, anonymous, unpaid individual, or sometimes single-sourced from a foreign company. The absurdity of this situation seems to be lost on policymakers and the industry alike. In a world of nations seeking to secure leverage for their own geopolitical power by means of controlling our supply chains, hosting, and operations, this is going to become a huge vulnerability. It simply is not sustainable for small, medium, or super powers to depend on such components and services. The vulnerability of the individual and the leverage wielded by a company dominating the delivery of a critical component is just unacceptable. This has always been the case, but now it is obvious. Politicians and top bureaucrats talk about exit strategies. An exit to what exactly? The entire industry is an entangled mesh of honey traps and velcro.
+We have created multinational organizations like ESA, CERN, and the ITER project to advance capabilities in space, science, and energy. Yet we build our societies, and even the aforementioned organizations, on digital components and services that are often built by a single, anonymous, unpaid individual, or sometimes single-sourced from a foreign company. The absurdity of this situation seems to be lost on policymakers and the industry alike. In a world of nations seeking to secure leverage for their own geopolitical power by means of controlling our supply chains, hosting, and operations, this is going to become a huge vulnerability. It simply is not sustainable for small, medium, or great powers to depend on such components and services. The vulnerability of the individual and the leverage wielded by a company dominating the delivery of a critical component is just unacceptable. This has always been the case, but now it is obvious. Politicians and top bureaucrats talk about exit strategies. An exit to what exactly? The entire industry is an entangled mesh of honey traps and velcro.
 
 ## Capabilities and Market Failures
 
@@ -92,20 +92,15 @@ These supply chains rely heavily on national or multinational technology compani
 - Publish reference implementations and compliance tests; make certification cheap and repeatable.
 - Seed adoption through public services, then expand to regulated sectors.
 - Require hosting and operations to support Wasm isolation and actor‑based service boundaries.
-
 - Set defaults through procurement in public and critical infrastructure builds; make these defaults the easiest path to pass audits.
-
 - Create a trusted supply chain; require provenance and reproducible builds.
-
 - Make risk visible: “systemic-risk labels” on components and hosting providers; tie procurement points to lower-risk stacks.
-
 - Coordinate investment: pooled, multinational funding for reference runtimes, verification tools, and actor frameworks; reduce the upfront cost hump.
-
 - Realign incentives: liability and insurance discounts for default architectures; penalties for shared‑risk dependencies not under control by a certified multinational or national organization.
 
 ## 2. Trusted hosting
 
-Trusted hosting is sort of a new problem. We used to keep our data in our own buildings, but then the cloud happened. The cloud may or may not be cheaper. That discussion is not very intelligible because it primarily depends on the technical debt, technical skill, and framing of the transition by cloud-customer management. The pricing model of the cloud provider is just an adaptation to the market. The cloud is not really about cost but about speed, or opportunity cost, if you insist.
+Trusted hosting is a relatively new problem. We used to keep our data in our own buildings, but then the cloud happened. The cloud may or may not be cheaper. That discussion is not very intelligible because it primarily depends on the technical debt, technical skill, and framing of the transition by cloud customer management. The pricing model of the cloud provider is just an adaptation to the market. The cloud is not really about cost but about speed, or opportunity cost, if you insist.
 
 ### Solutions to the hosting challenge
 
@@ -115,7 +110,7 @@ The solution to the hosting problem is relatively simple for those who used the 
 
 ## 3. Trusted operations
 
-Lastly we need to secure trusted operations, and this is perhaps the lowest-hanging fruit. Generally nations have been able to operate their own systems with vetted personnel for the most critical infrastructure and services by now. There are, however, some common flaws. Many providers of more complex systems have a tendency to require some kind of remote management solution. Some organizations also do not have the internal technical capacity to operate all their own infrastructure and services, and typically rely on third-party providers to manage parts of their systems. This creates a market for common resources with widespread access across many organizations.
+Lastly, we need to secure trusted operations, and this is perhaps the lowest-hanging fruit. Generally nations have been able to operate their own systems with vetted personnel for the most critical infrastructure and services by now. There are, however, some common flaws. Many providers of more complex systems have a tendency to require some kind of remote management solution. Some organizations also do not have the internal technical capacity to operate all their own infrastructure and services, and typically rely on third-party providers to manage parts of their systems. This creates a market for common resources with widespread access across many organizations.
 
 ### Solutions to the operations challenge
 
@@ -134,7 +129,7 @@ My previous series on Substack;
 [Part 4](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-d56)
 may serve as a more comprehensive introduction to this topic. I will describe it more briefly here.
 
-### Solutions to Maximally isolated components of least capability
+### Solutions to Maximally Isolated Components of Least Capability
 
 - Set defaults through procurement: mandate Wasm + actor‑based isolation in public and critical infrastructure builds; make it the easiest path to pass audits.
 - Create a trusted supply chain: certify Wasm runtimes, actor libraries, compilers, and toolchains; require provenance and reproducible builds.
@@ -148,10 +143,10 @@ The actor model enforces least‑privilege interfaces and message‑passing boun
 Together they match the “isolation‑first” architecture in the Digital Sovereignty roadmap, while fitting the political need for trusted supply chains, hosting, and operations.
 Practical roadmap (policy + architecture):
 
-Define a sovereign stack baseline: Wasm runtimes, actor frameworks, build systems, and registries with verifiable provenance.
-Publish reference implementations and compliance tests; make certification cheap and repeatable.
-Seed adoption through public services, then expand to regulated sectors.
-Require hosting and operations to support Wasm isolation and actor‑based service boundaries.
+- Define a sovereign stack baseline: Wasm runtimes, actor frameworks, build systems, and registries with verifiable provenance.
+- Publish reference implementations and compliance tests; make certification cheap and repeatable.
+- Seed adoption through public services, then expand to regulated sectors.
+- Require hosting and operations to support Wasm isolation and actor‑based service boundaries.
 
 Non-solutions:
 
@@ -167,9 +162,9 @@ Clearly define interfaces derived from function signatures of exposed functions.
 
 ## Final thoughts
 
-Formal verification as explored in the 1960s and 1970s was never going to be a big part of secure information systems, and the later strategy of "enumerating badness", that is the creation of software that catalogs anything that is unwanted such as viruses, worms, software behavior was never going to be more than a temporary stopgap.
-
 Defeatism is not necessary in information security. We have been through formal verification and got overwhelmed by complexity. We enumerated badness and got overwhelmed by it.
+
+Formal verification, as explored in the 1960s and 1970s, was never going to be a big part of secure information systems. The later strategy of "enumerating badness" - creating software that catalogs unwanted artifacts such as viruses, worms, and software behaviors - was never going to be more than a temporary stopgap. Now we are at the beginning of a new paradigm. The isolation of workloads to prevent cascading failures.
 
 ## More to Read
 

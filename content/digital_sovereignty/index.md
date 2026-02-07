@@ -15,7 +15,7 @@ Published 2026-01-22, Updated 2026-02-07
 
 ## The Risk We Built
 
-Our infrastructure runs on brittle, shared systems. They fail together. The cocktail of pervasiveness, commonality, and fragility creates conditions of systemic vulnerabilities, prone to cascading failures. We must set out to chart an ecosystem that drives common vulnerabilities to tolerable levels. Describing how existing information systems can be sufficiently patched and remodeled to become secure is not a goal; in fact, it is assumed to be impossible. A real rupture needs to happen, and the old systems will not likely cross the chasm. Still, the defeatism that prevails in parts of the IT industry—that we simply cannot have inherently secure systems—is equally rejected in this article. It will be asserted that such an ecosystem consists of five principal necessities. By targeting the ecosystem, every sector of society gains. This must be done through politically mandated, verifiable, and trusted supply chains, hosting, and operations. Further, this must be combined with architecture principles that limit blast radius by employing isolation as a defense-in-depth strategy and rigidly enforce least-privilege interfaces at all levels.
+Our infrastructure runs on brittle, shared systems. They fail together. The cocktail of pervasiveness, commonality, and fragility creates conditions of systemic vulnerabilities, prone to cascading failures. We must set out to chart an ecosystem that drives common vulnerabilities to tolerable levels. Describing how existing information systems can be sufficiently patched and remodeled to become secure is not a goal; in fact, it is assumed to be impossible. A real rupture needs to happen, and the old systems will not likely cross the chasm. Still, the defeatism that prevails in parts of the IT industry—that we simply cannot have inherently secure systems—is equally rejected in this article. It will be asserted that such an ecosystem consists of five principal necessities. By targeting the ecosystem, every sector of society gains. This must be done through politically mandated, verifiable, and trusted supply chains, hosting, and operations. Further, this must be combined with architectural principles that limit blast radius by employing isolation as a defense-in-depth strategy and rigidly enforce least-privilege interfaces at all levels.
 
 ## Fragile Systems, Everywhere
 
@@ -84,7 +84,7 @@ Of the three political necessities, this is the most potent for two reasons:
 
 In this document, the supply chain encompasses hardware, software, and critical services that enable the creation and operation of information systems. These services include identity and access management, code and package repositories, container registries across major clouds, and build systems such as GitHub Actions.
 
-These supply chains rely heavily on national or multinational technology companies but also on small ad-hoc groups or even individual open‑source contributors who may be unpaid, unidentified, and vulnerable to pressure from nation‑state actors.
+These supply chains rely heavily on national or multinational technology companies but also on small ad hoc groups or even individual open‑source contributors who may be unpaid, unidentified, and vulnerable to pressure from nation‑state actors.
 
 ### Solutions to the supply chain challenge
 
@@ -122,7 +122,7 @@ The scope is to point out the two most long-term, unappreciated aspects of compu
 
 ## 4. Maximally isolated components of least capability
 
-My previous series on Substack;
+My previous series on Substack:
 [Liberal democracies need a new compute stack. Part 1](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
 [Part 2](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-2fd),
 [Part 3](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-523) and
@@ -150,21 +150,21 @@ Practical roadmap (policy + architecture):
 
 Non-solutions:
 
-- Third-party code - technically ok, but impractical to control
-- Library - not sandboxed
-- Script language (Lua, embedded JS engine) - inefficient
+- Third-party code: technically acceptable, but impractical to control
+- Libraries: not sandboxed
+- Script languages (Lua, embedded JS engine): inefficient
 
 ## 5. Least-privilege Interfaces
 
 ### Solutions to Least-privilege Interfaces
 
-Clearly define interfaces derived from function signatures of exposed functions.
+Clearly define interfaces derived from exposed function signatures.
 
 ## Final thoughts
 
 Defeatism is not necessary in information security. We have been through formal verification and got overwhelmed by complexity. We enumerated badness and got overwhelmed by it.
 
-Formal verification, as explored in the 1960s and 1970s, was never going to be a big part of secure information systems. The later strategy of "enumerating badness" - creating software that catalogs unwanted artifacts such as viruses, worms, and software behaviors - was never going to be more than a temporary stopgap. Now we are at the beginning of a new paradigm. The isolation of workloads to prevent cascading failures.
+Formal verification, as explored in the 1960s and 1970s, was never going to be a big part of secure information systems. The later strategy of "enumerating badness" - creating software that catalogs unwanted artifacts such as viruses, worms, and software behaviors - was never going to be more than a temporary stopgap. Now we are at the beginning of a new paradigm: the isolation of workloads to prevent cascading failures.
 
 ## More to Read
 

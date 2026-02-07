@@ -71,7 +71,7 @@ We have created multinational organizations like ESA, CERN, and the ITER project
 
 ## Capabilities and Market Failures
 
-Some cornerstone digital capabilities must be built together, across borders. Others must be built at home. Organizations can only stand on what is made. These cornerstones do not rise from free markets or from globalization. Behavioral economics shows why the market does not create the necessary components for secure and sovereign information systems.
+Some cornerstone digital capabilities must be built together, across borders. Others must be built at home. Organizations can only stand on what is made. These cornerstones do not rise from free markets or from globalization. Behavioral economics helps explain why markets often under-provide the necessary components for secure and sovereign information systems.
 
 The gains are scattered and late. The costs are close and now. This pulls buyers toward the cheap and the quick, not the resilient. Status quo bias and switching costs hold the old dependencies in place, even when exit is possible.
 
@@ -106,11 +106,11 @@ Trusted hosting is a relatively new problem. We used to keep our data in our own
 
 Many cloud customers have experienced that once they have built an organization capable of building their own software rather than operating bought software, the cloud is not all that necessary. The agency gained from being able to build can be used to transition to any type of hosting, including your own. If, however, one has done a lift-and-shift of legacy systems from the basement to the cloud, it will be equally obvious that the lack of agency makes the cloud about as painful as the basement.
 
-The solution to the hosting problem is relatively simple for those who used the cloud transition to build agency.
+The hosting path is clearer for organizations that used the cloud transition to build agency.
 
 ## 3. Trusted operations
 
-Lastly, we need to secure trusted operations, and this is perhaps the lowest-hanging fruit. Generally nations have been able to operate their own systems with vetted personnel for the most critical infrastructure and services by now. There are, however, some common flaws. Many providers of more complex systems have a tendency to require some kind of remote management solution. Some organizations also do not have the internal technical capacity to operate all their own infrastructure and services, and typically rely on third-party providers to manage parts of their systems. This creates a market for common resources with widespread access across many organizations.
+Lastly, we need to secure trusted operations, and this is often the most tractable near-term lever. Generally nations have been able to operate their own systems with vetted personnel for the most critical infrastructure and services by now. There are, however, some common flaws. Many providers of more complex systems have a tendency to require some kind of remote management solution. Some organizations also do not have the internal technical capacity to operate all their own infrastructure and services, and typically rely on third-party providers to manage parts of their systems. This creates a market for common resources with widespread access across many organizations.
 
 ### Solutions to the operations challenge
 
@@ -172,12 +172,12 @@ Least-privilege interfaces should be the default contract surface for every comp
 
 ### Solutions to Least-privilege Interfaces
 
-Define interfaces as capability sets, not just function signatures; every call should map to a specific, auditable permission.
-Adopt WASI as the baseline host contract: no ambient authority, explicit grants for files, sockets, clocks, and randomness.
-Prefer capability-based handles over global namespaces; avoid implicit access to the host file system and network.
-Make interfaces small and versioned: narrow modules, stable IDs, and strict deprecation paths.
-Gate privileged capabilities behind policy checks, short-lived tokens, and runtime attestations.
-Require interface conformance tests and least-privilege audits as part of supply-chain certification.
+- Define interfaces as capability sets, not just function signatures; every call should map to a specific, auditable permission.
+- Adopt WASI as the baseline host contract: no ambient authority, explicit grants for files, sockets, clocks, and randomness.
+- Prefer capability-based handles over global namespaces; avoid implicit access to the host file system and network.
+- Make interfaces small and versioned: narrow modules, stable IDs, and strict deprecation paths.
+- Gate privileged capabilities behind policy checks, short-lived tokens, and runtime attestations.
+- Require interface conformance tests and least-privilege audits as part of supply-chain certification.
 
 ## Final thoughts
 

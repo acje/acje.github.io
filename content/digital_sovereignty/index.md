@@ -1,11 +1,9 @@
 ---
 title: "Digital Sovereignty"
-description: "A pragmatic roadmap to reduce systemic digital risk via politically mandated supply chains, hosting, and operations, paired with isolation-first architectures."
-aliases:
+description: "A roadmap to reduce systemic digital risk via politically mandated supply chains, hosting, and operations, paired with isolation-first architectures."
 
-- "/ecosystem/"
 date: 2026-01-22
-lastmod: 2026-02-05
+lastmod: 2026-02-06
 
 ---
 
@@ -17,7 +15,7 @@ Published 2026-01-22, Updated 2026-02-06
 
 ## The Risk We Built
 
-Our infrastructure runs on brittle, shared systems. They fail together. The cocktail of pervasiveness, commonality and fragility creates conditions of systemic vulnerabilities, prone to cascading failures. We must set out to chart an ecosystem that drives common vulnerabilities to tolerable levels. Describing how existing information systems can be sufficiently patched and remodeled to become sufficiently secured is not a goal; in fact, it is assumed to be impossible. A real rupture needs to happen, and the old systems will not likely cross the chasm. Still, the defeatism that prevails in parts of the IT industry—that we simply cannot have inherently secure systems—is equally rejected in this article. It will be asserted that such an ecosystem consists of five principal necessities. By targeting the ecosystem, every sector of society gains. This must be done through politically mandated, verifiable and trusted: supply chains, hosting, and operations. Further, this must be combined with architecture principles that limit blast radius by employing isolation as a defense-in-depth strategy and rigidly enforce least-privilege interfaces at all levels.
+Our infrastructure runs on brittle, shared systems. They fail together. The cocktail of pervasiveness, commonality, and fragility creates conditions of systemic vulnerabilities, prone to cascading failures. We must set out to chart an ecosystem that drives common vulnerabilities to tolerable levels. Describing how existing information systems can be sufficiently patched and remodeled to become secure is not a goal; in fact, it is assumed to be impossible. A real rupture needs to happen, and the old systems will not likely cross the chasm. Still, the defeatism that prevails in parts of the IT industry—that we simply cannot have inherently secure systems—is equally rejected in this article. It will be asserted that such an ecosystem consists of five principal necessities. By targeting the ecosystem, every sector of society gains. This must be done through politically mandated, verifiable, and trusted supply chains, hosting, and operations. Further, this must be combined with architecture principles that limit blast radius by employing isolation as a defense-in-depth strategy and rigidly enforce least-privilege interfaces at all levels.
 
 ## Fragile Systems, Everywhere
 
@@ -27,13 +25,13 @@ The geopolitical rules are changing. We do not yet know them. The systems and at
 
 Forest fires teach a hard rule: small sparks, big damage. The nature of the spark does not matter. The buildup in the ecosystem does. The spark is inevitable. Mathematician Per Bak and others named it: self‑organized criticality.
 
-Pervasive digital transformation can unfortunately achieve the same. We seed every sector with insecure systems, thereby creating a situation where even a single mode of attack or shared vulnerability may trigger a ripple effect through our society. This could end up tearing down critical infrastructure and services like energy, communication, healthcare, finance, transportation, and water supply. In the worst case scenario these will coordinate in time with other adversarial events.
+Pervasive digital transformation can unfortunately achieve the same. We seed every sector with insecure systems, thereby creating a situation where even a single mode of attack or shared vulnerability may trigger a ripple effect through our society. This could end up tearing down critical infrastructure and services like energy, communication, healthcare, finance, transportation, and water supply. In the worst-case scenario these will coordinate in time with other adversarial events.
 
 The fix is simple—not easy. Use politics and architecture to reshape the ecosystem that makes our systems. Three political and two architectural necessities follow. They will not erase risk; they will cut it to levels fit for critical infrastructure and services.
 
 ### Critical or Not, Built the Same
 
-Critical systems add rigor and isolation. Yet they use the many of the same components as non‑critical ones. When the functional needs are the same, there is rarely any gain in using lower‑grade software components or services in non‑critical systems. The hardware may vary somewhat more in quantity and sometimes also in quality, but most system attributes are software‑defined these days.
+Critical systems add rigor and isolation. Yet they use many of the same components as non‑critical ones. When the functional needs are the same, there is rarely any gain in using lower‑grade software components or services in non‑critical systems. The hardware may vary somewhat more in quantity and sometimes also in quality, but most system attributes are software‑defined these days.
 
 ## Where the Fight Is Won
 
@@ -54,7 +52,7 @@ We group necessities into politics and architecture. The political necessities w
 
 Strategic and operational means to sustain our ability to build and maintain
 
-- Trusted supply chain
+- Trusted supply chains
 - Trusted hosting
 - Trusted operations
 
@@ -69,9 +67,9 @@ Tactical means to create defendable systems
 
 *A rising tide lifts all boats*
 
-We have created multinational organizations like ESA, CERN and ITER project to advance capabilities in space, science and energy. Yet we build our societies, and even the aforementioned organizations on digital components and services that often is built by a singe, anonymous, unpaid individual, or sometimes single sourced form a foreign company. The absurdity of this situation seems to be lost on policymakers and the industry alike. In a world of nations seeking to secure leverage for their own geopolitical power by means of controlling our supply chains, hosting and operations this is going to become a huge vulnerability. It simply is not sustainable for small, medium or super powers to depend on such components and services. The vulnerability of the individual and the leverage wielded by a  company dominating the delivery of a critical component is just unacceptable. This has always been the case, but now it is obvious. Politicians and top bureaucrats talk about exit-strategies. An exit to what exactly? The entire industry is an entangled mesh of honey traps and velcro.
+We have created multinational organizations like ESA, CERN, and the ITER project to advance capabilities in space, science, and energy. Yet we build our societies, and even the aforementioned organizations, on digital components and services that are often built by a single, anonymous, unpaid individual, or sometimes single-sourced from a foreign company. The absurdity of this situation seems to be lost on policymakers and the industry alike. In a world of nations seeking to secure leverage for their own geopolitical power by means of controlling our supply chains, hosting, and operations, this is going to become a huge vulnerability. It simply is not sustainable for small, medium, or super powers to depend on such components and services. The vulnerability of the individual and the leverage wielded by a company dominating the delivery of a critical component is just unacceptable. This has always been the case, but now it is obvious. Politicians and top bureaucrats talk about exit strategies. An exit to what exactly? The entire industry is an entangled mesh of honey traps and velcro.
 
-## Capabilities and market failures
+## Capabilities and Market Failures
 
 Some cornerstone digital capabilities must be built together, across borders. Others must be built at home. Organizations can only stand on what is made. These cornerstones do not rise from free markets or from globalization. Behavioral economics shows why the market does not create the necessary components for secure and sovereign information systems.
 
@@ -79,16 +77,16 @@ The gains are scattered and late. The costs are close and now. This pulls buyers
 
 ## 1. Trusted supply chains
 
-Of the three political necessities, this is the most potent for two reasons;
+Of the three political necessities, this is the most potent for two reasons:
 
 - Not a lot has been done to improve the robustness of supply chains, whereas hosting and operations are more mature
-- The components available across supply chains are not delivering the necessary capabilities to build defendable information systems. But the solutions are emerging in the form of Webassembly and the actor model.
+- The components available across supply chains are not delivering the necessary capabilities to build defendable information systems. But the solutions are emerging in the form of WebAssembly and the actor model.
 
 In this document, the supply chain encompasses hardware, software, and critical services that enable the creation and operation of information systems. These services include identity and access management, code and package repositories, container registries across major clouds, and build systems such as GitHub Actions.
 
 These supply chains rely heavily on national or multi‑national technology companies but also on small ad-hoc groups or even individual open‑source contributors who may be unpaid, unidentified, and vulnerable to pressure from nation‑state actors.
 
-### Solutions to the supply chains challenge
+### Solutions to the supply chain challenge
 
 Define a sovereign stack baseline: runtimes, frameworks, build systems, and registries with verifiable provenance.
 Publish reference implementations and compliance tests; make certification cheap and repeatable.
@@ -103,7 +101,7 @@ Require hosting/operations to support Wasm isolation and actor‑based service b
 
 - Coordinate investment: pooled, multinational funding for reference runtimes, verification tools, and actor frameworks; reduce the upfront cost hump.
 
-- Realign incentives: liability and insurance discounts for default architectures; penalties for shared‑risk dependencies not under control by a certified multi national or national organization.
+- Realign incentives: liability and insurance discounts for default architectures; penalties for shared‑risk dependencies not under control by a certified multinational or national organization.
 
 ## 2. Trusted hosting
 

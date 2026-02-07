@@ -174,7 +174,7 @@ Clearly define interfaces derived from exposed function signatures.
 
 ## Final thoughts
 
-Defeatism is not necessary in information security. We tried formal verification in the 1960s and 1970s, essentially aiming to prove correctness, and we were overwhelmed by complexity. We then shifted to enumerating badness, cataloging unwanted artifacts like viruses, worms, and hostile behaviors, and we were overwhelmed again by the churn of successful attacks. Neither approach can carry the weight of pervasive digitization. The next paradigm is isolation: workloads that are sandboxed in by default so failures do not cascade, and risk is engineered down at the ecosystem level rather than chased incident by incident.
+Defeatism is not necessary in information security. We tried formal verification in the 1960s and 1970s, essentially aiming to prove correctness, and we were overwhelmed by complexity. We then shifted to enumerating badness, cataloging unwanted artifacts like viruses, worms, and hostile behaviors, and we were overwhelmed again by the churn of successful attacks. Neither approach can carry the weight of pervasive digitization. The next paradigm is isolation: workloads that are sandboxed by default so failures do not cascade, and risk is engineered down at the ecosystem level rather than chased system by system.
 
 ## More to Read
 

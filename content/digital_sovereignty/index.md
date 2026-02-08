@@ -1,6 +1,6 @@
 ---
 title: "Digital Sovereignty"
-description: "A roadmap to reduce systemic digital risk via politically mandated supply chains, hosting, and operations, paired with isolation-first architectures."
+description: ""
 
 date: 2026-01-22
 lastmod: 2026-02-07
@@ -11,11 +11,11 @@ lastmod: 2026-02-07
 
 *Break digital vassalage. Use politics and architecture to reshape the systems that run our infrastructure and services. By targeting the ecosystem, every sector of society gains.*
 
-Published 2026-01-22, Updated 2026-02-07
+Published 2026-01-22, Updated 2026-02-08
 
 ## The Risk We Built
 
-Our information systems runs on brittle, shared components and services. They fail together. The cocktail of pervasiveness, commonality, and fragility creates conditions of systemic vulnerabilities, prone to cascading failures. We must set out to chart an ecosystem that drives common vulnerabilities to tolerable levels. Describing how existing information systems can be sufficiently patched and remodeled to become secure is not a goal; in fact, it is assumed to be impossible. A real rupture needs to happen, and the old systems will not likely cross the chasm. Still, the defeatism that prevails in parts of the IT industry—that we simply cannot have inherently secure systems—is equally rejected in this article. It will be asserted that such an ecosystem consists of five principal necessities. By targeting the ecosystem, every sector of society gains. This must be done through politically mandated, verifiable, and trusted supply chains, hosting, and operations. Further, this must be combined with architectural principles that limit blast radius by employing isolation as a defense-in-depth strategy and rigidly enforce least-privilege interfaces at all levels.
+Our information systems run on brittle, shared components and services. They fail together. The cocktail of pervasiveness, commonality, and fragility creates conditions of systemic vulnerabilities, prone to cascading failures. We must set out to chart an ecosystem that drives common vulnerabilities to tolerable levels. Describing how existing information systems can be sufficiently patched and remodeled to become secure is not a goal; in fact, it is assumed to be impossible. A real rupture needs to happen, and the old systems will not likely cross the chasm. Still, the defeatism that prevails in parts of the IT industry—that we simply cannot have inherently secure systems—is equally rejected in this article. It will be asserted that such an ecosystem consists of five principal necessities. By targeting the ecosystem, every sector of society gains. This must be done through politically mandated, verifiable, and trusted supply chains, hosting, and operations. Further, this must be combined with architectural principles that limit blast radius by employing isolation as a defense-in-depth strategy and rigidly enforce least-privilege interfaces at all levels.
 
 ## Fragile Systems, Everywhere
 
@@ -32,6 +32,10 @@ The fix is simple—not easy. Use politics and architecture to reshape the ecosy
 ### Critical or Not, Built the Same
 
 Critical systems add rigor and isolation. Yet they use many of the same components as non‑critical ones. When the functional needs are the same, there is rarely any gain in using lower‑grade software components or services in non‑critical systems. The hardware may vary somewhat more in quantity and sometimes also in quality, but most system attributes are software‑defined these days.
+
+## Threat model
+
+The threat model adopted here combines nation‑state coercion, software supply‑chain compromise, and infrastructure fragility. It is argued that these cannot be treated in isolation.
 
 ## Where the Fight Is Won
 

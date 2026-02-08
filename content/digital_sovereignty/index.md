@@ -23,7 +23,7 @@ The geopolitical rules are changing. We do not yet know them. The systems and at
 
 ### Self-Organized Criticality
 
-Forest fires teach a hard rule: small sparks, big damage. The nature of the spark does not matter. The buildup in the ecosystem does. The spark is inevitable. Mathematician Per Bak and others named it: self‑organized criticality.
+Forest fires teach a hard rule: small sparks, big damage. The nature of the spark does not matter. The buildup in the ecosystem does. The spark is inevitable. Mathematician Per Bak and others named it: self‑organized criticality. These systems are e stabilized by managing the buildup of potential in the environment, not by supressing trigger events.
 
 Pervasive digital transformation can unfortunately achieve the same. We seed every sector with insecure systems, thereby creating a situation where even a single mode of attack or shared vulnerability may trigger a ripple effect through our society. This could end up tearing down critical infrastructure and services like energy, communication, healthcare, finance, transportation, and water supply. In the worst-case scenario these will coordinate in time with other adversarial events.
 

@@ -146,6 +146,18 @@ My previous series on Substack:
 [Part 4](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-d56)
 may serve as a more comprehensive introduction to this topic. I will describe it more briefly here.
 
+### Summary of the Four-Part Series
+
+The series establishes a geopolitical and technical case for combining WebAssembly (Wasm) and the actor model to achieve durable isolation in information systems.
+
+**Part 1** argues that digital sovereignty requires a low-complexity, secure, and fast compute stack. Liberal democracies face dependencies on adversarial regimes (Russian energy, Chinese manufacturing, questionable American security commitments) and need defensible systems that preserve trust and transparency while shifting cyber battlefields in favor of defenders.
+
+**Part 2** proposes a strategic contract modeled on Nvidia's success with CUDA: establish a software-defined interface (Wasm + actor model) that allows incremental migration and fast iteration cycles, with eventual hardware support. The actor model (Carl Hewitt) provides isolation through private state and message passing. Wasm delivers sandboxing, polyglot support, and capability-based interfaces. Wasmcloud demonstrates a working implementation combining both.
+
+**Part 3** diagnoses the problem: current IT stacks are "ossified" at lower layers due to conflicting incentives—hardware seeks economy of scale and backward compatibility, software seeks economy of composition. The result is the von Neumann bottleneck, where shared memory becomes both a performance wall and an exploitable communication channel. Software-based isolation faces a credible commitment problem: its flexibility means it can't guarantee future behavior, creating strategic vulnerability. Hardware-backed isolation is necessary to establish trust.
+
+**Part 4** distinguishes "pliable containment" (software isolation on traditional architectures) from "durable isolation" (hardware-backed separation). Software actor frameworks on von Neumann machines provide "happy-path actors" that fail under adversarial pressure. The series proposes a cluster-on-a-chip architecture with actor enclaves, where each actor is a physically isolated compute unit with private state. This enables arbitrary scaling, eliminates cascading failures, and shifts from "maximum capability" designs (C, C++, shared memory) to "enabling constraints" (Wasm, actors, capability-based security, tagged unions). The evolution: single actor paradigm → containerization → Wasm sandboxing → actor enclaves with durable isolation.
+
 ### Solutions to Maximally Isolated Components of Least Capability
 
 - Set defaults through procurement: mandate Wasm + actor‑based isolation in public and critical infrastructure builds; make it the easiest path to pass audits.
@@ -176,6 +188,8 @@ Non-solutions:
 Least-privilege interfaces should be the default contract surface for every component. WebAssembly (Wasm) with WASI provides a practical standard: modules start with no ambient authority and must be granted explicit, capability-scoped access to the host. This is a clear improvement over traditional APIs that inherit broad process privileges, shared file systems, and implicit network access, making boundaries fuzzy and over-permissive. With WASI, interface design is a policy lever: narrow, auditable capability sets replace sprawling API surfaces and reduce the cost of trust.
 
 ### Solutions to Least-privilege Interfaces
+
+Security boundaries fail when they are implicit. In many systems, permission is assumed by proximity (e.g., 'root' user, internal network), leading to 'pliable containment' where a single breach grants total control. Best practice demands that interfaces function as strict contracts: every interaction must require an explicit, unforgeable capability token.
 
 - Define interfaces as capability sets, not just function signatures; every call should map to a specific, auditable permission.
 - Adopt WASI as the baseline host contract: no ambient authority, explicit grants for files, sockets, clocks, and randomness.

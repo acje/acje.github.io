@@ -23,7 +23,7 @@ The geopolitical rules are changing. We do not yet know them. The systems and at
 
 ### Self-Organized Criticality
 
-Forest fires teach a hard rule: small sparks, big damage. The nature of the spark does not matter. The buildup in the ecosystem does. The spark is inevitable. Mathematician Per Bak and others named it: self‑organized criticality. These systems are stabilized by managing the buildup of potential in the environment, not by supressing trigger events.
+Forest fires teach a hard rule: small sparks, big damage. The nature of the spark does not matter. The buildup in the ecosystem does. The spark is inevitable. Mathematician Per Bak and others named it: self‑organized criticality. These systems are stabilized by managing the buildup of potential in the environment, not by suppressing trigger events.
 
 Pervasive digital transformation can unfortunately achieve the same. We seed every sector with insecure systems, thereby creating a situation where even a single mode of attack or shared vulnerability may trigger a ripple effect through our society. This could end up tearing down critical infrastructure and services like energy, communication, healthcare, finance, transportation, and water supply. In the worst-case scenario these will coordinate in time with other adversarial events.
 
@@ -127,6 +127,8 @@ Vet personnel and build in-house skills. This one is not hard to do, but it must
 - Train and re-train: mandatory security awareness, operational drills, and role-specific competence requirements.
 
 These are operational guardrails, not bureaucracy. They are the minimum to keep control when systems are stressed or under attack.
+
+There is a specific field of operations within the field of computer engineering that is best known as "chaos engineering" it is the art of continuously injecting failure into running production systems to discover and improve how they fail. A lot of information systems are deemed as done when they solve the tasks they were supposed to solve when given the expected inputs. The problem is that this leaves out the much broader problem of implementing failure modes. That is the implementation of what the system should not do when it experiences and unwanted or unexpected event. Any system of importance should be under a chaos engineering regime and this should also be formally required.
 
 ## Architectural Necessities Explained
 

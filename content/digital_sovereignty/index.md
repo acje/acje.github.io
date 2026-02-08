@@ -25,7 +25,7 @@ The geopolitical rules are changing. We do not yet know them. The systems and at
 
 Forest fires teach a hard rule: small sparks, big damage. The nature of the spark does not matter. The buildup in the ecosystem does. The spark is inevitable. Mathematician Per Bak and others named it: self‑organized criticality. These systems are stabilized by managing the buildup of potential in the environment, not by suppressing trigger events.
 
-Pervasive digital transformation can unfortunately achieve the same. We seed every sector with insecure systems, thereby creating a situation where even a single mode of attack or shared vulnerability may trigger a ripple effect through our society. This could end up tearing down critical infrastructure and services like energy, communication, healthcare, finance, transportation, and water supply. In the worst-case scenario these will coordinate in time with other adversarial events.
+Pervasive digital transformation can unfortunately achieve the same. We seed every sector with the same insecure components, shared services and architectures with weak forms of isolation, thereby creating a situation where even a single mode of attack or shared vulnerability may trigger a ripple effect through our society. This could end up tearing down critical infrastructure and services within defense, energy, communication, healthcare, finance, transportation, and water supply. In the worst-case scenario these will coordinate in time with other adversarial events.
 
 The fix is simple—not easy. Use politics and architecture to reshape the ecosystem that makes our systems. Three political and two architectural necessities follow. They will not erase risk; they will cut it to levels fit for critical infrastructure and services.
 
@@ -83,8 +83,7 @@ The gains are scattered and late. The costs are close and now. This pulls buyers
 
 Of the three political necessities, this is the most potent for two reasons:
 
-- Not a lot has been done to improve the robustness of supply chains, whereas hosting and operations are more mature
-- The components available across supply chains are not delivering the necessary capabilities to build defensible information systems. But the solutions are emerging in the form of WebAssembly and the actor model.
+Number one, not a lot has been done to improve the robustness of supply chains, whereas hosting and operations are more mature. Secondly The components available across supply chains today, are not delivering the necessary capabilities to build defensible information systems. Some promising solutions are emerging on the horizon in the form of WebAssembly and the actor model. These also represent an opportunity to establish a new supply chain ecosystem for defensible information systems. This will be further explored in the chapter "Architectural Necessities Explained".
 
 In this document, the supply chain encompasses hardware, software, and critical services that enable the creation and operation of information systems. These services include identity and access management, code and package repositories, container registries across major clouds, and build systems such as GitHub Actions.
 

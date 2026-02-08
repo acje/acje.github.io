@@ -81,9 +81,9 @@ The gains are scattered and late. The costs are close and now. This pulls buyers
 
 ## 1. Trusted supply chains
 
-Of the three political necessities, this is the most potent for two reasons:
+Of the three political necessities, this is the most potent for three reasons:
 
-Number one, not a lot has been done to improve the robustness of supply chains, whereas hosting and operations are more mature. Secondly The components available across supply chains today, are not delivering the necessary capabilities to build defensible information systems. Some promising solutions are emerging on the horizon in the form of WebAssembly and the actor model. These also represent an opportunity to establish a new supply chain ecosystem for defensible information systems. This will be further explored in the chapter "Architectural Necessities Explained".
+Number one, not a lot has been done to improve the robustness of supply chains, whereas hosting and operations are more mature. Secondly The components available across supply chains today, are not delivering the necessary capabilities to build defensible information systems. Some promising solutions are emerging on the horizon in the form of WebAssembly and the actor model. These also represent an opportunity to establish a new supply chain ecosystem for defensible information systems. This will be further explored in the chapter "Architectural Necessities Explained". Thirdly it is much less effort to modify an immature supply chain than a mature one based on complexity alone.
 
 In this document, the supply chain encompasses hardware, software, and critical services that enable the creation and operation of information systems. These services include identity and access management, code and package repositories, container registries across major clouds, and build systems such as GitHub Actions.
 

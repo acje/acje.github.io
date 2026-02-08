@@ -1,6 +1,6 @@
 ---
 title: "Digital Sovereignty"
-description: "Why systemic risk demands a new digital ecosystem—and the five necessities to make it real. Linking resilience engineering, security, and political economy, behavioral economy"
+description: "Why systemic risk demands a new digital ecosystem—and the five necessities to make it real. Linking resilience engineering, security, and political economy, behavioral economics"
 
 date: 2026-01-22
 lastmod: 2026-02-07
@@ -25,7 +25,7 @@ The geopolitical rules are changing. We do not yet know them. The systems and at
 
 Forest fires teach a hard rule: small sparks, big damage. The nature of the spark does not matter. The buildup in the ecosystem does. The spark is inevitable. Mathematician Per Bak and others named it: self‑organized criticality. These systems are stabilized by managing the buildup of potential in the environment, not by suppressing trigger events.
 
-Pervasive digital transformation can unfortunately achieve the same. We seed every sector with the same insecure components, shared services and architectures with weak forms of isolation, thereby creating a situation where even a single mode of attack or shared vulnerability may trigger a ripple effect through our society. This could end up tearing down critical infrastructure and services within defense, energy, communication, healthcare, finance, transportation, and water supply. In the worst-case scenario these will coordinate in time with other adversarial events.
+Pervasive digital transformation can, unfortunately, achieve the same. We seed every sector with the same insecure components, shared services and architectures with weak forms of isolation, thereby creating a situation where even a single mode of attack or shared vulnerability may trigger a ripple effect through our society. This could end up tearing down critical infrastructure and services within defense, energy, communication, healthcare, finance, transportation, and water supply. In the worst-case scenario, these will coordinate in time with other adversarial events.
 
 The fix is simple—not easy. Use politics and architecture to reshape the ecosystem that makes our systems. Three political and two architectural necessities follow. They will not erase risk; they will cut it to levels fit for critical infrastructure and services.
 
@@ -71,7 +71,7 @@ Tactical means to create defensible systems.
 
 *A rising tide lifts all boats.*
 
-We have created multinational organizations like ESA, CERN, and the ITER project to advance capabilities in space, science, and energy. Yet we build our societies, and even the aforementioned organizations, on digital components and services that are often built by a single, anonymous, unpaid individual, or sometimes single-sourced from a foreign company. The strategic vulnerability inherent in this situation seems to be lost on policymakers and the industry alike. In a world of nations seeking to secure leverage for their own geopolitical power by means of controlling our supply chains, hosting, and operations, this is going to become a huge vulnerability. It simply is not sustainable for small, medium, or great powers to depend on such components and services. The vulnerability of the individual and the leverage wielded by a company dominating the delivery of a critical component is just unacceptable. This has always been the case, but now it is obvious. Politicians and top bureaucrats talk about exit strategies. An exit to what exactly? The entire industry is an entangled mesh of honey traps and velcro.
+We have created multinational organizations like ESA, CERN, and the ITER project to advance capabilities in space, science, and energy. Yet we build our societies, and even the aforementioned organizations, on digital components and services that are often built by a single, anonymous, unpaid individual, or sometimes single-sourced from a foreign company. The strategic vulnerability inherent in this situation seems to be lost on policymakers and the industry alike. In a world of nations seeking to secure leverage for their own geopolitical power by means of controlling our supply chains, hosting, and operations, this is going to become a huge vulnerability. It simply is not sustainable for small, medium, or great powers to depend on such components and services. The vulnerability of the individual and the leverage wielded by a company dominating the delivery of a critical component are unacceptable. This has always been the case, but now it is obvious. Politicians and top bureaucrats talk about exit strategies. An exit to what exactly? The entire industry is an entangled mesh of honey traps and velcro.
 
 ## Capabilities and Market Failures
 
@@ -83,7 +83,7 @@ The gains are scattered and late. The costs are close and now. This pulls buyers
 
 Of the three political necessities, this is the most potent for three reasons:
 
-Number one, not a lot has been done to improve the robustness of supply chains, whereas hosting and operations are more mature. Secondly The components available across supply chains today, are not delivering the necessary capabilities to build defensible information systems. Some promising solutions are emerging on the horizon in the form of WebAssembly and the actor model. These also represent an opportunity to establish a new supply chain ecosystem for defensible information systems. This will be further explored in the chapter "Architectural Necessities Explained". Thirdly it is much less effort to modify an immature supply chain than a mature one based on complexity alone.
+First, not a lot has been done to improve the robustness of supply chains, whereas hosting and operations are more mature. Second, the components available across supply chains today are not delivering the necessary capabilities to build defensible information systems. Some promising solutions are emerging on the horizon in the form of WebAssembly and the actor model. These also represent an opportunity to establish a new supply chain ecosystem for defensible information systems. This will be further explored in the section "Architectural Necessities Explained". Third, it is much less effort to modify an immature supply chain than a mature one based on complexity alone.
 
 In this document, the supply chain encompasses hardware, software, and critical services that enable the creation and operation of information systems. These services include identity and access management, code and package repositories, container registries across major clouds, and build systems such as GitHub Actions.
 
@@ -113,7 +113,7 @@ The hosting path is clearer for organizations that used the cloud transition to 
 
 ## 3. Trusted operations
 
-Lastly, we need to secure trusted operations, and this is often the most tractable near-term lever. Generally nations have been able to operate their own systems with vetted personnel for the most critical infrastructure and services by now. There are, however, some common flaws. Many providers of more complex systems have a tendency to require some kind of remote management solution. Some organizations also do not have the internal technical capacity to operate all their own infrastructure and services, and typically rely on third-party providers to manage parts of their systems. This creates a market for common resources with widespread access across many organizations.
+Lastly, we need to secure trusted operations, and this is often the most tractable near-term lever. Generally, nations have been able to operate their own systems with vetted personnel for the most critical infrastructure and services by now. There are, however, some common flaws. Many providers of more complex systems have a tendency to require some kind of remote management solution. Some organizations also do not have the internal technical capacity to operate all their own infrastructure and services, and typically rely on third-party providers to manage parts of their systems. This creates a market for common resources with widespread access across many organizations.
 
 ### Solutions to the operations challenge
 
@@ -122,16 +122,16 @@ Vet personnel and build in-house skills. This one is not hard to do, but it must
 - Establish a security management system with clear ownership, risk acceptance authority, and periodic management reviews.
 - Classify information and services, then map classification to access control, segregation, and handling routines.
 - Enforce least-privilege operations: role-based access, short-lived credentials, and dual control for high-impact changes.
-- Reduce remote administration risk: require secure jump hosts, strong MFA, and time-boxed approvals with full session recording. Also work to avoid this type of risk by building in-house skills and refrain from buying systems that require remote administration.
+- Reduce remote administration risk: require secure jump hosts, strong MFA, and time-boxed approvals with full session recording. Also, work to avoid this type of risk by building in-house skills and refraining from buying systems that require remote administration.
 - Log everything that matters, centralize logs, and monitor for anomalies with clear escalation paths and response playbooks.
 - Practice incident response: run exercises, keep breach containment runbooks, and verify recovery with offline backups.
 - Require supplier and subcontractor controls: security clauses, audit rights, and minimum operational baselines.
 - Maintain continuity for critical services: redundant staffing, documented procedures, and tested failover.
-- Train and re-train: mandatory security awareness, operational drills, and role-specific competence requirements.
+- Train and retrain: mandatory security awareness, operational drills, and role-specific competence requirements.
 
 These are operational guardrails, not bureaucracy. They are the minimum to keep control when systems are stressed or under attack.
 
-There is a specific field of operations within the field of computer engineering that is best known as "chaos engineering". This is controlled experimentation on systems to build confidence in resilience and to quantify resilience engineering properties such as graceful degradation, recovery time objectives, and safety margins under fault. A lot of information systems are deemed as done when they solve the tasks they were supposed to solve when given the expected inputs. The problem is that this leaves out the much broader problem of implementing failure modes. That is the implementation of what the system should not do when it experiences and unwanted or unexpected event. Any system of importance should be under a chaos engineering regime and this should also be formally required.
+There is a specific field of operations within the field of computer engineering that is best known as "chaos engineering". This is controlled experimentation on systems to build confidence in resilience and to quantify resilience engineering properties such as graceful degradation, recovery time objectives, and safety margins under fault. A lot of information systems are deemed as done when they solve the tasks they were supposed to solve when given the expected inputs. The problem is that this leaves out the much broader problem of implementing failure modes. That is the implementation of what the system should not do when it experiences an unwanted or unexpected event. Any system of importance should be under a chaos engineering regime and this should also be formally required.
 
 ## Architectural Necessities Explained
 

@@ -128,7 +128,7 @@ Vet personnel and build in-house skills. This one is not hard to do, but it must
 
 These are operational guardrails, not bureaucracy. They are the minimum to keep control when systems are stressed or under attack.
 
-There is a specific field of operations within the field of computer engineering that is best known as "chaos engineering" it is the art of continuously injecting failure into running production systems to discover and improve how they fail. A lot of information systems are deemed as done when they solve the tasks they were supposed to solve when given the expected inputs. The problem is that this leaves out the much broader problem of implementing failure modes. That is the implementation of what the system should not do when it experiences and unwanted or unexpected event. Any system of importance should be under a chaos engineering regime and this should also be formally required.
+There is a specific field of operations within the field of computer engineering that is best known as "chaos engineering". This is controlled experimentation on systems to build confidence in resilience. A lot of information systems are deemed as done when they solve the tasks they were supposed to solve when given the expected inputs. The problem is that this leaves out the much broader problem of implementing failure modes. That is the implementation of what the system should not do when it experiences and unwanted or unexpected event. Any system of importance should be under a chaos engineering regime and this should also be formally required.
 
 ## Architectural Necessities Explained
 

@@ -1,9 +1,9 @@
 ---
 title: "Digital Sovereignty"
-description: "Why systemic risk demands a new digital ecosystem—and the five necessities to make it real. Linking resilience engineering, security, and political economy, behavioral economics"
+description: "Why systemic risk demands a new digital ecosystem—and the five necessities to make it real. Linking resilience engineering, security, political economy, and behavioral economics"
 
 date: 2026-01-22
-lastmod: 2026-02-07
+lastmod: 2026-02-11
 
 ---
 
@@ -19,11 +19,11 @@ Our information systems run on brittle, shared components and services. They fai
 
 ## Fragile Systems, Everywhere
 
-The geopolitical rules are changing. We do not yet know them. The systems and attitudes that got us here are unlikely to carry us through. When considering this looming challenge, it is important to realize that the adversaries and their capabilities are not the significant source of the problem. The adversary is inevitable. The significant problem is our own creation of a target-rich environment of critically important systems with shared and interconnected vulnerabilities. There will eventually be an adversary with the means and motivation and opportunity to exploit the vulnerabilities against us, at costs we have yet to experience. The additional risk posed by a nation-state adversary is not its ability to penetrate and exploit information systems, but its ability to coordinate with other events. The list of historic attacks exploiting systemic weaknesses is long: Stuxnet, NotPetya, WannaCry, Heartbleed, SolarWinds, the Colonial Pipeline attack, Ukraine energy grid attacks, and Salt Typhoon telecom attacks, to name a few famous examples. These attacks come in uneven waves. Their impact tracks the field of targets more than the skill of the attacker.
+The geopolitical rules are changing. We do not yet know them. The systems and attitudes that got us here are unlikely to carry us through. When considering this looming challenge, it is important to realize that the adversaries and their capabilities are not the significant source of the problem. The adversary is inevitable. The significant problem is our own creation of a target-rich environment of critically important systems with shared and interconnected vulnerabilities. There will eventually be an adversary with the means, motivation, and opportunity to exploit the vulnerabilities against us, at costs we have yet to experience. The additional risk posed by a nation-state adversary is not its ability to penetrate and exploit information systems, but its ability to coordinate with other events. The list of historic attacks exploiting systemic weaknesses is long: Stuxnet, NotPetya, WannaCry, Heartbleed, SolarWinds, the Colonial Pipeline attack, Ukraine energy grid attacks, and Salt Typhoon telecom attacks, to name a few famous examples. These attacks come in uneven waves. Their impact tracks the field of targets more than the skill of the attacker.
 
 ### Self-Organized Criticality
 
-Forest fires teach a hard rule: small sparks, big damage. The nature of the spark does not matter. The buildup in the ecosystem does. The spark is inevitable. Mathematician Per Bak and others named it: self‑organized criticality. These systems are stabilized by managing the buildup of potential in the environment, not by suppressing trigger events.
+Forest fires teach a hard rule: small sparks, big damage. The nature of the spark does not matter. The buildup in the ecosystem does. The spark is inevitable. Mathematician Per Bak and others named it: self‑organized criticality. These systems are stabilized by managing the buildup of potential in the environment, not by suppressing trigger events. In fact, we can improve by creating more trigger events. This is known as chaos engineering in the IT industry.
 
 Pervasive digital transformation can, unfortunately, achieve the same. We seed every sector with the same insecure components, shared services and architectures with weak forms of isolation, thereby creating a situation where even a single mode of attack or shared vulnerability may trigger a ripple effect through our society. This could end up tearing down critical infrastructure and services within defense, energy, communication, healthcare, finance, transportation, and water supply. In the worst-case scenario, these will coordinate in time with other adversarial events.
 
@@ -33,7 +33,7 @@ The fix is simple—not easy. Use politics and architecture to reshape the ecosy
 
 Critical systems add rigor and isolation. Yet they use many of the same components as non‑critical ones. When the functional needs are the same, there is rarely any gain in using lower‑grade software components or services in non‑critical systems. The hardware may vary somewhat more in quantity and sometimes also in quality, but most system attributes are software‑defined these days.
 
-## Threat model
+## Threat Model
 
 The threat model adopted here combines nation‑state coercion, software supply‑chain compromise, and infrastructure fragility. It is argued that these cannot be treated in isolation.
 
@@ -79,7 +79,7 @@ Some cornerstone digital capabilities must be built together, across borders. Ot
 
 The gains are scattered and late. The costs are close and now. This pulls buyers toward the cheap and the quick, not the resilient. Status quo bias and switching costs hold the old dependencies in place, even when exit is possible.
 
-## 1. Trusted supply chains
+## 1. Trusted Supply Chains
 
 Of the three political necessities, this is the most potent for three reasons:
 
@@ -89,7 +89,7 @@ In this document, the supply chain encompasses hardware, software, and critical 
 
 These supply chains rely heavily on national or multinational technology companies but also on small ad hoc groups or even individual open‑source contributors who may be unpaid, unidentified, and vulnerable to pressure from nation‑state actors.
 
-### Solutions to the supply chain challenge
+### Solutions to the Supply Chain Challenge
 
 - Define a sovereign stack baseline: runtimes, frameworks, build systems, and registries with verifiable provenance.
 - Publish reference implementations and compliance tests; make certification cheap and repeatable.
@@ -101,21 +101,21 @@ These supply chains rely heavily on national or multinational technology compani
 - Coordinate investment: pooled, multinational funding for reference runtimes, verification tools, and actor frameworks; reduce the upfront cost hump.
 - Realign incentives: liability and insurance discounts for default architectures; penalties for shared‑risk dependencies not under control by a certified multinational or national organization.
 
-## 2. Trusted hosting
+## 2. Trusted Hosting
 
 Trusted hosting is a relatively new problem. We used to keep our data in our own buildings, but then the cloud happened. The cloud may or may not be cheaper. That discussion is not very intelligible because it primarily depends on the technical debt, technical skill, and framing of the transition by cloud customer management. The pricing model of the cloud provider is just an adaptation to the market. The cloud is not really about cost but about speed, or opportunity cost, if you insist.
 
-### Solutions to the hosting challenge
+### Solutions to the Hosting Challenge
 
 Many cloud customers have experienced that once they have built an organization capable of building their own software rather than operating bought software, the cloud is not all that necessary. The agency gained from being able to build can be used to transition to any type of hosting, including your own. If, however, one has done a lift-and-shift of legacy systems from the basement to the cloud, it will be equally obvious that the lack of agency makes the cloud about as painful as the basement.
 
 The hosting path is clearer for organizations that used the cloud transition to build agency.
 
-## 3. Trusted operations
+## 3. Trusted Operations
 
 Lastly, we need to secure trusted operations, and this is often the most tractable near-term lever. Generally, nations have been able to operate their own systems with vetted personnel for the most critical infrastructure and services by now. There are, however, some common flaws. Many providers of more complex systems have a tendency to require some kind of remote management solution. Some organizations also do not have the internal technical capacity to operate all their own infrastructure and services, and typically rely on third-party providers to manage parts of their systems. This creates a market for common resources with widespread access across many organizations.
 
-### Solutions to the operations challenge
+### Solutions to the Operations Challenge
 
 Vet personnel and build in-house skills. This one is not hard to do, but it must be structured and auditable by treating security as a management system, not a technical add-on.
 
@@ -137,7 +137,7 @@ There is a specific field of operations within the field of computer engineering
 
 The scope is to point out the two most long-term, unappreciated aspects of computer engineering, not to enumerate every technical lever readily available to us. Hence there will not be a rich discussion about distributed computing. That topic is well covered and understood, albeit complex.
 
-## 4. Maximally isolated components of least capability
+## 4. Maximally Isolated Components of Least Capability
 
 My previous series on Substack:
 [Liberal democracies need a new compute stack. Part 1](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
@@ -152,7 +152,7 @@ The series establishes a geopolitical and technical case for combining WebAssemb
 
 **Part 1** argues that digital sovereignty requires a low-complexity, secure, and fast compute stack. Liberal democracies face dependencies on adversarial regimes (Russian energy, Chinese manufacturing, questionable American security commitments) and need defensible systems that preserve trust and transparency while shifting cyber battlefields in favor of defenders.
 
-**Part 2** proposes a strategic contract modeled on Nvidia's success with CUDA: establish a software-defined interface (Wasm + actor model) that allows incremental migration and fast iteration cycles, with eventual hardware support. The actor model (Carl Hewitt) provides isolation through private state and message passing. Wasm delivers sandboxing, polyglot support, and capability-based interfaces. Wasmcloud demonstrates a working implementation combining both.
+**Part 2** proposes a strategic contract modeled on Nvidia's success with CUDA: establish a software-defined interface (Wasm + actor model) that allows incremental migration and fast iteration cycles, with eventual hardware support. The actor model (Carl Hewitt) provides isolation through private state and message passing. Wasm delivers sandboxing, polyglot support, and capability-based interfaces. wasmCloud demonstrates a working implementation combining both.
 
 **Part 3** diagnoses the problem: current IT stacks are "ossified" at lower layers due to conflicting incentives—hardware seeks economy of scale and backward compatibility, software seeks economy of composition. The result is the von Neumann bottleneck, where shared memory becomes both a performance wall and an exploitable communication channel. Software-based isolation faces a credible commitment problem: its flexibility means it can't guarantee future behavior, creating strategic vulnerability. Hardware-backed isolation is necessary to establish trust.
 
@@ -183,11 +183,11 @@ Non-solutions:
 - Libraries: not sandboxed
 - Script languages (Lua, embedded JS engine): inefficient
 
-## 5. Least-privilege Interfaces
+## 5. Least-Privilege Interfaces
 
 Least-privilege interfaces should be the default contract surface for every component. WebAssembly (Wasm) with WASI provides a practical standard: modules start with no ambient authority and must be granted explicit, capability-scoped access to the host. This is a clear improvement over traditional APIs that inherit broad process privileges, shared file systems, and implicit network access, making boundaries fuzzy and over-permissive. With WASI, interface design is a policy lever: narrow, auditable capability sets replace sprawling API surfaces and reduce the cost of trust.
 
-### Solutions to Least-privilege Interfaces
+### Solutions to Least-Privilege Interfaces
 
 Security boundaries fail when they are implicit. In many systems, permission is assumed by proximity (e.g., 'root' user, internal network), leading to 'pliable containment' where a single breach grants total control. Best practice demands that interfaces function as strict contracts: every interaction must require an explicit, unforgeable capability token.
 
@@ -198,7 +198,7 @@ Security boundaries fail when they are implicit. In many systems, permission is 
 - Gate privileged capabilities behind policy checks, short-lived tokens, and runtime attestations.
 - Require interface conformance tests and least-privilege audits as part of supply-chain certification.
 
-## Final thoughts
+## Final Thoughts
 
 Defeatism is not necessary in information security. We tried formal verification in the 1960s and 1970s, essentially aiming to prove correctness, and we were overwhelmed by complexity. We then shifted to enumerating badness, cataloging unwanted artifacts like viruses, worms, and hostile behaviors, and we were overwhelmed again by the churn of successful attacks. Neither approach can carry the weight of pervasive digitization. The next paradigm could be isolation and verified ecosystems: workloads that are sandboxed by default so failures do not cascade, and risk is engineered down at the ecosystem level rather than chased system by system.
 

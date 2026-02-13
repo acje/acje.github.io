@@ -9,7 +9,7 @@ lastmod: 2026-02-11
 
 # Digital Sovereignty
 
-![](Borg.png)
+![Borg](Borg.png)
 
 *Break digital vassalage. Use politics and architecture to reshape the systems that run our infrastructure and services. By targeting the ecosystem, every sector of society gains.*
 

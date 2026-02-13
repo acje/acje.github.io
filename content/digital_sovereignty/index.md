@@ -9,6 +9,8 @@ lastmod: 2026-02-11
 
 # Digital Sovereignty
 
+![](Borg.png)
+
 *Break digital vassalage. Use politics and architecture to reshape the systems that run our infrastructure and services. By targeting the ecosystem, every sector of society gains.*
 
 Published 2026-01-22, Updated 2026-02-08
@@ -138,6 +140,8 @@ There is a specific field of operations within the field of computer engineering
 The scope is to point out the two most long-term, unappreciated aspects of computer engineering, not to enumerate every technical lever readily available to us. Hence there will not be a rich discussion about distributed computing. That topic is well covered and understood, albeit complex.
 
 ## 4. Maximally Isolated Components of Least Capability
+
+![](Borg2.png)
 
 My previous series on Substack:
 [Liberal democracies need a new compute stack. Part 1](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)

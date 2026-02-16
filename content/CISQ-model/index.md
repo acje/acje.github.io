@@ -5,6 +5,8 @@ aliases:
 ---
 # A structured view on information security
 
+Please use this instead: [CISQ maturity levels](/CISQ-maturity/)
+
 ## The CISQ-model hypothesis
 
 ### What is the CISQ-model?

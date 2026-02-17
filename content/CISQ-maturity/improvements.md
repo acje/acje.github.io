@@ -5,7 +5,7 @@ aliases:
 ---
 # CISQ model improvements
 
-[Back to CISQ maturity levels](/CISQ-maturity/)
+[Back to CISQ maturity levels]({{< relref "CISQ-maturity/_index.md" >}})
 
 ## Academic review of the current CISQ model
 
@@ -40,9 +40,9 @@ For final release, define a minimal formal layer that keeps the model understand
 
 ### Deliverables
 
-- [Formal notation appendix in the model documentation](formal-appendix.md)
-- [Composition table with symbolic and prose definitions](formal-appendix.md)
-- [Normative interpretation guide with examples and counterexamples](formal-appendix.md#examples-and-counterexamples)
+- [Formal notation appendix in the model documentation]({{< relref "CISQ-maturity/formal-appendix.md" >}})
+- [Composition table with symbolic and prose definitions]({{< relref "CISQ-maturity/formal-appendix.md" >}})
+- [Normative interpretation guide with examples and counterexamples]({{< relref "CISQ-maturity/formal-appendix.md" >}}#examples-and-counterexamples)
 
 ## Improvement 2: Empirical validation and interoperability mapping
 
@@ -63,9 +63,9 @@ For final release, run a lightweight but rigorous validation program:
 
 ### Deliverables
 
-- [Public crosswalk table (CISQ ↔ ISO/NIST/STRIDE)](interoperability-crosswalk.md)
-- [Validation report with agreement metrics and observed ambiguities](validation-report.md)
-- [Revision notes for definitions updated from empirical findings](revision-notes.md)
+- [Public crosswalk table (CISQ ↔ ISO/NIST/STRIDE)]({{< relref "CISQ-maturity/interoperability-crosswalk.md" >}})
+- [Validation report with agreement metrics and observed ambiguities]({{< relref "CISQ-maturity/validation-report.md" >}})
+- [Revision notes for definitions updated from empirical findings]({{< relref "CISQ-maturity/revision-notes.md" >}})
 
 ## Improvement 3: Quantitative scoring and uncertainty model
 
@@ -89,9 +89,9 @@ $$
 
 ### Deliverables
 
-- [CISQ scoring rubric with thresholds and confidence definitions](scoring-rubric.md)
-- [Evidence taxonomy and scoring instructions](evidence-taxonomy.md)
-- [Dashboard-ready data model for periodic assessments](assessment-data-model.md)
+- [CISQ scoring rubric with thresholds and confidence definitions]({{< relref "CISQ-maturity/scoring-rubric.md" >}})
+- [Evidence taxonomy and scoring instructions]({{< relref "CISQ-maturity/evidence-taxonomy.md" >}})
+- [Dashboard-ready data model for periodic assessments]({{< relref "CISQ-maturity/assessment-data-model.md" >}})
 
 ## Final release criteria
 
@@ -104,8 +104,8 @@ The CISQ model should be considered ready for final release when all conditions 
 
 ### Published case studies
 
-- [Enterprise service case study](case-study-enterprise-service.md)
-- [Distributed/public artifact case study](case-study-distributed-artifact.md)
+- [Enterprise service case study]({{< relref "CISQ-maturity/case-study-enterprise-service.md" >}})
+- [Distributed/public artifact case study]({{< relref "CISQ-maturity/case-study-distributed-artifact.md" >}})
 
 ## Suggested publication order
 
@@ -118,4 +118,4 @@ The CISQ model should be considered ready for final release when all conditions 
 
 These improvements preserve CISQ’s conceptual strengths while making it more scientific, more interoperable with existing governance frameworks, and more actionable in real-world security engineering.
 
-[Return to CISQ maturity levels](/CISQ-maturity/)
+[Return to CISQ maturity levels]({{< relref "CISQ-maturity/_index.md" >}})

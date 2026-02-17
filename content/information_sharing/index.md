@@ -15,7 +15,7 @@ And that is a question rarely, if ever, answered fully. Performance, completenes
 
 That is the strategy underlying the following design.
 
-![inf](information_sharing.png)
+![Information sharing between organizations](information_sharing.png)
 
 ## More to Read
 

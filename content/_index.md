@@ -32,3 +32,7 @@ Welcome to my GitHub hosted pages. I organize my posts by topic and they will be
 
 - [LinkedIn](https://www.linkedin.com/in/anders-jensen-481a3374/)
 - [Substack](https://anderscj.substack.com/)
+
+### Work in progress, beware of AI
+
+- [Improving maturity levels in the CISQ security model]({{< relref "CISQ-maturity/improvements.md" >}})

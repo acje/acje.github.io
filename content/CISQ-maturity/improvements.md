@@ -3,13 +3,11 @@ title: "CISQ model improvements for final release"
 aliases:
   - "/CISQ-maturity/improvements/"
 ---
-# CISQ model improvements for final release
+# CISQ model improvements
 
 [Back to CISQ maturity levels](/CISQ-maturity/)
 
 ## Academic review of the current CISQ model
-
-The CISQ model is a valuable contribution because it introduces a compositional approach to security qualities and provides more conceptual granularity than common frameworks such as the CIA triad. The model is pedagogically useful, internally consistent at a high level, and well suited for exploratory threat and architecture discussions.
 
 For final release quality, three gaps should be closed:
 
@@ -20,8 +18,6 @@ For final release quality, three gaps should be closed:
 The three improvements below address these gaps directly.
 
 ## Improvement 1: Formal semantics and composition rules
-
-### Why this is needed
 
 Current definitions are intuitive and readable, but they remain mostly natural-language descriptions. Without formal semantics, independent analysts may apply the same quality labels differently.
 
@@ -50,8 +46,6 @@ For final release, define a minimal formal layer that keeps the model understand
 
 ## Improvement 2: Empirical validation and interoperability mapping
 
-### Why this is needed
-
 A conceptual model becomes robust when different assessors can apply it consistently and when results connect to existing standards and operating practices.
 
 ### Final-release expansion
@@ -74,8 +68,6 @@ For final release, run a lightweight but rigorous validation program:
 - [Revision notes for definitions updated from empirical findings](revision-notes.md)
 
 ## Improvement 3: Quantitative scoring and uncertainty model
-
-### Why this is needed
 
 The current model supports conceptual clarity, but security programs also need measurable trends, prioritization, and explicit uncertainty handling.
 

@@ -218,4 +218,4 @@ Defeatism is not necessary in information security. We tried formal verification
 
 [Liberal democracies need a new compute stack. Part 4 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-d56)
 
-[Maturity levels in the CISQ security model](https://acje.github.io/systems/CISQ-maturity)
+[Maturity levels in the CISQ security model](https://acje.github.io/systems/cisq-maturity)

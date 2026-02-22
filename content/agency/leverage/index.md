@@ -166,9 +166,9 @@ Refactor to include Cotters 8 steps
 
 *Make the desired path the default path.*
 
-- [ ] **Default shift:** behavior becomes opt-out, not opt-in.
-- [ ] **Resource lock:** budget/capacity/headcount formally allocated
-- [ ] **Process lock:** core workflow routes through new path
+- **Default shift:** behavior becomes opt-out, not opt-in.
+- **Resource lock:** budget/capacity/headcount formally allocated
+- **Process lock:** core workflow routes through new path
 
 ### 5) Economics of Stickiness (Cost of Delay + Reversal)
 

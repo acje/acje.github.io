@@ -152,15 +152,19 @@ Agent must protect **[resources/status/risk]**. Seek control of **[resource/acce
 
 *Execute the loop.*
 
+Cadence
+
 - Cadence question: "What new fact exists in this cycle that did not exist in the previous cycle?"
 - Cadence control loop, what to: keep, stop, start
+
+Campaign Sequence
 
 - Phase 1 Pilot: Low-friction pilot, first visible commitment, monitor adoption/event threshold
 - Phase 2 Integration: Capability and workflow integration, team dependence begins, monitor usage/throughput threshold
 - Phase 3 Expansion: proof and scaled rollout, cross-stakeholder benefit, monitor outcome threshold
 - Phase 4 Codify: Policy and budget baseline, governance and funding anchor, monitor official baseline inclusion
 
-Refactor to include Cotters 8 steps
+Refactor to reflect Cotters 8 steps
 
 ### 4) Facts on the Ground
 
@@ -194,7 +198,7 @@ Completion criteria:
 
 ### 7) Counter-Moves
 
-*Pre-empt resistance and uncertainty.*
+*Preempt resistance and uncertainty.*
 
 ### 8) Narrative Control (Legitimacy System)
 

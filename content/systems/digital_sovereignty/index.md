@@ -1,6 +1,8 @@
 ---
 title: "Digital Sovereignty"
 description: "Why systemic risk demands a new digital ecosystem—and the five necessities to make it real. Linking resilience engineering, security, political economy, and behavioral economics"
+aliases:
+  - "/digital_sovereignty/"
 
 date: 2026-01-22
 lastmod: 2026-02-11
@@ -9,7 +11,7 @@ lastmod: 2026-02-11
 
 # Digital Sovereignty
 
-![Borg](Borg.png)
+![Castle](/systems/digital_sovereignty/Borg.png)
 
 *Break digital vassalage. Use politics and architecture to reshape the systems that run our infrastructure and services. By targeting the ecosystem, every sector of society gains.*
 
@@ -141,7 +143,7 @@ The scope is to point out the two most long-term, unappreciated aspects of compu
 
 ## 4. Maximally Isolated Components of Least Capability
 
-![](Borg2.png)
+![Digital castle](/systems/digital_sovereignty/Borg2.png)
 
 My previous series on Substack:
 [Liberal democracies need a new compute stack. Part 1](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
@@ -216,4 +218,4 @@ Defeatism is not necessary in information security. We tried formal verification
 
 [Liberal democracies need a new compute stack. Part 4 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-d56)
 
-[Maturity levels in the CISQ security model](https://acje.github.io/CISQ-maturity)
+[Maturity levels in the CISQ security model](https://acje.github.io/systems/CISQ-maturity)

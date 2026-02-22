@@ -4,7 +4,7 @@ description: "Curated index of posts on agency, systems, security and digital so
 keywords: ["Agile", "Scaled Agile", "Systems", "Security", "CISQ", "Ecosystem", "IPv6", "Event Sourcing", "Digital Sovereignty"]
 ---
 
-Welcome to my pages. I organize my posts by topic and they will be updated when I get new or better ideas. I might post on LinkedIn or Substack to reference these posts when there are major updates, but these are the documents where I maintain the ideas that will take time to mature.
+Welcome to my pages. Posts are organized by topic and updated when new or better ideas appear. Updates are posted  on LinkedIn or Substack to reference these posts. These are the documents where ideas are matured.
 
 ## Workbench - Idea to impact
 

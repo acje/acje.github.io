@@ -130,7 +130,7 @@ Minimum conversation sequence:
 *Convert intent into controlled pressure and durable position.*
 
 - Start with the end in mind, knowing your objective, plan all the way backwards to the current facts on the ground
-- Gather and leverage information for the good of the objective
+- Gather, weaponize and leverage information for the good of the objective
 - Never break pretext
 - Everything you do is for the benefit of the objective
 

@@ -11,11 +11,11 @@ lastmod: 2026-02-22
 
 ## Summary
 
-For work of importance, start with what is true and choose moves that changes behavior. Build new facts on the ground in small increments. Impose structural cost, risk and uncertainty of reversal. Watch for friction, entropy and adversaries that can frustrate the execution of the plan. Be persistent and keep the story tied to data, not intent. Negotiate incentives, not personalities: map what each actor must protect, what they need to gain, and the exchange terms that create commitment. Create alternative paths to goals of importance. Periodically prune portfolio of activities to protect strategic impact.
+For work of importance, start with what is true and choose moves that changes behavior of agents in the environment. Build new facts on the ground in small increments. Impose structural cost, risk or uncertainty of reversal. Watch for friction, entropy and adversaries that can frustrate the execution of the plan. Be persistent and keep the story tied to data, not intent. Negotiate incentives, not personalities: map what each actor must protect, what they need to gain, and the exchange terms that create commitment. Create alternative paths to goals of importance. Periodically prune portfolio of activities to protect strategic impact.
 
 ## Nature of Leverage
 
-Exploring the nature of leverage in the context of developing power to influence
+Exploring the nature of leverage in the context of developing power to influence.
 
 ### Potential of Leverage
 

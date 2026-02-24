@@ -1,16 +1,18 @@
 ---
 title: "Anders Jensen"
-description: "Curated index of posts on agency, systems, security and digital sovereignty"
-keywords: ["Agile", "Scaled Agile", "Systems", "Security", "CISQ", "Ecosystem", "IPv6", "Event Sourcing", "Digital Sovereignty"]
+description: "Strategic insights on agency, systems architecture, and information security"
+keywords: ["Strategy", "Leverage", "Systems Architecture", "Security", "CISQ", "Digital Sovereignty", "IPv6", "Agile"]
+weight: 1
+bookFlatSection: true
 ---
 
-Welcome to my pages. Posts are organized by topic and updated when new or better ideas appear. Updates are posted  on LinkedIn or Substack to reference these posts. These are the documents where ideas are matured.
+InfoSec professional and systems architect exploring the intersection of strategic leverage, secure architecture, and organizational agency. Background spans chip design, military tactical communications, medical imaging, high-performance computing, datacenter infrastructure and cloud.
 
 ## Workbench - Idea to impact
 
-- [TODO: National robust information sharing]({{< relref "workbench/national_robust_information_sharing/index.md" >}})
-- [TODO: Pervasive supply chain provenance]({{< relref "workbench/pervasive_supply_chain_provenance/index.md" >}})
-- [TODO: Ecosystem of defensible systems]({{< relref "workbench/ecosystem_of_defensible_systems/index.md" >}})
+- TODO: [National robust information sharing]({{< relref "workbench/national_robust_information_sharing/index.md" >}})
+- TODO: [Pervasive supply chain provenance]({{< relref "workbench/pervasive_supply_chain_provenance/index.md" >}})
+- TODO: [Ecosystem of defensible systems]({{< relref "workbench/ecosystem_of_defensible_systems/index.md" >}})
 
 ## Systems and security
 
@@ -33,12 +35,9 @@ Welcome to my pages. Posts are organized by topic and updated when new or better
 - [Alignment and autonomy (Repository)](https://github.com/acje/Alignment_autonomy)
 - [Leverage]({{< relref "agency/leverage" >}})
 
-## Media accounts
+## Connect
 
+- [Email](mailto:anders.c.jensen@gmail.com)
 - [LinkedIn](https://www.linkedin.com/in/anders-jensen-481a3374/)
 - [Substack](https://anderscj.substack.com/)
-- [Github](https://github.com/acje/)
-
-## About the Author
-
-Anders Jensen is a InfoSec professional with a wide range of experience from chip design, military tactical communications, programming, medical imaging, high performance computing, systems architecture, cloud and datacenter infrastructure and network engineering.
+- [GitHub](https://github.com/acje/)

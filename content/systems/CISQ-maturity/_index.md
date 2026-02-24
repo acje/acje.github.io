@@ -2,6 +2,9 @@
 title: "Maturity levels in the CISQ security model"
 aliases:
   - "/CISQ-maturity/"
+
+date: 2026-01-22
+lastmod: 2026-02-24
 ---
 # Maturity levels in the CISQ security model
 

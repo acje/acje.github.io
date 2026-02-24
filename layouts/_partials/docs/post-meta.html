@@ -1,0 +1,33 @@
+{{- $published := .PublishDate -}}
+{{- if $published.IsZero -}}
+{{- $published = .Date -}}
+{{- end -}}
+{{- $updated := .Lastmod -}}
+{{- if $updated.IsZero -}}
+{{- $updated = $published -}}
+{{- end -}}
+
+{{ if or (not $published.IsZero) (not $updated.IsZero) }}
+<div class="text-small book-post-date">
+    {{ if not $published.IsZero }}
+    <div class="flex align-center">
+        <span>Published: {{ partial "docs/date" (dict "Date" $published "Format" $.Site.Params.BookDateFormat) }}</span>
+    </div>
+    {{ end }}
+    {{ if not $updated.IsZero }}
+    <div class="flex align-center">
+        <span>Updated: {{ partial "docs/date" (dict "Date" $updated "Format" $.Site.Params.BookDateFormat) }}</span>
+    </div>
+    {{ end }}
+</div>
+{{ end }}
+
+{{ range $taxonomy, $_ := .Site.Taxonomies }}
+{{ with $terms := $.GetTerms $taxonomy }}
+<div class="text-small">
+    {{ range $n, $term := $terms }}{{ if $n }}, {{ end }}
+    <a href="{{ $term.RelPermalink }}">{{ $term.Title }}</a>
+    {{- end }}
+</div>
+{{ end }}
+{{ end }}

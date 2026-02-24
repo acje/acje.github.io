@@ -1,10 +1,10 @@
 ---
 title: "Ecosystem of defensible systems"
-description: "todo"
+description: "Exploring how to seed a new ecosystem of defensible information systems"
 aliases:
   - "/ecosystem_of_defensible_systems/"
-date: 2026-02-22
-lastmod: 2026-02-22
+date: 2026-02-24
+lastmod: 2026-02-24
 ---
 
 TODO

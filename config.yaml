@@ -1,6 +1,6 @@
 baseURL: "https://acje.github.io/"
 languageCode: "en-us"
-title: "acje.github.io"
+title: "Anders Jensen"
 
 # Use a standard content directory to avoid scanning theme/public
 contentDir: "content"
@@ -14,13 +14,70 @@ markup:
     renderer:
       unsafe: true
 
+# Enable sitemap and robots.txt for SEO
+enableRobotsTXT: true
+
 # Disable generators you may not use yet
 disableKinds:
-  - RSS
   - taxonomy
   - term
  
 theme: "hugo-book"
+
+frontmatter:
+  date:
+    - date
+  publishDate:
+    - publishdate
+    - pubdate
+    - published
+    - date
+  lastmod:
+    - lastmod
+    - modified
+    - :fileModTime
+
+# Site parameters
+params:
+  # Book-specific theme parameters
+  BookTheme: "auto"
+  BookRepo: "https://github.com/acje/acje.github.io"
+  BookEditPath: "edit/main/content"
+  BookDateFormat: "January 2, 2006"
+  BookToC: true
+  BookComments: false
+  BookSearch: true
+  BookSection: "*"
+  BookFavicon: "favicon.svg"
+  
+  # Author and site metadata
+  author: "Anders Jensen"
+  description: "Strategic insights on agency, systems architecture, and information security"
+  email: "anders.c.jensen@gmail.com"
+  
+  # SEO: Default Open Graph image
+  images:
+    - /favicon.svg
+  
+# Author information (deprecated but kept for backwards compatibility)
+author:
+  name: "Anders Jensen"
+
+# Social and external links
+menu:
+  after:
+    - name: "Email"
+      url: "mailto:anders.c.jensen@gmail.com"
+      weight: 5
+    - name: "LinkedIn"
+      url: "https://www.linkedin.com/in/anders-jensen-481a3374/"
+      weight: 10
+    - name: "Substack"
+      url: "https://anderscj.substack.com/"
+      weight: 20
+    - name: "GitHub"
+      url: "https://github.com/acje/"
+      weight: 30
 
 # Ignore folders that should not be part of content scanning
 ignoreFiles:

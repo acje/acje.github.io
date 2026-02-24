@@ -1,2 +1,23 @@
+# macOS
 .DS_Store
+
+# Hugo generated files
 public/
+resources/_gen/
+.hugo_build.lock
+
+# Node
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+.cache/

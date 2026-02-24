@@ -1,0 +1,165 @@
+/* Custom styling for professional appearance */
+
+/* Typography refinements */
+body {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  /* color: #1a1a1a; Removed to inherit theme color */
+}
+
+h2 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--gray-200);
+  padding-bottom: 0.3rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Improve link appearance */
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  filter: brightness(1.2);
+}
+
+/* List spacing for better readability */
+ul,
+ol {
+  margin-bottom: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Code blocks */
+code {
+  background-color: var(--gray-100);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Emphasis styling */
+em {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+strong {
+  font-weight: 600;
+  color: inherit;
+}
+
+/* Improve table of contents */
+.book-toc {
+  font-size: 0.9rem;
+}
+
+/* Footer styling */
+footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--gray-200);
+  font-size: 0.9rem;
+  color: var(--gray-500);
+}
+
+/* Professional spacing for content */
+.book-page {
+  max-width: 850px;
+}
+
+/* Metadata styling */
+.book-meta {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  margin-bottom: 2rem;
+}
+
+/* 
+ * Theme Overrides
+ * Redefine the mixins used by the theme to ensure our custom values 
+ * automatically propagate whenever the theme logic is applied.
+ */
+
+@mixin theme-light {
+  --body-background: #ffffff;
+  --body-font-color: #111111;
+  /* Very dark gray for high contrast but soft reading */
+
+  --color-link: #0044aa;
+  /* Stronger blue */
+  --color-visited-link: #5500bb;
+
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-500: #555555;
+  /* Darker gray for metadata legibility */
+
+  --icon-filter: none;
+
+  /* Re-apply accents from default theme (required when overriding mixin) */
+  @include accent("default", #64748b);
+  @include accent("note", #4486dd);
+  @include accent("tip", #3bad3b);
+  @include accent("important", #8144dd);
+  @include accent("warning", #f59e42);
+  @include accent("caution", #d84747);
+  @include accent("info", #4486dd);
+  @include accent("success", #3bad3b);
+  @include accent("danger", #d84747);
+}
+
+@mixin theme-dark {
+  --body-background: #222222;
+  /* Dark gray instead of pitch black */
+  --body-font-color: #eeeeee;
+  /* Off-white to reduce eye strain */
+
+  --color-link: #66b3ff;
+  /* Brighter blue for dark backgrounds */
+  --color-visited-link: #b88dff;
+
+  --gray-100: #333333;
+  --gray-200: #444444;
+  --gray-500: #bbbbbb;
+  /* Lighter gray for metadata legibility */
+
+  --icon-filter: brightness(0) invert(1);
+
+  /* Re-apply accents */
+  @include accent("default", #64748b);
+  @include accent("note", #4486dd);
+  @include accent("tip", #3bad3b);
+  @include accent("important", #8144dd);
+  @include accent("warning", #f59e42);
+  @include accent("caution", #d84747);
+  @include accent("info", #4486dd);
+  @include accent("success", #3bad3b);
+  @include accent("danger", #d84747);
+}

@@ -3,8 +3,8 @@ title: "Pervasive supply chain provenance"
 description: "todo"
 aliases:
   - "/pervasive_supply_chain_provenance/"
-date: 2026-02-22
-lastmod: 2026-02-22
+date: 2026-02-24
+lastmod: 2026-02-24
 ---
 
 TODO

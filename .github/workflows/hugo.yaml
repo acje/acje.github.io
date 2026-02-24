@@ -66,6 +66,9 @@ jobs:
       - name: Install Node.js dependencies
         run: |
           [[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true
+      - name: Install link checker
+        run: |
+          npm install --no-save lychee
       - name: Configure Git
         run: |
           git config core.quotepath false
@@ -82,8 +85,17 @@ jobs:
           hugo \
             --gc \
             --minify \
+            --panicOnWarning \
             --baseURL "${{ steps.pages.outputs.base_url }}/" \
             --cacheDir "${{ runner.temp }}/hugo_cache"
+      - name: Check links in generated HTML
+        run: |
+          npx --yes lychee \
+            --no-progress \
+            --scheme https \
+            --exclude-mail \
+            --accept 200,206,301,302,303,307,308,401,403,429 \
+            public/**/*.html
       - name: Cache save
         id: cache-save
         uses: actions/cache/save@v5

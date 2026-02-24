@@ -1,10 +1,10 @@
 ---
 title: "National robust information sharing"
-description: "todo"
+description: "Exploring how to implement a robust system for information sharing in the Norwegian public sector"
 aliases:
   - "/national_robust_information_sharing/"
-date: 2026-02-22
-lastmod: 2026-02-22
+date: 2026-02-24
+lastmod: 2026-02-24
 ---
 
 TODO

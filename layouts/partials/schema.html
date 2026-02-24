@@ -1,0 +1,33 @@
+{{- $title := cond .IsHome .Site.Title .Title -}}
+{{- $description := or .Description .Summary .Site.Params.description | plainify | htmlUnescape -}}
+{{- $authorName := or .Site.Params.author .Site.Author.name -}}
+{{- $image := "" -}}
+{{- with .Params.images -}}
+  {{- $image = (index . 0 | absURL) -}}
+{{- else -}}
+  {{- with .Site.Params.images -}}
+    {{- $image = (index . 0 | absURL) -}}
+  {{- end -}}
+{{- end -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ if .IsHome }}WebSite{{ else if .IsPage }}Article{{ else }}WebPage{{ end }}",
+  "name": {{ $title | jsonify }},
+  "headline": {{ $title | jsonify }},
+  "description": {{ $description | jsonify }},
+  "url": "{{ .Permalink }}",
+  "author": {
+    "@type": "Person",
+    "name": {{ $authorName | jsonify }}
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": {{ $authorName | jsonify }}{{ with .Site.Params.sameAs }},
+    "sameAs": {{ . | jsonify }}{{ end }}
+  }{{ if $image }},
+  "image": "{{ $image }}"{{ end }}{{ if .IsPage }},
+  "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}"{{ end }}
+}
+</script>

@@ -4,7 +4,7 @@ description: "Leverage explored"
 aliases:
   - "/leverage/"
 date: 2026-02-22
-lastmod: 2026-02-22
+lastmod: 2026-02-24
 ---
 
 # Leverage
@@ -134,39 +134,42 @@ Minimum conversation sequence:
 - Never break pretext
 - Everything you do is for the benefit of the objective
 
-## Tactical Leverage Management
-
-### 1) Reversal Becomes Irrational
+### Reversal Becomes Irrational
 
 *Secure a position.*
 
 Help create a new fact on the ground and ensure that maintaining the initiative is cheaper, safer or simpler than reversal.
 
-### 2) Incentives and Exchanges
+### Incentives and Exchanges
 
 *Assume incentives decide behavior.*
 
 Agent must protect **[resources/status/risk]**. Seek control of **[resource/access/info/timing/sequencing]**. If I deliver X, they deliver Y.
 
-### 3) Campaign Sequence and command cadence
+### Campaign Sequence and command cadence
 
 *Execute the loop.*
 
-Cadence
+Cadence (each cycle)
 
 - Cadence question: "What new fact exists in this cycle that did not exist in the previous cycle?"
 - Cadence control loop, what to: keep, stop, start
 
 Campaign Sequence
 
-- Phase 1 Pilot: Low-friction pilot, first visible commitment, monitor adoption/event threshold
-- Phase 2 Integration: Capability and workflow integration, team dependence begins, monitor usage/throughput threshold
-- Phase 3 Expansion: proof and scaled rollout, cross-stakeholder benefit, monitor outcome threshold
-- Phase 4 Codify: Policy and budget baseline, governance and funding anchor, monitor official baseline inclusion
+- Phase 1 Pilot: low-friction pilot, first visible commitment, monitor adoption/event threshold.
+- Phase 2 Integration: capability and workflow integration, team dependence begins, monitor usage/throughput threshold.
+- Phase 3 Expansion: proof and scaled rollout, cross-stakeholder benefit, monitor outcome threshold.
+- Phase 4 Codify: policy and budget baseline, governance and funding anchor, monitor official baseline inclusion.
 
-Refactor to reflect Cotters 8 steps
+Kotter 8-step mapping
 
-### 4) Facts on the Ground
+- **Pilot:** (1) create urgency, (2) build guiding coalition.
+- **Integration:** (3) form strategic vision and initiatives, (4) enlist a volunteer army.
+- **Expansion:** (5) enable action by removing barriers, (6) generate short-term wins.
+- **Codify:** (7) sustain acceleration, (8) institute change in culture, policy, and budget.
+
+### Facts on the Ground
 
 *Make the desired path the default path.*
 
@@ -174,11 +177,45 @@ Refactor to reflect Cotters 8 steps
 - **Resource lock:** budget/capacity/headcount formally allocated
 - **Process lock:** core workflow routes through new path
 
-### 5) Economics of Stickiness (Cost of Delay + Reversal)
+### Economics of Stickiness (Cost of Delay + Reversal)
 
 *Make trade-offs explicit and auditable.*
 
-### 6) Commitment Quality (Real Commitment vs Agreement)
+Behavior is shaped by choice architecture, not just logic. People typically keep the default, overweight near-term hassle, and react more strongly to potential loss than equivalent gain.
+
+Thaler lens for stickiness:
+
+- **Status quo bias:** staying put feels safer than switching, even when switching is better.
+- **Loss aversion:** stakeholders resist changes framed as losses of control, budget, or status.
+- **Endowment effect:** once teams "own" a process, they value it more than outsiders do.
+- **Mental accounting:** costs and benefits are judged by budget bucket and timing, not total value.
+
+Design levers:
+
+- Default the desired path and require explicit opt-out for alternatives.
+- Reduce switching hassle (approvals, forms, training, migration steps) in the first cycle.
+- Front-load visible gains and back-load unavoidable costs where possible.
+- Frame reversal as concrete loss (time, risk, rework), not abstract inefficiency.
+- Add commitment devices: dated milestones, public owners, and automatic review points.
+
+Cost model (decision-grade):
+
+- **Cost of delay:** value not captured per cycle + risk accumulated per cycle.
+- **Cost of reversal:** migration effort + coordination disruption + credibility/political cost.
+- **Hassle cost:** user effort to adopt or continue (clicks, approvals, handoffs, retraining).
+
+Measurement pack:
+
+- Time-to-adopt (first use to routine use).
+- Opt-out rate from new default.
+- Reversal attempt rate and reversal completion rate.
+- Cycle loss estimate from delay (throughput, risk, or quality impact).
+
+Cycle question:
+
+- Did we reduce hassle, increase salience of loss from delay, and strengthen the default in this cycle?
+
+### Commitment Quality (Real Commitment vs Agreement)
 
 *Treat yes as unverified until ownership and execution are explicit.*
 
@@ -196,10 +233,74 @@ Completion criteria:
 - Observable proof of execution.
 - Explicit consequence of delay or non-delivery.
 
-### 7) Counter-Moves
+### Counter-Moves
 
 *Preempt resistance and uncertainty.*
 
-### 8) Narrative Control (Legitimacy System)
+Assume credible counterparties will test, delay, or reroute your initiative. Build explicit branches for likely responses before pressure appears.
+
+Counter-move map:
+
+- Deny: They reject premise, urgency, or evidence.
+- Delay: They agree in principle but stall ownership and timing.
+- Dilute: They accept scope but remove the mechanism that creates impact.
+- Divert: They reframe toward adjacent work that consumes capacity.
+- Escalate: They move decision rights to a forum where you are weak.
+
+Preemption actions:
+
+- Pre-wire decision owners before formal asks.
+- Package evidence at decision-grade quality (cost, risk, throughput, adoption).
+- Define minimum acceptable scope and explicit no-trade boundaries.
+- Prepare fallback path with reduced scope but preserved direction.
+
+Cycle question:
+
+- Which counter-move appeared this cycle, and what branch did we execute?
+
+### Narrative Control (Legitimacy System)
 
 *Who defines success shapes decisions.*
+
+Narrative is not spin; it is the operating frame that determines what is considered valid, urgent, and fundable.
+
+Legitimacy stack:
+
+- Problem frame: Why this matters now in business and risk terms.
+- Success criteria: How outcomes are measured and by when.
+- Evidence standard: What proof is required to continue investment.
+- Decision rights: Who can approve, block, or reinterpret results.
+
+Narrative operating rules:
+
+- Name the baseline before proposing change.
+- Use comparative deltas (before/after), not intent language.
+- Tie wins to shared institutional goals, not team identity.
+- Publish regular scorecards so interpretation cost stays low.
+
+Failure mode to avoid:
+
+- Allowing opponents to redefine success after evidence is produced.
+
+### Avoid overextension
+
+*Protect strategic throughput by limiting active fronts.*
+
+Overextension destroys leverage by fragmenting attention and weakening proof. Run fewer initiatives with higher completion quality.
+
+Portfolio discipline:
+
+- Keep a strict cap on concurrent campaigns.
+- Rank work by strategic impact and reversibility risk.
+- Pause or stop activities that do not improve leverage position.
+- Reserve capacity for response to counter-moves and unforeseen friction.
+
+Pruning test (each cycle):
+
+- If this effort stopped now, what strategic outcome would be lost?
+- Is there new evidence of traction, or only continued activity?
+- Does this work strengthen a wedge, or just consume resources?
+
+Completion over motion:
+
+- Prefer finishing one phase to launching two new pilots.

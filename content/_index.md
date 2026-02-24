@@ -38,3 +38,7 @@ Welcome to my pages. Posts are organized by topic and updated when new or better
 - [LinkedIn](https://www.linkedin.com/in/anders-jensen-481a3374/)
 - [Substack](https://anderscj.substack.com/)
 - [Github](https://github.com/acje/)
+
+## About the Author
+
+Anders Jensen is a InfoSec professional with a wide range of experience from chip design, military tactical communications, programming, medical imaging, high performance computing, systems architecture, cloud and datacenter infrastructure and network engineering.

@@ -11,9 +11,9 @@ lastmod: 2026-02-25
 
 ### Pitch
 
-Norway needs a national information-sharing backbone as critical public infrastructure. A robust, standardized model for secure information exchange will reduce duplication of effort, improve service quality, and strengthen national digital sovereignty. This is not primarily a technology project; it is a state-capacity project.
+Norway needs a national information sharing backbone as critical public infrastructure. A robust, standardized model for secure information sharing will reduce duplication of effort, improve service quality, and strengthen national digital sovereignty. This is not primarily a technology project; it is a state-capacity project.
 
-By launching a joint pilot between DigDir and Mattilsynet, the government can demonstrate rapid, practical results: faster case handling, fewer integration failures, and lower long-term operating costs. The pilot can then scale into a national pattern that ministries and agencies can adopt without reinventing the wheel.
+By launching a joint pilot between DigDir and Mattilsynet, the government can demonstrate rapid, practical results: faster information flow, fewer integration failures, and lower long-term operating costs. The pilot can then scale into a national pattern that ministries and agencies can adopt without reinventing the wheel.
 
 ### Challenge
 
@@ -25,7 +25,7 @@ A standardized national model for robust information sharing would allow the vas
 
 ### Difficulty
 
-Perhaps counterintuitively, the main barriers are no longer technical. Advances in service mesh technology and a more mature understanding of data products make implementation increasingly feasible. Yet national-scale deployment remains limited in practice. The most significant constraints are institutional incentives and cross-organizational coordination, discussed below. For technical background, see [Information sharing is not a solved problem]({{< relref "systems/information_sharing/index.md" >}}).
+Perhaps counterintuitively, the main barriers are no longer technical. Advances in service mesh technology and a more mature understanding of data products make implementation increasingly feasible. Yet national-scale deployment remains difficult to deploy in practice. The most significant constraints are institutional incentives and cross-organizational coordination, discussed below. For technical background, see [Information sharing is not a solved problem]({{< relref "systems/information_sharing/index.md" >}}).
 
 ## Diagnosis
 
@@ -48,3 +48,7 @@ As noted above, service mesh technology has advanced significantly. NATS, partic
 The fastest route is to identify a political actor with both mandate and implementation authority to sponsor a coordinated national effort. In practice, this will often be a ministry-level initiative with clear cross-sector governance. Such sponsorship can rebalance incentives and reduce coordination friction by funding common foundations rather than isolated one-off integrations.
 
 The political context is favorable. Since the COVID-19 pandemic, and especially following the full-scale invasion of Ukraine, digital sovereignty has moved from a niche concern to a mainstream national priority across Europe. In this environment, credible measures that strengthen sovereign digital capacity, preparedness, and institutional resilience are likely to command broad political support.
+
+### Scaling
+
+The establishment of a successful pilot significantly de-risks subsequent onboarding. With a validated integration pattern and operational common infrastructure in place, the barriers to entry for additional organizations are substantially lowered. This creates a positive feedback loop: as participation grows, the marginal cost of each new connection decreases, while the collective value of the data sharing network increases efficiently.

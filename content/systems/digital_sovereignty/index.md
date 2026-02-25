@@ -9,7 +9,7 @@ lastmod: 2026-02-11
 
 ---
 
-# Digital Sovereignty
+## Digital Sovereignty
 
 ![Castle](/systems/digital_sovereignty/Borg.png)
 

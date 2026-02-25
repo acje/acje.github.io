@@ -6,7 +6,7 @@ aliases:
 date: 2026-01-22
 lastmod: 2026-02-24
 ---
-# Maturity levels in the CISQ security model
+## Maturity levels in the CISQ security model
 
 | ![CISQ security model version 1.0](CISQ-simplified.png)                         |
 |                      :--:                                                       |

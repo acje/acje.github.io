@@ -5,7 +5,7 @@ aliases:
 
 ---
 
-# Information sharing is not a solved problem
+## Information sharing is not a solved problem
 
 TODO: Write an article about the real-time, inter-org, sustainable information-sharing platform depicted below.
 

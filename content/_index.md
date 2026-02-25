@@ -6,13 +6,13 @@ weight: 1
 bookFlatSection: true
 ---
 
-InfoSec professional and systems architect exploring the intersection of strategic leverage, secure architecture, and organizational agency. Background spans chip design, military tactical communications, medical imaging, high-performance computing, datacenter infrastructure and cloud.
+InfoSec professional and systems architect exploring the intersection of information security and organizational agency. Background spans analog and digital chip design, programming, military tactical communications, medical imaging, high-performance computing, datacenter infrastructure, network engineering and cloud.
 
 ## Workbench - Idea to impact
 
-- TODO: [National robust information sharing]({{< relref "workbench/national_robust_information_sharing/index.md" >}})
-- TODO: [Pervasive supply chain provenance]({{< relref "workbench/pervasive_supply_chain_provenance/index.md" >}})
-- TODO: [Ecosystem of defensible systems]({{< relref "workbench/ecosystem_of_defensible_systems/index.md" >}})
+- [Digital sovereignty - National robust information sharing]({{< relref "workbench/national_robust_information_sharing/index.md" >}})
+- TODO: [Digital sovereignty - Ecosystem of defensible systems]({{< relref "workbench/ecosystem_of_defensible_systems/index.md" >}})
+- TODO: [Digital sovereignty - Pervasive supply chain provenance]({{< relref "workbench/pervasive_supply_chain_provenance/index.md" >}})
 
 ## Systems and security
 

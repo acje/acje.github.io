@@ -4,7 +4,7 @@ aliases:
   - "/scaled_agile/"
 ---
 
-# Scaling Agile
+## Scaling Agile
 
 These are my notes on how an organization transformed from hardly being able to run a handful of digitalization projects in parallel and only creating value from them sporadically, into a fast-moving agile organization. I have observed this type of transition twice in the role of architect in two different organizations, both with tens of projects and later, tens of teams running in parallel. The first transition was targeting the SAFe-Framework. The second transition was a much more deliberate and tailored approach. The deliberate and tailored transition will be the main topic of these notes, but I might reference the first transition explicitly where appropriate.
 

@@ -3,7 +3,7 @@ title: "A structured view on information security"
 aliases:
   - "/CISQ-model/"
 ---
-# A structured view on information security
+## A structured view on information security
 
 Please use this instead: [CISQ maturity levels](/systems/CISQ-maturity/)
 

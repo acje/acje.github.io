@@ -7,7 +7,7 @@ date: 2026-02-22
 lastmod: 2026-02-24
 ---
 
-# Leverage
+## Leverage
 
 ## Summary
 

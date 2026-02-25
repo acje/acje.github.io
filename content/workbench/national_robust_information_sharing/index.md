@@ -1,5 +1,5 @@
 ---
-title: "Digital sovereignty – National information sharing"
+title: "Digital sovereignty – National robust information sharing"
 description: "Exploring how to implement a robust system for information sharing in the Norwegian public sector"
 aliases:
   - "/national_robust_information_sharing/"
@@ -7,7 +7,7 @@ date: 2026-02-25
 lastmod: 2026-02-25
 ---
 
-## Digital Sovereignty – National Information Sharing
+## Digital Sovereignty – National Robust Information Sharing
 
 ### Pitch
 

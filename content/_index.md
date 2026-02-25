@@ -6,7 +6,7 @@ weight: 1
 bookFlatSection: true
 ---
 
-InfoSec professional and systems architect exploring the intersection of information security and organizational agency. Background spans analog and digital chip design, programming, military tactical communications, medical imaging, high-performance computing, datacenter infrastructure, network engineering and cloud.
+InfoSec professional and systems architect exploring the intersection of information security and organizational agency. Background spans analog and digital chip design, programming, military tactical communications, medical imaging, high-performance computing, network engineering, datacenter infrastructure, cloud and InfoSec governance.
 
 ## Workbench - Idea to impact
 

@@ -7,7 +7,9 @@ aliases:
 
 ## Information sharing is not a solved problem
 
-TODO: Write an article about the secure, cross-organizational platform for timely information-sharing depicted below.
+Technical article about a secure, cross-organizational platform for timely information-sharing depicted below.
+
+![Information sharing](information_sharing_clean.png)
 
 ## The question is always the same
 

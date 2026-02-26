@@ -7,6 +7,8 @@ aliases:
 
 ## Information sharing is not a solved problem
 
+**Under construction**
+
 Technical article about a secure, cross-organizational platform for timely information-sharing depicted below.
 
 ![Information sharing](information_sharing_clean.png)

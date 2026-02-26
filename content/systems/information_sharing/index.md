@@ -7,7 +7,7 @@ aliases:
 
 ## Information sharing is not a solved problem
 
-TODO: Write an article about the real-time, inter-org, sustainable information-sharing platform depicted below.
+TODO: Write an article about the secure, cross-organizational platform for timely information-sharing depicted below.
 
 ## The question is always the same
 
@@ -21,4 +21,5 @@ That is the strategy underlying the following design.
 
 ## More to Read
 
+- [Digital Sovereignty]({{< relref "systems/digital_sovereignty/index.md" >}})
 - [Fiber semantics. Event sourcing for complex domains (Repository)](https://github.com/acje/Fiber-semantics)

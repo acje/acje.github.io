@@ -52,3 +52,9 @@ The political context is favorable. Since the COVID-19 pandemic, and especially 
 ### Scaling
 
 The establishment of a successful pilot significantly de-risks subsequent onboarding. With a validated integration pattern and operational common infrastructure in place, the barriers to entry for additional organizations are substantially lowered. This creates a positive feedback loop: as participation grows, the marginal cost of each new connection decreases, while the collective value of the data sharing network increases efficiently.
+
+## More to read
+
+[Digital Sovereignty]({{< relref "systems/digital_sovereignty/index.md" >}})
+
+[Information sharing is not a solved problem]({{< relref "systems/information_sharing/index.md" >}})

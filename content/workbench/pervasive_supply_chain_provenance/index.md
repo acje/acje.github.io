@@ -7,7 +7,7 @@ date: 2026-02-24
 lastmod: 2026-02-24
 ---
 
-## Digital sovereignty - Pervasive Supply Chain Provenanc
+## Digital sovereignty - Pervasive Supply Chain Provenance
 
 TODO
 

@@ -13,7 +13,7 @@ lastmod: 2026-02-27
 
 This brief argues for establishing a national information-sharing backbone as critical public infrastructure. Fragmented data integration currently imposes a structural tax on the public digital economy, diverting resources from value creation to maintenance and development friction. By adopting a standardized, resilient model, the government can unlock significant economic efficiency and strengthen digital sovereignty by creating a robust protection around important information sources. This transforms a technical necessity into a strategic state asset.
 
-By launching a joint pilot between DigDir and Mattilsynet, the government can demonstrate rapid, practical results: faster information flow, fewer integration failures, and lower long-term operating costs. The pilot can then scale into a national pattern that ministries and agencies can adopt without reinventing the wheel.
+By launching a joint pilot between DigDir and Mattilsynet, the government can demonstrate rapid, practical results: faster information flow, fewer integration failures, and lower long-term operating costs as well as faster and cheaper development cycles of consuming systems. The pilot can then scale into a national pattern that ministries and agencies can adopt without reinventing the wheel.
 
 ### Challenge
 

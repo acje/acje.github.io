@@ -7,7 +7,7 @@ aliases:
 
 ## Information sharing is not a solved problem
 
-**Under construction**
+**!!! Under construction !!!**
 
 Technical article about a secure, cross-organizational platform for timely information-sharing depicted below.
 
@@ -15,11 +15,7 @@ Technical article about a secure, cross-organizational platform for timely infor
 
 ## A Common Challenge
 
-When asked, "How can we share this information with X?", technical leads, architects, developers, and administrators invariably ask in return: "What are the requirements?"
-
-This follow-up question is rarely answered fully. Stakeholders often have vague or conflicting priorities regarding performance, completeness, correctness, [security]({{< relref "systems/CISQ-maturity/index.md" >}}), maintenance, and budget.
-
-The design presented here aims to solve these technical requirements holistically, leaving only the budget to be determined, and reducing costs through economies of scale.
+When asked, "How can we share this information with X?", technical leads, architects, developers, and administrators invariably ask in return: "What are the requirements?" This follow-up question is rarely answered fully. Stakeholders often have vague or conflicting priorities regarding performance, completeness, correctness, security, maintenance, and budget. The design presented here aims to solve these technical requirements holistically, leaving only the budget to be determined, and reducing costs through economies of scale.
 
 ## Requirements
 

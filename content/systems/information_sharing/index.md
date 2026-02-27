@@ -23,6 +23,10 @@ That is the strategy underlying the following design.
 
 ![Information sharing between organizations](information_sharing.png)
 
+## Characteristics of the design
+
+todo
+
 ## Necessities for a national robust information sharing infrastructure
 
 (this doom chapter was entirely written by gemini 3 following some heavy prompt engineering. I use LLMs a lot to style text and connect with fields outside my area of expertise like epidemiology and behavioral economics. This chapter ended up with a lot of references within my field of expertise which I need to check out, so I have left it here for now although I don´t like to have pure AI text on my site. - Proper Author)

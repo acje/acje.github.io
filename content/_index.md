@@ -22,7 +22,7 @@ InfoSec professional and systems architect exploring the intersection of informa
 - [Liberal democracies needs a new compute stack. Part 2 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-2fd)
 - [Liberal democracies needs a new compute stack. Part 3 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-523)
 - [Liberal democracies needs a new compute stack. Part 4 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-d56)
-- Under construction [Information sharing is not a solved problem]({{< relref "systems/information_sharing/index.md" >}})
+- [Information sharing is not a solved problem]({{< relref "systems/information_sharing/index.md" >}})
 - [A case against the CIA triad (Substack)](https://anderscj.substack.com/p/a-case-against-the-cia-triad)
 - [CISQ-Model of security qualities]({{< relref "systems/CISQ-model/index.md" >}})
 - [Structured service addressing. A new take on load balancing in IPv6 (Repository)](https://github.com/acje/structured-service-addressing)

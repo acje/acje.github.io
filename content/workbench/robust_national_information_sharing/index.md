@@ -1,13 +1,16 @@
 ---
-title: "Digital sovereignty – National robust information sharing"
+title: "Digital sovereignty – Robust national information sharing"
 description: "Exploring how to implement a robust system for information sharing in the Norwegian public sector"
 aliases:
   - "/national_robust_information_sharing/"
+  - "/workbench/national_robust_information_sharing/"
+  - "/robust_national_information_sharing/"
+
 date: 2026-02-25
-lastmod: 2026-02-27
+lastmod: 2026-02-28
 ---
 
-## Digital Sovereignty – National Robust Information Sharing
+## Digital Sovereignty – Robust National Information Sharing
 
 ### Strategic Imperative
 

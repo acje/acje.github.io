@@ -208,12 +208,9 @@ Defeatism is not necessary in information security. We tried formal verification
 
 ## More to Read
 
-[Liberal democracies need a new compute stack. Part 1 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
-
-[Liberal democracies need a new compute stack. Part 2 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-2fd)
-
-[Liberal democracies need a new compute stack. Part 3 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-523)
-
-[Liberal democracies need a new compute stack. Part 4 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-d56)
-
-[Maturity levels in the CISQ security model](https://acje.github.io/systems/cisq-maturity)
+- **[Digital sovereignty - Robust national information sharing]({{< relref "workbench/robust_national_information_sharing/index.md" >}})**
+- [Liberal democracies need a new compute stack. Part 1 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
+- [Liberal democracies need a new compute stack. Part 2 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-2fd)
+- [Liberal democracies need a new compute stack. Part 3 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-523)
+- [Liberal democracies need a new compute stack. Part 4 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-d56)
+- [Maturity levels in the CISQ security model](https://acje.github.io/systems/cisq-maturity)

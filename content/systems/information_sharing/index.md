@@ -19,6 +19,10 @@ When asked, "How can we share this information with X?", technical leads, archit
 
 ## Requirements
 
+**Defense-in-depth.** Both source and destination systems must be shielded from common internet-based attack vectors. This protection should be achieved by isolating the endpoints from direct public internet access.
+
+**Workload mobility.** Services should remain decoupled from underlying infrastructure dependencies like IP addresses or specific network topologies. This abstraction enables seamless migration of workloads across environments whether on-premises, cloud, or hybrid, without requiring code changes or service disruption.
+
 **Secure.** Availability, integrity, authenticity, and control must be protected. See [security]({{< relref "systems/CISQ-maturity/index.md" >}}) for details.
 
 **Timely delivery.** Applications often require up-to-date information. Daily batch transfers may introduce unacceptable latency.

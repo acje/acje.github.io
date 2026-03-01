@@ -209,6 +209,7 @@ Defeatism is not necessary in information security. We tried formal verification
 ## More to Read
 
 - **[Digital sovereignty - Robust national information sharing]({{< relref "workbench/robust_national_information_sharing/index.md" >}})**
+- **[Reliable Data Product Distribution]({{< relref "systems/data_distribution/index.md" >}})**
 - [Liberal democracies need a new compute stack. Part 1 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
 - [Liberal democracies need a new compute stack. Part 2 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-2fd)
 - [Liberal democracies need a new compute stack. Part 3 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-523)

@@ -1,14 +1,14 @@
 ---
-title: "Information sharing is not a solved problem"
+title: "Reliable Data Product Distribution"
 aliases:
-  - "/information_sharing/"
+  - "/data_distribution/"
 
 date: 2026-02-28
-lastmod: 2026-02-28
+lastmod: 2026-03-01
 
 ---
 
-## Information sharing is not a solved problem
+## Reliable Data Product Distribution
 
 This article describes a secure, cross-organizational platform for timely information sharing. It focuses on a specific integration pattern, typically referred to as data replication or data propagation. Other integration patterns, such as request-response, are out of scope.
 
@@ -57,22 +57,32 @@ Together, these mechanisms ensure the destination dataset mirrors the source wit
 
 To satisfy the stringent requirements outlined above, the system architecture is built upon **NATS**, a high-performance cloud-native messaging system for transportation of data products. The architecture further specifies responsibilities and patterns to ensure completeness and correctness of the consumed data product.
 
-**Secure: Availability.** To optimize availability, we use NATS JetStream to provide _at-least-once delivery_ and source-independent availability of data products across the service mesh. JetStream persists messages to disk as an immutable log of state changes. This ensures that even if a consumer is offline for an extended period, it can replay missed messages upon reconnection and recover full dataset state without data loss. The central architectural trait underpinning dataset replication is loose coupling, which reduces the shared-fate problem of tightly coupled systems. Consuming organizations may optionally cache selected data products locally to get better availability and handle particular performance needs such as multiple consumers or frequent restarts with complete data product consumption.
-
-**Secure: Authenticity.** We enforce the authenticity requirement using NATS account-based multi-tenancy with decentralized authentication (NKeys) and granular authorization. Account isolation ensures that organizations can share infrastructure without accessing each other's data streams, preserving the principle of least privilege.
-
 **Defense-in-Depth (Leaf Nodes).** To meet the requirement for isolating endpoints, we employ NATS Leaf Nodes. A Leaf Node runs locally within a secure enclave and initiates an _outbound_ connection to the central NATS cluster. This architecture requires no inbound firewall ports to be opened on the secure network, significantly reducing the attack surface while safely extending the messaging plane into restricted environments.
 
 **Defense-in-Depth (Hollow core nodes).**
 At the center of this architecture is the NATS server service-mesh connecting every participating organization. These servers provide robust scale out capability and should be protected from DoS attacks by lower layers of network infrastructure.
 
-**Location transparency (subject-based addressing).** NATS decouples publishers from consumers using subject-based addressing (for example, `agency.system.update`). Applications do not need to know the IP address or network location of their peers. This abstraction fulfills the _workload mobility_ requirement, allowing services to migrate between on-premises and cloud infrastructure without configuration changes or service-discovery complexity.
+**Workload mobility.** NATS decouples producers and consumers through subject-based addressing, so services can move across edge, on-premises, and cloud environments without endpoint reconfiguration. With leaf nodes and distributed routing, workloads remain portable and resilient to intermittent connectivity while preserving continuous data flow.
+
+**Secure: Availability.** To optimize availability, we use NATS JetStream to provide _at-least-once delivery_ and source-independent availability of data products across the service mesh. JetStream persists messages to disk as an immutable log of state changes. This ensures that even if a consumer is offline for an extended period, it can replay missed messages upon reconnection and recover full dataset state without data loss. The central architectural trait underpinning dataset replication is loose coupling, which reduces the shared-fate problem of tightly coupled systems. Consuming organizations may optionally cache selected data products locally to get better availability and handle particular performance needs such as multiple consumers or frequent restarts with complete data product consumption.
+
+**Security: Integrity.** Integrity is reinforced through immutable JetStream event logs and controlled message handling semantics, reducing the risk of undetected data corruption during transport and replay.
+
+**Secure: Authenticity.** We enforce the authenticity requirement using NATS account-based multi-tenancy with decentralized authentication (NKeys) and granular authorization. Account isolation ensures that organizations can share infrastructure without accessing each other's data streams, preserving the principle of least privilege.
+
+**Security: Control.** The platform can be deployed and operated in nationally controlled environments, with local ownership of infrastructure, identity, authorization policy, and retention controls.
+
+**Timely delivery.** JetStream enables low-latency propagation of state changes using push delivery for online consumers, minimizing delay compared with periodic batch exchange.
 
 **Bandwidth efficiency.** To optimize _bandwidth efficiency_ and _timely delivery_, JetStream supports both push and pull consumption models. Real-time updates are pushed to active consumers immediately, minimizing latency. Conversely, batch processes or bandwidth-constrained consumers can pull messages at their own pace, preventing flow-control issues and optimizing resource usage.
 
+**Data discovery and schema validation.** Data products is published with discoverable subject conventions and documented contracts, while schema validation at producer and consumer boundaries enforces semantic interoperability. This can be done through either a well known repository or a service.
+
+**Completeness and correctness.** The design achieves convergence through _at-least-once delivery_ with idempotent consumption, allowing destination systems to replay missed events and reach eventual consistency without duplication or loss.
+
 ## Necessities for a robust national information-sharing infrastructure
 
-To escape the cycle of recurring systemic failures and strategic dependency, we must rethink our infrastructure through the lens of high-reliability theory. As Ken Thompson demonstrated in _Reflections on Trusting Trust_ (1984), a system's security is illusory if the tools used to build it are compromised; therefore, verified provenance in our software supply chain is a prerequisite for trust, protecting against the kind of hidden fragility Nassim Taleb warns can lead to catastrophic collapse. This technical autonomy is inseparable from political agency. Shoshana Zuboff’s analysis in _The Age of Surveillance Capitalism_ suggests that ceding infrastructure to hyperscale monopolies is not merely an outsourcing decision but a surrender of governance, necessitating a shift back to hosting environments where the organization retains full jurisdictional control.
+To escape the cycle of recurring systemic failures and strategic dependency, we must rethink our infrastructure through the lens of high-reliability theory. As Ken Thompson demonstrated in _Reflections on Trusting Trust_ (1984), a system's security is illusory if the tools used to build it are compromised; therefore, verified provenance in our software supply chain is a prerequisite for trust, protecting against the kind of hidden fragility Nassim Taleb warns can lead to catastrophic collapse in _Antifragile_. This technical autonomy is inseparable from political agency. Shoshana Zuboff’s analysis in _The Age of Surveillance Capitalism_ suggests that ceding infrastructure to hyperscale monopolies is not merely an outsourcing decision but a surrender of governance, necessitating a shift back to hosting environments where the organization retains full jurisdictional control.
 
 Conceptually, we must accept Charles Perrow's thesis in _Normal Accidents_ that failure in tightly coupled systems is inevitable. Rather than striving for impossible perfection, we should emulate High Reliability Organizations (HROs) by designing for resilience and rigorous operational vetting. This requires a departure from monolithic architectures toward the "share nothing" principles of Carl Hewitt’s Actor Model (1973). By isolating components in a manner that prevents the "accidental complexity" of shared state described by Fred Brooks, and strictly enforcing Saltzer and Schroeder’s principle of _Least Privilege_ (1975) through capability-based interfaces, we can construct systems where individual faults are contained, preventing minor errors from cascading into national crises.
 

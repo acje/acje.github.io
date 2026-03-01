@@ -28,7 +28,7 @@ A standardized national model for robust information sharing would allow the vas
 
 ### Difficulty
 
-Perhaps counterintuitively, the main barriers are no longer technical. Advances in service mesh technology and a more mature understanding of data products make implementation increasingly feasible. Yet national-scale deployment remains difficult to deploy in practice. The most significant constraints are institutional incentives and cross-organizational coordination, discussed below. For technical background, see [Information sharing is not a solved problem]({{< relref "systems/information_sharing/index.md" >}}).
+Perhaps counterintuitively, the main barriers are no longer technical. Advances in service mesh technology and a more mature understanding of data products make implementation increasingly feasible. Yet national-scale deployment remains difficult to deploy in practice. The most significant constraints are institutional incentives and cross-organizational coordination, discussed below. For technical background, see [Reliable Data Product Distribution]({{< relref "systems/data_distribution/index.md" >}}).
 
 ## Diagnosis
 
@@ -60,4 +60,4 @@ The establishment of a successful pilot significantly de-risks subsequent onboar
 
 [Digital Sovereignty]({{< relref "systems/digital_sovereignty/index.md" >}})
 
-[Information sharing is not a solved problem]({{< relref "systems/information_sharing/index.md" >}})
+[Reliable Data Product Distribution]({{< relref "systems/data_distribution/index.md" >}})

@@ -55,7 +55,9 @@ Together, these mechanisms ensure the destination dataset mirrors the source wit
 
 ## Characteristics of the design
 
-To satisfy the stringent requirements outlined above, the system architecture is built upon **NATS**, a high-performance cloud-native messaging system for transportation of data products. The architecture further specifies responsibilities and patterns to ensure completeness and correctness of the consumed data product.
+To satisfy the stringent requirements outlined above, the system architecture is built upon **NATS**, a high-performance cloud-native messaging system for transportation of data products. The architecture further specifies responsibilities of producers and consumers as well as patterns to ensure completeness and correctness of the consumed data product.
+
+![Source system](source_system.png)
 
 **Defense-in-Depth (Leaf Nodes).** To meet the requirement for isolating endpoints, we employ NATS Leaf Nodes. A Leaf Node runs locally within a secure enclave and initiates an _outbound_ connection to the central NATS cluster. This architecture requires no inbound firewall ports to be opened on the secure network, significantly reducing the attack surface while safely extending the messaging plane into restricted environments.
 

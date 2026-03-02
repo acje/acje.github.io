@@ -12,8 +12,6 @@ npm-debug.log
 package-lock.json
 
 # Editor
-.vscode/
-.idea/
 *.swp
 *.swo
 *~

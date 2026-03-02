@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
         "ABAC",
+        "Antifragile",
         "Assurability",
         "backpressure",
         "BATNA",
@@ -13,21 +14,30 @@
         "Exfiltration",
         "fintech",
         "Heartbleed",
+        "hyperscale",
         "incentivized",
+        "Kleppmann",
         "lastmod",
+        "linearizability",
         "Mattilsynet",
         "misformatting",
+        "Nassim",
         "Neumann",
         "Nkeys",
         "Parkerian",
+        "Perrow's",
         "Petya",
         "relref",
         "Rubio",
+        "Saltzer",
         "sandboxing",
+        "Shoshana",
+        "Taleb",
         "timestamping",
         "unforgeable",
         "vassalization",
         "WASI",
-        "Webassembly"
+        "Webassembly",
+        "Zuboff’s"
     ]
 }

@@ -49,6 +49,10 @@ To achieve this state convergence reliably, we implement _effectively-once proce
 1. **At-least-once delivery:** The transport layer guarantees that every message is delivered to the destination one or more times. This handles network failures where acknowledgments may be lost, necessitating retransmission.
 2. **Idempotence:** The consumer application is designed to handle duplicate messages safely. Using mechanisms such as unique identifiers or deterministic state transitions, processing the same message multiple times yields the same side effects as processing it once.
 
+### Visualized requirements
+
+![Visualized requirements](requirements_visualized.png)
+
 Together, these mechanisms ensure the destination dataset mirrors the source without duplication or data loss. In _Designing Data-Intensive Applications_, Martin Kleppmann refers to this pattern as _leader-based replication_, where the source system acts as the leader responsible for writing and broadcasting state changes to follower systems.
 
 ![Information sharing between organizations](information_sharing.png)
@@ -87,6 +91,10 @@ At the center of this architecture is the NATS server service-mesh connecting ev
 To escape the cycle of recurring systemic failures and strategic dependency, we must rethink our infrastructure through the lens of high-reliability theory. As Ken Thompson demonstrated in _Reflections on Trusting Trust_ (1984), a system's security is illusory if the tools used to build it are compromised; therefore, verified provenance in our software supply chain is a prerequisite for trust, protecting against the kind of hidden fragility Nassim Taleb warns can lead to catastrophic collapse in _Antifragile_. This technical autonomy is inseparable from political agency. Shoshana Zuboff’s analysis in _The Age of Surveillance Capitalism_ suggests that ceding infrastructure to hyperscale monopolies is not merely an outsourcing decision but a surrender of governance, necessitating a shift back to hosting environments where the organization retains full jurisdictional control.
 
 Conceptually, we must accept Charles Perrow's thesis in _Normal Accidents_ that failure in tightly coupled systems is inevitable. Rather than striving for impossible perfection, we should emulate High Reliability Organizations (HROs) by designing for resilience and rigorous operational vetting. This requires a departure from monolithic architectures toward the "share nothing" principles of Carl Hewitt’s Actor Model (1973). By isolating components in a manner that prevents the "accidental complexity" of shared state described by Fred Brooks, and strictly enforcing Saltzer and Schroeder’s principle of _Least Privilege_ (1975) through capability-based interfaces, we can construct systems where individual faults are contained, preventing minor errors from cascading into national crises.
+
+## Resources
+
+[Excalidraw](data_distribution.excalidraw)
 
 ## More to Read
 

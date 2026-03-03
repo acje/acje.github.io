@@ -98,3 +98,7 @@ These definitions are a work in progress. two principles are important:
 
 The CISQ-model comes with its own origin story. Se if you can spot the evolution from its first stage.
 [A case against the CIA triad](https://anderscj.substack.com/p/a-case-against-the-cia-triad)
+
+## More to Read
+
+{{% home-section-links section="systems" %}}

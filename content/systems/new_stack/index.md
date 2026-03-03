@@ -234,3 +234,7 @@ There is a danger in the “maximum capability strategy” we find in the design
 - [Chapter 2 — Strategic contract](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-2fd)
 - [Chapter 3 — Ossified foundations and a clash of two worlds](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-523)
 - [Chapter 4 — Isolation is all you need](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-d56)
+
+## More to Read
+
+{{% home-section-links section="systems" %}}

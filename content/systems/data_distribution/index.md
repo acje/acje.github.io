@@ -100,5 +100,5 @@ Conceptually, we must accept Charles Perrow's thesis in _Normal Accidents_ that 
 
 ## More to Read
 
-- [Digital Sovereignty]({{< relref "systems/digital_sovereignty/index.md" >}})
 - [Fiber semantics. Event sourcing for complex domains (Repository)](https://github.com/acje/Fiber-semantics)
+{{% home-section-links section="systems" %}}

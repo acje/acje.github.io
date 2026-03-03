@@ -6,6 +6,6 @@ bookCollapseSection: false
 
 Strategy, operations, tactics.
 
-- Under construction [Scaling agile]({{< relref "agency/scaled_agile/index.md" >}})
+{{% home-section-links section="agency" %}}
+
 - [Alignment and autonomy (Repository)](https://github.com/acje/Alignment_autonomy)
-- [Leverage]({{< relref "agency/leverage" >}})

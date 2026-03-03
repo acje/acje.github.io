@@ -5,6 +5,8 @@ aliases:
   - "/leverage/"
 date: 2026-02-22
 lastmod: 2026-02-24
+homeFeatured: true
+weight: 20
 ---
 
 ## Leverage

@@ -10,30 +10,24 @@ InfoSec professional and systems architect exploring the intersection of informa
 
 ## Workbench - Idea to impact
 
-- **[Digital sovereignty - Robust national information sharing]({{< relref "workbench/robust_national_information_sharing/index.md" >}})**
-- TODO: [Digital sovereignty - Pervasive supply chain provenance]({{< relref "workbench/pervasive_supply_chain_provenance/index.md" >}})
-- TODO: [Digital sovereignty - Ecosystem of defensible systems]({{< relref "workbench/ecosystem_of_defensible_systems/index.md" >}})
+{{% home-section-links section="workbench" %}}
 
 ## Systems and security
 
-- **[Digital Sovereignty]({{< relref "systems/digital_sovereignty/index.md" >}})**
-- **[Maturity levels in the CISQ security model]({{< relref "systems/CISQ-maturity/index.md" >}})**
-- **[Reliable Data Product Distribution]({{< relref "systems/data_distribution/index.md" >}})**
-- [Liberal democracies needs a new compute stack. Part 1 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
-- [Liberal democracies needs a new compute stack. Part 2 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-2fd)
-- [Liberal democracies needs a new compute stack. Part 3 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-523)
-- [Liberal democracies needs a new compute stack. Part 4 (Substack)](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-d56)
+{{% home-section-links section="systems" %}}
+
+### External
+
 - [A case against the CIA triad (Substack)](https://anderscj.substack.com/p/a-case-against-the-cia-triad)
-- [CISQ-Model of security qualities]({{< relref "systems/CISQ-model/index.md" >}})
 - [Structured service addressing. A new take on load balancing in IPv6 (Repository)](https://github.com/acje/structured-service-addressing)
-- Under construction [Fiber semantics. Event sourcing for complex domains (Repository)](https://github.com/acje/Fiber-semantics)
+- [Fiber semantics. Event sourcing for complex domains (Repository)](https://github.com/acje/Fiber-semantics)
 - [Quality attributes (Repository)](https://github.com/acje/quality-attributes)
 
 ## Agency
 
-- Under construction [Scaling agile]({{< relref "agency/scaled_agile/index.md" >}})
+{{% home-section-links section="agency" %}}
+
 - [Alignment and autonomy (Repository)](https://github.com/acje/Alignment_autonomy)
-- [Leverage]({{< relref "agency/leverage" >}})
 
 ## Connect
 

@@ -8,6 +8,8 @@ aliases:
 
 date: 2026-02-25
 lastmod: 2026-02-28
+homeFeatured: true
+weight: 10
 ---
 
 ## Digital Sovereignty – Robust National Information Sharing

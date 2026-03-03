@@ -1,7 +1,9 @@
 ---
-title: "A structured view on information security"
+title: "CISQ-Model of security qualities"
 aliases:
   - "/CISQ-model/"
+homeFeatured: true
+weight: 50
 ---
 ## A structured view on information security
 

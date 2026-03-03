@@ -2,6 +2,9 @@
 title: "Scaling Agile"
 aliases:
   - "/scaled_agile/"
+homeFeatured: true
+homePrefix: "Under construction"
+weight: 10
 ---
 
 ## Scaling Agile

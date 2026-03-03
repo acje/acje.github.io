@@ -5,6 +5,9 @@ aliases:
   - "/pervasive_supply_chain_provenance/"
 date: 2026-02-24
 lastmod: 2026-02-24
+homeFeatured: true
+homePrefix: "TODO:"
+weight: 20
 ---
 
 ## Digital sovereignty - Pervasive Supply Chain Provenance

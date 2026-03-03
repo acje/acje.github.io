@@ -6,6 +6,8 @@ aliases:
 
 date: 2026-01-22
 lastmod: 2026-02-11
+homeFeatured: true
+weight: 10
 
 ---
 

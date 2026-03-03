@@ -1,0 +1,9 @@
+{{- $section := .Get "section" -}}
+{{- $pages := where site.Pages "Section" $section -}}
+{{- $pages = where $pages "Kind" "in" (slice "page" "section") -}}
+{{- $pages = where $pages "Params.homeFeatured" true -}}
+{{- $pages = where $pages "Draft" false -}}
+{{- $pages = sort $pages "Weight" "asc" -}}
+{{- range $pages }}
+- {{ if .Params.homePrefix }}{{ .Params.homePrefix }} {{ end }}[{{ .Title }}]({{ .RelPermalink }})
+{{- end }}

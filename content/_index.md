@@ -25,9 +25,8 @@ InfoSec professional and systems architect exploring the intersection of informa
 
 ## Agency
 
-{{% home-section-links section="agency" %}}
-
 - [Alignment and autonomy (Repository)](https://github.com/acje/Alignment_autonomy)
+{{% home-section-links section="agency" %}}
 
 ## Connect
 

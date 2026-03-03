@@ -145,11 +145,10 @@ The scope is to point out the two most long-term, unappreciated aspects of compu
 
 ![Digital castle](/systems/digital_sovereignty/Borg2.png)
 
-My previous series on Substack:
-[Liberal democracies need a new compute stack. Part 1](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute)
-[Part 2](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-2fd),
-[Part 3](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-523) and
-[Part 4](https://anderscj.substack.com/p/liberal-democracies-needs-a-new-compute-d56)
+My previous series; A new compute stack. [Part 1](/systems/new_stack/#chapter-1--geopolitics-security-trust-and-transparency),
+[Part 2](/systems/new_stack/#chapter-2--strategic-contract),
+[Part 3](/systems/new_stack/#chapter-3--ossified-foundations-and-a-clash-of-two-worlds) and
+[Part 4](/systems/new_stack/#chapter-4--isolation-is-all-you-need)
 may serve as a more comprehensive introduction to this topic. I will describe it more briefly here.
 
 ### Summary of the Four-Part Series

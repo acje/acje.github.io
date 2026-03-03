@@ -160,7 +160,7 @@ While writing part four, an additional credible commitment problem has arisen fr
 
 In part four I will try to expand on what we mean by isolation, but first let us take a brief look at what an end-game hardware architecture could look like. This is a total paper tiger but hopefully also a high-level design to visualize a desired state. The hardware design has two primary goals: low-overhead communication and credible isolation (later to be renamed durable isolation). It may look fancy at first glance, but it is just a computer cluster on a chip that draws some inspiration from isolation mechanisms like Apple’s Secure Enclave and scale-out strategies like Tenstorrent Grayskull.
 
-[![Actor tiles](actor_tiles.png "Actor tiles")](images/part4-img7.png)
+[![Actor tiles](images/part4-img3.png "Actor tiles")](images/part4-img7.png)
 
 High-level sketch of a cluster-on-a-chip where fully isolated “Actor enclaves” represent the fundamental unit of compute. Tiles help scale the mesh network, memory, and control plane but are of little consequence for software running on the platform.
 

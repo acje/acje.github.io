@@ -46,6 +46,7 @@ This section covers:
 
     * *Risks as second-order effects of successfully creating new assets.*
     ![Production vs protection](/agency/scaled_agile/protection_production.png)
+    From *Reason 1997* [7] trade offs and the unrocked boat.
 
     * **Managing Opportunities with Architecture**
       * Architecture is often overlooked or discarded when organizations move to agile methodologies [3].
@@ -80,3 +81,4 @@ This section covers:
 4. Bungay S. The art of action: how leaders close the gaps between plans, actions and results. London: Nicholas Brealey Publishing; 2011.
 5. Department of the Army. ADP 6-0 mission command: command and control of Army forces. Washington (DC): Headquarters, Department of the Army; 2019.
 6. Beck K. Tidy first?: a personal exercise in empirical software design. Sebastopol (CA): O'Reilly Media; 2023.
+7. Reason J. Managing the risks of organizational accidents. Aldershot: Ashgate; 1997.

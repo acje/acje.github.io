@@ -57,7 +57,8 @@ For the rest of this post I will proceed to explain:
         ![Decision making at scale](/agency/scaled_agile/three_gaps.png)
         [Three Critical Gaps](https://medium.com/10x-curiosity/taking-the-project-management-theme-one-step-further-and-examining-why-the-agile-styles-of-project-5ec97cb2eb37)
 
-    * Hierarchy of cascading intent
+    * Hierarchy of cascading intent (<https://planadigm.com/knowledge/the-art-of-action-part-2/>)
+     ![cascading intent](/cascading_intent.png)
     * Institute backbrief
 * Alignment and autonomy
 

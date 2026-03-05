@@ -42,10 +42,10 @@ This section covers:
   * *Alignment scales speed.* Extremes of alignment—either total absence or rigid enforcement—create traps of local optimization [4].
 * **Second lesson** – Managing second-order effects of success. New assets introduce risks and opportunities that may be latent or overlooked in the implementation structure.
   * Kent Beck: Behavior and Structure [6]
-    ![Behavior and structure](/agency/scaled_agile/behavior_structure.png)
+    ![Behavior and structure](behavior_structure.png)
 
     * *Risks as second-order effects of successfully creating new assets.*
-    ![Production vs protection](/agency/scaled_agile/protection_production.png)
+    ![Production vs protection](protection_production.png)
     From *Reason 1997* [7] trade offs and the unrocked boat.
 
     * **Managing Opportunities with Architecture**
@@ -57,15 +57,15 @@ This section covers:
 * **Places to Innovate.**
   * *The Art of Action – Directed Opportunism [4]*
     * *Operational Gaps*
-        ![Decision making at scale](/agency/scaled_agile/three_gaps.png)
+        ![Decision making at scale](three_gaps.png)
         [Three Critical Gaps](https://medium.com/10x-curiosity/taking-the-project-management-theme-one-step-further-and-examining-why-the-agile-styles-of-project-5ec97cb2eb37)
 
     * *Hierarchy of Cascading Intent* (<https://planadigm.com/knowledge/the-art-of-action-part-2/>) [4]
-     ![cascading intent](/cascading_intent.png)
+     ![cascading intent](cascading_intent.png)
     * *Instituting the Backbrief [4,5]*
 * **Alignment and Autonomy.**
 
-  ![Decision making at scale](/agency/scaled_agile/Decision_making_at_scale.png)
+  ![Decision making at scale](Decision_making_at_scale.png)
   
     See [Alignment and autonomy](https://github.com/acje/Alignment_autonomy) for more details (self-reference)
 

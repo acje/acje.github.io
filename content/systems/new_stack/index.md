@@ -2,7 +2,6 @@
 title: "Digital Sovereignty by Design"
 aliases:
   - "/new_stack/"
-  - "/sovereignty_by_design/"
 
 date: 2025-02-20
 lastmod: 2026-03-10

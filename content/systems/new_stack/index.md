@@ -1,5 +1,5 @@
 ---
-title: "A new compute stack"
+title: "Digital Sovereignty by Design"
 aliases:
   - "/new_stack/"
 

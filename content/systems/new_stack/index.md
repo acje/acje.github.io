@@ -13,9 +13,11 @@ weight: 40
 
 ## A new compute stack
 
-There are times when the world gets tight and choices grow sharp. This is one of those times. The machines we depend on are not neutral now; they shape power, trust, and freedom.
+There are times when the world gets tight and choices grow sharp. This is one of those times. The machines we depend on are not neutral; they shape power, trust, and freedom.
 
-One reason we miss this is paradigm blindness, the structural failure.[1] Experts are trained to solve puzzles inside the accepted frame. They get very good at normal work and bad at seeing that the frame itself is the problem.
+[![Digital castle](digital_castle.jpg)](digital_castle.jpg)
+
+One reason we miss this is paradigm blindness, the structural failure in science not as a single dramatic event, but as the accumulation of "anomalies" that violate the expectations of the reigning paradigm.[1] Experts are trained to solve puzzles inside the accepted frame. They get very good at normal work and bad at seeing that the frame itself is the problem.
 
 This essay starts in that atmosphere and goes down into the metal. It moves past slogans and policy talk and looks at what is built, what was inherited, and what can fail. The current stack did not arrive by fate; it came from bargains, habits, and fear of breaking what already runs. What follows argues for another path: keep complexity on a short leash, treat interfaces as commitments rather than fashion, and build isolation that holds when pressure comes. From motive to method, from diagnosis to design, this is a map for the work ahead. The concrete adversarial protagonist in this analysis is a state-sponsored advanced persistent threat (APT): patient, well-resourced, and optimized for long-term leverage.
 
@@ -25,8 +27,6 @@ This essay starts in that atmosphere and goes down into the metal. It moves past
 - [Chapter 4 — Isolation is all you need](#chapter-4--isolation-is-all-you-need)
 
 ## Chapter 1 — Geopolitics, security, trust and transparency
-
-[![Digital castle](digital_castle.jpg)](digital_castle.jpg)
 
 ### Introduction
 

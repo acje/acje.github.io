@@ -17,7 +17,7 @@ There are times when the world gets tight and choices grow sharp. This is one of
 
 One reason we miss this is paradigm blindness, the structural failure.[1] Experts are trained to solve puzzles inside the accepted frame. They get very good at normal work and bad at seeing that the frame itself is the problem.
 
-This essay starts in that atmosphere and goes down into the metal. It moves past slogans and policy talk and looks at what is built, what was inherited, and what can fail. The old stack did not arrive by fate; it came from bargains, habits, and fear of breaking what already runs. What follows argues for another path: keep complexity on a short leash, treat interfaces as commitments rather than fashion, and build isolation that holds when pressure comes. From motive to method, from diagnosis to design, this is a map for the work ahead.
+This essay starts in that atmosphere and goes down into the metal. It moves past slogans and policy talk and looks at what is built, what was inherited, and what can fail. The current stack did not arrive by fate; it came from bargains, habits, and fear of breaking what already runs. What follows argues for another path: keep complexity on a short leash, treat interfaces as commitments rather than fashion, and build isolation that holds when pressure comes. From motive to method, from diagnosis to design, this is a map for the work ahead. The concrete adversarial protagonist in this analysis is a state-sponsored advanced persistent threat (APT): patient, well-resourced, and optimized for long-term leverage.
 
 - [Chapter 1 — Geopolitics, security, trust and transparency](#chapter-1--geopolitics-security-trust-and-transparency)
 - [Chapter 2 — Strategic contract](#chapter-2--strategic-contract)
@@ -32,7 +32,7 @@ This essay starts in that atmosphere and goes down into the metal. It moves past
 
 Here is why and how we can create a new technology stack, a tale about computer architecture and geopolitics in four parts.
 
-It is February 2025, and the MAGAs are running the White House according to Steve Bannon’s “muzzle velocity strategy”, or wrestling, as historian Stephen Kotkin aptly characterizes this fourth-power distraction strategy. The Trump-Vance administration is doing wonders to awaken a sleepy and confused Europe. As a European, I can’t help but welcome this development to some limited extent. I’m certainly happy Putin isn’t doing all the heavy lifting on his own. The side effects of the tools in his toolbox are simply too horrendous.
+It is February 2025, and the MAGAs are running the White House according to Steve Bannon’s “muzzle velocity strategy,” or “wrestling,” as historian Stephen Kotkin aptly characterizes this fourth-power distraction strategy. The Trump-Vance administration is doing wonders to awaken a sleepy and confused Europe. As a European, I can’t help but welcome this development to some limited extent. I’m certainly happy Putin isn’t doing all the heavy lifting on his own. The side effects of the tools in his toolbox are simply too horrendous.
 
 Europe, not just Germany, has been a naïve consumer of Russian energy, Chinese labor, and American security, again according to Kotkin, and I get the feeling that this is popular opinion in the US in general. For various reasons, these are now all in short supply. The end of free-riding on Chinese labor is mostly a loss for China's strategic positioning in the global supply chains, even if some goods will get more expensive. And as with Russian energy, it is sort of a self-inflicted supply issue founded on what should by now be obvious strategic concerns about unhealthy dependency on adversarial regimes.
 
@@ -48,11 +48,11 @@ This is initially not a concern for the authoritarian leader looking for a suita
 
 Computer architecture is not going to be at the very cutting edge of deterrence, but it is going to be in everything, and a lot of it will have to be online and available to everyone. Trust and transparency are large defining parts of who we are, and we cannot afford to lose who we are just to win. Further, one of our strategic advantages is in wide-reaching, high-trust alliances, which are not very amenable to closed or air-gapped systems. This is why we need a new technology stack for our compute needs that can substantially shift the cyber battlefields in favor of the defenders. In military parlance, this is about surfaces and gaps. Surfaces are prepared defensive lines; gaps are a lack of such structures. In part three, we will identify some gaps that we have so far failed to close in our compute systems.
 
-To sustain a relevant economic presence, which again is the basis for sustained deterrence, we would also need a new compute stack to be fast and energy efficient. And to compensate for the lack of a huge FAANG SRE (administrator) talent pool outside the state of California, we are also in need of a technology stack that can shed the layers of accidental complexity inherent to our current systems. Of course, such a capability is not something only liberal democracies can gain from, but for smaller states seeking digital sovereignty this is not just a nice-to-have, it is a need-to-have.
+To sustain a relevant economic presence, which again is the basis for sustained deterrence, we would also need a new compute stack to be fast and energy-efficient. And to compensate for the lack of a huge FAANG SRE (administrator) talent pool outside the state of California, we are also in need of a technology stack that can shed the layers of accidental complexity inherent to our current systems. Of course, such a capability is not something only liberal democracies can gain from, but for smaller states seeking digital sovereignty this is not just a nice-to-have, it is a need-to-have.
 
 ### Summary
 
-To sum it up, a low complexity, secure and fast compute stack is a need-to-have for digital sovereignty and sustained deterrence. Part two lays out the high-level strategy, part three examines the nature of the problem and part four identifies some key tactical capabilities of a design.
+To sum it up, a low-complexity, secure, and fast compute stack is a need-to-have for digital sovereignty and sustained deterrence. Part two lays out the high-level strategy, part three examines the nature of the problem, and part four identifies some key tactical capabilities of a design.
 
 I do not have references for the claims found here, but if you want inspiration from some of the people who have informed my opinions, I recommend looking up Stephen Kotkin and Sarah C. Paine.
 
@@ -60,7 +60,7 @@ I do not have references for the claims found here, but if you want inspiration 
 
 ### The kernel of a strategy
 
-*“The kernel of a strategy contains three elements: a diagnosis, a guiding policy, and coherent action.” – Richard P. Rumelt*
+*“The kernel of a strategy contains three elements: a diagnosis, a guiding policy, and coherent action.”* – Richard P. Rumelt
 
 How did Nvidia outcompete Intel on high-performance compute? The following three factors were certainly important to Nvidia’s success: first, a software-based contract (CUDA) to reduce the rate of platform ossification; second, a vastly shorter development cycle time; third, riding a wave together with TSMC as the “economy of scale”-driven semiconductor industry forced capacity consolidation and gave Nvidia access to the most energy-efficient transistors available.
 
@@ -76,13 +76,13 @@ A policy to implement a strategy may look like this:
    2. The contract must be public
    3. There should be several implementations of the contract
 2. Optimization follows stabilization of the contract; implementations that optimize ahead of stabilization cannot expect their sunk cost to be valued.
-3. Identify and extract capabilities that must be protected from adversarial modification, such that they can be implemented without the ability to change. Hardware support for isolation is an obvious candidate here.
+3. Identify and extract capabilities that must be protected from adversarial modification, such that they can be implemented without the ability to change. In concrete terms this means assuming a state-sponsored APT can eventually compromise software layers. Hardware support for isolation is an obvious candidate here.
 
-Identifying a suitable software-based contract resembling something like a distributed runtime for general purpose compute needs that is capable of delivering our three identified needs would create a possible route of many small steps to a new hardware and software stack with this contract sitting in the middle providing opportunities for simplifications and innovations both above and below the contract.
+Identifying a suitable software-based contract resembling something like a distributed runtime for general-purpose compute needs that is capable of delivering our three identified needs would create a possible route of many small steps to a new hardware and software stack, with this contract sitting in the middle and providing opportunities for simplifications and innovations both above and below the contract.
 
 For brevity, I will skip diagnosis in this part and jump to the conclusion by laying out what this contract could look like. I plan to show through examination of the problem and corresponding design that a strategic contract purposefully tailored to achieve the three stated goals of low complexity, security, and speed can be crafted with a combination of WebAssembly components and the actor model as a foundation.
 
-Next follows a short description of both concepts and how their inherent characteristics are meant to contribute towards the goal of the contract.
+Next follows a short description of both concepts and how their inherent characteristics are meant to contribute toward the goal of the contract.
 
 ### The actor model by Carl Hewitt
 
@@ -92,15 +92,15 @@ The actor model by Carl Hewitt is a model of distributed computing that defines 
 
 WebAssembly is an ecosystem of virtual-machine-related technologies that importantly delivers the ability to verify that code is properly sandboxed and describe interfaces in terms of capabilities. When creating a strategic contract, WebAssembly and the related WebAssembly component model provide support for multiple languages (polyglot), a compile target, and the possibility to design least-privilege interface contracts.
 
-To handle risk and development speed we have learned through the practice of DevOps and product management that short development cycles are key to success. What if we could make a software emulated version of the best imaginable machine, deploy it to production in large scale to get feedback and iterate fast over its development. We could get rid of much of the accidental complexity accumulated over the past five decades since x86 (1978) introduced the model we generally run today. This model was later effectively cemented into place by the popularity of operating systems like Linux (1991) and Windows.
+To handle risk and development speed we have learned through the practice of DevOps and product management that short development cycles are key to success. What if we could make a software-emulated version of the best imaginable machine, deploy it to production at large scale to get feedback, and iterate fast over its development. We could get rid of much of the accidental complexity accumulated over the past five decades since x86 (1978) introduced the model we generally run today. This model was later effectively cemented into place by the popularity of operating systems like Linux (1991) and Windows.
 
-Such a software emulation of a computer that implements WebAssembly and the actor model by giving every component an address to send messages to exists today. Enter WasmCloud, an actor-model-based WebAssembly runtime that uses WASI for interface contracts. I should probably mention that I’m not affiliated with WasmCloud in any way, other than having loosely followed the project for some time because it ticked all the right boxes.
+Such a software-emulated version of a computer that implements WebAssembly and the actor model by giving every component an address to send messages to exists today. Enter WasmCloud, an actor-model-based WebAssembly runtime that uses WASI for interface contracts. I should probably mention that I’m not affiliated with WasmCloud in any way, other than having loosely followed the project for some time because it ticked all the right boxes.
 
 However, I’m not going to describe WasmCloud here, or even praise some of its wonderful features. Instead, we are going to look at how a similar vehicle can help us get to a next paradigm of compute that can deliver our needs for a low-complexity, secure, and fast compute stack.
 
 ## Chapter 3 — Ossified foundations and a clash of two worlds
 
-*“If I had an hour to solve a problem, I'd spend 55 minutes thinking about the problem and 5 minutes thinking about solutions.” – Albert Einstein*
+*“If I had an hour to solve a problem, I'd spend 55 minutes thinking about the problem and 5 minutes thinking about solutions.”* – Albert Einstein
 
 ### The sorry state of InfoSec
 
@@ -112,9 +112,9 @@ For part three, I have been contemplating splitting it into the IT and InfoSec i
 
 ### The ossified IT industry
 
-Let’s get to the meaty part. The IT industry is clearly divided into two very different domains with very different incentive structures. There is the hardware industry that is most notably driven by economy of scale, causing a winner-takes-all tendency, but also a strong leaning towards flexibility, ease of use or entry, but perhaps most importantly; backward compatibility, because you need to maximize the size of your target market to be the winner. The hardware industry was the main game in town the first few decades and in this period, they produced several novel designs with strong security features like rings, capabilities and separate failure domains. These days things have changed. Users follow functionality, which is defined in software. Software is picking the winners among hardware alternatives, and it is heavily incentivizing backwards compatibility, leading to a very narrow lane to stick within for hardware designs to have a chance to succeed.
+Let’s get to the meaty part. The IT industry is clearly divided into two very different domains with very different incentive structures. There is the hardware industry, most notably driven by economies of scale, causing a winner-takes-all tendency, but also a strong leaning toward flexibility and ease of use or entry, and perhaps most importantly, backward compatibility, because you need to maximize the size of your target market to be the winner. The hardware industry was the main game in town in the first few decades, and in this period it produced several novel designs with strong security features like rings, capabilities, and separate failure domains. These days things have changed. Users follow functionality, which is defined in software. Software is picking the winners among hardware alternatives, and it is heavily incentivizing backward compatibility, leading to a very narrow lane to stick within for hardware designs to have a chance to succeed.
 
-The software industry started out with incentive structures something like the hardware industry with its “shrink wrapped” software delivery model on storage media like discs and later CD and DVD, but this model has now been replaced by services, app stores and perhaps most importantly open-source repositories. The way we build software has now become an economy of composition. This composition is the main driver of software productivity, but it also brings some structural challenges.
+The software industry started out with incentive structures similar to the hardware industry, with its “shrink-wrapped” software delivery model on storage media like discs and later CDs and DVDs, but this model has now been replaced by services, app stores, and perhaps most importantly, open-source repositories. The way we build software has now become an economy of composition. This composition is the main driver of software productivity, but it also brings some structural challenges.
 
 Picture the current technology stack as a large tower, or even more like an upside-down pyramid. There are millions of workers adding, removing, and changing pieces to the structure all the time, but the rate of change only stays high at the ever-growing top of this upside-down pile. Once a layer has become buried under a couple of higher layers, it becomes ossified. The rate of change drops dramatically at these buried layers, and only certain interior aspects of the pieces in these layers can now easily be changed. Any change to the exterior of a piece becomes a huge, entangled project with multiple parties that may not share situational awareness or agree on strategic goals. At the lower layers you find hardware with its CPU ISA that can only grow, never shrink, and never change structural shape or fundamental behavior. Above the hardware, that is in the middle of this upside-down pyramid, are the lower layers of libraries, operating systems, and protocols for storage and communication. All these mid and lower layers are so constrained by network effects that they tend to be ossified for years or decades with minimal change. Not because they are done or perfected, but because the cost of change is no longer seen as short- or midterm affordable by the parties of interest.
 
@@ -122,7 +122,7 @@ Picture the current technology stack as a large tower, or even more like an upsi
 
 There is a clash of two worlds in the IT industry. It is the hardware economy of scale and the software economy of composition working against each other to reduce the space of opportunity. Hardware creates a small number of possible winners, and software picks the cheapest, fastest, least common denominator that maintains backward compatibility. What we are left with is a fast and flexible, but inherently insecure, hardware and software technology stack. A thick upper layer of software gives the false impression of a fast-moving IT industry, but it is only moving fast on the surface, while being completely ossified in its own lower layers of software and hardware.
 
-To understand how this could be much different, I think it is best to start at the bottom and work our way up. At the very bottom lies the real tradeoffs forged in the laws of physics. To quote Jim Keller: “Hardware is just a bunch of pipes and arrays.” What the unfortunate dance between hardware and software has created is a need to scale up the complexity of the pipes and the size of the arrays. In other terms, we made the CPU cores faster, but less energy efficient, and the memory hierarchy, that is the caches and RAM, larger, which again means higher latency and less energy efficient operation. This was done so that software didn’t have to change, because that has always been the winning recipe for the hardware industry. Now the free lunch in CPU scaling is over, so we started adding more CPU cores to the same memory hierarchy. This means the memory size must grow to keep enough work close to the CPUs, which makes memory have even higher latency, which means the CPU cores must be designed even more aggressively to hide the memory latency. This is a downward spiral even from a pure performance perspective. Keep in mind that we are completely bound by heat density by now. Any addition that reduces energy efficiency is a net loss for most workloads. Sure, you can find some highly serialized workloads that benefit. There are no easy answers here.
+To understand how this could be much different, I think it is best to start at the bottom and work our way up. At the very bottom lie the real trade-offs forged by the laws of physics. To quote Jim Keller: “Hardware is just a bunch of pipes and arrays.” What the unfortunate dance between hardware and software has created is a need to scale up the complexity of the pipes and the size of the arrays. In other terms, we made the CPU cores faster but less energy-efficient, and the memory hierarchy, that is, the caches and RAM, larger, which again means higher latency and less energy-efficient operation. This was done so that software didn’t have to change, because that has always been the winning recipe for the hardware industry. Now the free lunch in CPU scaling is over, so we started adding more CPU cores to the same memory hierarchy. This means the memory size must grow to keep enough work close to the CPUs, which makes memory have even higher latency, which means the CPU cores must be designed even more aggressively to hide the memory latency. This is a downward spiral even from a pure performance perspective. Keep in mind that we are completely bound by heat density by now. Any addition that reduces energy efficiency is a net loss for most workloads. Sure, you can find some highly serialized workloads that benefit. There are no easy answers here.
 
 ### Shared memory as a back channel
 
@@ -130,35 +130,35 @@ However, this piece was supposed to be about security, and there is another insi
 
 ### The memory wall
 
-The performance issue created by ever-growing strain on the memory system is sometimes called the von Neumann bottleneck and sometimes the memory wall. And as I have shown here, it also enables several failure modes that could otherwise have been eliminated if we could find a way to disaggregate the memory hierarchy into small, isolated islands and replace all the intended communication channels through memory with low-latency, energy-efficient explicit message passing over a network. This, however, would break all existing software and hence such hardware would never be picked by the market as a winner. Unless, of course, we either created such a market, or perhaps didn’t make the machine in hardware at all, but rather as the strategic contract from part two, defined in software for the first generations and later with parts implemented in hardware.
+The performance issue created by ever-growing strain on the memory system is sometimes called the von Neumann bottleneck and sometimes the memory wall. And as I have shown here, it also enables several failure modes that could otherwise have been eliminated if we could find a way to disaggregate the memory hierarchy into small, isolated islands and replace all the intended communication channels through memory with low-latency, energy-efficient explicit message passing over a network. This, however, would break all existing software and hence such hardware would never be picked by the market as a winner. Unless, of course, we either created such a market, or perhaps didn’t make the machine in hardware at all, but instead built the strategic contract from part two in software for the first generations and later implemented parts in hardware.
 
 ### Software has a credible commitment problem
 
-We need to examine some more problems to understand why we eventually need to implement parts of such a machine in hardware rather than software, and beyond the obvious performance gain in message passing, there is another less obvious aspect that is best described by going back to where we started, with geopolitics. Software has a credible commitment problem. What is a credible commitment problem, one may ask. Well, like with the “control is king” statement above, it has to do with time; the future, more precisely. The credible commitment problem is about an entity’s ability to guarantee something in the future. And when connecting this problem to software, we are simply pointing to the fact that the one big advantage of software is also its weakness in this specific situation. Software’s ability to change is directly connected to software’s inability to guarantee that it will not change in the future. Remember Chinese 5G networks? They claimed it was verified without any backdoors. And that was probably accurate. But if you fundamentally don’t trust the supply chain, there is no reason to trust that a backdoor will not be added in the future, even if it is not present today. To leverage this insight in future designs, we need to identify invariants that are important to guarantee security and implement those in hardware or at least with sufficient hardware support to establish credible commitment. One such candidate will be isolation mechanisms when disaggregating the memory hierarchy.
+We need to examine some more problems to understand why we eventually need to implement parts of such a machine in hardware rather than software, and beyond the obvious performance gain in message passing, there is another less obvious aspect that is best described by going back to where we started, with geopolitics. Software has a credible commitment problem. This matters most when the adversary is a state-sponsored APT that can sustain campaigns over years and optimize for future coercive leverage. What is a credible commitment problem, one may ask. Well, like with the “control is king” statement above, it has to do with time; the future, more precisely. The credible commitment problem is about an entity’s ability to guarantee something in the future. And when connecting this problem to software, we are simply pointing to the fact that the one big advantage of software is also its weakness in this specific situation. Software’s ability to change is directly connected to software’s inability to guarantee that it will not change in the future. Remember Chinese 5G networks? They claimed it was verified without any backdoors. And that was probably accurate. But if you fundamentally don’t trust the supply chain, there is no reason to trust that a backdoor will not be added in the future, even if it is not present today. To leverage this insight in future designs, we need to identify invariants that are important to guarantee security and implement those in hardware or at least with sufficient hardware support to establish credible commitment. One such candidate will be isolation mechanisms when disaggregating the memory hierarchy.
 
 For more information on this topic, the ACM Turing award lectures by Hennessy and Patterson, in particular the section about “the sorry state of security” is a good place to start.
 
 ## Chapter 4 — Isolation is all you need
 
-*“Everything should be built top-down, except the first time.” - Alan Perlis*
+*“Everything should be built top-down, except the first time.”* - Alan Perlis
 
 This succinct statement explains how we would deal with the complex adaptive domain and transition our understanding to the complicated domain of the Cynefin framework, allowing us to eventually optimize solutions to problems that are initially riddled with both known and unknown unknowns. In part four I will look at the importance of isolation to shift the cyber battlefields in favor of the defenders. It is obviously not all we need to build secure systems, but in this age of AI the reference to "Attention is all you need" was just too tempting.
 
-### A short recap of what we have covered so fa
+### A short recap of what we have covered so far
 
 Part one: Motivated the need for more secure and less complex online systems. It is a need-to-have if operated outside China or California because of limited resources. This may include autonomous systems and online services.
 
 Part two: Identified a possible strategy for future defensible information systems that significantly shifts the cyber battlefield in favor of the defender by isolating failure domains. The strategy is designed to allow for an incremental approach, but still requires some risk-taking in terms of first building up software runtimes that may suffer some performance overhead and software-based isolation mechanisms, and later the need to invest in hardware/software co-designs that eliminate these trade-offs but also break backward compatibility with software that has not been ported to these new WebAssembly- and actor-model-based systems.
 
-Part three: Delved into the problem at hand and identified the incentive structures that led us to where we are today. Further, we looked at the need to establish low-overhead communication and credible isolation through hardware mechanisms and briefly introduced a model of surfaces, gaps, and interfaces that will be important when designing defensible systems. Lastly, we looked at the ability to sustain system capabilities over time by ensuring current and future sovereign control, something European countries have become more aware of, with fear of backdoors in Chinese 5G infrastructure.
+Part three: Delved into the problem at hand and identified the incentive structures that led us to where we are today. Further, we looked at the need to establish low-overhead communication and credible isolation through hardware mechanisms and briefly introduced a model of surfaces, gaps, and interfaces that will be important when designing defensible systems. Lastly, we looked at the ability to sustain system capabilities over time by ensuring current and future sovereign control, something European countries have become more aware of, with fear of backdoors in Chinese 5G infrastructure. Framed concretely, this is a contest with state-sponsored APT operators who can combine software exploits, supply-chain leverage, and time.
 
 While writing part four, an additional credible commitment problem has arisen from White House 4D chess games; uncertainty with regard to F-35 maintenance, including assurance of future ability to obtain keys to arm weapons and updates that may be necessary to adapt to electronic warfare and maintain systems compatibility. In short, it is important to ensure sustainability of capabilities we care to obtain, or “strategic autonomy” if you will.
 
-“*There’s no silver bullet solution with cyber security; a layered defence is the only viable defence.” - James Scott, Institute for Critical Infrastructure Technology*
+*“There’s no silver bullet solution with cyber security; a layered defense is the only viable defense.”* - James Scott, Institute for Critical Infrastructure Technology
 
 ### The end game
 
-In part four I will try to expand on what we mean by isolation, but first let us take a brief look at what an end-game hardware architecture could look like. This is a total paper tiger but hopefully also a high-level design to visualize a desired state. The hardware design has two primary goals: low-overhead communication and credible isolation (later to be renamed durable isolation). It may look fancy at first glance, but it is just a computer cluster on a chip that draws some inspiration from isolation mechanisms like Apple’s Secure Enclave and scale-out strategies like Tenstorrent Grayskull.
+In part four I will try to expand on what we mean by isolation, but first let us take a brief look at what an end-game hardware architecture could look like. This is a total paper tiger but hopefully also a high-level design to visualize a desired state. The hardware design has two primary goals: low-overhead communication and durable isolation to deal with the credible commitment problem in software. It may look fancy at first glance, but it is just a computer cluster on a chip that draws some inspiration from isolation mechanisms like Apple’s Secure Enclave and scale-out strategies like Tenstorrent Grayskull.
 
 [![Actor tiles](images/part4-img3.png "Actor tiles")](images/part4-img7.png)
 
@@ -172,7 +172,7 @@ Moore’s law largely marches on, but importantly without the help of Dennard sc
 
 ### Notes on isolation
 
-*“You keep using that word. I don’t think it means what you think it means.” - William Goldman, The Princess Bride*
+*“You keep using that word. I don’t think it means what you think it means.”* - William Goldman, The Princess Bride
 
 As much as I really don’t want to take a swing at actor frameworks, because I believe very strongly in the strategy they are following, we must set the record straight here. Software-defined isolation on a von Neumann machine has two major issues.
 
@@ -188,17 +188,17 @@ Carl Hewitt laid out the definition of the actor model like this.
 
 *- create a finite number of new Actors;*
 
-*- designate the behaviour to be used for the next message it receives.*
+*- designate the behavior to be used for the next message it receives.*
 
 The definition is extremely terse. This is economy of mechanism in practice, and take note that there is absolutely no way to inspect the interior of an actor. You may only send it messages. The actor has private state.
 
-*ISOLATION: The ability to keep multiple instances of software separated so that each instance only sees and can affect itself. – NIST Glossary*
+*ISOLATION: The ability to keep multiple instances of software separated so that each instance only sees and can affect itself.* – NIST Glossary
 
 Consider three pieces of software A, B and C.
 
 [![Article content](images/part4-img4.png "Article content")](images/part4-img8.png)
 
-Assume that A gets compromised and modified to gain functionality like inspecting B and C if it couldn’t already, or to allow B and C to interact with each other’s internal state directly. The software-based containment capability is pliable, not durable. Software-based actor frameworks can’t really guarantee what the actor model prescribes. They have “happy-path actors”; it is fine, until it isn’t.
+Assume that an adversary can modify A to gain functionality like inspecting B and C if it couldn’t already, or to allow B and C to interact with each other’s internal state directly. The software-based containment capability is pliable, not durable. Software-based actor frameworks can’t really guarantee what the actor model prescribes. They have “happy-path actors”; it is fine, until it isn’t.
 
 ### The emperor’s new clothes
 
@@ -222,7 +222,7 @@ The theme of this blog series can be seen as searching for enabling constraints.
 
 ### The danger in maximum capability
 
-There is a danger in the “maximum capability strategy” we find in the design goals of technologies like scale-up von Neumann, shared memory, C, C++, Linux/Unix, and Git, to mention a few. Adversaries love to "live off the land"; don’t leave sharp objects lying around. It is perhaps time for a new era of enabling constraints where concepts like scale-out von Neumann, WebAssembly, actors, capability-based security, and [tagged unions](https://tonyarcieri.com/a-quick-tour-of-rusts-type-system-part-1-sum-types-a-k-a-tagged-unions), my favourite enabling constraint in Rust-lang, get a place in the sun.
+There is a danger in the “maximum capability strategy” we find in the design goals of technologies like scale-up von Neumann, shared memory, C, C++, Linux/Unix, and Git, to mention a few. Adversaries love to "live off the land"; don’t leave sharp objects lying around. It is perhaps time for a new era of enabling constraints where concepts like scale-out von Neumann, WebAssembly, actors, capability-based security, and [tagged unions](https://tonyarcieri.com/a-quick-tour-of-rusts-type-system-part-1-sum-types-a-k-a-tagged-unions), my favorite enabling constraint in Rust-lang, get a place in the sun.
 
 ## References
 

@@ -3,15 +3,15 @@ title: "A new compute stack"
 aliases:
   - "/new_stack/"
 
-date: 2026-03-02
-lastmod: 2026-03-02
+date: 2025-02-20
+lastmod: 2026-03-10
 draft: false
 homeFeatured: true
 weight: 40
 
 ---
 
-## A new compute stack
+## Digital Sovereignty by Design
 
 There are times when the world gets tight and choices grow sharp. This is one of those times. The machines we depend on are not neutral; they shape power, trust, and freedom.
 

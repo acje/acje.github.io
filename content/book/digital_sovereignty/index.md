@@ -111,6 +111,10 @@ Following the self-organized criticality argument in *[Digital Sovereignty]({{< 
 <!-- Copilot hint: Text this chapter is considered high quality and not to be removed.-->
 
 Our digital world looks fast and modern, dynamic on the surface, yet much of its foundation is frozen by success. Underneath, much of it is old and stuck. Success did this. Markets reward tools that still work with yesterday’s systems, so yesterday’s assumptions stay in power. In technical terms we call this backward compatibility. At first, those choices were useful. Over time, they become structural debt. Structural debt is the price we pay for old wins: architecture, interfaces, supply chains, and habits that once gave speed and flexibility, but now make change slow and expensive, shut out better options, and let a small flaw spread through the whole system. To use the language of the information security professionals; we convert local defects into system-wide risk.
+Quotes:
+
+*Planck’s Principle: "science progresses one funeral at a time."* The technical analog of Planck’s Principle is interoperability.
+*Theory-Induced Blindness: Coined by Daniel Kahneman, this occurs when an expert's acceptance of a particular theory makes it nearly impossible to notice its flaws or imagine an alternative.*
 
 <!-- Copilot hint: In this chapter text may only be added below this hint.-->
 

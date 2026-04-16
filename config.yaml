@@ -59,10 +59,6 @@ params:
   images:
     - /favicon.svg
   
-# Author information (deprecated but kept for backwards compatibility)
-author:
-  name: "Anders Jensen"
-
 # Social and external links
 menu:
   after:
@@ -78,12 +74,6 @@ menu:
     - name: "GitHub"
       url: "https://github.com/acje/"
       weight: 30
-
-# Ignore folders that should not be part of content scanning
-ignoreFiles:
-  - '^public/'
-  - '^\.github/'
-  - '^\.vscode/'
 
 caches:
   images:

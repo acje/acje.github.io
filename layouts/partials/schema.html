@@ -1,6 +1,6 @@
 {{- $title := cond .IsHome .Site.Title .Title -}}
 {{- $description := or .Description .Summary .Site.Params.description | plainify | htmlUnescape -}}
-{{- $authorName := or .Site.Params.author .Site.Author.name -}}
+{{- $authorName := .Site.Params.author -}}
 {{- $image := "" -}}
 {{- with .Params.images -}}
   {{- $image = (index . 0 | absURL) -}}

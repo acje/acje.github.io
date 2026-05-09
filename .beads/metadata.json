@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "acje_github_io",
+  "project_id": "4045a634-468f-4697-a5ec-9427d06a9656"
+}

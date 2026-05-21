@@ -44,3 +44,7 @@ Things I have found my self making to help LLMs code better;
 - Actor Enclave Model (TBD), a framework to orchestrate components such that communication security model becomes fully capability based
 
 All of these are constraints to reduce the chance a LLMs do not do the obvious wrong thing. It is just such an exhaustive task to enumerate all the classes of wrong.
+
+---
+
+[solon (Repository)](https://github.com/acje/solon)

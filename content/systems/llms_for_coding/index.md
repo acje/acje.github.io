@@ -10,7 +10,7 @@ homeFeatured: true
 weight: 60
 ---
 
-## LLMs for coding, we are holding it wrong
+## LLMs for coding, we´re holding it wrong
 
 Here are some perhaps counterintuitive lessons I have picked up, in no particular order, during my first ~1M lines of code;
 
@@ -45,6 +45,7 @@ Things I have found my self making to help LLMs code better;
 
 All of these are constraints to reduce the chance a LLMs do not do the obvious wrong thing. It is just such an exhaustive task to enumerate all the classes of wrong.
 
-The tooling and libraries are mostly living here;
+The tooling and libraries are mostly living here; I do not live at the very edge of agentic engineering, but hopefully some of these ideas are worth following.
 
 [Solon story (Repository)](https://github.com/acje/solon/blob/main/docs/STORY.md)
+[Agents (Repository)](https://github.com/acje/.config)

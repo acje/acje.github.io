@@ -12,45 +12,35 @@ weight: 60
 
 ## LLMs for coding, you are holding it wrong
 
-Most complaints about coding with large language models share a shape: the model produced something plausible, the developer accepted it, and the result was wrong in a way that was expensive to discover later. The conclusion is usually that the model is not good enough yet. Sometimes that is true. More often, the tool was held wrong.
+Here are som perhaps counterintuitive lessons I have picked up, in no particular order, during my first ~ 1M LOC of code;
 
-This essay is about how to hold it.
+- This post is not written using an LLM
+- LLM is not AI
+- Code should not have comments. It is a source of drift. See “dumb zone”
+- Rust is a good target for LLMs exactly because of its constraints. Other languages may be even better, but I haven’t tried yet. Pony? It is all about mechanical feedback.
+- Use all the linters and constraints your toolchain makes available. The work you need to do when cleaning up a codebase that hit its peak entropy is orders of magnitude larger than the work your agents need to do to work with the added constraints. Unless of course you just give up at this point.
+- If you are of the conviction that you do not want to use AI, then be aware that it has never been controversial to not use something that does not exist
+- LLMs are pattern recognition over historical human information output. The anthropomorphism is built in. Do not fall for it.
+- Coding with an LLM is mostly about managing the goal and the SNR of the context
+- The “smart zone” and “dumb zone” of an LLM is not a very useful mental model. The dumb stuff is largely the noise of your context sitting in the “smart zone”
+- Building tools to structure documentation is helpful
 
-## The autocomplete trap
+“Smart zone” / “Dumb zone” is real, but only part of the picture; The SNR (Signal to Noise Ratio) in the context is at least part of the picture, together with non perfect weights from the training
+and normal transformer based neural network behavior
 
-The dominant interaction pattern is autocomplete: the developer types, the model suggests, the developer accepts or rejects. This is comfortable because it inherits the muscle memory of IDE completion. It is also where most of the failure modes live.
+Principles for better results. You have more than one job.
 
-Autocomplete optimises for *plausibility at the cursor*. The model has no theory of the program, no access to the test suite's verdict, and no incentive to flag uncertainty. It will confidently complete a function call against an API that does not exist, hallucinate a field name that is almost right, or produce a regex that passes the visible example and fails the next one. The developer, primed to accept fluent text, often does.
+- Job 1: Define the goal. What does good look like?
+- Job 2: Manage SNR. Prune the available information that might end up in a context like a gardener removes weed.
+- Job 3: Rephrase negatives as the opposite positive. Pattern recognition does not do well with negatives! Or rather “Pattern recognition works well with descriptions of the pattern”
+- Job 4: manage Agent autonomy and ability to do feedback when they get stuck. This is Mission command with back brief in practice
 
-The trap is that this works well enough often enough to feel productive. The errors that slip through are not random; they cluster at the edges where the model's training distribution thins out — exactly the places where careful engineering matters most.
+Things I have found my self making to help LLMs code better;
 
-## Hold it like a junior who never gets tired
+- Comment-free a tool to remove comments in rust; will probably be integrated with upcoming adr-srv to allow strict doc comments that link to ADRs
+- Adr-fmt a tool to lint ADRs; about to be replaced by adr-srv
+- Library “cherry-pit” to encode DDD, EDA and Hexagonal architecture, I do not want to guid an LLM through this exercise more than once
+- Library “pardosa” to encode how an event stream should work
+- Actor Enclave Model (TBD), a framework to orchestrate components such that communication security model becomes fully capability based
 
-A more productive frame: treat the model as a junior collaborator with broad but shallow knowledge, infinite stamina, no memory between sessions, and a tendency to bullshit when uncertain. This frame predicts the right interaction patterns:
-
-- **Give it the context it needs, not the context you have.** Pasting a 2000-line file when the relevant surface is one struct wastes tokens and dilutes attention. Excerpt deliberately.
-- **State the contract before asking for code.** Inputs, outputs, invariants, error modes, and what "done" looks like. The model is much better at hitting a target it can see than at inferring one from prose.
-- **Make verification cheap and visible.** A failing test the model can run is worth ten paragraphs of review. Closed-loop tools (compile, test, lint) outperform open-loop suggestions by a wide margin.
-- **Halt on surprise.** If the output contradicts something you know to be true, stop and find the contradiction. Do not paper over it; the model will help you paper over it indefinitely.
-
-This is not new advice. It is the same discipline that works with any junior collaborator. The novelty is that the junior is fast, cheap, and never sleeps — which means the discipline scales differently.
-
-## Agents and the verify-before-claim rule
-
-The agent frame — give the model tools (shell, file edit, web), let it loop — changes the failure mode but not its source. An agent that cannot verify its own work will hallucinate completion just as fluently as autocomplete hallucinates code. The rule that earns its keep is *verify before claim*: the agent must produce evidence that the change works (exit code, test output, a parseable artefact) before reporting success.
-
-In practice, this means:
-
-1. Every non-trivial change ends with a runnable check the agent executed and whose output it can cite.
-2. Empty output from an evidence-producing pipeline is treated as surprise, not success.
-3. The agent halts and reports rather than fabricating a plausible-looking result when the check fails.
-
-Agents that follow this rule produce dramatically less slop. Agents that don't produce slop at machine speed.
-
-## Where this leaves us
-
-The interesting engineering question is not whether LLMs are good enough to write code. They are good enough for a wide and growing class of problems, and they will get better. The interesting question is what discipline scales to keep the failure rate bounded as the volume of generated code grows.
-
-The answer is closed-loop, evidence-carrying, contract-first interaction — at every level, from the autocomplete keystroke to the multi-agent mission. Hold it that way and it works. Hold it the other way and it produces a lot of code that almost compiles, almost passes review, and almost does the thing you asked for.
-
-Almost is the expensive word.
+All of these are constraints to reduce the chance a LLMs do not do the obvious wrong thing. It is just such an exhaustive task to enumerate all the classes of wrong.

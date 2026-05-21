@@ -1,5 +1,5 @@
 ---
-title: "LLMs for coding, you are holding it wrong"
+title: "LLMs for coding, we´re holding it wrong"
 aliases:
   - "/llms_for_coding/"
 
@@ -10,11 +10,11 @@ homeFeatured: true
 weight: 60
 ---
 
-## LLMs for coding, you are holding it wrong
+## LLMs for coding, we are holding it wrong
 
-Here are som perhaps counterintuitive lessons I have picked up, in no particular order, during my first ~ 1M LOC of code;
+Here are some perhaps counterintuitive lessons I have picked up, in no particular order, during my first ~1M lines of code;
 
-- This post is not written using an LLM
+- This post was not written using an LLM
 - LLM is not AI
 - Code should not have comments. It is a source of drift. See “dumb zone”
 - Rust is a good target for LLMs exactly because of its constraints. Other languages may be even better, but I haven’t tried yet. Pony? It is all about mechanical feedback.
@@ -22,7 +22,7 @@ Here are som perhaps counterintuitive lessons I have picked up, in no particular
 - If you are of the conviction that you do not want to use AI, then be aware that it has never been controversial to not use something that does not exist
 - LLMs are pattern recognition over historical human information output. The anthropomorphism is built in. Do not fall for it.
 - Coding with an LLM is mostly about managing the goal and the SNR of the context
-- The “smart zone” and “dumb zone” of an LLM is not a very useful mental model. The dumb stuff is largely the noise of your context sitting in the “smart zone”
+- The “smart zone” and “dumb zone” of an LLM is not a very useful mental model. The dumb stuff is largely the noise of your context sitting in the “smart zone”. Bad news; it is on you. Good news; this is actionable
 - Building tools to structure documentation is helpful
 
 “Smart zone” / “Dumb zone” is real, but only part of the picture; The SNR (Signal to Noise Ratio) in the context is at least part of the picture, together with non perfect weights from the training
@@ -39,12 +39,12 @@ Things I have found my self making to help LLMs code better;
 
 - Comment-free a tool to remove comments in rust; will probably be integrated with upcoming adr-srv to allow strict doc comments that link to ADRs
 - Adr-fmt a tool to lint ADRs; about to be replaced by adr-srv
-- Library “cherry-pit” to encode DDD, EDA and Hexagonal architecture, I do not want to guid an LLM through this exercise more than once
-- Library “pardosa” to encode how an event stream should work
+- Library “Cherry-pit” to encode DDD, EDA and Hexagonal architecture, I do not want to guide an LLM through this exercise more than once
+- Library “Pardosa” to encode how an event stream should work
 - Actor Enclave Model (TBD), a framework to orchestrate components such that communication security model becomes fully capability based
 
 All of these are constraints to reduce the chance a LLMs do not do the obvious wrong thing. It is just such an exhaustive task to enumerate all the classes of wrong.
 
----
+The tooling and libraries are mostly living here;
 
-[solon (Repository)](https://github.com/acje/solon)
+[Solon story (Repository)](https://github.com/acje/solon/blob/main/docs/STORY.md)

@@ -15,7 +15,7 @@ weight: 60
 Here are some perhaps counterintuitive lessons I have picked up, in no particular order, during my first ~1M lines of code;
 
 - This post was not written using an LLM. Unlike all my code.
-- LLM is not AI, it is patter recognition. I tend to align with Richard S. Sutton and Yann LeCun on this topic.
+- LLM is not AI, it is pattern recognition. I tend to align with Richard S. Sutton and Yann LeCun on this topic.
 - Code should not have comments. 😱 It is a source of drift. See “dumb zone”.
 - Rust is a good target for LLMs exactly because of its constraints. Other languages may be even better, but I haven’t tried yet. Pony may be even better? It is all about early mechanical feedback. Compile time feedback trumps runtime feedback.
 - Use all the linters and constraints your toolchain makes available. The work you need to do when cleaning up a codebase that hit its peak entropy is orders of magnitude larger than the work your agents need to do to work with the added constraints. Unless of course you just give up at this point.

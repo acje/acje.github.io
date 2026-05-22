@@ -14,6 +14,8 @@ weight: 60
 
 Here are some perhaps counterintuitive lessons I have picked up, in no particular order, during my first ~1M lines of code;
 
+Note of warning. If you havent internalised [Stop Looking at Your Code](https://www.oreilly.com/radar/steve-yegge-wants-you-to-stop-looking-at-your-code/) then this will not make any sense.
+
 - This post was not written using an LLM. Unlike all my code.
 - LLM is not AI, it is pattern recognition. I tend to align with Richard S. Sutton and Yann LeCun on this topic.
 - Code should not have comments. 😱 It is a source of drift. See “dumb zone”.

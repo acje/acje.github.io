@@ -35,7 +35,7 @@ Principles for better results. You have more than one job.
 - Job 1: Define the goal. What does good look like?
 - Job 2: Manage SNR. Prune the available information that might end up in a context like a gardener removes weed.
 - Job 3: Rephrase negatives as the opposite positive. Pattern recognition does not do well with negatives! Or rather “Pattern recognition works well with descriptions of the pattern”
-- Job 4: manage Agent autonomy and ability to do feedback when they get stuck. This is Mission command with back brief in practice
+- Job 4: Manage agent autonomy and ability to do feedback when they get stuck, rather than push through. Cornering an agent will cause it to become very creative and sometimes do destructive things. Using "mission command" with "back brief" reduced the chance of agents trying too hard to do local optimization. See agents repository at bottom.
 
 Things I have found my self making to help LLMs code better;
 

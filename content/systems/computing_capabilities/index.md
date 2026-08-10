@@ -46,7 +46,7 @@ For a workload running on a computing node, the same four capabilities are what 
 
 I did not arrive at this model in a vacuum, and it is reassuring rather than surprising that the same four-way split shows up, independently phrased, in standards work aimed at rather different problems.
 
-[NIST SP 1900-202](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.1900-202.pdf), the unified framework for [Cyber-Physical Systems and the Internet of Things](https://www.nist.gov/publications/cyber-physical-systems-and-internet-of-things), separates a system into a Unified Components Model of four domains: Logical, Physical, Human and Transducing. NIST uses "transducing" for the same reason I do - it is the explicit, dedicated layer bridging the logical and physical domains, converting continuous physical signals into discrete digital logic and back.
+[NIST SP 1900-202](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.1900-202.pdf), the unified framework for [Cyber-Physical Systems and the Internet of Things](https://www.nist.gov/publications/cyber-physical-systems-and-internet-things), separates a system into a Unified Components Model of four domains: Logical, Physical, Human and Transducing. NIST uses "transducing" for the same reason I do - it is the explicit, dedicated layer bridging the logical and physical domains, converting continuous physical signals into discrete digital logic and back.
 
 The [Industrial Internet Reference Architecture](https://www.iiconsortium.org/wp-content/uploads/sites/2/2022/11/IIRA-v1.10.pdf) from the Industrial Internet Consortium draws a similar line to distinguish edge computing from legacy IT: an industrial computing node has data capabilities - storing, transferring and processing - and transducing capabilities, the functions that let it interact directly with physical entities of interest. The IIRA split maps exactly onto mine: data capabilities is persisting plus communicating plus processing, and transducing capabilities is transducing. Of the two, this is the closer match, since it groups three of my four capabilities under one label the same way I would.
 
@@ -93,7 +93,7 @@ Second, explicit vulnerability mapping. Cybersecurity frameworks such as Japan's
 ### References
 
 - [NIST SP 1900-202 - Cyber-Physical Systems and Internet of Things](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.1900-202.pdf)
-- [NIST - Cyber-Physical Systems and Internet of Things](https://www.nist.gov/publications/cyber-physical-systems-and-internet-of-things)
+- [NIST - Cyber-Physical Systems and Internet of Things](https://www.nist.gov/publications/cyber-physical-systems-and-internet-things)
 - [Industrial Internet Reference Architecture v1.10 - Industrial Internet Consortium](https://www.iiconsortium.org/wp-content/uploads/sites/2/2022/11/IIRA-v1.10.pdf)
 - [METI Cyber/Physical Security Framework](https://www.meti.go.jp/policy/netsecurity/wg1/CPSF_ver1.0_eng.pdf)
 - [arxiv.org/pdf/2508.16133](https://arxiv.org/pdf/2508.16133)

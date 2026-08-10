@@ -4,6 +4,7 @@ aliases:
   - "/computing_capabilities/"
 date: 2026-08-10
 lastmod: 2026-08-10
+homeFeatured: true
 weight: 70
 ---
 ## A basic model of what a computing node can do

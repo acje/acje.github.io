@@ -27,3 +27,7 @@ package-lock.json
 
 # OODA agent scratch (traces, briefs, body-tmp, tool stdout buffers)
 .ooda/
+
+# Unpublished manuscripts. Kept local by choice, not tracked anywhere.
+# Nothing here is recoverable from git — back it up outside the repo.
+content/book/

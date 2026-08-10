@@ -101,13 +101,17 @@ footer {
   margin-bottom: 2rem;
 }
 
-/* 
- * Theme Overrides
- * Redefine the mixins used by the theme to ensure our custom values 
- * automatically propagate whenever the theme logic is applied.
+/*
+ * Theme overrides
+ * Unlayered so these beat the theme's layered rules regardless of
+ * order. Light and dark declare the same property set so dark never
+ * silently inherits a light value. Accent variables intentionally
+ * absent here; they come from the theme (Nord in dark) by omission.
  */
 
-@mixin theme-light {
+:root,
+:root[data-theme="light"],
+:root[data-theme="auto"] {
   --body-background: #ffffff;
   --body-font-color: #111111;
   /* Very dark gray for high contrast but soft reading */
@@ -122,20 +126,9 @@ footer {
   /* Darker gray for metadata legibility */
 
   --icon-filter: none;
-
-  /* Re-apply accents from default theme (required when overriding mixin) */
-  @include accent("default", #64748b);
-  @include accent("note", #4486dd);
-  @include accent("tip", #3bad3b);
-  @include accent("important", #8144dd);
-  @include accent("warning", #f59e42);
-  @include accent("caution", #d84747);
-  @include accent("info", #4486dd);
-  @include accent("success", #3bad3b);
-  @include accent("danger", #d84747);
 }
 
-@mixin theme-dark {
+:root[data-theme="dark"] {
   --body-background: #141414;
   /* Dark gray instead of pitch black */
   --body-font-color: #eeeeee;
@@ -151,15 +144,24 @@ footer {
   /* Lighter gray for metadata legibility */
 
   --icon-filter: brightness(0) invert(1);
+}
 
-  /* Re-apply accents */
-  @include accent("default", #64748b);
-  @include accent("note", #4486dd);
-  @include accent("tip", #3bad3b);
-  @include accent("important", #8144dd);
-  @include accent("warning", #f59e42);
-  @include accent("caution", #d84747);
-  @include accent("info", #4486dd);
-  @include accent("success", #3bad3b);
-  @include accent("danger", #d84747);
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] {
+    --body-background: #141414;
+    /* Dark gray instead of pitch black */
+    --body-font-color: #eeeeee;
+    /* Off-white to reduce eye strain */
+
+    --color-link: #66b3ff;
+    /* Brighter blue for dark backgrounds */
+    --color-visited-link: #b88dff;
+
+    --gray-100: #333333;
+    --gray-200: #444444;
+    --gray-500: #bbbbbb;
+    /* Lighter gray for metadata legibility */
+
+    --icon-filter: brightness(0) invert(1);
+  }
 }

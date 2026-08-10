@@ -15,6 +15,10 @@ daemon.*
 # Interactions log (runtime, not versioned)
 interactions.jsonl
 
+# Issue export. This repo is public; issue titles, descriptions and
+# comments stay local.
+issues.jsonl
+
 # Push state (runtime, per-machine)
 push-state.json
 

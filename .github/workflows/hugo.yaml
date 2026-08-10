@@ -19,8 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DART_SASS_VERSION: 1.99.0
-      GO_VERSION: 1.26.2
-      HUGO_VERSION: 0.161.1
+      GO_VERSION: 1.26.5
+      HUGO_VERSION: 0.164.0
       TZ: Europe/Oslo
     steps:
       - name: Checkout

@@ -19,7 +19,7 @@ I hold that there are exactly four basic capabilities of a computing node: **Pro
 
 Most descriptions of a computing node reach for a components list - CPU, memory, disk, network card, sensor - or for an architecture diagram of boxes and arrows. These are useful for building the thing, but they are not useful for reasoning about what the thing does, because the same capability can be delivered by wildly different components depending on cost, scale and physical constraints. I want a vocabulary that is stable across implementations: a capability, not a part.
 
-The goal is a small, complete vocabulary of what a computing node offers and what a workload demands of it, so I can reason about capacity, bottlenecks and attack surface without getting lost in a specific hardware or software stack. Non-goals include describing the internal implementation of any of the four capabilities, and describing system-level properties like reliability or scalability that emerge from how capabilities are composed and deployed.
+The goal is a small, complete vocabulary for the capabilities a computing node offers, so I can reason about capacity, bottlenecks and attack surface without getting lost in a specific hardware or software stack. Non-goals include describing the internal implementation of any of the four capabilities, and describing system-level properties like reliability or scalability that emerge from how capabilities are composed and deployed.
 
 ### Foundations
 
@@ -29,13 +29,6 @@ For a computing node, the capabilities it can offer are as follows;
 2. If the node can store information over time it offers the **persisting** capability
 3. If the node can move information across space it offers the **communicating** capability
 4. If the node can cross the boundary between the digital and the physical world it offers the **transducing** capability
-
-For a workload running on a computing node, the same four capabilities are what it demands;
-
-1. If the workload needs information transformed it demands the **processing** capability
-2. If the workload needs information stored over time it demands the **persisting** capability
-3. If the workload needs information moved across space it demands the **communicating** capability
-4. If the workload needs to cross the boundary between the digital and physical world it demands the **transducing** capability
 
 ### Notable remarks
 
@@ -52,7 +45,7 @@ I did not arrive at this model in a vacuum, and it is reassuring rather than sur
 The [Industrial Internet Reference Architecture](https://www.iiconsortium.org/wp-content/uploads/sites/2/2022/11/IIRA-v1.10.pdf) from the Industrial Internet Consortium draws a similar line to distinguish edge computing from legacy IT: an industrial computing node has data capabilities - storing, transferring and processing - and transducing capabilities, the functions that let it interact directly with physical entities of interest. The IIRA split maps exactly onto mine: data capabilities is persisting plus communicating plus processing, and transducing capabilities is transducing. Of the two, this is the closer match, since it groups three of my four capabilities under one label the same way I would.
 
 | My model | NIST SP 1900-202 | IIRA |
-|---|---|---|
+| --- | --- | --- |
 | Processing | Logical (part) | Data capabilities (part) |
 | Persisting | Logical (part) | Data capabilities (part) |
 | Communicating | Logical (part), Physical (part) | Data capabilities (part) |
@@ -63,7 +56,7 @@ Neither standard treats "Human" as a computing capability, and neither should - 
 
 ### Vocabulary
 
-Two principles as before: keep the definitions as short as possible, and hold symmetry between what a node offers and what a workload demands.
+The definitions are deliberately short and describe functions rather than implementations.
 
 **Processing** - Transforming information
 

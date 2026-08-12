@@ -24,6 +24,7 @@ package-lock.json
 .dolt/
 *.db
 .beads-credential-key
+.beads.gate.lock
 
 # OODA agent scratch (traces, briefs, body-tmp, tool stdout buffers)
 .ooda/

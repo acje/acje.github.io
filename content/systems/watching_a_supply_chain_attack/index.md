@@ -44,23 +44,23 @@ Cargo had already said as much a moment earlier, in its own output — `Adding p
 
 "This is a hard stop. Rolling back immediately." The rollback happened before any commit, so the poisoned lock file never entered the history.
 
-Only then the investigation: what had replaced the yanked versions, and the fact that 0.3.10 carried a brand-new dependency `arrayref` had never had in its life — on a crate published four minutes earlier. **moltke** consolidated the finding and presented it. Then a third pass verified it independently — against the crates.io API and the manifest read out of the unpacked tarball — rather than taking moltke's word for it.
+Only then the investigation: what had replaced the yanked versions, and the fact that 0.3.10 carried a brand-new dependency `arrayref` had never had in its life — on a crate published four minutes earlier. **moltke** took that question into its own session and worked it out signal by signal.
+
+![moltke's evidence table for a verdict of MALICIOUS at high confidence, listing six independent signals: a typosquat publisher, a stolen identity copied from proc-macro2, an account takeover, no reviewable source for the published version, the payload shape implied by the dependency closure, and the yank itself as the delivery vector](moltke-evidence.png)
+
+*The reasoning behind the verdict, inside moltke's own session: six independent signals, assembled before anything was reported upward.*
+
+Two rows carry most of the weight. **Account takeover**: `droundy` "published arrayref 0.3.10 and yanked 0.3.5-0.3.9 — its entire clean history — in a 40-second window, no reason given". Forty seconds is not a maintainer having second thoughts about five releases; it is a script running. And **stolen identity**: `proc-macro1`'s description was copy-pasted verbatim from `proc-macro2`, pinned to `1.0.107` — `proc-macro2`'s exact current version *in this project's own lock file*. A version number chosen to read as unremarkable in a lock file diff, and the fleet caught that it matched the real crate the project was already resolving.
+
+What reached me, one level up in the build context, was not that table but a consolidated verdict — detailed reasoning stays down in the subagent session, and the level above re-verified it rather than accepting it.
 
 ![moltke's consolidated finding: an independent verification of an in-progress supply chain attack on the arrayref crate, showing the typosquatted proc-macro1 publisher, the 07:15:00Z publication of arrayref 0.3.10, the yanked 0.3.5 through 0.3.9, and the dependency on proc-macro1 1.0.107 read from the crate manifest](moltke-summary.png)
 
-*The consolidated finding, verified independently against the crates.io API and the unpacked tarball manifest. The decisive line is `[dependencies.proc-macro1] version = "1.0.107"` — read out of the manifest, not inferred.*
+*The third pass, at the top level: "Stop — moltke's finding is real. I verified it independently against the crates.io API and the crate manifest itself." The decisive line is `[dependencies.proc-macro1] version = "1.0.107"` — read out of the manifest, not inferred.*
 
 Two numbers on that screenshot are worth stopping on. `proc-macro1` had **9 downloads**. Nine. At the moment of detection the payload crate's blast radius was still essentially nil. `arrayref`, the crate it had just been attached to, had **244,989,384**. That asymmetry is the whole business model of a supply chain attack: you do not need anyone to install your crate, you need one crate that everybody already installs to install it for you.
 
 The value here was not that a language model is clever. It was a gate configured to fail loudly, and a review step the agent was not allowed to skip.
-
-Asked to justify the verdict rather than state it, the fleet laid out its reasoning signal by signal.
-
-![moltke's evidence table for a verdict of MALICIOUS at high confidence, listing six independent signals: a typosquat publisher, a stolen identity copied from proc-macro2, an account takeover, no reviewable source for the published version, the payload shape implied by the dependency closure, and the yank itself as the delivery vector](moltke-evidence.png)
-
-*The evidence behind the verdict. `moltke-summary.png` above is what it found; this is why it was sure.*
-
-Two rows carry most of the weight. **Account takeover**: `droundy` "published arrayref 0.3.10 and yanked 0.3.5-0.3.9 — its entire clean history — in a 40-second window, no reason given". Forty seconds is not a maintainer having second thoughts about five releases; it is a script running. And **stolen identity**: `proc-macro1`'s description was copy-pasted verbatim from `proc-macro2`, pinned to `1.0.107` — `proc-macro2`'s exact current version *in this project's own lock file*. A version number chosen to read as unremarkable in a lock file diff, and the fleet caught that it matched the real crate the project was already resolving.
 
 ### A rate limit is not a negative finding
 

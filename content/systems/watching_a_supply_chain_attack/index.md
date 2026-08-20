@@ -40,6 +40,14 @@ Two numbers on that screenshot are worth stopping on. `proc-macro1` had **9 down
 
 The value here was not that a language model is clever. It was a gate configured to fail loudly, plus agents that treated a red gate as a question rather than a chore.
 
+Asked to justify the verdict rather than state it, the fleet laid out its reasoning signal by signal.
+
+![moltke's evidence table for a verdict of MALICIOUS at high confidence, listing six independent signals: a typosquat publisher, a stolen identity copied from proc-macro2, an account takeover, no reviewable source for the published version, the payload shape implied by the dependency closure, and the yank itself as the delivery vector](moltke-evidence.png)
+
+*The evidence behind the verdict. `moltke-summary.png` above is what it found; this is why it was sure.*
+
+Two rows carry most of the weight. **Account takeover**: `droundy` "published arrayref 0.3.10 and yanked 0.3.5-0.3.9 — its entire clean history — in a 40-second window, no reason given". Forty seconds is not a maintainer having second thoughts about five releases; it is a script running. And **stolen identity**: `proc-macro1`'s description was copy-pasted verbatim from `proc-macro2`, pinned to `1.0.107` — `proc-macro2`'s exact current version *in this project's own lock file*. A version number chosen to read as unremarkable in a lock file diff, and the fleet caught that it matched the real crate the project was already resolving.
+
 ### A rate limit is not a negative finding
 
 The most transferable lesson in the whole record is a 403. The fleet asked whether a RustSec advisory existed yet. Every probe came back HTTP 403, rate limit exceeded — code search, commits list twice, contents-API fallback.
@@ -50,13 +58,13 @@ A failure to observe is not an observation of absence. An error, a permission de
 
 The situation also moved under the observation. Between two checks four minutes apart, `append-only-vec` 0.1.7–0.1.8 went from yanked to un-yanked. Neither check was wrong. The world changed between them, and the record is timestamped enough to show that.
 
-### Where the fleet fell short
+### What it got right, and what it missed
 
-It under-scoped the campaign. The postmortem names six malicious crates — "This crate proc-macro1 and others like it (proc-macro-en, aovine, arone, aronenao, tinymember) have been deleted." The fleet had `proc-macro1` and missed all five of the others.
+The strongest single result is the **payload shape** row. A crate with a ten-year zero-dependency history had suddenly acquired a transitive `ureq` + `rustls` + `base64` closure — an HTTP client, a TLS stack and an encoder — inside a *proc-macro*. From that shape alone the fleet inferred compile-time network egress: code that runs during the build, in CI and on every developer's machine. Hours later the postmortem confirmed it. The crate "had a build script that was downloading a malicious payload". `ureq` + `rustls` **is** downloading.
 
-Worse, it never sampled `proc-macro1` itself. It sampled `arrayref 0.3.10`, found no build script there, and said so — true of `arrayref`, and badly misleading, because the executing payload was one hop further down. The postmortem's wording: the crate "had a build script that was downloading a malicious payload". (The page says "build script"; my local notes paraphrased that as `build.rs`, which is the same artefact but not the postmortem's words.)
+What it did not do is read the build script source. It reasoned from the dependency graph to the mechanism rather than observing the code that implemented it. Right answer, indirect evidence — and worth naming, because an inference that happens to land is not a confirmation.
 
-So: the fleet found the delivery vector and did not open the box at the end of it. That is a scoping failure, and scoping is the job I keep saying is mine and not the agent's — see {{< relref "systems/llms_for_coding/index.md" >}}. "Characterise this incident" was too loose a goal, and I got a precise answer to a narrower question than the one that mattered.
+Where it genuinely fell short was scope. The postmortem names six malicious crates — "This crate proc-macro1 and others like it (proc-macro-en, aovine, arone, aronenao, tinymember) have been deleted." The fleet had `proc-macro1` and missed all five of the others. That is a scoping failure, and scoping is the job I keep saying is mine and not the agent's — see {{< relref "systems/llms_for_coding/index.md" >}}. "Characterise this incident" was too loose a goal; I got a precise, well-evidenced answer about one crate when the question that mattered was how many there were.
 
 The practical advice is the Rust team's, not mine: "We recommend you check your local dependencies to ensure these crates were not pulled in." Their postmortem hands you a ready-made `find ~/.cargo/registry/cache` command, which is a better check than anything my fleet ran, because it asks about *you* rather than about crates.io.
 

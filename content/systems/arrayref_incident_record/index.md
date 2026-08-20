@@ -28,19 +28,20 @@ is in seeing what was knowable at each moment, including where it was wrong. The
 narrative companion — what this looked like from the inside — is
 [Watching my software factory handle a live supply chain attack]({{< relref "systems/watching_a_supply_chain_attack/index.md" >}}).
 
-**Redactions.** Three things were removed from the original before publication,
+**Redactions.** Two things were removed from the original before publication,
 and the removals are marked in place rather than made silently:
 
 - our own network egress IP, which carries no reader value;
 - a compromise victim's email address — public in the published manifest, but
-  republishing it here only invites harassment of a victim;
-- a live GitHub profile URL, avatar URL and numeric account id belonging to an
-  account that this very document records as **unrelated** to the incident.
+  republishing it here only invites harassment of a victim.
 
-The official Rust Security Response Team postmortem named zero account handles —
-it named malicious crates only. That is the standard set by people with more
-information than we had. The crates.io logins `dtolney` and `droundy` remain, as
-do the SHA256 hashes and the §4 reproduction commands.
+Nothing about the attacker is redacted. The impersonation account `dtolney`,
+its GitHub profile and avatar id, the compromised `droundy` account, the
+SHA256 hashes and the §4 reproduction commands are all preserved as recorded.
+`droundy` is a victim here, not a participant — the postmortem is explicit that
+the account owner is not believed to have acted maliciously — which is why the
+one personal detail attached to him comes out and nothing attached to the
+attacker does.
 
 **Compiled:** 2026-08-20T09:08Z · **revised** 2026-08-20T09:26Z ·
 **§5 re-verified** 2026-08-20T12:07–12:08Z
@@ -128,7 +129,7 @@ inside the burst in all three cases.
 
 | Time | Event |
 |---|---|
-| `2026-08-20T01:25:58Z` | crates.io account `dtolney` created (GitHub avatar uid [redacted — see note]) |
+| `2026-08-20T01:25:58Z` | crates.io account `dtolney` created (GitHub avatar uid 318835712) |
 | `2026-08-20T01:55:34Z` | `proc-macro1 1.0.106` published by `dtolney` |
 | `2026-08-20T07:11:15Z` | `proc-macro1 1.0.107` published by `dtolney` |
 | `2026-08-20T07:15:00Z` | `arrayref 0.3.10` published by `droundy`, depending on `proc-macro1 ^1.0.107` (4 min after that version appeared) |
@@ -172,15 +173,15 @@ GET https://crates.io/api/v1/users/dtolney
   "id": 438608,
   "login": "dtolney",
   "name": "David Tolnay",           <-- real name of the dtolnay maintainer
-  "avatar": "[redacted — see note]",
-  "url": "[redacted — see note]",
+  "avatar": "https://avatars.githubusercontent.com/u/318835712?v=4",
+  "url": "https://github.com/dtolney",
   "created_at": "2026-08-20T01:25:58.619057Z"
 }
 ```
 
 The `name` field is the strongest single signal: this is not an accidental
-typo-registration, it is deliberate identity assumption. The GitHub uid
-[redacted — see note] indicates an account created immediately before use.
+typo-registration, it is deliberate identity assumption. GitHub uid 318835712
+indicates an account created immediately before use.
 
 `proc-macro1`'s crate metadata additionally carried:
 - `description`: verbatim copy of `proc-macro2`'s description
@@ -389,8 +390,8 @@ malicious `internment` publish has already been removed.
 >   — the account now owns **zero** crates.
 > - `GET /api/v1/crates/proc-macro1` → **404** (`crate proc-macro1 does not
 >   exist`).
-> - the like-named GitHub profile [redacted — see note] → **200**; that GitHub
->   account is unrelated to crates.io and is still live.
+> - `github.com/dtolney` → **200**; that GitHub account is unrelated to
+>   crates.io and is still live.
 >
 > The postmortem (§5.5) states crates.io "locked the account as a precaution" —
 > in the postmortem's own text that sentence is about the **`droundy`** account;

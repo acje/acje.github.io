@@ -70,6 +70,8 @@ The section was recorded as **Indeterminate**. Not "no advisory exists".
 
 A failure to observe is not an observation of absence. An error, a permission denial, a rate limit — collapse any of those into a negative finding and you get a confident wrong answer with every check apparently green. My agent instructions carry that as an explicit rule; this is the first time I have watched it bite in the wild, on a question that mattered, under time pressure.
 
+Issue #3161 in `rustsec/advisory-db` — "Malware: arrayref 0.3.10 executes a remote payload at build time via typosquatted proc-macro1" — was open while those 403s came back. "No advisory exists" would have been confidently wrong at that moment. Being honest about the ending: the issue was closed `not_planned` about eight minutes later, and no advisory was ever merged, so the final state is closer to "no advisory" than not. Indeterminate was not lucky. It was the only honest thing to write from behind a 403.
+
 The situation also moved under the observation. Between two checks four minutes apart, `append-only-vec` 0.1.7–0.1.8 went from yanked to un-yanked. Neither check was wrong. The world changed between them, and the record is timestamped enough to show that.
 
 ### What it got right, and what it missed
@@ -91,3 +93,5 @@ Two names have been doing work in this post without introduction, so: I run [ope
 Four mechanisms did the actual work here, and none of them are clever. Roles are separate, so the bad command, the reasoning about it and the verification of that reasoning landed in different sessions. The level above re-verifies instead of accepting a subordinate's report — "Verify against the artefact, never the summary." Committing requires the working tree to be reviewed first, `git status` read, no stray files, no secrets, otherwise surface the diff and ask; that is the step that caught this. And it runs as mission command: I set the intent, the agent halts and escalates only on surprise, and a back-brief carries that upward.
 
 It lives here: <https://github.com/acje/.config>. There is no README — it is my personal dotfiles, not a project — so you get a file listing; the doctrine is in `AGENTS.md` and `opencode/agents/`.
+
+If you want the build script I inferred and never read, SafeDep published it: [Malicious Rust Crate arrayref Runs a Build-Time Payload](https://safedep.io/arrayref-proc-macro1-rust-build-time-malware/) — the `build.rs` source, the decoded endpoints, the per-platform payloads and IOCs.

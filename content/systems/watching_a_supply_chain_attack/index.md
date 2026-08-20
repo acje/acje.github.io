@@ -60,7 +60,7 @@ What reached me, one level up in the build context, was not that table but a con
 
 Two numbers on that screenshot are worth stopping on. `proc-macro1` had **9 downloads**. Nine. At the moment of detection the payload crate's blast radius was still essentially nil. `arrayref`, the crate it had just been attached to, had **244,989,384**. That asymmetry is the whole business model of a supply chain attack: you do not need anyone to install your crate, you need one crate that everybody already installs to install it for you.
 
-The value here was not that a language model is clever. It was a gate configured to fail loudly, and a review step the agent was not allowed to skip.
+The value here was not just that a language model is clever. It was also a gate configured to fail loudly, and a review step the agent was not allowed to skip.
 
 ### The setup
 

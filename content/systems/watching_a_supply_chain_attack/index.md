@@ -22,6 +22,8 @@ First, credit where it belongs. Discovery goes to the Research Team at Nextron S
 
 The attacker had to yank `arrayref` 0.3.5 through 0.3.9. That is the mechanism. A poisoned 0.3.10 sitting quietly alongside five healthy releases converts nobody in the short term, and time is not on the attacker's side here; consumers stay where their lock files put them. Yank the modern release history and things will start moving at much higher speeds. Tooling and supply-chain gates all start pushing people up onto the one live modern version. The yank *is* the delivery.
 
+What follows is the story. If you want the underlying evidence instead, [crates.io / arrayref: a contemporaneous incident record]({{< relref "systems/arrayref_incident_record/index.md" >}}) is the record my agents and I compiled while the incident was still moving — API responses, timeline, artefact hashes, the open items we could not close, and dated corrections where the situation moved under us within hours.
+
 ### The agents fell for it, then caught themselves
 
 At the time of the attack I was using Opus 5 (writing) and Sol (review) for most of my work. Normally I´d use Sonnet 5 but a Pardosa clean-room rewrite was about to start and I felt like bringing some sharper tools for that job. If this made any difference I do not know, but Opus 5 is about to save my day here. Probably helped by the invariants partly enforced mechanically and partly guided through prompt engineering in what together resembles the software factory setup.

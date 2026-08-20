@@ -24,24 +24,14 @@ Everything here was true as of its stated timestamp. Several items were
 superseded within hours, and the document records those corrections as marked,
 dated **UPDATE** blocks rather than editing the original claims away. That
 self-correcting structure is the reason it is worth publishing at all: the value
-is in seeing what was knowable at each moment, including where it was wrong. The
-narrative companion — what this looked like from the inside — is
-[Watching my software factory handle a live supply chain attack]({{< relref "systems/watching_a_supply_chain_attack/index.md" >}}).
+is in seeing what was knowable at each moment, including where it was wrong.
 
-**Redactions.** Two things were removed from the original before publication,
-and the removals are marked in place rather than made silently:
-
-- our own network egress IP, which carries no reader value;
-- a compromise victim's email address — public in the published manifest, but
-  republishing it here only invites harassment of a victim.
-
-Nothing about the attacker is redacted. The impersonation account `dtolney`,
-its GitHub profile and avatar id, the compromised `droundy` account, the
-SHA256 hashes and the §4 reproduction commands are all preserved as recorded.
-`droundy` is a victim here, not a participant — the postmortem is explicit that
-the account owner is not believed to have acted maliciously — which is why the
-one personal detail attached to him comes out and nothing attached to the
-attacker does.
+The companion post, [Watching my software factory handle a live supply chain
+attack]({{< relref "systems/watching_a_supply_chain_attack/index.md" >}}), is the
+narrative version: how a `cargo deny` gate on an unrelated project caught the
+yank, how my agents walked into the poisoned upgrade and then stopped themselves
+reading the diff, and what the tooling did and did not get right. Read that one
+first if you want the story. This one is the raw material behind it.
 
 **Compiled:** 2026-08-20T09:08Z · **revised** 2026-08-20T09:26Z ·
 **§5 re-verified** 2026-08-20T12:07–12:08Z
@@ -199,7 +189,7 @@ Read directly from the published tarball's normalised manifest
 [package]
 name = "arrayref"
 version = "0.3.10"
-authors = ["David Roundy <redacted>"]
+authors = ["David Roundy"]
 build = false
 repository = "https://github.com/droundy/arrayref"
 
@@ -415,8 +405,8 @@ name.
 
 > **STATUS 2026-08-20T12:07Z: INDETERMINATE. This is the one item where the
 > re-check produced no signal at all — do not read it as "no advisory exists".**
-> Every probe returned **HTTP 403 — API rate limit exceeded** (`for
-> [redacted — our egress IP] … Authenticated requests get a higher rate limit`):
+> Every probe returned **HTTP 403 — API rate limit exceeded**
+> (`Authenticated requests get a higher rate limit`):
 > - GitHub code search `q=proc-macro1 repo:rustsec/advisory-db` → 403
 > - GitHub commits list on `rustsec/advisory-db` `since=2026-08-19` → 403, twice
 >   (immediately, and again after a 5s sleep retry)

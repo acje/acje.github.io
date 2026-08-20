@@ -26,6 +26,9 @@ package-lock.json
 .beads-credential-key
 .beads.gate.lock
 
+# Beads recovery backups. This repo is public; bead bodies stay local.
+.beads.backup-*/
+
 # OODA agent scratch (traces, briefs, body-tmp, tool stdout buffers)
 .ooda/
 

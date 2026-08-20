@@ -38,13 +38,17 @@ What stopped it was the next step, the unglamorous one: read the diff before you
 
 Thirty-three insertions and two deletions, for a patch-level version bump. A patch bump moves two or three lines. Thirty-three lines is a different kind of change, and the shape of it is the tell: a version bump does not add an HTTP client.
 
-Cargo had already said as much a moment earlier, in its own output — `Adding proc-macro1 v1.0.107`, `Adding ureq v2.12.1`. The information was on screen before the diff was. It still took the review step to act on it, which is roughly the argument for having a review step.
+Cargo had already said as much in its own output `Adding proc-macro1 v1.0.107`, `Adding ureq v2.12.1`. It still took the review step to act on it, which is roughly the argument for having a review step.
 
-"This is a hard stop. Rolling back immediately." The rollback happened before any commit, so the poisoned lock file never entered the history.
+Looking into the reasoning Hopper used to halt we find these four signals. what It could not deliver and the keyword "Surprise" used for agents to back brief other agents or me.
+
+![Hopper's halt report, titled "Why I stopped", quoting the Cargo.lock entries for arrayref 0.3.10 and proc-macro1 1.0.107 with its base64, rustls, unicode-ident and ureq dependencies, listing four reasons this is a stop-the-line signal rather than dependency churn, and a table of requested deliverables marked mostly undeliverable by design](hopper-reasoning.png)
+
+*`Outcome::Surprise` regardless of what the gate would have said — it halted on the evidence, not on a verdict.*
 
 ### The investigation
 
-What had replaced the yanked versions, and the fact that 0.3.10 carried a brand-new dependency `arrayref` had never had in its life — on a crate published four minutes earlier. The orchestration agent **Moltke** took that question into its own session and worked it out signal by signal. My software factory runs on mission command principles, hence Moltke, and when an agent gets a "Surprise" that is a back brief. This is helpful to prevent the agents from getting cornered and becoming too creative and dangerous.
+There are some signals to work on here. The yanking, the new and first dependency. should be enough to trigger some caution, but would you actually look into this manually? The orchestration agent **Moltke** was not afraid to spend some tokens here and took these questions into its own session and worked it out signal by signal. My software factory runs on mission command principles, hence Moltke, and when an agent gets a "Surprise" that is a back brief. This is helpful to prevent the agents from getting cornered and becoming too creative and dangerous.
 
 ![moltke's evidence table for a verdict of MALICIOUS at high confidence, listing six independent signals: a typosquat publisher, a stolen identity copied from proc-macro2, an account takeover, no reviewable source for the published version, the payload shape implied by the dependency closure, and the yank itself as the delivery vector](moltke-evidence.png)
 

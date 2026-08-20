@@ -30,7 +30,7 @@ And the yank is what set off my alarm. The same act that was supposed to force m
 
 Here is the obvious response to "cargo deny says your dependency is yanked": bump to the newest version. It is what a tired human does at 09:00. It is what a careless agent does. In this case it walks straight into `arrayref 0.3.10`, which is the entire point of yanking the alternatives.
 
-The trap worked. **hopper** typed `cargo update -p arrayref --precise 0.3.10`, because after a yank that is the natural next command, and the lock file moved onto the poisoned version. No cleverness saved anyone here.
+The trap worked. **hopper**, the agent that writes the code, typed `cargo update -p arrayref --precise 0.3.10`, because after a yank that is the natural next command, and the lock file moved onto the poisoned version. No cleverness saved anyone here.
 
 What stopped it was the next step, the unglamorous one: read the diff before you commit.
 
@@ -83,3 +83,11 @@ Where it genuinely fell short was scope. The postmortem names six malicious crat
 The practical advice is the Rust team's, not mine: "We recommend you check your local dependencies to ensure these crates were not pulled in." Their postmortem hands you a ready-made `find ~/.cargo/registry/cache` command, which is a better check than anything my fleet ran, because it asks about *you* rather than about crates.io.
 
 What saved this build was not intelligence. It was a strict gate on a boring transitive dependency, and an agent that checked its own work before committing it. Longer term I would rather not be inferring intent from yank patterns at all; provenance ought to be a property of the artefact, not an inference from the registry's edit history. That is a different post: {{< relref "workbench/pervasive_supply_chain_provenance/index.md" >}}.
+
+### The setup
+
+Two names have been doing work in this post without introduction, so: I run [opencode](https://opencode.ai) with a set of named agents, each a separate subagent with its own context, dispatched for one role. The roster follows Boyd's OODA loop — copernicus observes, feynman orients, moltke decides, hopper and linus act. **hopper** is the one that writes code and commits. **moltke** is the one that plans, decides and commands. That is why the three screenshots above are three different sessions.
+
+Four mechanisms did the actual work here, and none of them are clever. Roles are separate, so the bad command, the reasoning about it and the verification of that reasoning landed in different sessions. The level above re-verifies instead of accepting a subordinate's report — "Verify against the artefact, never the summary." Committing requires the working tree to be reviewed first, `git status` read, no stray files, no secrets, otherwise surface the diff and ask; that is the step that caught this. And it runs as mission command: I set the intent, the agent halts and escalates only on surprise, and a back-brief carries that upward.
+
+It lives here: <https://github.com/acje/.config>. There is no README — it is my personal dotfiles, not a project — so you get a file listing; the doctrine is in `AGENTS.md` and `opencode/agents/`.

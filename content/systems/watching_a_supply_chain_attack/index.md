@@ -26,11 +26,25 @@ The attacker had to yank `arrayref` 0.3.5 through 0.3.9. That is the mechanism. 
 
 And the yank is what set off my alarm. The same act that was supposed to force me onto the poisoned version is the act that made an unrelated project, on an unrelated task, refuse to build. `0.3.4` and older were left alone, which tells you the shape of it — you do not leave the ancient releases live if you are honestly deprecating; you leave them live if you are targeting modern consumers.
 
-### The part that actually mattered
+### It fell for it, then caught itself
 
 Here is the obvious response to "cargo deny says your dependency is yanked": bump to the newest version. It is what a tired human does at 09:00. It is what a careless agent does. In this case it walks straight into `arrayref 0.3.10`, which is the entire point of yanking the alternatives.
 
-**hopper did not do the obvious thing.** It went and looked at what had replaced the yanked versions, noticed that 0.3.10 carried a brand-new dependency `arrayref` had never had in its life — on a crate published four minutes earlier — and kept pulling. **moltke** consolidated the finding and presented it. Then a third pass verified it independently — against the crates.io API and the manifest read out of the unpacked tarball — rather than taking moltke's word for it.
+The trap worked. **hopper** typed `cargo update -p arrayref --precise 0.3.10`, because after a yank that is the natural next command, and the lock file moved onto the poisoned version. No cleverness saved anyone here.
+
+What stopped it was the next step, the unglamorous one: read the diff before you commit.
+
+![two terminal panes: the first shows cargo update -p arrayref --precise 0.3.10 updating arrayref v0.3.9 to v0.3.10 while adding proc-macro1 v1.0.107 and ureq v2.12.1; the second shows git diff --stat reporting 33 insertions and 2 deletions in Cargo.lock, followed by the verdict line "This is a hard stop. Rolling back immediately."](hopper-hard-stop.png)
+
+*The origin of the whole story: the obvious command, its consequences, and the review step that refused them.*
+
+Thirty-three insertions and two deletions, for a patch-level version bump. A patch bump moves two or three lines. Thirty-three lines is a different kind of change, and the shape of it is the tell: a version bump does not add an HTTP client.
+
+Cargo had already said as much a moment earlier, in its own output — `Adding proc-macro1 v1.0.107`, `Adding ureq v2.12.1`. The information was on screen before the diff was. It still took the review step to act on it, which is roughly the argument for having a review step.
+
+"This is a hard stop. Rolling back immediately." The rollback happened before any commit, so the poisoned lock file never entered the history.
+
+Only then the investigation: what had replaced the yanked versions, and the fact that 0.3.10 carried a brand-new dependency `arrayref` had never had in its life — on a crate published four minutes earlier. **moltke** consolidated the finding and presented it. Then a third pass verified it independently — against the crates.io API and the manifest read out of the unpacked tarball — rather than taking moltke's word for it.
 
 ![moltke's consolidated finding: an independent verification of an in-progress supply chain attack on the arrayref crate, showing the typosquatted proc-macro1 publisher, the 07:15:00Z publication of arrayref 0.3.10, the yanked 0.3.5 through 0.3.9, and the dependency on proc-macro1 1.0.107 read from the crate manifest](moltke-summary.png)
 
@@ -68,4 +82,4 @@ Where it genuinely fell short was scope. The postmortem names six malicious crat
 
 The practical advice is the Rust team's, not mine: "We recommend you check your local dependencies to ensure these crates were not pulled in." Their postmortem hands you a ready-made `find ~/.cargo/registry/cache` command, which is a better check than anything my fleet ran, because it asks about *you* rather than about crates.io.
 
-What saved this build was not intelligence. It was a strict gate on a boring transitive dependency, and an agent that read a red light as a question. Longer term I would rather not be inferring intent from yank patterns at all; provenance ought to be a property of the artefact, not an inference from the registry's edit history. That is a different post: {{< relref "workbench/pervasive_supply_chain_provenance/index.md" >}}.
+What saved this build was not intelligence. It was a strict gate on a boring transitive dependency, and an agent that checked its own work before committing it. Longer term I would rather not be inferring intent from yank patterns at all; provenance ought to be a property of the artefact, not an inference from the registry's edit history. That is a different post: {{< relref "workbench/pervasive_supply_chain_provenance/index.md" >}}.

@@ -1,5 +1,5 @@
 ---
-title: "The yank that gave it away"
+title: "Watching my software factory handle a live supply chain attack"
 aliases:
   - "/watching_a_supply_chain_attack/"
 

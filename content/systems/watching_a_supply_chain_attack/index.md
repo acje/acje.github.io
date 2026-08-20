@@ -30,7 +30,7 @@ And the yank is what set off my alarm. The same act that was supposed to force m
 
 Here is the obvious response to "cargo deny says your dependency is yanked": bump to the newest version. It is what a tired human does at 09:00. It is what a careless agent does. In this case it walks straight into `arrayref 0.3.10`, which is the entire point of yanking the alternatives.
 
-**hopper did not do the obvious thing.** It went and looked at what had replaced the yanked versions, noticed that 0.3.10 had appeared four minutes after `arrayref` acquired a brand-new dependency it had never had in its life, and kept pulling. **moltke** consolidated the finding and presented it. Then a third pass verified it independently — against the crates.io API and the manifest read out of the unpacked tarball — rather than taking moltke's word for it.
+**hopper did not do the obvious thing.** It went and looked at what had replaced the yanked versions, noticed that 0.3.10 carried a brand-new dependency `arrayref` had never had in its life — on a crate published four minutes earlier — and kept pulling. **moltke** consolidated the finding and presented it. Then a third pass verified it independently — against the crates.io API and the manifest read out of the unpacked tarball — rather than taking moltke's word for it.
 
 ![moltke's consolidated finding: an independent verification of an in-progress supply chain attack on the arrayref crate, showing the typosquatted proc-macro1 publisher, the 07:15:00Z publication of arrayref 0.3.10, the yanked 0.3.5 through 0.3.9, and the dependency on proc-macro1 1.0.107 read from the crate manifest](moltke-summary.png)
 

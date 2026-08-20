@@ -52,7 +52,7 @@ Only then the investigation: what had replaced the yanked versions, and the fact
 
 Two numbers on that screenshot are worth stopping on. `proc-macro1` had **9 downloads**. Nine. At the moment of detection the payload crate's blast radius was still essentially nil. `arrayref`, the crate it had just been attached to, had **244,989,384**. That asymmetry is the whole business model of a supply chain attack: you do not need anyone to install your crate, you need one crate that everybody already installs to install it for you.
 
-The value here was not that a language model is clever. It was a gate configured to fail loudly, plus agents that treated a red gate as a question rather than a chore.
+The value here was not that a language model is clever. It was a gate configured to fail loudly, and a review step the agent was not allowed to skip.
 
 Asked to justify the verdict rather than state it, the fleet laid out its reasoning signal by signal.
 

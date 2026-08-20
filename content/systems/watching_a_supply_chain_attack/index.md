@@ -66,6 +66,14 @@ The value here was not that a language model is clever. It was a gate configured
 
 Two names have been doing work in this post without introduction, so: I run [opencode](https://opencode.ai) with a set of named agents, each a separate subagent with its own context, dispatched for one role. The roster follows Boyd's OODA loop — copernicus observes, feynman orients, moltke decides, hopper and linus act. **hopper** is the one that writes code and commits. **moltke** is the one that decides and commands. That is why the three screenshots above are three different sessions; Hopper discovers, Moltke actually tasks Copernicus to gather information (not shown). Moltke then diagnoses and hands back to the opencode Build context I typically use to interact. This creates an orchestrator of orchestrators situation with build and Moltke, which may be too much, but essentially means I can run for hours unattended if needed. Because the build context simply asks Moltke to march and if moltke returns or compacts that has relatively small consequences. The beads keep memory of what we are doing, the hundreds of ADRs are managed by my adr-fmt tool and keeps the course steady, graphify connects some dots, git keeps the history at proper distance form the context.
 
+Long after the fact I ran an audit over gh-report's own ADRs, asking what they had to say about this. SEC-0009 — the one mandating `cargo deny` on every PR, the gate that fired at the top of this post — names its threat model outright: *"The xz-utils incident (CVE-2024-3094) demonstrates dependency supply chain is the highest-impact attack vector."* The control that caught this was written for exactly this class of attack.
+
+![an ADR audit table for gh-report with a Wired? column citing ci-reusable.yml, tools/tripwires.sh and rust-toolchain.toml, and SEC-0009 naming the xz-utils incident CVE-2024-3094 as its threat model](adr-evidence.png)
+
+*Run after the incident, looking back at what was already in place — not something the agents produced during the attack.*
+
+The useful column is "Wired?". Five rows point at a file and a line where something mechanically enforces the constraint — `ci-reusable.yml:220,223`, `tools/tripwires.sh @ :214`, `rust-toolchain.toml`. One, COM-0016, says only "prose", and gets no check. That is the mechanically-enforced-versus-prompt-engineering split from earlier, with receipts.
+
 Agents live here: <https://github.com/acje/.config>.
 
 My agents inferred the payload from the dependency closure and never opened it. SafeDep did: [Malicious Rust Crate arrayref Runs a Build-Time Payload](https://safedep.io/arrayref-proc-macro1-rust-build-time-malware/) has the `build.rs` source, the decoded endpoints, the per-platform payloads and the IOCs.

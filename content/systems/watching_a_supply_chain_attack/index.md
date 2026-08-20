@@ -44,7 +44,7 @@ Looking into the reasoning Hopper used to halt we find these four signals. what 
 
 ![Hopper's halt report, titled "Why I stopped", quoting the Cargo.lock entries for arrayref 0.3.10 and proc-macro1 1.0.107 with its base64, rustls, unicode-ident and ureq dependencies, listing four reasons this is a stop-the-line signal rather than dependency churn, and a table of requested deliverables marked mostly undeliverable by design](hopper-reasoning.png)
 
-*`Outcome::Surprise` regardless of what the gate would have said — it halted on the evidence, not on a verdict.*
+*`Outcome::Surprise` the agent has an escape hatch where it halts rather than trying too hard.*
 
 ### The investigation
 

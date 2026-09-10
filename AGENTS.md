@@ -61,26 +61,32 @@ bd close <id>         # Complete work
 
 ## Session Completion
 
-**When ending a work session**, you MUST complete ALL steps below. Work is NOT complete until `git push` succeeds.
+**When ending a work session**, you MUST complete ALL steps below. Work is NOT complete until `git push` succeeds, subject to the content carve-out below.
+
+**CONTENT CARVE-OUT (PUBLISHING SAFETY):**
+- Pushing to `main` deploys to GitHub Pages via `.github/workflows/hugo.yaml` and publishes the site live.
+- For changes modifying or adding content under `content/`, **commit-and-stop** is the terminal state. Do NOT push without explicit user instruction.
+- For all other changes (repo setup, tooling, workflows, templates under `layouts/`, documentation outside `content/`), the mandatory push workflow applies.
 
 **MANDATORY WORKFLOW:**
 
 1. **File issues for remaining work** - Create issues for anything that needs follow-up
 2. **Run quality gates** (if code changed) - Tests, linters, builds
 3. **Update issue status** - Close finished work, update in-progress items
-4. **PUSH TO REMOTE** - This is MANDATORY:
+4. **PUSH TO REMOTE** - Mandatory for non-content changes; requires explicit user instruction for content:
    ```bash
    git pull --rebase
    git push
    git status  # MUST show "up to date with origin"
    ```
 5. **Clean up** - Clear stashes, prune remote branches
-6. **Verify** - All changes committed AND pushed
+6. **Verify** - All changes committed AND pushed (or committed and held at terminal state per content carve-out)
 7. **Hand off** - Provide context for next session
 
 **CRITICAL RULES:**
-- Work is NOT complete until `git push` succeeds
-- NEVER stop before pushing - that leaves work stranded locally
-- NEVER say "ready to push when you are" - YOU must push
+- Work is NOT complete until `git push` succeeds (except when content carve-out requires stopping at commit)
+- NEVER stop before pushing for non-content changes - that leaves work stranded locally
+- NEVER push changes under `content/` without explicit user authorization
+- NEVER say "ready to push when you are" - YOU must push when authorized
 - If push fails, resolve and retry until it succeeds
 <!-- END BEADS INTEGRATION -->

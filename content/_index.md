@@ -8,10 +8,6 @@ bookFlatSection: true
 
 Strategic insights on information security, systems architecture, and organizational agency. Explore practical approaches to security governance, digital sovereignty, and infrastructure design—from hardware and networks to cloud systems and organizational capacity.
 
-## Workbench - Idea to impact
-
-{{% home-section-links section="workbench" %}}
-
 ## Systems and security
 
 {{% home-section-links section="systems" %}}
@@ -22,6 +18,10 @@ Strategic insights on information security, systems architecture, and organizati
 - [Structured service addressing. A new take on load balancing in IPv6 (Repository)](https://github.com/acje/structured-service-addressing)
 - Under construction [Fiber semantics. Event sourcing for complex domains (Repository)](https://github.com/acje/Fiber-semantics)
 - [Quality attributes (Repository)](https://github.com/acje/quality-attributes)
+
+## Workbench - Idea to impact
+
+{{% home-section-links section="workbench" %}}
 
 ## Agency
 

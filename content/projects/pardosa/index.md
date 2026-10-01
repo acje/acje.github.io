@@ -133,77 +133,105 @@ Pardosa separates line state into an artefact pair on disk:
 1. **`<stem>.meta` (Descriptor File)**: Stores line metadata, schema commitments, domain namespace scope, and partition ownership.
 2. **`<stem>.pgno` (Dragline Container File)**: Append-only storage file containing the container header followed by framed event records.
 
-```text
-+===================================================================================================+
-| Offset 0x00 .. 0x0B (12 Bytes) : Container Header                                                 |
-| +-------------------------------------------------------+---------------------------------------+ |
-| | Magic: "PARDOSA\x01" (8 B: 0x50 41 52 44 4F 53 41 01) | Version: 1 LE (4 B: 0x01 00 00 00)    | |
-| +-------------------------------------------------------+---------------------------------------+ |
-+===================================================================================================+
-| Offset 0x0C .. Offset 0x0C + frame_length_0 + 7 : FRAME 0 (Event 0 : Genesis on Fiber A)          |
-| +----------------------+------------------------------------------------+-----------------------+ |
-| | frame_length_0 (4 B) | Envelope 0 Payload: 85 + payload_length_0 bytes| CRC32C Checksum (4 B) | |
-| | u32 LE               | (Castagnoli protected; folded into H_0 digest) | IEEE 802.3 / SSE4.2   | |
-| +----------------------+------------------------------------------------+-----------------------+ |
-|                                                                                                   |
-| Envelope 0 Layout (Event E0, Fiber A Genesis Aggregate):                                          |
-| +-----------------------------------------------------------------------------------------------+ |
-| | EnvelopeHeader (81 bytes, Invariant C4.19)                                                    | |
-| | +-----------------------+-----------------------+-----------+-------------------------------+ | |
-| | | event_id: 0x01.. [E0] | fiber_id: 0xAA.. [A]  | detached  | precursor: [0u8; 16]          | | |
-| | | (16 bytes, UUID/ULID) | (16 bytes, Aggregate) | 0x00 (1B) | (all zeroes: root genesis)    | | |
-| | +-----------------------+-----------------------+-----------+-------------------------------+ | |
-| | | precursor_hash: [0u8; 32] (all zeroes: root genesis on Fiber A, no predecessor)           | | |
-| | +-------------------------------------------------------------------------------------------+ | |
-| |                                                                                               | |
-| | Payload Length & Domain Event Body (Initial State)                                            | |
-| | +------------------------------------+------------------------------------------------------+ | |
-| | | payload_length_0 (4 bytes, u32 LE) | payload_bytes: domain event payload (GenesisState)   | | |
-| | +------------------------------------+------------------------------------------------------+ | |
-| +-----------------------------------------------------------------------------------------------+ |
-|                                                                                                   |
-|   PHYSICAL STREAM INTEGRITY:                                                                      |
-|   Rolling Digest H_0 = BLAKE3(Frame 0)                                                            |
-+===================================================================================================+
-|                                  ^  ^                                                             |
-|   LOGICAL FIBER A LINKAGE        |  | precursor      : 0x01.. (E0) points to Frame 0 event_id     |
-|   (Backward Causal Chain C5.40)  |  | precursor_hash : BLAKE3(Env 0) commits to Frame 0 envelope  |
-+===================================================================================================+
-| Offset: 0x0C + frame_length_0 + 8 (immediately follows Frame 0 without padding)                   |
-| FRAME 1 (Event 1 : State Mutation on Fiber A)                                                     |
-| +----------------------+------------------------------------------------+-----------------------+ |
-| | frame_length_1 (4 B) | Envelope 1 Payload: 85 + payload_length_1 bytes| CRC32C Checksum (4 B) | |
-| | u32 LE               | (Castagnoli protected; folded into H_1 digest) | IEEE 802.3 / SSE4.2   | |
-| +----------------------+------------------------------------------------+-----------------------+ |
-|                                                                                                   |
-| Envelope 1 Layout (Event E1, Fiber A State Mutation):                                             |
-| +-----------------------------------------------------------------------------------------------+ |
-| | EnvelopeHeader (81 bytes, Invariant C4.19)                                                    | |
-| | +-----------------------+-----------------------+-----------+-------------------------------+ | |
-| | | event_id: 0x02.. [E1] | fiber_id: 0xAA.. [A]  | detached  | precursor: 0x01.. [E0]        | | |
-| | | (16 bytes, UUID/ULID) | (16 bytes, Aggregate) | 0x00 (1B) | --> CAUSAL LINK to Event E0   | | |
-| | +-----------------------+-----------------------+-----------+-------------------------------+ | |
-| | | precursor_hash: BLAKE3(Envelope 0) (32 bytes cryptographic digest)                        | | |
-| | | --> CRYPTOGRAPHIC COMMITMENT to predecessor Envelope 0 header + payload (Invariant C5.40) | | |
-| | +-------------------------------------------------------------------------------------------+ | |
-| |                                                                                               | |
-| | Payload Length & Domain Event Body (Mutation Delta)                                           | |
-| | +------------------------------------+------------------------------------------------------+ | |
-| | | payload_length_1 (4 bytes, u32 LE) | payload_bytes: domain event payload (AccountUpdated) | | |
-| | +------------------------------------+------------------------------------------------------+ | |
-| +-----------------------------------------------------------------------------------------------+ |
-|                                                                                                   |
-|   PHYSICAL STREAM INTEGRITY:                                                                      |
-|   Rolling Digest H_1 = BLAKE3(H_0 || Frame 1)  (Sequential tamper-evidence, Invariant C5.26)      |
-+===================================================================================================+
-| DUAL CRYPTOGRAPHIC COMMITMENTS SUMMARY (Orthogonal Chains):                                       |
-|   1. Logical Precursor Linkage (Fiber A):                                                         |
-|      Frame 1.precursor      == Frame 0.event_id (0x01.. [E0])                                     |
-|      Frame 1.precursor_hash == BLAKE3(Envelope 0 Header || Payload)                               |
-|   2. Physical Rolling Commitment (Dragline):                                                      |
-|      H_0 = BLAKE3(Frame 0)                                                                        |
-|      H_1 = BLAKE3(H_0 || Frame 1)                                                                 |
-+===================================================================================================+
+```mermaid
+flowchart TB
+    subgraph ContainerHeader ["Container Header · 12 Bytes (Offset 0x00..0x0B)"]
+        direction LR
+        MAGIC["<b>Magic Identifier</b> (8B)<br/><code>PARDOSA\x01</code> (0x50..01)"]
+        VERSION["<b>Format Version</b> (4B)<br/><code>1 LE</code> (0x01 00 00 00)"]
+    end
+
+    subgraph Frame0 ["FRAME 0 · Offset 0x0C (Event 0 : Genesis on Fiber A)"]
+        direction TB
+        subgraph F0_Framing ["Physical Framing"]
+            direction LR
+            F0_LEN["<b>frame_length_0</b> (4B)<br/>u32 LE"]
+            F0_CRC["<b>CRC32C Checksum</b> (4B)<br/>Castagnoli (SSE4.2)"]
+        end
+
+        subgraph Env0 ["Envelope 0 (85 + payload_length_0 Bytes)"]
+            direction TB
+            E0_ENV["<b>Envelope 0 (Fiber A Genesis Aggregate)</b><br/>Invariant C4.19 · 81B Header + N_0 B Payload"]
+            subgraph Env0_Header ["EnvelopeHeader Fields (81 Bytes)"]
+                direction LR
+                E0_ID["event_id (16B)<br/><b>0x01.. [E0]</b><br/>UUID/ULID"]
+                E0_FIBER["fiber_id (16B)<br/><b>0xAA.. [Fiber A]</b><br/>Aggregate"]
+                E0_DETACH["detached (1B)<br/><code>0x00</code> (Active)"]
+                E0_PREC["precursor (16B)<br/><code>[0u8; 16]</code><br/>Root Genesis"]
+                E0_PRECHASH["precursor_hash (32B)<br/><code>[0u8; 32]</code><br/>Root Genesis"]
+            end
+            subgraph Env0_Payload ["Domain Event Payload"]
+                direction LR
+                E0_PLEN["<b>payload_length_0</b> (4B)<br/>u32 LE"]
+                E0_BODY["<b>payload_bytes</b> (N_0 B)<br/>GenesisState"]
+            end
+        end
+
+        H0["<b>Physical Rolling Digest H_0</b> (32B)<br/>BLAKE3(Frame 0)"]
+    end
+
+    subgraph Frame1 ["FRAME 1 · Offset 0x0C + L_0 + 8 (Event 1 : State Mutation on Fiber A)"]
+        direction TB
+        subgraph F1_Framing ["Physical Framing (Immediately Follows Frame 0)"]
+            direction LR
+            F1_LEN["<b>frame_length_1</b> (4B)<br/>u32 LE"]
+            F1_CRC["<b>CRC32C Checksum</b> (4B)<br/>Castagnoli (SSE4.2)"]
+        end
+
+        subgraph Env1 ["Envelope 1 (85 + payload_length_1 Bytes)"]
+            direction TB
+            E1_ENV["<b>Envelope 1 (Fiber A State Mutation)</b><br/>Invariant C4.19 · 81B Header + N_1 B Payload"]
+            subgraph Env1_Header ["EnvelopeHeader Fields (81 Bytes)"]
+                direction LR
+                E1_ID["event_id (16B)<br/><b>0x02.. [E1]</b><br/>UUID/ULID"]
+                E1_FIBER["fiber_id (16B)<br/><b>0xAA.. [Fiber A]</b><br/>Aggregate"]
+                E1_DETACH["detached (1B)<br/><code>0x00</code> (Active)"]
+                E1_PREC["precursor (16B)<br/><b>0x01.. [E0]</b><br/>Points to E0"]
+                E1_PRECHASH["precursor_hash (32B)<br/><b>BLAKE3(Envelope 0)</b><br/>Commitment"]
+            end
+            subgraph Env1_Payload ["Domain Event Payload"]
+                direction LR
+                E1_PLEN["<b>payload_length_1</b> (4B)<br/>u32 LE"]
+                E1_BODY["<b>payload_bytes</b> (N_1 B)<br/>AccountUpdated"]
+            end
+        end
+
+        H1["<b>Physical Rolling Digest H_1</b> (32B)<br/>BLAKE3(H_0 ‖ Frame 1)<br/>Sequential Tamper-Evidence (Invariant C5.26)"]
+    end
+
+    ContainerHeader ====> Frame0
+    Frame0 ====>|Physical Sequential Append Offset 0x0C + L_0 + 8| Frame1
+
+    E1_PREC ==>|1. Logical Precursor Link| E0_ID
+    E1_PRECHASH ==>|2. Causal Commitment: Invariant C5.40| E0_ENV
+    H0 ====>|3. Physical Rolling Fold: Invariant C5.26| H1
+
+    classDef slate fill:#475569,stroke:#334155,stroke-width:1.5px,color:#ffffff
+    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
+    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
+    classDef purple fill:#7c3aed,stroke:#6d28d9,stroke-width:1.5px,color:#ffffff
+
+    class MAGIC,VERSION,F0_LEN,F0_CRC,E0_DETACH,F1_LEN,F1_CRC,E1_DETACH slate
+    class E0_ID,E0_FIBER,E1_ID,E1_FIBER,E0_ENV,E1_ENV blue
+    class E0_PREC,E0_PRECHASH,E1_PREC,E1_PRECHASH,H0,H1 green
+    class E0_PLEN,E0_BODY,E1_PLEN,E1_BODY purple
+
+    style ContainerHeader fill:transparent,stroke:#475569,stroke-width:1.5px
+    style Frame0 fill:transparent,stroke:#475569,stroke-width:1.5px
+    style Frame1 fill:transparent,stroke:#475569,stroke-width:1.5px
+    style Env0 fill:transparent,stroke:#2563eb,stroke-width:1.5px
+    style Env1 fill:transparent,stroke:#2563eb,stroke-width:1.5px
+    style F0_Framing fill:transparent,stroke:#475569,stroke-width:1px,stroke-dasharray: 3 3
+    style F1_Framing fill:transparent,stroke:#475569,stroke-width:1px,stroke-dasharray: 3 3
+    style Env0_Header fill:transparent,stroke:#2563eb,stroke-width:1px,stroke-dasharray: 3 3
+    style Env1_Header fill:transparent,stroke:#2563eb,stroke-width:1px,stroke-dasharray: 3 3
+    style Env0_Payload fill:transparent,stroke:#7c3aed,stroke-width:1px,stroke-dasharray: 3 3
+    style Env1_Payload fill:transparent,stroke:#7c3aed,stroke-width:1px,stroke-dasharray: 3 3
+
+    linkStyle 1 stroke:#475569,stroke-width:2px
+    linkStyle 2 stroke:#059669,stroke-width:2.5px
+    linkStyle 3 stroke:#059669,stroke-width:2.5px
+    linkStyle 4 stroke:#059669,stroke-width:2.5px
 ```
 
 ### 1. Container Header (12 Bytes)

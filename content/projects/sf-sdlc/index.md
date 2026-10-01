@@ -30,6 +30,15 @@ flowchart TD
 
     SDLC -->|Mechanical Conformance| Fleet
     Fleet -.->|Situation Evidence| SDLC
+
+    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
+    classDef slate fill:#475569,stroke:#334155,stroke-width:1.5px,color:#ffffff
+
+    class R1,R2,RN slate
+    class PRIO,CYCLE,RATCHET,TOOLS blue
+
+    style Fleet fill:transparent,stroke:#94a3b8,stroke-width:1.5px
+    style SDLC fill:transparent,stroke:#2563eb,stroke-width:1.5px
 ```
 
 ---
@@ -61,6 +70,18 @@ flowchart TD
     P5["5. Features (Subordinate to All Higher Tiers)"]
 
     P1 --> P2 --> P3 --> P4 --> P5
+
+    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
+    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
+    classDef cyan fill:#0891b2,stroke:#0e7490,stroke-width:1.5px,color:#ffffff
+    classDef amber fill:#d97706,stroke:#b45309,stroke-width:1.5px,color:#ffffff
+    classDef slate fill:#475569,stroke:#334155,stroke-width:1.5px,color:#ffffff
+
+    class P1 green
+    class P2 blue
+    class P3 cyan
+    class P4 amber
+    class P5 slate
 ```
 
 ### Rationale & Trade-off Arbitration
@@ -91,6 +112,20 @@ flowchart TD
     OL -.->|Strategic Shift| F
     OL -.->|Bottleneck Evidence| DP
     ER -.->|Legacy Sunset| F
+
+    classDef slate fill:#475569,stroke:#334155,stroke-width:1.5px,color:#ffffff
+    classDef purple fill:#7c3aed,stroke:#6d28d9,stroke-width:1.5px,color:#ffffff
+    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
+    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
+    classDef cyan fill:#0891b2,stroke:#0e7490,stroke-width:1.5px,color:#ffffff
+    classDef amber fill:#d97706,stroke:#b45309,stroke-width:1.5px,color:#ffffff
+
+    class F slate
+    class DP purple
+    class B,R blue
+    class V green
+    class OL cyan
+    class ER amber
 ```
 
 1. **Framing**: Establish the fundamental intent, operational boundaries, and system invariant definitions before touching code. Distinguishes hard constraints from speculative requirements.
@@ -130,6 +165,20 @@ flowchart LR
         COMPLIANT --> PROMOTE[Promote to ControlTier::Hygiene]
         PROMOTE --> BASELINE[New Mandatory Quality Floor]
     end
+
+    classDef amber fill:#d97706,stroke:#b45309,stroke-width:1.5px,color:#ffffff
+    classDef slate fill:#475569,stroke:#334155,stroke-width:1.5px,color:#ffffff
+    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
+    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
+
+    class OPT amber
+    class NEW,R1,R2,RN slate
+    class PROMOTE blue
+    class COMPLIANT,BASELINE green
+
+    style Phase1 fill:transparent,stroke:#d97706,stroke-width:1.5px
+    style Phase2 fill:transparent,stroke:#94a3b8,stroke-width:1.5px
+    style Phase3 fill:transparent,stroke:#059669,stroke-width:1.5px
 ```
 
 The Ratchet operates via a two-tier control architecture:
@@ -172,6 +221,22 @@ flowchart TD
     AUDIT --> OUT
     AUDIT --> ERR
     AUDIT --> CODE
+
+    classDef slate fill:#475569,stroke:#334155,stroke-width:1.5px,color:#ffffff
+    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
+    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
+    classDef cyan fill:#0891b2,stroke:#0e7490,stroke-width:1.5px,color:#ffffff
+    classDef amber fill:#d97706,stroke:#b45309,stroke-width:1.5px,color:#ffffff
+
+    class TOML,REFS,TARGETS slate
+    class PARSE,COMPARE blue
+    class AUDIT green
+    class OUT,CODE cyan
+    class ERR amber
+
+    style Configuration fill:transparent,stroke:#94a3b8,stroke-width:1.5px
+    style Engine fill:transparent,stroke:#2563eb,stroke-width:1.5px
+    style Telemetry fill:transparent,stroke:#0891b2,stroke-width:1.5px
 ```
 
 ### Architectural Guarantees
@@ -194,13 +259,13 @@ flowchart TD
 flowchart LR
     SDLC[sf-sdlc Linter & Orchestrator]
 
-    subgraph Specialized Tools [Compiled Rust Tooling]
+    subgraph Tools [Compiled Rust Tooling]
         CF["comment-free<br/><i>AST Comment Stripping & Word Budgets</i>"]
         ADR["adr-fmt<br/><i>ADR Structure, Validation & Citations</i>"]
         TRIP["tripwires / non-exhaustive-check<br/><i>Closed Error Enums Enforcement</i>"]
     end
 
-    subgraph System Substrate [Graph & Issue Substrates]
+    subgraph Substrate [Graph & Issue Substrates]
         GRAPH["graphify<br/><i>AST Knowledge Graph Engine</i>"]
         BEADS["beads / Dolt<br/><i>Git-Backed Distributed Issue Tracking</i>"]
     end
@@ -210,6 +275,19 @@ flowchart LR
     SDLC --> TRIP
     SDLC --> GRAPH
     SDLC --> BEADS
+
+    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
+    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
+    classDef purple fill:#7c3aed,stroke:#6d28d9,stroke-width:1.5px,color:#ffffff
+    classDef rose fill:#e11d48,stroke:#be123c,stroke-width:1.5px,color:#ffffff
+
+    class SDLC,BEADS blue
+    class CF green
+    class ADR,GRAPH purple
+    class TRIP rose
+
+    style Tools fill:transparent,stroke:#94a3b8,stroke-width:1.5px
+    style Substrate fill:transparent,stroke:#2563eb,stroke-width:1.5px
 ```
 
 - **`comment-free`**: A compiled AST-level Rust analyzer. It enforces the fleet's strict "zero plain comments" policy by stripping non-doc comments (`//` and `/* */`) from source code. It additionally acts as a quality gate on public doc comments (`///`), enforcing concise prose budgets (80-word advisory threshold, 120-word hard ceiling) so documentation remains focused contracts rather than wandering prose.

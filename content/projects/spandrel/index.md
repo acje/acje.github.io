@@ -45,6 +45,23 @@ flowchart TD
     ASKAMA --> CACHE
     QUERY_IN --> CACHE
     CACHE -->|Zero-Query Latency| QUERY_IN
+
+    classDef cyan fill:#0891b2,stroke:#0e7490,stroke-width:1.5px,color:#ffffff
+    classDef amber fill:#d97706,stroke:#b45309,stroke-width:1.5px,color:#ffffff
+    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
+    classDef purple fill:#7c3aed,stroke:#6d28d9,stroke-width:1.5px,color:#ffffff
+    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
+
+    class CMD_IN,QUERY_IN,CACHE cyan
+    class REG amber
+    class PIPE blue
+    class BIZ,ASKAMA purple
+    class LOG green
+
+    style Client fill:transparent,stroke:#0891b2,stroke-width:1.5px
+    style Substrate fill:transparent,stroke:#2563eb,stroke-width:1.5px
+    style App fill:transparent,stroke:#7c3aed,stroke-width:1.5px
+    style Stream fill:transparent,stroke:#059669,stroke-width:1.5px
 ```
 
 ---
@@ -94,6 +111,22 @@ flowchart TD
     Tier1 -->|Appends Events To| Tier3
     Tier2 -.->|Zero Direct Cargo Dependency| Tier3
     Tier3 -.->|Committed Event Stream| Tier2
+
+    classDef purple fill:#7c3aed,stroke:#6d28d9,stroke-width:1.5px,color:#ffffff
+    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
+    classDef amber fill:#d97706,stroke:#b45309,stroke-width:1.5px,color:#ffffff
+    classDef cyan fill:#0891b2,stroke:#0e7490,stroke-width:1.5px,color:#ffffff
+    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
+
+    class DOM,CMD,TEMPL,AUTH purple
+    class TRAITS,DRV blue
+    class REG amber
+    class HTTP cyan
+    class LOG,FENCE,INTEG green
+
+    style Tier1 fill:transparent,stroke:#7c3aed,stroke-width:1.5px
+    style Tier2 fill:transparent,stroke:#2563eb,stroke-width:1.5px
+    style Tier3 fill:transparent,stroke:#059669,stroke-width:1.5px
 ```
 
 1. **Application Layer (e.g. `gh-report`)**:
@@ -147,6 +180,21 @@ flowchart LR
     E --> SUB
     RENDER --> HTML
     HTML -. Direct Zero-Copy Read .-> RESP
+
+    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
+    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
+    classDef purple fill:#7c3aed,stroke:#6d28d9,stroke-width:1.5px,color:#ffffff
+    classDef cyan fill:#0891b2,stroke:#0e7490,stroke-width:1.5px,color:#ffffff
+
+    class E green
+    class SUB,ACCUM blue
+    class RENDER purple
+    class HTML,REQ,RESP cyan
+
+    style Stream fill:transparent,stroke:#059669,stroke-width:1.5px
+    style Fold fill:transparent,stroke:#2563eb,stroke-width:1.5px
+    style Storage fill:transparent,stroke:#0891b2,stroke-width:1.5px
+    style Edge fill:transparent,stroke:#0891b2,stroke-width:1.5px
 ```
 
 ### The Four Pipeline Stages
@@ -173,6 +221,16 @@ flowchart LR
     IN[HTTP Command] -->|1. Enqueue| ACCEPT[Acceptance: HTTP 202]
     ACCEPT -->|2. Domain Execution| COMPL[Completion: Validated Fact]
     COMPL -->|3. Durable Fencing| COMMIT[Commit: In Dragline Log]
+
+    classDef cyan fill:#0891b2,stroke:#0e7490,stroke-width:1.5px,color:#ffffff
+    classDef amber fill:#d97706,stroke:#b45309,stroke-width:1.5px,color:#ffffff
+    classDef purple fill:#7c3aed,stroke:#6d28d9,stroke-width:1.5px,color:#ffffff
+    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
+
+    class IN cyan
+    class ACCEPT amber
+    class COMPL purple
+    class COMMIT green
 ```
 
 - **Acceptance (HTTP 202 / Enqueue)**: The command has passed admission regulation and entered a bounded work queue. No state mutation has yet occurred.

@@ -36,6 +36,20 @@ flowchart TD
     DRAG --> ECST
     ECST --> PROJ
     ECST --> AUDIT
+
+    classDef amber fill:#d97706,stroke:#b45309,stroke-width:1.5px,color:#ffffff
+    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
+    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
+    classDef cyan fill:#0891b2,stroke:#0e7490,stroke-width:1.5px,color:#ffffff
+
+    class CMD,CAS,ADMIT amber
+    class SM,BLAKE,DRAG blue
+    class ECST,AUDIT green
+    class PROJ cyan
+
+    style Ingestion fill:transparent,stroke:#d97706,stroke-width:1.5px
+    style Core fill:transparent,stroke:#2563eb,stroke-width:1.5px
+    style Downstream fill:transparent,stroke:#059669,stroke-width:1.5px
 ```
 
 ---
@@ -92,17 +106,18 @@ flowchart LR
         E4
     end
 
-    classDef fiberA fill:#2563eb,stroke:#1d4ed8,stroke-width:2px,color:#ffffff
-    classDef fiberB fill:#059669,stroke:#047857,stroke-width:2px,color:#ffffff
-    classDef fiberC fill:#d97706,stroke:#b45309,stroke-width:2px,color:#ffffff
+    classDef fiberA fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
+    classDef fiberB fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
+    classDef fiberC fill:#d97706,stroke:#b45309,stroke-width:1.5px,color:#ffffff
 
     class E1,E3,E6 fiberA
     class E2,E5 fiberB
     class E4 fiberC
 
-    style FiberA stroke:#2563eb,stroke-width:2px
-    style FiberB stroke:#059669,stroke-width:2px
-    style FiberC stroke:#d97706,stroke-width:2px
+    style Dragline fill:transparent,stroke:#94a3b8,stroke-width:1.5px
+    style FiberA fill:transparent,stroke:#2563eb,stroke-width:1.5px
+    style FiberB fill:transparent,stroke:#059669,stroke-width:1.5px
+    style FiberC fill:transparent,stroke:#d97706,stroke-width:1.5px
 ```
 
 - **Interleaving**: Events from thousands of concurrent fibers are committed sequentially onto a shared dragline.
@@ -246,6 +261,20 @@ flowchart TD
             B1 -. precursor_hash .-> B0
         end
     end
+
+    classDef slate fill:#475569,stroke:#334155,stroke-width:1.5px,color:#ffffff
+    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
+    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
+
+    class P0,P1,P2,P3 slate
+    class PROOF green
+    class A0,A1 blue
+    class B0,B1 green
+
+    style PhysicalChain fill:transparent,stroke:#475569,stroke-width:1.5px
+    style LogicalChains fill:transparent,stroke:#94a3b8,stroke-width:1.5px
+    style FiberAlpha fill:transparent,stroke:#2563eb,stroke-width:1.5px
+    style FiberBeta fill:transparent,stroke:#059669,stroke-width:1.5px
 ```
 
 - **Physical Rolling Commitment (Invariant C5.26)**: A running 256-bit BLAKE3 hash digest computed sequentially across all container frames in `<stem>.pgno`. Each frame $k$ is folded into the rolling commitment:
@@ -272,6 +301,11 @@ Pardosa encodes exactly **10 legal state transitions**. Any action attempting an
 
 ```mermaid
 stateDiagram-v2
+    classDef stateSlate fill:#475569,stroke:#334155,stroke-width:1.5px,color:#ffffff
+    classDef stateBlue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
+    classDef stateAmber fill:#d97706,stroke:#b45309,stroke-width:1.5px,color:#ffffff
+    classDef stateRose fill:#e11d48,stroke:#be123c,stroke-width:1.5px,color:#ffffff
+
     [*] --> Undefined
     
     Undefined --> Defined: 1. Create
@@ -284,6 +318,11 @@ stateDiagram-v2
     Locked --> Defined: 8. Rescue
     Locked --> Purged: 9. Migrate(Purge)
     Purged --> Defined: 10. Create
+
+    class Undefined stateSlate
+    class Defined stateBlue
+    class Detached stateAmber
+    class Purged, Locked stateRose
 ```
 
 | # | Action | Source State | Target State | Operational Semantics |
@@ -328,6 +367,21 @@ flowchart LR
 
     DISPATCH --> TX
     DISPATCH --> DEDUP
+
+    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
+    classDef cyan fill:#0891b2,stroke:#0e7490,stroke-width:1.5px,color:#ffffff
+    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
+    classDef amber fill:#d97706,stroke:#b45309,stroke-width:1.5px,color:#ffffff
+    classDef rose fill:#e11d48,stroke:#be123c,stroke-width:1.5px,color:#ffffff
+
+    class PARDOSA,DISPATCH,TX blue
+    class STORE_A,STORE_B cyan
+    class CURSOR_A green
+    class DEDUP amber
+    class DROP rose
+
+    style ConsumerTransactional fill:transparent,stroke:#0891b2,stroke-width:1.5px
+    style ConsumerIdempotent fill:transparent,stroke:#0891b2,stroke-width:1.5px
 ```
 
 ### Core Invariants

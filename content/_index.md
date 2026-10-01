@@ -19,6 +19,10 @@ Strategic insights on information security, systems architecture, and organizati
 - Under construction [Fiber semantics. Event sourcing for complex domains (Repository)](https://github.com/acje/Fiber-semantics)
 - [Quality attributes (Repository)](https://github.com/acje/quality-attributes)
 
+## Projects
+
+{{% home-section-links section="projects" %}}
+
 ## Workbench - Idea to impact
 
 {{% home-section-links section="workbench" %}}

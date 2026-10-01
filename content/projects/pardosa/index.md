@@ -199,12 +199,21 @@ flowchart TB
         H1["<b>Physical Rolling Digest H_1</b> (32B)<br/>BLAKE3(H_0 ‖ Frame 1)<br/>Sequential Tamper-Evidence (Invariant C5.26)"]
     end
 
-    ContainerHeader ====> Frame0
-    Frame0 ====>|Physical Sequential Append Offset 0x0C + L_0 + 8| Frame1
+    ContainerHeader ====> F0_Framing
+    H0 ====>|Physical Sequential Append: Offset 0x0C + L_0 + 8| F1_LEN
 
     E1_PREC ==>|1. Logical Precursor Link| E0_ID
     E1_PRECHASH ==>|2. Causal Commitment: Invariant C5.40| E0_ENV
     H0 ====>|3. Physical Rolling Fold: Invariant C5.26| H1
+
+    F0_LEN ~~~ E0_ENV
+    E0_ENV ~~~ E0_ID
+    E0_ID ~~~ H0
+    F1_LEN ~~~ E1_ENV
+    E1_ENV ~~~ E1_PREC
+    E1_ENV ~~~ E1_PRECHASH
+    E1_PREC ~~~ H1
+    E1_PRECHASH ~~~ H1
 
     classDef slate fill:#475569,stroke:#334155,stroke-width:1.5px,color:#ffffff
     classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff

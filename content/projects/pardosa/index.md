@@ -1339,31 +1339,207 @@ At the core of Pardosa is an explicit, formal state machine governing every fibe
 
 Pardosa encodes exactly **10 legal state transitions**. Any action attempting an unlisted transition is rejected at compile time and runtime by the `IllegalStateTransition` error:
 
-```mermaid
-stateDiagram-v2
-    classDef stateSlate fill:#475569,stroke:#334155,stroke-width:1.5px,color:#ffffff
-    classDef stateBlue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
-    classDef stateAmber fill:#d97706,stroke:#b45309,stroke-width:1.5px,color:#ffffff
-    classDef stateRose fill:#e11d48,stroke:#be123c,stroke-width:1.5px,color:#ffffff
-
-    [*] --> Undefined
-    
-    Undefined --> Defined: 1. Create
-    Defined --> Defined: 2. Update
-    Defined --> Detached: 3. Detach
-    Detached --> Defined: 4. Rescue
-    Detached --> Detached: 5. Migrate(Keep)
-    Detached --> Locked: 6. Migrate(LockAndPrune)
-    Detached --> Purged: 7. Migrate(Purge)
-    Locked --> Defined: 8. Rescue
-    Locked --> Purged: 9. Migrate(Purge)
-    Purged --> Defined: 10. Create
-
-    class Undefined stateSlate
-    class Defined stateBlue
-    class Detached stateAmber
-    class Purged, Locked stateRose
-```
+<div class="pardosa-lifecycle-diagram" style="margin: 2rem 0; padding: 1.5rem 1rem; border-radius: 0.75rem; border: 1px solid var(--gray-200, #e2e8f0); background: var(--body-background, #ffffff); overflow-x: auto;">
+<svg id="state-diagram" viewBox="0 0 1060 510" width="100%" height="auto" style="display: block; min-width: 780px; max-width: 1060px; margin: 0 auto; overflow: visible;">
+<defs>
+<marker id="arrow-slate" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-slate-fill" />
+</marker>
+<marker id="arrow-blue" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-blue-fill" />
+</marker>
+<marker id="arrow-amber" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-amber-fill" />
+</marker>
+<marker id="arrow-purple" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-purple-fill" />
+</marker>
+<marker id="arrow-rose" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-rose-fill" />
+</marker>
+<filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+<feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.08"/>
+</filter>
+</defs>
+<style>
+:root {
+--sm-edge-halo: var(--body-background, #ffffff);
+--sm-badge-bg: var(--gray-100, #f8fafc);
+--sm-badge-border: var(--gray-200, #cbd5e1);
+--sm-badge-text: var(--body-font-color, #1e293b);
+--sm-slate-bg: #f8fafc;
+--sm-slate-stroke: #475569;
+--sm-slate-text: #475569;
+--sm-slate-sub: #64748b;
+--sm-blue-bg: #eff6ff;
+--sm-blue-stroke: #2563eb;
+--sm-blue-text: #1d4ed8;
+--sm-blue-sub: #2563eb;
+--sm-amber-bg: #fffbeb;
+--sm-amber-stroke: #d97706;
+--sm-amber-text: #b45309;
+--sm-amber-sub: #d97706;
+--sm-purple-bg: #f5f3ff;
+--sm-purple-stroke: #7c3aed;
+--sm-purple-text: #6d28d9;
+--sm-purple-sub: #7c3aed;
+--sm-rose-bg: #fff1f2;
+--sm-rose-stroke: #e11d48;
+--sm-rose-text: #be123c;
+--sm-rose-sub: #e11d48;
+}
+@media (prefers-color-scheme: dark) {
+:root:not([data-theme="light"]) {
+--sm-edge-halo: var(--body-background, #2e3440);
+--sm-badge-bg: var(--gray-100, #3b4252);
+--sm-badge-border: var(--gray-200, #434c5e);
+--sm-badge-text: var(--body-font-color, #f1f5f9);
+--sm-slate-bg: #1e293b;
+--sm-slate-stroke: #64748b;
+--sm-slate-text: #cbd5e1;
+--sm-slate-sub: #94a3b8;
+--sm-blue-bg: #172554;
+--sm-blue-stroke: #3b82f6;
+--sm-blue-text: #93c5fd;
+--sm-blue-sub: #60a5fa;
+--sm-amber-bg: #451a03;
+--sm-amber-stroke: #f59e0b;
+--sm-amber-text: #fde68a;
+--sm-amber-sub: #fbbf24;
+--sm-purple-bg: #2e1065;
+--sm-purple-stroke: #a855f7;
+--sm-purple-text: #d8b4fe;
+--sm-purple-sub: #c084fc;
+--sm-rose-bg: #4c0519;
+--sm-rose-stroke: #f43f5e;
+--sm-rose-text: #fecdd3;
+--sm-rose-sub: #fb7185;
+}
+}
+:root[data-theme="dark"] {
+--sm-edge-halo: var(--body-background, #2e3440);
+--sm-badge-bg: var(--gray-100, #3b4252);
+--sm-badge-border: var(--gray-200, #434c5e);
+--sm-badge-text: var(--body-font-color, #f1f5f9);
+--sm-slate-bg: #1e293b;
+--sm-slate-stroke: #64748b;
+--sm-slate-text: #cbd5e1;
+--sm-slate-sub: #94a3b8;
+--sm-blue-bg: #172554;
+--sm-blue-stroke: #3b82f6;
+--sm-blue-text: #93c5fd;
+--sm-blue-sub: #60a5fa;
+--sm-amber-bg: #451a03;
+--sm-amber-stroke: #f59e0b;
+--sm-amber-text: #fde68a;
+--sm-amber-sub: #fbbf24;
+--sm-purple-bg: #2e1065;
+--sm-purple-stroke: #a855f7;
+--sm-purple-text: #d8b4fe;
+--sm-purple-sub: #c084fc;
+--sm-rose-bg: #4c0519;
+--sm-rose-stroke: #f43f5e;
+--sm-rose-text: #fecdd3;
+--sm-rose-sub: #fb7185;
+}
+.arrow-slate-fill { fill: var(--sm-slate-stroke); }
+.arrow-blue-fill { fill: var(--sm-blue-stroke); }
+.arrow-amber-fill { fill: var(--sm-amber-stroke); }
+.arrow-purple-fill { fill: var(--sm-purple-stroke); }
+.arrow-rose-fill { fill: var(--sm-rose-stroke); }
+.state-title { font-size: 15px; font-weight: 700; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.state-sub { font-size: 11px; font-weight: 500; opacity: 0.9; font-family: system-ui, -apple-system, sans-serif; }
+.edge-label { font-size: 11.5px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.edge-path { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.edge-halo { fill: none; stroke: var(--sm-edge-halo); stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
+.badge-bg { fill: var(--sm-badge-bg); stroke: var(--sm-badge-border); stroke-width: 1.2; }
+.badge-txt { fill: var(--sm-badge-text); }
+</style>
+<circle cx="210" cy="60" r="8" fill="var(--sm-slate-stroke)"/>
+<path d="M 218,60 L 277,60" class="edge-path" stroke="var(--sm-slate-stroke)" marker-end="url(#arrow-slate)"/>
+<path d="M 360,85 L 360,157" class="edge-path" stroke="var(--sm-blue-stroke)" marker-end="url(#arrow-blue)"/>
+<path d="M 280,172 C 190,130 90,130 90,187 C 90,244 190,244 280,202" class="edge-path" stroke="var(--sm-blue-stroke)" marker-end="url(#arrow-blue)"/>
+<path d="M 440,173 C 485,153 555,153 597,173" class="edge-path" stroke="var(--sm-amber-stroke)" marker-end="url(#arrow-amber)"/>
+<path d="M 600,201 C 555,221 485,221 443,201" class="edge-path" stroke="var(--sm-blue-stroke)" marker-end="url(#arrow-blue)"/>
+<path d="M 760,172 C 850,130 970,130 970,187 C 970,244 850,244 760,202" class="edge-path" stroke="var(--sm-amber-stroke)" marker-end="url(#arrow-amber)"/>
+<path d="M 705,214 L 705,397" class="edge-path" stroke="var(--sm-purple-stroke)" marker-end="url(#arrow-purple)"/>
+<path d="M 620,214 C 595,270 455,340 423,397" class="edge-path" stroke="var(--sm-rose-stroke)" marker-end="url(#arrow-rose)"/>
+<path d="M 620,400 C 595,344 455,274 423,217" class="edge-halo"/>
+<path d="M 620,400 C 595,344 455,274 423,217" class="edge-path" stroke="var(--sm-blue-stroke)" marker-end="url(#arrow-blue)"/>
+<path d="M 600,427 L 443,427" class="edge-path" stroke="var(--sm-rose-stroke)" marker-end="url(#arrow-rose)"/>
+<path d="M 335,400 L 335,217" class="edge-path" stroke="var(--sm-blue-stroke)" marker-end="url(#arrow-blue)"/>
+<g id="edge-1">
+<rect class="badge-bg" x="317" y="109" width="86" height="24" rx="12"/>
+<text class="edge-label badge-txt" x="360" y="121" dominant-baseline="central" text-anchor="middle">1. Create</text>
+</g>
+<g id="label-update">
+<rect id="rect-update" class="badge-bg" x="46" y="175" width="88" height="24" rx="12"/>
+<text id="text-update" class="edge-label badge-txt" x="90" y="187" dominant-baseline="central" text-anchor="middle">2. Update</text>
+</g>
+<g id="edge-3">
+<rect class="badge-bg" x="477" y="137" width="86" height="24" rx="12"/>
+<text class="edge-label badge-txt" x="520" y="149" dominant-baseline="central" text-anchor="middle">3. Detach</text>
+</g>
+<g id="edge-4">
+<rect class="badge-bg" x="477" y="213" width="86" height="24" rx="12"/>
+<text class="edge-label badge-txt" x="520" y="225" dominant-baseline="central" text-anchor="middle">4. Rescue</text>
+</g>
+<g id="label-migrate-keep">
+<rect id="rect-migrate-keep" class="badge-bg" x="897" y="175" width="146" height="24" rx="12"/>
+<text id="text-migrate-keep" class="edge-label badge-txt" x="970" y="187" dominant-baseline="central" text-anchor="middle">5. Migrate(Keep)</text>
+</g>
+<g id="edge-6">
+<rect class="badge-bg" x="612" y="294" width="186" height="24" rx="12"/>
+<text class="edge-label badge-txt" x="705" y="306" dominant-baseline="central" text-anchor="middle">6. Migrate(LockAndPrune)</text>
+</g>
+<g id="edge-7">
+<rect class="badge-bg" x="506" y="243" width="138" height="24" rx="12"/>
+<text class="edge-label badge-txt" x="575" y="255" dominant-baseline="central" text-anchor="middle">7. Migrate(Purge)</text>
+</g>
+<g id="edge-8">
+<rect class="badge-bg" x="532" y="343" width="86" height="24" rx="12"/>
+<text class="edge-label badge-txt" x="575" y="355" dominant-baseline="central" text-anchor="middle">8. Rescue</text>
+</g>
+<g id="edge-9">
+<rect class="badge-bg" x="451" y="415" width="138" height="24" rx="12"/>
+<text class="edge-label badge-txt" x="520" y="427" dominant-baseline="central" text-anchor="middle">9. Migrate(Purge)</text>
+</g>
+<g id="edge-10">
+<rect class="badge-bg" x="292" y="294" width="86" height="24" rx="12"/>
+<text class="edge-label badge-txt" x="335" y="306" dominant-baseline="central" text-anchor="middle">10. Create</text>
+</g>
+<g id="state-undefined" transform="translate(280, 35)">
+<rect id="rect-undefined" width="160" height="50" rx="8" fill="var(--sm-slate-bg)" stroke="var(--sm-slate-stroke)" stroke-width="2" filter="url(#shadow)"/>
+<rect width="6" height="50" rx="3" fill="var(--sm-slate-stroke)"/>
+<text id="text-undefined" class="state-title" x="20" y="25" fill="var(--sm-slate-text)" dominant-baseline="central">Undefined</text>
+<text class="state-sub" x="20" y="40" fill="var(--sm-slate-sub)">Initial State</text>
+</g>
+<g id="state-defined" transform="translate(280, 160)">
+<rect id="rect-defined" width="160" height="54" rx="8" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="2.5" filter="url(#shadow)"/>
+<rect width="6" height="54" rx="3" fill="var(--sm-blue-stroke)"/>
+<text id="text-defined" class="state-title" x="20" y="27" fill="var(--sm-blue-text)" dominant-baseline="central">Defined</text>
+<text class="state-sub" x="20" y="43" fill="var(--sm-blue-sub)">Active &amp; Linearized</text>
+</g>
+<g id="state-detached" transform="translate(600, 160)">
+<rect id="rect-detached" width="160" height="54" rx="8" fill="var(--sm-amber-bg)" stroke="var(--sm-amber-stroke)" stroke-width="2.5" filter="url(#shadow)"/>
+<rect width="6" height="54" rx="3" fill="var(--sm-amber-stroke)"/>
+<text id="text-detached" class="state-title" x="20" y="27" fill="var(--sm-amber-text)" dominant-baseline="central">Detached</text>
+<text class="state-sub" x="20" y="43" fill="var(--sm-amber-sub)">Soft-Deleted</text>
+</g>
+<g id="state-locked" transform="translate(600, 400)">
+<rect id="rect-locked" width="160" height="54" rx="8" fill="var(--sm-purple-bg)" stroke="var(--sm-purple-stroke)" stroke-width="2.5" filter="url(#shadow)"/>
+<rect width="6" height="54" rx="3" fill="var(--sm-purple-stroke)"/>
+<text id="text-locked" class="state-title" x="20" y="27" fill="var(--sm-purple-text)" dominant-baseline="central">Locked</text>
+<text class="state-sub" x="20" y="43" fill="var(--sm-purple-sub)">Frozen Tombstone</text>
+</g>
+<g id="state-purged" transform="translate(280, 400)">
+<rect id="rect-purged" width="160" height="54" rx="8" fill="var(--sm-rose-bg)" stroke="var(--sm-rose-stroke)" stroke-width="2.5" filter="url(#shadow)"/>
+<rect width="6" height="54" rx="3" fill="var(--sm-rose-stroke)"/>
+<text id="text-purged" class="state-title" x="20" y="27" fill="var(--sm-rose-text)" dominant-baseline="central">Purged</text>
+<text class="state-sub" x="20" y="43" fill="var(--sm-rose-sub)">Permanently Scrubbed</text>
+</g>
+</svg>
+</div>
 
 | # | Action | Source State | Target State | Operational Semantics |
 |---|---|---|---|---|

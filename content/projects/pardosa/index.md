@@ -602,6 +602,406 @@ Pardosa separates line state into an artefact pair on disk:
       grid-template-columns: 1fr;
     }
   }
+
+  .consumer-proj-container {
+    --cp-bg: #ffffff;
+    --cp-text: #0f172a;
+    --cp-text-muted: #475569;
+    --cp-code-bg: rgba(15, 23, 42, 0.06);
+    --cp-code-text: #0f172a;
+
+    --cp-slate-border: #64748b;
+    --cp-slate-bg: rgba(100, 116, 139, 0.05);
+    --cp-slate-tag-bg: #475569;
+    --cp-slate-tag-text: #ffffff;
+
+    --cp-blue-border: #2563eb;
+    --cp-blue-bg: rgba(37, 99, 235, 0.04);
+    --cp-blue-tag-bg: #1d4ed8;
+    --cp-blue-tag-text: #ffffff;
+
+    --cp-purple-border: #7c3aed;
+    --cp-purple-bg: rgba(124, 58, 237, 0.04);
+    --cp-purple-tag-bg: #6d28d9;
+    --cp-purple-tag-text: #ffffff;
+
+    --cp-green-border: #059669;
+    --cp-green-bg: rgba(5, 150, 105, 0.06);
+    --cp-green-tag-bg: #047857;
+    --cp-green-tag-text: #ffffff;
+
+    --cp-cyan-border: #0891b2;
+    --cp-cyan-bg: rgba(8, 145, 178, 0.05);
+    --cp-cyan-tag-bg: #0e7490;
+    --cp-cyan-tag-text: #ffffff;
+
+    --cp-amber-border: #d97706;
+    --cp-amber-bg: rgba(217, 119, 6, 0.05);
+    --cp-amber-tag-bg: #b45309;
+    --cp-amber-tag-text: #ffffff;
+
+    --cp-connector-bg: rgba(241, 245, 249, 0.95);
+    --cp-connector-border: #cbd5e1;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: var(--cp-bg);
+    border: 1.5px solid var(--cp-slate-border);
+    border-radius: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--cp-text);
+    overflow-x: hidden;
+  }
+
+  :root[data-theme="dark"] .consumer-proj-container,
+  :root[data-theme$="dark"] .consumer-proj-container {
+    --cp-bg: #0f172a;
+    --cp-text: #f1f5f9;
+    --cp-text-muted: #94a3b8;
+    --cp-code-bg: rgba(0, 0, 0, 0.4);
+    --cp-code-text: #f8fafc;
+
+    --cp-slate-border: #64748b;
+    --cp-slate-bg: rgba(100, 116, 139, 0.15);
+    --cp-slate-tag-bg: #334155;
+    --cp-slate-tag-text: #f8fafc;
+
+    --cp-blue-border: #3b82f6;
+    --cp-blue-bg: rgba(59, 130, 246, 0.12);
+    --cp-blue-tag-bg: #1d4ed8;
+    --cp-blue-tag-text: #eff6ff;
+
+    --cp-purple-border: #8b5cf6;
+    --cp-purple-bg: rgba(139, 92, 246, 0.12);
+    --cp-purple-tag-bg: #5b21b6;
+    --cp-purple-tag-text: #f5f3ff;
+
+    --cp-green-border: #10b981;
+    --cp-green-bg: rgba(16, 185, 129, 0.12);
+    --cp-green-tag-bg: #065f46;
+    --cp-green-tag-text: #ecfdf5;
+
+    --cp-cyan-border: #06b6d4;
+    --cp-cyan-bg: rgba(6, 182, 212, 0.12);
+    --cp-cyan-tag-bg: #0e7490;
+    --cp-cyan-tag-text: #ecfeff;
+
+    --cp-amber-border: #f59e0b;
+    --cp-amber-bg: rgba(245, 158, 11, 0.12);
+    --cp-amber-tag-bg: #92400e;
+    --cp-amber-tag-text: #fef3c7;
+
+    --cp-connector-bg: rgba(30, 41, 59, 0.9);
+    --cp-connector-border: #475569;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root[data-theme="auto"] .consumer-proj-container,
+    :root:not([data-theme="light"]):not([data-theme="dark"]) .consumer-proj-container {
+      --cp-bg: #0f172a;
+      --cp-text: #f1f5f9;
+      --cp-text-muted: #94a3b8;
+      --cp-code-bg: rgba(0, 0, 0, 0.4);
+      --cp-code-text: #f8fafc;
+
+      --cp-slate-border: #64748b;
+      --cp-slate-bg: rgba(100, 116, 139, 0.15);
+      --cp-slate-tag-bg: #334155;
+      --cp-slate-tag-text: #f8fafc;
+
+      --cp-blue-border: #3b82f6;
+      --cp-blue-bg: rgba(59, 130, 246, 0.12);
+      --cp-blue-tag-bg: #1d4ed8;
+      --cp-blue-tag-text: #eff6ff;
+
+      --cp-purple-border: #8b5cf6;
+      --cp-purple-bg: rgba(139, 92, 246, 0.12);
+      --cp-purple-tag-bg: #5b21b6;
+      --cp-purple-tag-text: #f5f3ff;
+
+      --cp-green-border: #10b981;
+      --cp-green-bg: rgba(16, 185, 129, 0.12);
+      --cp-green-tag-bg: #065f46;
+      --cp-green-tag-text: #ecfdf5;
+
+      --cp-cyan-border: #06b6d4;
+      --cp-cyan-bg: rgba(6, 182, 212, 0.12);
+      --cp-cyan-tag-bg: #0e7490;
+      --cp-cyan-tag-text: #ecfeff;
+
+      --cp-amber-border: #f59e0b;
+      --cp-amber-bg: rgba(245, 158, 11, 0.12);
+      --cp-amber-tag-bg: #92400e;
+      --cp-amber-tag-text: #fef3c7;
+
+      --cp-connector-bg: rgba(30, 41, 59, 0.9);
+      --cp-connector-border: #475569;
+    }
+  }
+
+  .consumer-proj-container * {
+    box-sizing: border-box;
+  }
+
+  .cp-card {
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    background: var(--cp-bg);
+    border: 1.5px solid var(--cp-slate-border);
+    transition: border-color 0.2s ease;
+    min-width: 0;
+  }
+
+  .cp-card-blue { border-color: var(--cp-blue-border); background: var(--cp-blue-bg); }
+  .cp-card-green { border-color: var(--cp-green-border); background: var(--cp-green-bg); }
+  .cp-card-purple { border-color: var(--cp-purple-border); background: var(--cp-purple-bg); }
+  .cp-card-cyan { border-color: var(--cp-cyan-border); background: var(--cp-cyan-bg); }
+  .cp-card-amber { border-color: var(--cp-amber-border); background: var(--cp-amber-bg); }
+
+  .cp-card-title-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(100, 116, 139, 0.2);
+  }
+
+  .cp-title-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .cp-title {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--cp-text);
+  }
+
+  .cp-tag {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .cp-tag-slate { background: var(--cp-slate-tag-bg); color: var(--cp-slate-tag-text); }
+  .cp-tag-blue { background: var(--cp-blue-tag-bg); color: var(--cp-blue-tag-text); }
+  .cp-tag-green { background: var(--cp-green-tag-bg); color: var(--cp-green-tag-text); }
+  .cp-tag-purple { background: var(--cp-purple-tag-bg); color: var(--cp-purple-tag-text); }
+  .cp-tag-cyan { background: var(--cp-cyan-tag-bg); color: var(--cp-cyan-tag-text); }
+  .cp-tag-amber { background: var(--cp-amber-tag-bg); color: var(--cp-amber-tag-text); }
+
+  .cp-section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--cp-text-muted);
+    margin: 0.625rem 0 0.375rem 0;
+  }
+
+  .cp-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .cp-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .cp-stack-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .cp-field {
+    border-radius: 6px;
+    padding: 0.625rem 0.75rem;
+    border: 1px solid rgba(100, 116, 139, 0.25);
+    background: var(--cp-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+  }
+
+  .cp-field-slate { border-left: 3.5px solid var(--cp-slate-border); }
+  .cp-field-blue { border-left: 3.5px solid var(--cp-blue-border); }
+  .cp-field-green { border-left: 3.5px solid var(--cp-green-border); }
+  .cp-field-purple { border-left: 3.5px solid var(--cp-purple-border); }
+  .cp-field-cyan { border-left: 3.5px solid var(--cp-cyan-border); }
+  .cp-field-amber { border-left: 3.5px solid var(--cp-amber-border); }
+
+  .cp-field-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--cp-text-muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .cp-field-val {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    color: var(--cp-text);
+  }
+
+  .cp-field-val code {
+    background: var(--cp-code-bg);
+    color: var(--cp-code-text);
+    padding: 0.15rem 0.35rem;
+    border-radius: 3px;
+    font-size: 0.8125rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    word-break: break-all;
+    overflow-wrap: break-word;
+  }
+
+  .cp-field-desc {
+    font-size: 0.72rem;
+    color: var(--cp-text-muted);
+    line-height: 1.35;
+  }
+
+  .cp-connector-block {
+    background: var(--cp-connector-bg);
+    border: 1.5px dashed var(--cp-connector-border);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    min-width: 0;
+  }
+
+  .cp-connector-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--cp-connector-border);
+  }
+
+  .cp-connector-title {
+    font-weight: 700;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--cp-text);
+  }
+
+  .cp-connector-subtitle {
+    font-size: 0.75rem;
+    color: var(--cp-text-muted);
+  }
+
+  .cp-connector-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .cp-conn-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    padding: 0.625rem;
+    border-radius: 6px;
+    background: var(--cp-bg);
+    border: 1px solid rgba(100, 116, 139, 0.2);
+    min-width: 0;
+  }
+
+  .cp-conn-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .cp-num-blue { background: var(--cp-blue-tag-bg); color: #ffffff; }
+  .cp-num-green { background: var(--cp-green-tag-bg); color: #ffffff; }
+  .cp-num-purple { background: var(--cp-purple-tag-bg); color: #ffffff; }
+  .cp-num-cyan { background: var(--cp-cyan-tag-bg); color: #ffffff; }
+
+  .cp-conn-content {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .cp-conn-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--cp-text);
+    margin-bottom: 0.15rem;
+  }
+
+  .cp-conn-detail {
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .cp-conn-detail code {
+    background: var(--cp-code-bg);
+    color: var(--cp-code-text);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    font-size: 0.72rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  .cp-conn-desc {
+    font-size: 0.7rem;
+    color: var(--cp-text-muted);
+    line-height: 1.35;
+  }
+
+  @media (max-width: 640px) {
+    .cp-grid-3 {
+      grid-template-columns: 1fr;
+    }
+    .cp-grid-2 {
+      grid-template-columns: 1fr;
+    }
+    .cp-connector-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
 </style>
 
 <div class="dragline-container">
@@ -982,76 +1382,179 @@ stateDiagram-v2
 
 ## Consumer Idempotency & Deterministic Projections
 
-In event-driven architectures, downstream systems build read models, search indexes, and caches by projecting the event stream. Pardosa guarantees deterministic consumption and effectively exactly-once processing through explicit core invariants:
+In event-driven architectures, downstream systems build read models, search indexes, in-memory view models, and pre-rendered caches by projecting the event stream. Pardosa guarantees deterministic consumption and effectively exactly-once processing through authoritative core engine invariants and architectural demarcation rather than relying on external database transactions:
 
-```mermaid
-flowchart LR
-    PARDOSA["Pardosa Dragline<br/>(Physical .pgno Log)"] -->|Stream Frames| DISPATCH["Event Dispatcher"]
+<div class="consumer-proj-container">
+  <div class="cp-card cp-card-blue" style="margin-bottom: 1rem;">
+    <div class="cp-card-title-bar">
+      <div class="cp-title-group">
+        <span class="cp-tag cp-tag-blue">Pipeline Architecture</span>
+        <span class="cp-title">Pardosa Dragline ➔ Monotonic Cursor ➔ Consumer Adapter Fold</span>
+      </div>
+      <span class="cp-tag cp-tag-slate">Demarcated Pipeline</span>
+    </div>
+    <div class="cp-field-desc">
+      Architectural demarcation separating engine-level append guarantees from downstream read-model projections. Downstream adapters fold immutable event facts autonomously with zero RPC callbacks and zero relational multi-row transaction coupling.
+    </div>
+  </div>
+  <div class="cp-grid-3">
+    <!-- Stage 1: Pardosa Core Engine -->
+    <div class="cp-card cp-card-blue">
+      <div class="cp-card-title-bar">
+        <div class="cp-title-group">
+          <span class="cp-tag cp-tag-blue">Stage 1</span>
+          <span class="cp-title">Pardosa Dragline</span>
+        </div>
+        <span class="cp-tag cp-tag-slate">Core Engine</span>
+      </div>
+      <div class="cp-section-label">Log Guarantees (C3.8 · C4.19)</div>
+      <div class="cp-stack-compact">
+        <div class="cp-field cp-field-blue">
+          <div class="cp-field-label">Total Replay Order (C3.8)</div>
+          <div class="cp-field-val"><code>&lt;stem&gt;.pgno Append Log</code></div>
+          <div class="cp-field-desc">Immutable physical total order over all events [E₁, E₂, ..., E_N] within the container.</div>
+        </div>
+        <div class="cp-field cp-field-blue">
+          <div class="cp-field-label">Cryptographic Identity (C4.19)</div>
+          <div class="cp-field-val"><code>81B Header · BLAKE3</code></div>
+          <div class="cp-field-desc">16B event_id and 32B BLAKE3 precursor commitment hash per event envelope.</div>
+        </div>
+        <div class="cp-field cp-field-blue">
+          <div class="cp-field-label">Sequential Streaming API</div>
+          <div class="cp-field-val"><code>stream_from(cursor)</code></div>
+          <div class="cp-field-desc">Linear non-blocking frame dispatch to registered consumer adapters.</div>
+        </div>
+      </div>
+    </div>
+    <!-- Stage 2: Monotonic Resume Cursor -->
+    <div class="cp-card cp-card-green">
+      <div class="cp-card-title-bar">
+        <div class="cp-title-group">
+          <span class="cp-tag cp-tag-green">Stage 2</span>
+          <span class="cp-title">Monotonic Cursor</span>
+        </div>
+        <span class="cp-tag cp-tag-green">Invariant C5.22</span>
+      </div>
+      <div class="cp-section-label">Cursor Guarantees (C5.22)</div>
+      <div class="cp-stack-compact">
+        <div class="cp-field cp-field-green">
+          <div class="cp-field-label">Physical Frame Boundary</div>
+          <div class="cp-field-val"><code>u64 Byte Offset</code></div>
+          <div class="cp-field-desc">Monotonic 64-bit physical byte offset pointing strictly to verified frame boundaries.</div>
+        </div>
+        <div class="cp-field cp-field-green">
+          <div class="cp-field-label">Valid by Construction</div>
+          <div class="cp-field-val"><code>Zero-Scan Resumption</code></div>
+          <div class="cp-field-desc">Unaligned offsets are unrepresentable; resumes immediately without log parsing.</div>
+        </div>
+        <div class="cp-field cp-field-green">
+          <div class="cp-field-label">Lifecycle Scope</div>
+          <div class="cp-field-val"><code>Dragline-Local Scope</code></div>
+          <div class="cp-field-desc">Bound to container lifetime; regenerated during migrations with no cross-line leakage.</div>
+        </div>
+      </div>
+    </div>
+    <!-- Stage 3: Consumer Adapter Fold -->
+    <div class="cp-card cp-card-purple">
+      <div class="cp-card-title-bar">
+        <div class="cp-title-group">
+          <span class="cp-tag cp-tag-purple">Stage 3</span>
+          <span class="cp-title">Consumer Adapter</span>
+        </div>
+        <span class="cp-tag cp-tag-purple">Projection Fold</span>
+      </div>
+      <div class="cp-section-label">Adapter Ownership (Demarcation)</div>
+      <div class="cp-stack-compact">
+        <div class="cp-field cp-field-purple">
+          <div class="cp-field-label">Pure Deterministic Fold</div>
+          <div class="cp-field-val"><code>State_N = fold(State₀, [E₁..E_N])</code></div>
+          <div class="cp-field-desc">Pure reduction function transforms immutable event stream into typed view models.</div>
+        </div>
+        <div class="cp-field cp-field-purple">
+          <div class="cp-field-label">ECST Autonomy</div>
+          <div class="cp-field-val"><code>Self-Contained Facts</code></div>
+          <div class="cp-field-desc">Events carry complete domain transition facts; zero synchronous RPC callback queries.</div>
+        </div>
+        <div class="cp-field cp-field-purple">
+          <div class="cp-field-label">Idempotency &amp; Dedup</div>
+          <div class="cp-field-val"><code>16B event_id / Upsert Keys</code></div>
+          <div class="cp-field-desc">Deduplication windows and natural upsert keys eliminate side effects across retries.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Connector / Progression Bar -->
+  <div class="cp-connector-block">
+    <div class="cp-connector-header">
+      <div class="cp-connector-title">End-to-End Projection Lifecycle</div>
+      <div class="cp-connector-subtitle">Sequential Fact Propagation Across Demarcation Boundary</div>
+    </div>
+    <div class="cp-connector-grid">
+      <div class="cp-conn-card">
+        <div class="cp-conn-num cp-num-blue">1</div>
+        <div class="cp-conn-content">
+          <div class="cp-conn-label">Frame Append &amp; Commit</div>
+          <div class="cp-conn-detail"><code>Single-Writer CAS</code> ➔ <code>.pgno</code></div>
+          <div class="cp-conn-desc">Linearizable append logs frame with CRC32C framing and rolling BLAKE3 commitment.</div>
+        </div>
+      </div>
+      <div class="cp-conn-card">
+        <div class="cp-conn-num cp-num-green">2</div>
+        <div class="cp-conn-content">
+          <div class="cp-conn-label">Cursor Query &amp; Dispatch</div>
+          <div class="cp-conn-detail"><code>stream_from(cursor)</code> ➔ <code>Events [E_k]</code></div>
+          <div class="cp-conn-desc">Consumer adapter queries stream from its persisted monotonic byte offset (C5.22).</div>
+        </div>
+      </div>
+      <div class="cp-conn-card">
+        <div class="cp-conn-num cp-num-purple">3</div>
+        <div class="cp-conn-content">
+          <div class="cp-conn-label">Deterministic State Fold</div>
+          <div class="cp-conn-detail"><code>State_N = fold(State_{N-1}, E_N)</code></div>
+          <div class="cp-conn-desc">Adapter folds self-contained facts (ECST) into view models without RPC callbacks.</div>
+        </div>
+      </div>
+      <div class="cp-conn-card">
+        <div class="cp-conn-num cp-num-cyan">4</div>
+        <div class="cp-conn-content">
+          <div class="cp-conn-label">Autonomous Read Serving</div>
+          <div class="cp-conn-detail"><code>Read Models</code> ➔ <code>O(1) Queries</code></div>
+          <div class="cp-conn-desc">Downstream consumers (e.g. Spandrel static cache) serve reads with zero write contention.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    subgraph ConsumerTransactional ["Pattern A: Transactional Projections"]
-        direction TB
-        TX["Atomic Unit of Work"]
-        STORE_A["Relational / Key-Value Store"]
-        CURSOR_A["Checkpoint Cursor (C5.22)"]
-        TX --> STORE_A
-        TX --> CURSOR_A
-    end
+### Core Engine Invariants
 
-    subgraph ConsumerIdempotent ["Pattern B: Non-Transactional Sinks"]
-        direction TB
-        DEDUP["Deduplication Filter<br/>(16-byte event_id / 32-byte BLAKE3)"]
-        STORE_B["Search Index / External Sink"]
-        DEDUP -->|Unique| STORE_B
-        DEDUP -->|Duplicate| DROP["No-Op Discard"]
-    end
-
-    DISPATCH --> TX
-    DISPATCH --> DEDUP
-
-    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
-    classDef cyan fill:#0891b2,stroke:#0e7490,stroke-width:1.5px,color:#ffffff
-    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
-    classDef amber fill:#d97706,stroke:#b45309,stroke-width:1.5px,color:#ffffff
-    classDef rose fill:#e11d48,stroke:#be123c,stroke-width:1.5px,color:#ffffff
-
-    class PARDOSA,DISPATCH,TX blue
-    class STORE_A,STORE_B cyan
-    class CURSOR_A green
-    class DEDUP amber
-    class DROP rose
-
-    style ConsumerTransactional fill:transparent,stroke:#0891b2,stroke-width:1.5px
-    style ConsumerIdempotent fill:transparent,stroke:#0891b2,stroke-width:1.5px
-```
-
-### Core Invariants
-
-1. **Total Replay Determinism (Invariant C3.8)**: Replaying the identical sequence of dragline frames produces identical projection state bit-for-bit. Projections rely strictly on immutable event facts—timestamps, precursors, and state payloads—eliminating dependencies on consumer arrival time, wall-clock skew, or execution environment non-determinism.
-2. **Dragline-Local Resume Cursors (Invariant C5.22)**: Dragline consumers track progress using monotonic, container-local cursor offsets. Cursors represent verifiable physical frame boundaries within `<stem>.pgno`. They are valid by construction: a consumer cannot construct or advance to an unaligned offset or an uncommitted frame.
-3. **Unique Event Identity & BLAKE3 Commitments**: Every event carries an unforgeable, globally unique 16-byte `event_id` and is cryptographically bound to a 32-byte BLAKE3 commitment (both frame-level digest and fiber precursor hash).
-
-### Consumer Demarcation & Side-Effect Elimination
-
-To achieve effectively exactly-once processing across network retries, worker restarts, or consumer rebalances, downstream projections implement explicit consumer demarcation:
-
-- **Atomic Cursor Checkpointing (Transactional Sinks)**: When writing to datastores supporting transactional multi-row writes (such as relational databases or transactional key-value engines), projections store the dragline cursor position in the exact same transaction as the projection update:
-  ```sql
-  BEGIN TRANSACTION;
-  -- Apply projection updates from event
-  UPDATE customer_balances SET balance = balance + 500 WHERE customer_id = 'cust_8f2a';
-  -- Checkpoint dragline-local cursor atomically
-  UPDATE projection_checkpoints SET resume_cursor = 0x0004A2F0 WHERE projection_id = 'balance_view';
-  COMMIT;
-  ```
-  On crash recovery or consumer failover, the worker queries `resume_cursor` and requests the dragline stream starting from that exact frame offset. Events already committed within prior transactions are never re-applied.
-
-- **Idempotent Deduplication (Non-Transactional Sinks)**: When projecting into systems lacking atomic multi-resource transactions (e.g., search indexes, analytical column stores, distributed message queues, or third-party webhooks), consumers eliminate duplicate side-effects using the 16-byte `event_id` or 32-byte BLAKE3 commitment:
-  - **Natural Upsert Keys**: Projections use `event_id` or deterministic entity head versions as document keys or idempotency tokens, turning repeated frame deliveries into no-op updates.
-  - **Deduplication Windows**: Downstream workers maintain a lightweight, bounded deduplication set of processed `event_id` values within the replay buffer window. Re-delivered frames are recognized, recorded as duplicates, and dropped before invoking external side-effects.
+1. **Deterministic Event Folds (Invariant C3.8)**: An artefact holds exactly one total order over all events it carries on `<stem>.pgno`, and replaying it yields that identical order every time. Replaying the identical sequence of dragline frames produces identical projection state bit-for-bit:
+   $$\text{State}_N = \text{fold}(\text{State}_0, [E_1, E_2, \dots, E_N])$$
+   Projections rely strictly on immutable event facts—timestamps, precursors, and state payloads—eliminating dependencies on consumer arrival time, wall-clock skew, network transit delays, or execution environment non-determinism. Downstream read models can rebuild their entire state deterministically from genesis ($\text{State}_0$) or incrementally from any verified checkpoint frame.
+2. **Dragline-Local Resume Cursors (Invariant C5.22)**: Pardosa exposes a resume cursor that is dragline-local and valid by construction. Monotonic 64-bit physical byte offsets point directly to verified frame boundaries within `<stem>.pgno`. Cursors are valid by construction: a consumer cannot construct or advance to an unaligned offset or an uncommitted frame. When resuming after restarts or failovers, consumers invoke `stream_from(cursor)` to resume streaming directly from that byte boundary without scanning logs, indexing tables, or re-processing previously committed frames. Cursors are regenerated during migrations and have no meaning across migrations.
+3. **Cryptographic Event Identity & Commitments (Invariant C4.19)**: Every event envelope carries a fixed 81-byte wire header containing a globally unique 16-byte `event_id` (128-bit UUID), a 16-byte `fiber_id`, a 1-byte detachment flag, a 16-byte `precursor` UUID, and a 32-byte BLAKE3 `precursor_hash` commitment (both frame-level digest and fiber precursor hash). Combined with hardware-accelerated CRC32C framing, this cryptographic commitment enables unconditional deduplication: downstream consumer adapters can detect re-delivered frames and eliminate duplicate side-effects unconditionally.
 
 ### Event Carried State Transfer (ECST)
-- **Self-Contained Domain Facts**: Events emitted by Pardosa carry full state transition facts rather than thin notifications. Downstream consumers receive all data necessary to project their read models without executing synchronous callback queries to the producer.
-- **Autonomous Projections**: Read models (search indexes, reporting databases, HTML caches) consume the dragline independently at their own pace. If a consumer crashes or lags, write ingestion remains unaffected.
+
+- **Self-Contained Domain Facts**: Events emitted by Pardosa carry full state transition facts rather than thin notifications (e.g., entity IDs requiring subsequent queries). Downstream consumers receive all data necessary to project their read models without executing synchronous callback queries or RPC round-trips to the producer or source datastore.
+- **Autonomous Projections**: Read models (in-memory view models, search indexes, analytical column stores, Spandrel static cache stores) consume the dragline independently at their own pace. If a consumer crashes, restarts, or lags during bulk backpressure, write ingestion into the Pardosa dragline remains completely unaffected.
+
+### Adapter Demarcation & Side-Effect Elimination
+
+To maintain clean architectural boundaries and prevent coupling engine storage to external sinks, Pardosa enforces strict demarcation between core engine responsibilities and consumer-side adapter responsibilities:
+
+| Responsibility | Pardosa Core Engine | Consumer-Side Adapter (e.g., Spandrel) |
+|---|---|---|
+| **Log Storage & Framing** | Physical append log (`.pgno`), frame CRC32C, BLAKE3 rolling commitments | Downstream read models (SQLite, memory maps, search indexes, static HTML caches) |
+| **Ordering & Cursors** | Total log order (C3.8), dragline-local cursor offsets (C5.22) | Cursor offset persistence, checkpoint retention, replay coordination |
+| **Identity & Mapping** | 16-byte `event_id`, 16-byte `fiber_id`, precursor causal chains | Domain aggregate IDs (`IssueId`, `AccountId`), in-memory `FiberIndex` mapping |
+| **State Transformation** | Raw frame envelope serialization, byte-level framing validation | Pure projection fold functions (`State_N = fold(State_{N-1}, E_N)`), view models |
+| **Side-Effect Elimination** | Unconditional deduplication metadata (C4.19 BLAKE3 commitments) | Idempotent upserts, bounded dedup filters, zero RPC callbacks |
+
+Downstream consumer adapters achieve side-effect elimination and effectively exactly-once processing through:
+- **Pure Mathematical Folds**: Downstream projections model state accumulation as pure, deterministic functions over immutable events: $\text{State}_N = \text{fold}(\text{State}_{N-1}, E_N)$. Reprocessing the log from genesis or from a verified checkpoint cursor yields identical bit-level state.
+- **Cryptographic Deduplication (C4.19)**: For sinks with external side effects (e.g., message queues, webhook dispatchers, search indexes), adapters use the 16-byte `event_id` or 32-byte BLAKE3 precursor hash as natural idempotency tokens. Duplicate deliveries within a replay window are identified and dropped as no-ops prior to external invocation.
+- **Adapter-Owned Cursor Persistence**: Adapters record their dragline-local cursor alongside their projected view model. On crash recovery, the adapter reads its persisted cursor and calls `stream_from(cursor)` to resume exactly where processing halted without requiring engine-level multi-row database transactions.
 
 ---
 

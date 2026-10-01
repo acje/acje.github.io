@@ -133,115 +133,718 @@ Pardosa separates line state into an artefact pair on disk:
 1. **`<stem>.meta` (Descriptor File)**: Stores line metadata, schema commitments, domain namespace scope, and partition ownership.
 2. **`<stem>.pgno` (Dragline Container File)**: Append-only storage file containing the container header followed by framed event records.
 
-```mermaid
-flowchart TB
-    subgraph ContainerHeader ["Container Header · 12 Bytes (Offset 0x00..0x0B)"]
-        direction LR
-        MAGIC["<b>Magic Identifier</b> (8B)<br/><code>PARDOSA\x01</code> (0x50..01)"]
-        VERSION["<b>Format Version</b> (4B)<br/><code>1 LE</code> (0x01 00 00 00)"]
-    end
+<style>
+  .dragline-container {
+    --dl-bg: #ffffff;
+    --dl-text: #0f172a;
+    --dl-text-muted: #475569;
+    --dl-code-bg: rgba(15, 23, 42, 0.06);
+    --dl-code-text: #0f172a;
 
-    subgraph Frame0 ["FRAME 0 · Offset 0x0C (Event 0 : Genesis on Fiber A)"]
-        direction TB
-        subgraph F0_Framing ["Physical Framing"]
-            direction LR
-            F0_LEN["<b>frame_length_0</b> (4B)<br/>u32 LE"]
-            F0_CRC["<b>CRC32C Checksum</b> (4B)<br/>Castagnoli (SSE4.2)"]
-        end
+    --dl-slate-border: #64748b;
+    --dl-slate-bg: rgba(100, 116, 139, 0.05);
+    --dl-slate-tag-bg: #475569;
+    --dl-slate-tag-text: #ffffff;
 
-        subgraph Env0 ["Envelope 0 (85 + payload_length_0 Bytes)"]
-            direction TB
-            E0_ENV["<b>Envelope 0 (Fiber A Genesis Aggregate)</b><br/>Invariant C4.19 · 81B Header + N_0 B Payload"]
-            subgraph Env0_Header ["EnvelopeHeader Fields (81 Bytes)"]
-                direction LR
-                E0_ID["event_id (16B)<br/><b>0x01.. [E0]</b><br/>UUID/ULID"]
-                E0_FIBER["fiber_id (16B)<br/><b>0xAA.. [Fiber A]</b><br/>Aggregate"]
-                E0_DETACH["detached (1B)<br/><code>0x00</code> (Active)"]
-                E0_PREC["precursor (16B)<br/><code>[0u8; 16]</code><br/>Root Genesis"]
-                E0_PRECHASH["precursor_hash (32B)<br/><code>[0u8; 32]</code><br/>Root Genesis"]
-            end
-            subgraph Env0_Payload ["Domain Event Payload"]
-                direction LR
-                E0_PLEN["<b>payload_length_0</b> (4B)<br/>u32 LE"]
-                E0_BODY["<b>payload_bytes</b> (N_0 B)<br/>GenesisState"]
-            end
-        end
+    --dl-blue-border: #2563eb;
+    --dl-blue-bg: rgba(37, 99, 235, 0.04);
+    --dl-blue-tag-bg: #1d4ed8;
+    --dl-blue-tag-text: #ffffff;
 
-        H0["<b>Physical Rolling Digest H_0</b> (32B)<br/>BLAKE3(Frame 0)"]
-    end
+    --dl-purple-border: #7c3aed;
+    --dl-purple-bg: rgba(124, 58, 237, 0.04);
+    --dl-purple-tag-bg: #6d28d9;
+    --dl-purple-tag-text: #ffffff;
 
-    subgraph Frame1 ["FRAME 1 · Offset 0x0C + L_0 + 8 (Event 1 : State Mutation on Fiber A)"]
-        direction TB
-        subgraph F1_Framing ["Physical Framing (Immediately Follows Frame 0)"]
-            direction LR
-            F1_LEN["<b>frame_length_1</b> (4B)<br/>u32 LE"]
-            F1_CRC["<b>CRC32C Checksum</b> (4B)<br/>Castagnoli (SSE4.2)"]
-        end
+    --dl-green-border: #059669;
+    --dl-green-bg: rgba(5, 150, 105, 0.06);
+    --dl-green-tag-bg: #047857;
+    --dl-green-tag-text: #ffffff;
 
-        subgraph Env1 ["Envelope 1 (85 + payload_length_1 Bytes)"]
-            direction TB
-            E1_ENV["<b>Envelope 1 (Fiber A State Mutation)</b><br/>Invariant C4.19 · 81B Header + N_1 B Payload"]
-            subgraph Env1_Header ["EnvelopeHeader Fields (81 Bytes)"]
-                direction LR
-                E1_ID["event_id (16B)<br/><b>0x02.. [E1]</b><br/>UUID/ULID"]
-                E1_FIBER["fiber_id (16B)<br/><b>0xAA.. [Fiber A]</b><br/>Aggregate"]
-                E1_DETACH["detached (1B)<br/><code>0x00</code> (Active)"]
-                E1_PREC["precursor (16B)<br/><b>0x01.. [E0]</b><br/>Points to E0"]
-                E1_PRECHASH["precursor_hash (32B)<br/><b>BLAKE3(Envelope 0)</b><br/>Commitment"]
-            end
-            subgraph Env1_Payload ["Domain Event Payload"]
-                direction LR
-                E1_PLEN["<b>payload_length_1</b> (4B)<br/>u32 LE"]
-                E1_BODY["<b>payload_bytes</b> (N_1 B)<br/>AccountUpdated"]
-            end
-        end
+    --dl-emerald-border: #059669;
+    --dl-emerald-bg: rgba(5, 150, 105, 0.12);
+    --dl-emerald-tag-bg: #059669;
+    --dl-emerald-tag-text: #ffffff;
+    --dl-emerald-highlight-border: #047857;
+    --dl-emerald-highlight-bg: rgba(5, 150, 105, 0.14);
 
-        H1["<b>Physical Rolling Digest H_1</b> (32B)<br/>BLAKE3(H_0 ‖ Frame 1)<br/>Sequential Tamper-Evidence (Invariant C5.26)"]
-    end
+    --dl-connector-bg: rgba(241, 245, 249, 0.95);
+    --dl-connector-border: #cbd5e1;
 
-    ContainerHeader ====> F0_Framing
-    H0 ====>|Physical Sequential Append: Offset 0x0C + L_0 + 8| F1_LEN
+    box-sizing: border-box;
+    width: 100%;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: var(--dl-bg);
+    border: 1.5px solid var(--dl-slate-border);
+    border-radius: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--dl-text);
+  }
 
-    E1_PREC ==>|1. Logical Precursor Link| E0_ID
-    E1_PRECHASH ==>|2. Causal Commitment: Invariant C5.40| E0_ENV
-    H0 ====>|3. Physical Rolling Fold: Invariant C5.26| H1
+  :root[data-theme="dark"] .dragline-container {
+    --dl-bg: #0f172a;
+    --dl-text: #f1f5f9;
+    --dl-text-muted: #94a3b8;
+    --dl-code-bg: rgba(0, 0, 0, 0.4);
+    --dl-code-text: #f8fafc;
 
-    F0_LEN ~~~ E0_ENV
-    E0_ENV ~~~ E0_ID
-    E0_ID ~~~ H0
-    F1_LEN ~~~ E1_ENV
-    E1_ENV ~~~ E1_PREC
-    E1_ENV ~~~ E1_PRECHASH
-    E1_PREC ~~~ H1
-    E1_PRECHASH ~~~ H1
+    --dl-slate-border: #64748b;
+    --dl-slate-bg: rgba(100, 116, 139, 0.15);
+    --dl-slate-tag-bg: #334155;
+    --dl-slate-tag-text: #f8fafc;
 
-    classDef slate fill:#475569,stroke:#334155,stroke-width:1.5px,color:#ffffff
-    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
-    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
-    classDef purple fill:#7c3aed,stroke:#6d28d9,stroke-width:1.5px,color:#ffffff
+    --dl-blue-border: #3b82f6;
+    --dl-blue-bg: rgba(59, 130, 246, 0.12);
+    --dl-blue-tag-bg: #1d4ed8;
+    --dl-blue-tag-text: #eff6ff;
 
-    class MAGIC,VERSION,F0_LEN,F0_CRC,E0_DETACH,F1_LEN,F1_CRC,E1_DETACH slate
-    class E0_ID,E0_FIBER,E1_ID,E1_FIBER,E0_ENV,E1_ENV blue
-    class E0_PREC,E0_PRECHASH,E1_PREC,E1_PRECHASH,H0,H1 green
-    class E0_PLEN,E0_BODY,E1_PLEN,E1_BODY purple
+    --dl-purple-border: #8b5cf6;
+    --dl-purple-bg: rgba(139, 92, 246, 0.12);
+    --dl-purple-tag-bg: #5b21b6;
+    --dl-purple-tag-text: #f5f3ff;
 
-    style ContainerHeader fill:transparent,stroke:#475569,stroke-width:1.5px
-    style Frame0 fill:transparent,stroke:#475569,stroke-width:1.5px
-    style Frame1 fill:transparent,stroke:#475569,stroke-width:1.5px
-    style Env0 fill:transparent,stroke:#2563eb,stroke-width:1.5px
-    style Env1 fill:transparent,stroke:#2563eb,stroke-width:1.5px
-    style F0_Framing fill:transparent,stroke:#475569,stroke-width:1px,stroke-dasharray: 3 3
-    style F1_Framing fill:transparent,stroke:#475569,stroke-width:1px,stroke-dasharray: 3 3
-    style Env0_Header fill:transparent,stroke:#2563eb,stroke-width:1px,stroke-dasharray: 3 3
-    style Env1_Header fill:transparent,stroke:#2563eb,stroke-width:1px,stroke-dasharray: 3 3
-    style Env0_Payload fill:transparent,stroke:#7c3aed,stroke-width:1px,stroke-dasharray: 3 3
-    style Env1_Payload fill:transparent,stroke:#7c3aed,stroke-width:1px,stroke-dasharray: 3 3
+    --dl-green-border: #10b981;
+    --dl-green-bg: rgba(16, 185, 129, 0.12);
+    --dl-green-tag-bg: #065f46;
+    --dl-green-tag-text: #ecfdf5;
 
-    linkStyle 1 stroke:#475569,stroke-width:2px
-    linkStyle 2 stroke:#059669,stroke-width:2.5px
-    linkStyle 3 stroke:#059669,stroke-width:2.5px
-    linkStyle 4 stroke:#059669,stroke-width:2.5px
-```
+    --dl-emerald-border: #10b981;
+    --dl-emerald-bg: rgba(16, 185, 129, 0.18);
+    --dl-emerald-tag-bg: #059669;
+    --dl-emerald-tag-text: #ffffff;
+    --dl-emerald-highlight-border: #34d399;
+    --dl-emerald-highlight-bg: rgba(16, 185, 129, 0.22);
+
+    --dl-connector-bg: rgba(30, 41, 59, 0.9);
+    --dl-connector-border: #475569;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root[data-theme="auto"] .dragline-container,
+    :root:not([data-theme="light"]):not([data-theme="dark"]) .dragline-container {
+      --dl-bg: #0f172a;
+      --dl-text: #f1f5f9;
+      --dl-text-muted: #94a3b8;
+      --dl-code-bg: rgba(0, 0, 0, 0.4);
+      --dl-code-text: #f8fafc;
+
+      --dl-slate-border: #64748b;
+      --dl-slate-bg: rgba(100, 116, 139, 0.15);
+      --dl-slate-tag-bg: #334155;
+      --dl-slate-tag-text: #f8fafc;
+
+      --dl-blue-border: #3b82f6;
+      --dl-blue-bg: rgba(59, 130, 246, 0.12);
+      --dl-blue-tag-bg: #1d4ed8;
+      --dl-blue-tag-text: #eff6ff;
+
+      --dl-purple-border: #8b5cf6;
+      --dl-purple-bg: rgba(139, 92, 246, 0.12);
+      --dl-purple-tag-bg: #5b21b6;
+      --dl-purple-tag-text: #f5f3ff;
+
+      --dl-green-border: #10b981;
+      --dl-green-bg: rgba(16, 185, 129, 0.12);
+      --dl-green-tag-bg: #065f46;
+      --dl-green-tag-text: #ecfdf5;
+
+      --dl-emerald-border: #10b981;
+      --dl-emerald-bg: rgba(16, 185, 129, 0.18);
+      --dl-emerald-tag-bg: #059669;
+      --dl-emerald-tag-text: #ffffff;
+      --dl-emerald-highlight-border: #34d399;
+      --dl-emerald-highlight-bg: rgba(16, 185, 129, 0.22);
+
+      --dl-connector-bg: rgba(30, 41, 59, 0.9);
+      --dl-connector-border: #475569;
+    }
+  }
+
+  .dragline-container * {
+    box-sizing: border-box;
+  }
+
+  .dl-card {
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+    background: var(--dl-bg);
+    transition: border-color 0.2s ease;
+  }
+
+  .dl-card-header {
+    border: 1.5px solid var(--dl-slate-border);
+    background: var(--dl-slate-bg);
+  }
+
+  .dl-card-frame {
+    border: 2px solid var(--dl-slate-border);
+    background: var(--dl-slate-bg);
+  }
+
+  .dl-card-envelope {
+    border: 1.5px solid var(--dl-blue-border);
+    background: var(--dl-blue-bg);
+    border-radius: 6px;
+    padding: 0.875rem;
+    margin: 0.875rem 0;
+  }
+
+  .dl-card-title-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.875rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(100, 116, 139, 0.2);
+  }
+
+  .dl-title-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .dl-title {
+    font-weight: 600;
+    font-size: 0.9375rem;
+  }
+
+  .dl-tag {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+  }
+
+  .dl-tag-slate { background: var(--dl-slate-tag-bg); color: var(--dl-slate-tag-text); }
+  .dl-tag-blue { background: var(--dl-blue-tag-bg); color: var(--dl-blue-tag-text); }
+  .dl-tag-purple { background: var(--dl-purple-tag-bg); color: var(--dl-purple-tag-text); }
+  .dl-tag-green { background: var(--dl-green-tag-bg); color: var(--dl-green-tag-text); }
+  .dl-tag-emerald { background: var(--dl-emerald-tag-bg); color: var(--dl-emerald-tag-text); }
+
+  .dl-section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--dl-text-muted);
+    margin: 0.75rem 0 0.375rem 0;
+  }
+
+  .dl-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .dl-grid-envelope {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.625rem;
+  }
+
+  .dl-field {
+    border-radius: 6px;
+    padding: 0.625rem 0.75rem;
+    border: 1px solid rgba(100, 116, 139, 0.25);
+    background: var(--dl-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .dl-field-slate { border-left: 3px solid var(--dl-slate-border); }
+  .dl-field-blue { border-left: 3px solid var(--dl-blue-border); }
+  .dl-field-purple { border-left: 3px solid var(--dl-purple-border); }
+  .dl-field-green { border-left: 3px solid var(--dl-green-border); }
+
+  .dl-field-emerald-highlight {
+    border: 1.5px solid var(--dl-emerald-highlight-border);
+    border-left: 4px solid var(--dl-emerald-highlight-border);
+    background: var(--dl-emerald-highlight-bg);
+  }
+
+  .dl-field-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--dl-text-muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .dl-emerald-label {
+    color: var(--dl-emerald-highlight-border);
+  }
+
+  .dl-field-val {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+
+  .dl-field-val code {
+    background: var(--dl-code-bg);
+    color: var(--dl-code-text);
+    padding: 0.15rem 0.35rem;
+    border-radius: 3px;
+    font-size: 0.8125rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  .dl-field-hex {
+    font-size: 0.75rem;
+    color: var(--dl-text-muted);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  .dl-field-desc {
+    font-size: 0.72rem;
+    color: var(--dl-text-muted);
+  }
+
+  .dl-emerald-desc {
+    color: var(--dl-text);
+    font-weight: 500;
+  }
+
+  .dl-digest-badge {
+    border-radius: 6px;
+    padding: 0.625rem 0.875rem;
+    margin-top: 0.875rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .dl-digest-slate {
+    border: 1px solid var(--dl-slate-border);
+    background: var(--dl-slate-bg);
+  }
+
+  .dl-digest-emerald {
+    border: 1.5px solid var(--dl-emerald-highlight-border);
+    background: var(--dl-emerald-highlight-bg);
+  }
+
+  .dl-digest-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+  }
+
+  .dl-digest-title code {
+    background: var(--dl-code-bg);
+    color: var(--dl-code-text);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-weight: 600;
+  }
+
+  .dl-digest-desc {
+    font-size: 0.75rem;
+    color: var(--dl-text-muted);
+  }
+
+  .dl-flow-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5rem 0;
+  }
+
+  .dl-arrow-line {
+    width: 2px;
+    height: 14px;
+    background: var(--dl-slate-border);
+  }
+
+  .dl-arrow-badge {
+    background: var(--dl-connector-bg);
+    border: 1px solid var(--dl-connector-border);
+    border-radius: 12px;
+    padding: 0.2rem 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--dl-text-muted);
+    margin: 2px 0;
+  }
+
+  .dl-arrow-head {
+    font-size: 0.75rem;
+    color: var(--dl-slate-border);
+    line-height: 1;
+  }
+
+  .dl-connector-block {
+    background: var(--dl-connector-bg);
+    border: 1.5px dashed var(--dl-connector-border);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1.25rem 0;
+  }
+
+  .dl-connector-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--dl-connector-border);
+  }
+
+  .dl-connector-title {
+    font-weight: 700;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--dl-text);
+  }
+
+  .dl-connector-subtitle {
+    font-size: 0.75rem;
+    color: var(--dl-text-muted);
+  }
+
+  .dl-connector-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .dl-conn-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    padding: 0.625rem;
+    border-radius: 6px;
+    background: var(--dl-bg);
+    border: 1px solid rgba(100, 116, 139, 0.2);
+  }
+
+  .dl-conn-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #ffffff;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .dl-conn-physical .dl-conn-num { background: #475569; }
+  .dl-conn-logical .dl-conn-num { background: #059669; }
+  .dl-conn-causal .dl-conn-num { background: #047857; }
+  .dl-conn-rolling .dl-conn-num { background: #0f766e; }
+
+  .dl-conn-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .dl-conn-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--dl-text);
+  }
+
+  .dl-conn-detail {
+    font-size: 0.75rem;
+    color: var(--dl-text);
+  }
+
+  .dl-conn-detail code {
+    background: var(--dl-code-bg);
+    color: var(--dl-code-text);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  .dl-conn-desc {
+    font-size: 0.7rem;
+    color: var(--dl-text-muted);
+    line-height: 1.35;
+  }
+
+  @media (max-width: 640px) {
+    .dl-grid-envelope {
+      grid-template-columns: 1fr 1fr;
+    }
+    .dl-grid-2 {
+      grid-template-columns: 1fr;
+    }
+    .dl-connector-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="dragline-container">
+  <!-- Container Header Block -->
+  <div class="dl-card dl-card-header">
+    <div class="dl-card-title-bar">
+      <div class="dl-title-group">
+        <span class="dl-tag dl-tag-slate">Offset 0x00..0x0B · 12 Bytes</span>
+        <span class="dl-title">Container Header · Storage Format Identity</span>
+      </div>
+      <span class="dl-tag dl-tag-slate">Immutable Prefix</span>
+    </div>
+    <div class="dl-grid-2">
+      <div class="dl-field dl-field-slate">
+        <div class="dl-field-label">Magic Identifier (8B)</div>
+        <div class="dl-field-val"><code>PARDOSA\x01</code> <span class="dl-field-hex">[0x50, 0x41, 0x52, 0x44, 0x4F, 0x53, 0x41, 0x01]</span></div>
+        <div class="dl-field-desc">Immutable engine signature identifying dragline container format</div>
+      </div>
+      <div class="dl-field dl-field-slate">
+        <div class="dl-field-label">Format Version (4B)</div>
+        <div class="dl-field-val"><code>1 LE</code> <span class="dl-field-hex">[0x01, 0x00, 0x00, 0x00]</span></div>
+        <div class="dl-field-desc">32-bit unsigned little-endian integer format version</div>
+      </div>
+    </div>
+  </div>
+  <!-- Flow Boundary: Container Header to Frame 0 -->
+  <div class="dl-flow-arrow">
+    <div class="dl-arrow-line"></div>
+    <div class="dl-arrow-badge">Initial Append Boundary: Offset 0x0C</div>
+    <div class="dl-arrow-head">▼</div>
+  </div>
+  <!-- FRAME 0 -->
+  <div class="dl-card dl-card-frame">
+    <div class="dl-card-title-bar">
+      <div class="dl-title-group">
+        <span class="dl-tag dl-tag-slate">FRAME 0</span>
+        <span class="dl-title">Offset 0x0C · Event 0 : Genesis on Fiber A</span>
+      </div>
+      <span class="dl-tag dl-tag-blue">Genesis Root</span>
+    </div>
+    <div class="dl-section-label">Physical Framing (8 Bytes Framing Overhead)</div>
+    <div class="dl-grid-2">
+      <div class="dl-field dl-field-slate">
+        <div class="dl-field-label">frame_length_0 (4B)</div>
+        <div class="dl-field-val"><code>u32 LE</code> <span class="dl-field-hex">81 + N₀ Bytes</span></div>
+        <div class="dl-field-desc">Byte length of enclosed Envelope 0 payload</div>
+      </div>
+      <div class="dl-field dl-field-slate">
+        <div class="dl-field-label">CRC32C Checksum (4B)</div>
+        <div class="dl-field-val"><code>Castagnoli (SSE4.2)</code> <span class="dl-field-hex">IEEE 802.3</span></div>
+        <div class="dl-field-desc">Hardware checksum detecting torn writes and disk bit-rot</div>
+      </div>
+    </div>
+    <!-- Inner Envelope 0 Card (Strictly Contained) -->
+    <div class="dl-card dl-card-envelope">
+      <div class="dl-card-title-bar">
+        <div class="dl-title-group">
+          <span class="dl-tag dl-tag-blue">Envelope 0</span>
+          <span class="dl-title">Fiber A Genesis Aggregate · Invariant C4.19</span>
+        </div>
+        <span class="dl-tag dl-tag-purple">85 + payload_length_0 Bytes</span>
+      </div>
+      <div class="dl-section-label">EnvelopeHeader Fields (81 Bytes Fixed Layout)</div>
+      <div class="dl-grid-envelope">
+        <div class="dl-field dl-field-blue">
+          <div class="dl-field-label">event_id (16B)</div>
+          <div class="dl-field-val"><code>0x01.. [E0]</code></div>
+          <div class="dl-field-desc">UUID / ULID Identity</div>
+        </div>
+        <div class="dl-field dl-field-blue">
+          <div class="dl-field-label">fiber_id (16B)</div>
+          <div class="dl-field-val"><code>0xAA.. [Fiber A]</code></div>
+          <div class="dl-field-desc">Aggregate Stream ID</div>
+        </div>
+        <div class="dl-field dl-field-slate">
+          <div class="dl-field-label">detached (1B)</div>
+          <div class="dl-field-val"><code>0x00</code> (Active)</div>
+          <div class="dl-field-desc">Lifecycle status flag</div>
+        </div>
+        <div class="dl-field dl-field-green">
+          <div class="dl-field-label">precursor (16B)</div>
+          <div class="dl-field-val"><code>[0u8; 16]</code></div>
+          <div class="dl-field-desc">Root Genesis (Null Pointer)</div>
+        </div>
+        <div class="dl-field dl-field-green">
+          <div class="dl-field-label">precursor_hash (32B)</div>
+          <div class="dl-field-val"><code>[0u8; 32]</code></div>
+          <div class="dl-field-desc">Root Genesis (Zero Hash)</div>
+        </div>
+      </div>
+      <div class="dl-section-label">Domain Event Payload (N₀ Bytes)</div>
+      <div class="dl-grid-2">
+        <div class="dl-field dl-field-purple">
+          <div class="dl-field-label">payload_length_0 (4B)</div>
+          <div class="dl-field-val"><code>u32 LE</code> <span class="dl-field-hex">N₀</span></div>
+          <div class="dl-field-desc">32-bit integer length of Genesis payload</div>
+        </div>
+        <div class="dl-field dl-field-purple">
+          <div class="dl-field-label">payload_bytes (N₀ B)</div>
+          <div class="dl-field-val"><code>GenesisState</code></div>
+          <div class="dl-field-desc">Initial state machine admission payload</div>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom Badge: Physical Rolling Digest H0 -->
+    <div class="dl-digest-badge dl-digest-slate">
+      <div class="dl-digest-title">
+        <span class="dl-tag dl-tag-green">H₀</span>
+        <strong>Physical Rolling Digest H₀ (32B):</strong>
+        <code>BLAKE3(Frame 0)</code>
+      </div>
+      <div class="dl-digest-desc">Base container commitment for sequential tamper-evidence</div>
+    </div>
+  </div>
+  <!-- Inter-Frame Connector Block -->
+  <div class="dl-connector-block">
+    <div class="dl-connector-header">
+      <span class="dl-connector-title">Inter-Frame Linkages &amp; Transitions</span>
+      <span class="dl-connector-subtitle">Append progression, causal binding &amp; tamper verification</span>
+    </div>
+    <div class="dl-connector-grid">
+      <div class="dl-conn-card dl-conn-physical">
+        <div class="dl-conn-num">1</div>
+        <div class="dl-conn-content">
+          <div class="dl-conn-label">Physical Sequential Append</div>
+          <div class="dl-conn-detail">Offset: <code>0x0C + L₀ + 8</code></div>
+          <div class="dl-conn-desc">Advances past Frame 0 framing (8B) and envelope payload (L₀ bytes)</div>
+        </div>
+      </div>
+      <div class="dl-conn-card dl-conn-logical">
+        <div class="dl-conn-num">2</div>
+        <div class="dl-conn-content">
+          <div class="dl-conn-label">Logical Precursor Link</div>
+          <div class="dl-conn-detail">Points to <code>E0 [0x01..]</code></div>
+          <div class="dl-conn-desc">Enforces single-writer linearizability on Fiber A via CAS head check</div>
+        </div>
+      </div>
+      <div class="dl-conn-card dl-conn-causal">
+        <div class="dl-conn-num">3</div>
+        <div class="dl-conn-content">
+          <div class="dl-conn-label">Causal Commitment (Invariant C5.40)</div>
+          <div class="dl-conn-detail"><code>BLAKE3(Envelope 0)</code></div>
+          <div class="dl-conn-desc">Cryptographic parent commitment prevents silent aggregate history rewrite</div>
+        </div>
+      </div>
+      <div class="dl-conn-card dl-conn-rolling">
+        <div class="dl-conn-num">4</div>
+        <div class="dl-conn-content">
+          <div class="dl-conn-label">Physical Rolling Fold (Invariant C5.26)</div>
+          <div class="dl-conn-detail"><code>BLAKE3(H₀ ∥ Frame 1)</code></div>
+          <div class="dl-conn-desc">Sequential tamper-evidence accumulated across all physical frames</div>
+        </div>
+      </div>
+    </div>
+    <div class="dl-flow-arrow">
+      <div class="dl-arrow-line"></div>
+      <div class="dl-arrow-head">▼</div>
+    </div>
+  </div>
+  <!-- FRAME 1 -->
+  <div class="dl-card dl-card-frame">
+    <div class="dl-card-title-bar">
+      <div class="dl-title-group">
+        <span class="dl-tag dl-tag-slate">FRAME 1</span>
+        <span class="dl-title">Offset 0x0C + L₀ + 8 · Event 1 : State Mutation on Fiber A</span>
+      </div>
+      <span class="dl-tag dl-tag-emerald">Fiber A Mutation</span>
+    </div>
+    <div class="dl-section-label">Physical Framing (8 Bytes Framing Overhead)</div>
+    <div class="dl-grid-2">
+      <div class="dl-field dl-field-slate">
+        <div class="dl-field-label">frame_length_1 (4B)</div>
+        <div class="dl-field-val"><code>u32 LE</code> <span class="dl-field-hex">81 + N₁ Bytes</span></div>
+        <div class="dl-field-desc">Byte length of enclosed Envelope 1 payload</div>
+      </div>
+      <div class="dl-field dl-field-slate">
+        <div class="dl-field-label">CRC32C Checksum (4B)</div>
+        <div class="dl-field-val"><code>Castagnoli (SSE4.2)</code> <span class="dl-field-hex">IEEE 802.3</span></div>
+        <div class="dl-field-desc">Hardware checksum detecting torn writes and disk bit-rot</div>
+      </div>
+    </div>
+    <!-- Inner Envelope 1 Card (Strictly Contained) -->
+    <div class="dl-card dl-card-envelope">
+      <div class="dl-card-title-bar">
+        <div class="dl-title-group">
+          <span class="dl-tag dl-tag-blue">Envelope 1</span>
+          <span class="dl-title">Fiber A State Mutation · Invariant C4.19</span>
+        </div>
+        <span class="dl-tag dl-tag-purple">85 + payload_length_1 Bytes</span>
+      </div>
+      <div class="dl-section-label">EnvelopeHeader Fields (81 Bytes Fixed Layout)</div>
+      <div class="dl-grid-envelope">
+        <div class="dl-field dl-field-blue">
+          <div class="dl-field-label">event_id (16B)</div>
+          <div class="dl-field-val"><code>0x02.. [E1]</code></div>
+          <div class="dl-field-desc">UUID / ULID Identity</div>
+        </div>
+        <div class="dl-field dl-field-blue">
+          <div class="dl-field-label">fiber_id (16B)</div>
+          <div class="dl-field-val"><code>0xAA.. [Fiber A]</code></div>
+          <div class="dl-field-desc">Aggregate Stream ID</div>
+        </div>
+        <div class="dl-field dl-field-slate">
+          <div class="dl-field-label">detached (1B)</div>
+          <div class="dl-field-val"><code>0x00</code> (Active)</div>
+          <div class="dl-field-desc">Lifecycle status flag</div>
+        </div>
+        <div class="dl-field dl-field-emerald-highlight">
+          <div class="dl-field-label dl-emerald-label">precursor (16B) · Link</div>
+          <div class="dl-field-val"><code>0x01.. [E0]</code></div>
+          <div class="dl-field-desc dl-emerald-desc">Points to E0 (Linear predecessor)</div>
+        </div>
+        <div class="dl-field dl-field-emerald-highlight">
+          <div class="dl-field-label dl-emerald-label">precursor_hash (32B) · Causal</div>
+          <div class="dl-field-val"><code>BLAKE3(Envelope 0)</code></div>
+          <div class="dl-field-desc dl-emerald-desc">Cryptographic parent commitment</div>
+        </div>
+      </div>
+      <div class="dl-section-label">Domain Event Payload (N₁ Bytes)</div>
+      <div class="dl-grid-2">
+        <div class="dl-field dl-field-purple">
+          <div class="dl-field-label">payload_length_1 (4B)</div>
+          <div class="dl-field-val"><code>u32 LE</code> <span class="dl-field-hex">N₁</span></div>
+          <div class="dl-field-desc">32-bit integer length of Mutation payload</div>
+        </div>
+        <div class="dl-field dl-field-purple">
+          <div class="dl-field-label">payload_bytes (N₁ B)</div>
+          <div class="dl-field-val"><code>AccountUpdated</code></div>
+          <div class="dl-field-desc">Committed state transition payload</div>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom Badge: Physical Rolling Digest H1 (Emerald Highlighted) -->
+    <div class="dl-digest-badge dl-digest-emerald">
+      <div class="dl-digest-title">
+        <span class="dl-tag dl-tag-emerald">H₁</span>
+        <strong>Physical Rolling Digest H₁ (32B):</strong>
+        <code>BLAKE3(H₀ ∥ Frame 1)</code>
+      </div>
+      <div class="dl-digest-desc">Sequential Tamper-Evidence (Invariant C5.26) · Folded sequentially across frames</div>
+    </div>
+  </div>
+</div>
 
 ### 1. Container Header (12 Bytes)
 At file offset `0x00000000` of `<stem>.pgno`, the container header establishes format identity:

@@ -87,6 +87,22 @@ flowchart LR
     subgraph FiberB ["Fiber B (Singly Linked History)"]
         E5 -. precursor .-> E2
     end
+
+    subgraph FiberC ["Fiber C (Singly Linked History)"]
+        E4
+    end
+
+    classDef fiberA fill:#2563eb,stroke:#1d4ed8,stroke-width:2px,color:#ffffff
+    classDef fiberB fill:#059669,stroke:#047857,stroke-width:2px,color:#ffffff
+    classDef fiberC fill:#d97706,stroke:#b45309,stroke-width:2px,color:#ffffff
+
+    class E1,E3,E6 fiberA
+    class E2,E5 fiberB
+    class E4 fiberC
+
+    style FiberA stroke:#2563eb,stroke-width:2px
+    style FiberB stroke:#059669,stroke-width:2px
+    style FiberC stroke:#d97706,stroke-width:2px
 ```
 
 - **Interleaving**: Events from thousands of concurrent fibers are committed sequentially onto a shared dragline.

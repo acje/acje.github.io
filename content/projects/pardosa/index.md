@@ -11,46 +11,231 @@ Modern distributed applications increasingly adopt Event-Driven Architecture (ED
 
 `Pardosa` is an append-only event-driven storage engine implemented in Rust, built specifically upon the principles of **Fiber Semantics**. It is designed for enterprise domains where **correctness, strict auditability, and deterministic deletion policies matter far more than raw ingestion volume**. Pardosa guarantees per-aggregate linearizability and single-writer fencing, backed by a formal 5-state lifecycle state machine.
 
-```mermaid
-flowchart TD
-    subgraph Ingestion [Single-Writer Ingestion]
-        CMD[Domain Command] --> CAS[CAS Single-Writer Fencing]
-        CAS --> ADMIT[State Machine Admission]
-    end
+<div class="pardosa-architecture-diagram" style="margin: 2rem 0; padding: 1.5rem 1rem; border-radius: 0.75rem; border: 1px solid var(--gray-200, #e2e8f0); background: var(--body-background, #ffffff); overflow-x: auto;">
+<svg id="architecture-diagram" viewBox="0 0 1020 370" width="100%" height="auto" style="display: block; min-width: 780px; max-width: 1020px; margin: 0 auto; overflow: visible;">
+<defs>
+<marker id="arch-arrow-amber" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-amber-fill" />
+</marker>
+<marker id="arch-arrow-blue" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-blue-fill" />
+</marker>
+<marker id="arch-arrow-green" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-green-fill" />
+</marker>
+<marker id="arch-arrow-cyan" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-cyan-fill" />
+</marker>
+<filter id="arch-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+<feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.08"/>
+</filter>
+</defs>
+<style>
+:root {
+--sm-edge-halo: var(--body-background, #ffffff);
+--sm-badge-bg: var(--gray-100, #f8fafc);
+--sm-badge-border: var(--gray-200, #cbd5e1);
+--sm-badge-text: var(--body-font-color, #1e293b);
+--sm-slate-bg: #f8fafc;
+--sm-slate-stroke: #475569;
+--sm-slate-text: #475569;
+--sm-slate-sub: #64748b;
+--sm-blue-bg: #eff6ff;
+--sm-blue-stroke: #2563eb;
+--sm-blue-text: #1d4ed8;
+--sm-blue-sub: #2563eb;
+--sm-amber-bg: #fffbeb;
+--sm-amber-stroke: #d97706;
+--sm-amber-text: #b45309;
+--sm-amber-sub: #d97706;
+--sm-green-bg: #ecfdf5;
+--sm-green-stroke: #059669;
+--sm-green-text: #047857;
+--sm-green-sub: #059669;
+--sm-cyan-bg: #ecfeff;
+--sm-cyan-stroke: #0891b2;
+--sm-cyan-text: #0e7490;
+--sm-cyan-sub: #0891b2;
+}
+@media (prefers-color-scheme: dark) {
+:root:not([data-theme="light"]) {
+--sm-edge-halo: var(--body-background, #2e3440);
+--sm-badge-bg: var(--gray-100, #3b4252);
+--sm-badge-border: var(--gray-200, #434c5e);
+--sm-badge-text: var(--body-font-color, #f1f5f9);
+--sm-slate-bg: #1e293b;
+--sm-slate-stroke: #64748b;
+--sm-slate-text: #cbd5e1;
+--sm-slate-sub: #94a3b8;
+--sm-blue-bg: #172554;
+--sm-blue-stroke: #3b82f6;
+--sm-blue-text: #93c5fd;
+--sm-blue-sub: #60a5fa;
+--sm-amber-bg: #451a03;
+--sm-amber-stroke: #f59e0b;
+--sm-amber-text: #fde68a;
+--sm-amber-sub: #fbbf24;
+--sm-green-bg: #064e3b;
+--sm-green-stroke: #10b981;
+--sm-green-text: #6ee7b7;
+--sm-green-sub: #34d399;
+--sm-cyan-bg: #164e63;
+--sm-cyan-stroke: #06b6d4;
+--sm-cyan-text: #67e8f9;
+--sm-cyan-sub: #22d3ee;
+}
+}
+:root[data-theme="dark"] {
+--sm-edge-halo: var(--body-background, #2e3440);
+--sm-badge-bg: var(--gray-100, #3b4252);
+--sm-badge-border: var(--gray-200, #434c5e);
+--sm-badge-text: var(--body-font-color, #f1f5f9);
+--sm-slate-bg: #1e293b;
+--sm-slate-stroke: #64748b;
+--sm-slate-text: #cbd5e1;
+--sm-slate-sub: #94a3b8;
+--sm-blue-bg: #172554;
+--sm-blue-stroke: #3b82f6;
+--sm-blue-text: #93c5fd;
+--sm-blue-sub: #60a5fa;
+--sm-amber-bg: #451a03;
+--sm-amber-stroke: #f59e0b;
+--sm-amber-text: #fde68a;
+--sm-amber-sub: #fbbf24;
+--sm-green-bg: #064e3b;
+--sm-green-stroke: #10b981;
+--sm-green-text: #6ee7b7;
+--sm-green-sub: #34d399;
+--sm-cyan-bg: #164e63;
+--sm-cyan-stroke: #06b6d4;
+--sm-cyan-text: #67e8f9;
+--sm-cyan-sub: #22d3ee;
+}
+.arrow-amber-fill { fill: var(--sm-amber-stroke); }
+.arrow-blue-fill { fill: var(--sm-blue-stroke); }
+.arrow-green-fill { fill: var(--sm-green-stroke); }
+.arrow-cyan-fill { fill: var(--sm-cyan-stroke); }
+.node-title { font-size: 13.5px; font-weight: 700; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.node-sub { font-size: 11px; font-weight: 500; opacity: 0.9; font-family: system-ui, -apple-system, sans-serif; }
+.tier-title { font-size: 12px; font-weight: 700; letter-spacing: 0.05em; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.edge-label { font-size: 11px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.edge-path { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.edge-halo { fill: none; stroke: var(--sm-edge-halo); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+.badge-bg { fill: var(--sm-badge-bg); stroke: var(--sm-badge-border); stroke-width: 1.2; }
+.badge-txt { fill: var(--sm-badge-text); }
+</style>
 
-    subgraph Core [Pardosa Storage Core]
-        SM[5-State Fiber Lifecycle]
-        BLAKE[BLAKE3 Framing & Checksum]
-        DRAG[Interleaved Dragline Stream]
-    end
+<!-- Tier 1: Single-Writer Ingestion -->
+<rect x="25" y="25" width="290" height="320" rx="10" fill="none" stroke="var(--sm-amber-stroke)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+<rect x="40" y="14" width="180" height="22" rx="11" fill="var(--sm-amber-bg)" stroke="var(--sm-amber-stroke)" stroke-width="1.2"/>
+<text class="tier-title" x="130" y="25" fill="var(--sm-amber-text)" dominant-baseline="central" text-anchor="middle">Single-Writer Ingestion</text>
 
-    subgraph Downstream [Decoupled Consumption]
-        ECST[Event Carried State Transfer]
-        PROJ[Autonomous Projections]
-        AUDIT[Immutable Audit Trails]
-    end
+<!-- Tier 2: Storage Core -->
+<rect x="365" y="25" width="290" height="320" rx="10" fill="none" stroke="var(--sm-blue-stroke)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+<rect x="380" y="14" width="170" height="22" rx="11" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1.2"/>
+<text class="tier-title" x="465" y="25" fill="var(--sm-blue-text)" dominant-baseline="central" text-anchor="middle">Pardosa Storage Core</text>
 
-    ADMIT --> SM
-    SM --> BLAKE
-    BLAKE --> DRAG
-    DRAG --> ECST
-    ECST --> PROJ
-    ECST --> AUDIT
+<!-- Tier 3: Decoupled Consumption -->
+<rect x="705" y="25" width="290" height="320" rx="10" fill="none" stroke="var(--sm-green-stroke)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+<rect x="720" y="14" width="180" height="22" rx="11" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="1.2"/>
+<text class="tier-title" x="810" y="25" fill="var(--sm-green-text)" dominant-baseline="central" text-anchor="middle">Decoupled Consumption</text>
 
-    classDef amber fill:#d97706,stroke:#b45309,stroke-width:1.5px,color:#ffffff
-    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
-    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
-    classDef cyan fill:#0891b2,stroke:#0e7490,stroke-width:1.5px,color:#ffffff
+<!-- Connecting Inter-Tier Curves -->
+<!-- Ingestion ADMIT (275, 275) to Storage Core SM (405, 90) -->
+<path d="M 275,275 C 330,275 350,90 398,90" class="edge-halo"/>
+<path d="M 275,275 C 330,275 350,90 398,90" class="edge-path" stroke="var(--sm-blue-stroke)" marker-end="url(#arch-arrow-blue)"/>
+<g>
+<rect class="badge-bg" x="307" y="170" width="66" height="22" rx="11"/>
+<text class="edge-label badge-txt" x="340" y="181" dominant-baseline="central" text-anchor="middle">Admitted</text>
+</g>
 
-    class CMD,CAS,ADMIT amber
-    class SM,BLAKE,DRAG blue
-    class ECST,AUDIT green
-    class PROJ cyan
+<!-- Storage Core DRAG (615, 275) to Decoupled ECST (745, 185) -->
+<path d="M 615,275 C 670,275 690,185 738,185" class="edge-halo"/>
+<path d="M 615,275 C 670,275 690,185 738,185" class="edge-path" stroke="var(--sm-green-stroke)" marker-end="url(#arch-arrow-green)"/>
+<g>
+<rect class="badge-bg" x="647" y="217" width="66" height="22" rx="11"/>
+<text class="edge-label badge-txt" x="680" y="228" dominant-baseline="central" text-anchor="middle">Committed</text>
+</g>
 
-    style Ingestion fill:transparent,stroke:#d97706,stroke-width:1.5px
-    style Core fill:transparent,stroke:#2563eb,stroke-width:1.5px
-    style Downstream fill:transparent,stroke:#059669,stroke-width:1.5px
-```
+<!-- Tier 1 Nodes & Links -->
+<path d="M 170,118 L 170,147" class="edge-path" stroke="var(--sm-amber-stroke)" marker-end="url(#arch-arrow-amber)"/>
+<path d="M 170,208 L 170,237" class="edge-path" stroke="var(--sm-amber-stroke)" marker-end="url(#arch-arrow-amber)"/>
+
+<g id="node-cmd" transform="translate(45, 60)">
+<rect width="250" height="58" rx="8" fill="var(--sm-amber-bg)" stroke="var(--sm-amber-stroke)" stroke-width="2" filter="url(#arch-shadow)"/>
+<rect width="6" height="58" rx="3" fill="var(--sm-amber-stroke)"/>
+<text class="node-title" x="20" y="27" fill="var(--sm-amber-text)" dominant-baseline="central">Domain Command</text>
+<text class="node-sub" x="20" y="44" fill="var(--sm-amber-sub)">Precursor Hash &amp; Payload</text>
+</g>
+
+<g id="node-cas" transform="translate(45, 150)">
+<rect width="250" height="58" rx="8" fill="var(--sm-amber-bg)" stroke="var(--sm-amber-stroke)" stroke-width="2" filter="url(#arch-shadow)"/>
+<rect width="6" height="58" rx="3" fill="var(--sm-amber-stroke)"/>
+<text class="node-title" x="20" y="27" fill="var(--sm-amber-text)" dominant-baseline="central">CAS Single-Writer Fencing</text>
+<text class="node-sub" x="20" y="44" fill="var(--sm-amber-sub)">Per-Fiber Head Verification</text>
+</g>
+
+<g id="node-admit" transform="translate(45, 240)">
+<rect width="250" height="58" rx="8" fill="var(--sm-amber-bg)" stroke="var(--sm-amber-stroke)" stroke-width="2" filter="url(#arch-shadow)"/>
+<rect width="6" height="58" rx="3" fill="var(--sm-amber-stroke)"/>
+<text class="node-title" x="20" y="27" fill="var(--sm-amber-text)" dominant-baseline="central">State Machine Admission</text>
+<text class="node-sub" x="20" y="44" fill="var(--sm-amber-sub)">10 Legal Transitions Gate</text>
+</g>
+
+<!-- Tier 2 Nodes & Links -->
+<path d="M 510,118 L 510,147" class="edge-path" stroke="var(--sm-blue-stroke)" marker-end="url(#arch-arrow-blue)"/>
+<path d="M 510,208 L 510,237" class="edge-path" stroke="var(--sm-blue-stroke)" marker-end="url(#arch-arrow-blue)"/>
+
+<g id="node-sm" transform="translate(385, 60)">
+<rect width="250" height="58" rx="8" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="2" filter="url(#arch-shadow)"/>
+<rect width="6" height="58" rx="3" fill="var(--sm-blue-stroke)"/>
+<text class="node-title" x="20" y="27" fill="var(--sm-blue-text)" dominant-baseline="central">5-State Fiber Lifecycle</text>
+<text class="node-sub" x="20" y="44" fill="var(--sm-blue-sub)">Linearized Domain Aggregate</text>
+</g>
+
+<g id="node-blake" transform="translate(385, 150)">
+<rect width="250" height="58" rx="8" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="2" filter="url(#arch-shadow)"/>
+<rect width="6" height="58" rx="3" fill="var(--sm-blue-stroke)"/>
+<text class="node-title" x="20" y="27" fill="var(--sm-blue-text)" dominant-baseline="central">BLAKE3 Framing &amp; Checksum</text>
+<text class="node-sub" x="20" y="44" fill="var(--sm-blue-sub)">Envelope &amp; Rolling Hash Fold</text>
+</g>
+
+<g id="node-drag" transform="translate(385, 240)">
+<rect width="250" height="58" rx="8" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="2" filter="url(#arch-shadow)"/>
+<rect width="6" height="58" rx="3" fill="var(--sm-blue-stroke)"/>
+<text class="node-title" x="20" y="27" fill="var(--sm-blue-text)" dominant-baseline="central">Interleaved Dragline Stream</text>
+<text class="node-sub" x="20" y="44" fill="var(--sm-blue-sub)">Append-Only Disk Log (.pgno)</text>
+</g>
+
+<!-- Tier 3 Nodes & Links -->
+<!-- From ECST up to PROJ -->
+<path d="M 850,150 L 850,123" class="edge-path" stroke="var(--sm-cyan-stroke)" marker-end="url(#arch-arrow-cyan)"/>
+<!-- From ECST down to AUDIT -->
+<path d="M 850,218 L 850,237" class="edge-path" stroke="var(--sm-green-stroke)" marker-end="url(#arch-arrow-green)"/>
+
+<g id="node-proj" transform="translate(725, 60)">
+<rect width="250" height="58" rx="8" fill="var(--sm-cyan-bg)" stroke="var(--sm-cyan-stroke)" stroke-width="2" filter="url(#arch-shadow)"/>
+<rect width="6" height="58" rx="3" fill="var(--sm-cyan-stroke)"/>
+<text class="node-title" x="20" y="27" fill="var(--sm-cyan-text)" dominant-baseline="central">Autonomous Projections</text>
+<text class="node-sub" x="20" y="44" fill="var(--sm-cyan-sub)">Real-Time Read Models &amp; CQRS</text>
+</g>
+
+<g id="node-ecst" transform="translate(725, 150)">
+<rect width="250" height="58" rx="8" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="2" filter="url(#arch-shadow)"/>
+<rect width="6" height="58" rx="3" fill="var(--sm-green-stroke)"/>
+<text class="node-title" x="20" y="27" fill="var(--sm-green-text)" dominant-baseline="central">Event Carried State Transfer</text>
+<text class="node-sub" x="20" y="44" fill="var(--sm-green-sub)">Decoupled Broadcast Channel</text>
+</g>
+
+<g id="node-audit" transform="translate(725, 240)">
+<rect width="250" height="58" rx="8" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="2" filter="url(#arch-shadow)"/>
+<rect width="6" height="58" rx="3" fill="var(--sm-green-stroke)"/>
+<text class="node-title" x="20" y="27" fill="var(--sm-green-text)" dominant-baseline="central">Immutable Audit Trails</text>
+<text class="node-sub" x="20" y="44" fill="var(--sm-green-sub)">Verifiable Cryptographic Proofs</text>
+</g>
+
+</svg>
+</div>
 
 ---
 
@@ -79,46 +264,263 @@ In Fiber Semantics, the lifecycle history of each domain entity is modeled as an
 
 While domain entities exist logically as independent fibers, disk I/O and network replication achieve maximum efficiency through sequential streaming. Pardosa unifies these models through the **dragline**:
 
-```mermaid
-flowchart LR
-    subgraph Dragline ["Dragline (Physical Append-Only Stream)"]
-        direction LR
-        E1["E1: Id=A<br/>seq=0 (Create)"]
-        E2["E2: Id=B<br/>seq=0 (Create)"]
-        E3["E3: Id=A<br/>seq=1 (Update)"]
-        E4["E4: Id=C<br/>seq=0 (Create)"]
-        E5["E5: Id=B<br/>seq=1 (Update)"]
-        E6["E6: Id=A<br/>seq=2 (Detach)"]
+<div class="pardosa-dragline-diagram" style="margin: 2rem 0; padding: 1.5rem 1rem; border-radius: 0.75rem; border: 1px solid var(--gray-200, #e2e8f0); background: var(--body-background, #ffffff); overflow-x: auto;">
+<svg id="dragline-diagram" viewBox="0 0 1020 450" width="100%" height="auto" style="display: block; min-width: 780px; max-width: 1020px; margin: 0 auto; overflow: visible;">
+<defs>
+<marker id="drag-arrow-slate" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-slate-fill" />
+</marker>
+<marker id="drag-arrow-blue" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-blue-fill" />
+</marker>
+<marker id="drag-arrow-green" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-green-fill" />
+</marker>
+<marker id="drag-arrow-amber" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-amber-fill" />
+</marker>
+<filter id="drag-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+<feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.08"/>
+</filter>
+</defs>
+<style>
+:root {
+--sm-edge-halo: var(--body-background, #ffffff);
+--sm-badge-bg: var(--gray-100, #f8fafc);
+--sm-badge-border: var(--gray-200, #cbd5e1);
+--sm-badge-text: var(--body-font-color, #1e293b);
+--sm-slate-bg: #f8fafc;
+--sm-slate-stroke: #475569;
+--sm-slate-text: #475569;
+--sm-slate-sub: #64748b;
+--sm-blue-bg: #eff6ff;
+--sm-blue-stroke: #2563eb;
+--sm-blue-text: #1d4ed8;
+--sm-blue-sub: #2563eb;
+--sm-amber-bg: #fffbeb;
+--sm-amber-stroke: #d97706;
+--sm-amber-text: #b45309;
+--sm-amber-sub: #d97706;
+--sm-green-bg: #ecfdf5;
+--sm-green-stroke: #059669;
+--sm-green-text: #047857;
+--sm-green-sub: #059669;
+}
+@media (prefers-color-scheme: dark) {
+:root:not([data-theme="light"]) {
+--sm-edge-halo: var(--body-background, #2e3440);
+--sm-badge-bg: var(--gray-100, #3b4252);
+--sm-badge-border: var(--gray-200, #434c5e);
+--sm-badge-text: var(--body-font-color, #f1f5f9);
+--sm-slate-bg: #1e293b;
+--sm-slate-stroke: #64748b;
+--sm-slate-text: #cbd5e1;
+--sm-slate-sub: #94a3b8;
+--sm-blue-bg: #172554;
+--sm-blue-stroke: #3b82f6;
+--sm-blue-text: #93c5fd;
+--sm-blue-sub: #60a5fa;
+--sm-amber-bg: #451a03;
+--sm-amber-stroke: #f59e0b;
+--sm-amber-text: #fde68a;
+--sm-amber-sub: #fbbf24;
+--sm-green-bg: #064e3b;
+--sm-green-stroke: #10b981;
+--sm-green-text: #6ee7b7;
+--sm-green-sub: #34d399;
+}
+}
+:root[data-theme="dark"] {
+--sm-edge-halo: var(--body-background, #2e3440);
+--sm-badge-bg: var(--gray-100, #3b4252);
+--sm-badge-border: var(--gray-200, #434c5e);
+--sm-badge-text: var(--body-font-color, #f1f5f9);
+--sm-slate-bg: #1e293b;
+--sm-slate-stroke: #64748b;
+--sm-slate-text: #cbd5e1;
+--sm-slate-sub: #94a3b8;
+--sm-blue-bg: #172554;
+--sm-blue-stroke: #3b82f6;
+--sm-blue-text: #93c5fd;
+--sm-blue-sub: #60a5fa;
+--sm-amber-bg: #451a03;
+--sm-amber-stroke: #f59e0b;
+--sm-amber-text: #fde68a;
+--sm-amber-sub: #fbbf24;
+--sm-green-bg: #064e3b;
+--sm-green-stroke: #10b981;
+--sm-green-text: #6ee7b7;
+--sm-green-sub: #34d399;
+}
+.arrow-slate-fill { fill: var(--sm-slate-stroke); }
+.arrow-blue-fill { fill: var(--sm-blue-stroke); }
+.arrow-green-fill { fill: var(--sm-green-stroke); }
+.arrow-amber-fill { fill: var(--sm-amber-stroke); }
+.node-title { font-size: 13.5px; font-weight: 700; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.node-sub { font-size: 11px; font-weight: 500; opacity: 0.9; font-family: system-ui, -apple-system, sans-serif; }
+.tier-title { font-size: 12px; font-weight: 700; letter-spacing: 0.05em; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.edge-label { font-size: 11px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.edge-path { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.edge-dashed { fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 4 3; }
+.edge-halo { fill: none; stroke: var(--sm-edge-halo); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+.badge-bg { fill: var(--sm-badge-bg); stroke: var(--sm-badge-border); stroke-width: 1.2; }
+.badge-txt { fill: var(--sm-badge-text); }
+</style>
 
-        E1 --> E2 --> E3 --> E4 --> E5 --> E6
-    end
+<!-- Top Section: Physical Dragline -->
+<rect x="20" y="25" width="980" height="130" rx="10" fill="none" stroke="var(--sm-slate-stroke)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+<rect x="35" y="14" width="300" height="22" rx="11" fill="var(--sm-slate-bg)" stroke="var(--sm-slate-stroke)" stroke-width="1.2"/>
+<text class="tier-title" x="185" y="25" fill="var(--sm-slate-text)" dominant-baseline="central" text-anchor="middle">Physical Dragline (Append-Only Stream)</text>
 
-    subgraph FiberA ["Fiber A (Singly Linked History)"]
-        E6 -. precursor .-> E3
-        E3 -. precursor .-> E1
-    end
+<!-- Physical Sequential Append Links -->
+<path d="M 170,95 L 198,95" class="edge-path" stroke="var(--sm-slate-stroke)" marker-end="url(#drag-arrow-slate)"/>
+<path d="M 330,95 L 358,95" class="edge-path" stroke="var(--sm-slate-stroke)" marker-end="url(#drag-arrow-slate)"/>
+<path d="M 490,95 L 518,95" class="edge-path" stroke="var(--sm-slate-stroke)" marker-end="url(#drag-arrow-slate)"/>
+<path d="M 650,95 L 678,95" class="edge-path" stroke="var(--sm-slate-stroke)" marker-end="url(#drag-arrow-slate)"/>
+<path d="M 810,95 L 838,95" class="edge-path" stroke="var(--sm-slate-stroke)" marker-end="url(#drag-arrow-slate)"/>
 
-    subgraph FiberB ["Fiber B (Singly Linked History)"]
-        E5 -. precursor .-> E2
-    end
+<!-- Physical Frame Cards -->
+<g id="phys-e1" transform="translate(45, 63)">
+<rect width="125" height="64" rx="8" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="2" filter="url(#drag-shadow)"/>
+<rect width="5" height="64" rx="2.5" fill="var(--sm-blue-stroke)"/>
+<text class="node-title" x="16" y="24" fill="var(--sm-blue-text)" dominant-baseline="central">E1: Id=A</text>
+<text class="node-sub" x="16" y="44" fill="var(--sm-blue-sub)">seq=0 (Create)</text>
+</g>
 
-    subgraph FiberC ["Fiber C (Singly Linked History)"]
-        E4
-    end
+<g id="phys-e2" transform="translate(205, 63)">
+<rect width="125" height="64" rx="8" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="2" filter="url(#drag-shadow)"/>
+<rect width="5" height="64" rx="2.5" fill="var(--sm-green-stroke)"/>
+<text class="node-title" x="16" y="24" fill="var(--sm-green-text)" dominant-baseline="central">E2: Id=B</text>
+<text class="node-sub" x="16" y="44" fill="var(--sm-green-sub)">seq=0 (Create)</text>
+</g>
 
-    classDef fiberA fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
-    classDef fiberB fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
-    classDef fiberC fill:#d97706,stroke:#b45309,stroke-width:1.5px,color:#ffffff
+<g id="phys-e3" transform="translate(365, 63)">
+<rect width="125" height="64" rx="8" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="2" filter="url(#drag-shadow)"/>
+<rect width="5" height="64" rx="2.5" fill="var(--sm-blue-stroke)"/>
+<text class="node-title" x="16" y="24" fill="var(--sm-blue-text)" dominant-baseline="central">E3: Id=A</text>
+<text class="node-sub" x="16" y="44" fill="var(--sm-blue-sub)">seq=1 (Update)</text>
+</g>
 
-    class E1,E3,E6 fiberA
-    class E2,E5 fiberB
-    class E4 fiberC
+<g id="phys-e4" transform="translate(525, 63)">
+<rect width="125" height="64" rx="8" fill="var(--sm-amber-bg)" stroke="var(--sm-amber-stroke)" stroke-width="2" filter="url(#drag-shadow)"/>
+<rect width="5" height="64" rx="2.5" fill="var(--sm-amber-stroke)"/>
+<text class="node-title" x="16" y="24" fill="var(--sm-amber-text)" dominant-baseline="central">E4: Id=C</text>
+<text class="node-sub" x="16" y="44" fill="var(--sm-amber-sub)">seq=0 (Create)</text>
+</g>
 
-    style Dragline fill:transparent,stroke:#94a3b8,stroke-width:1.5px
-    style FiberA fill:transparent,stroke:#2563eb,stroke-width:1.5px
-    style FiberB fill:transparent,stroke:#059669,stroke-width:1.5px
-    style FiberC fill:transparent,stroke:#d97706,stroke-width:1.5px
-```
+<g id="phys-e5" transform="translate(685, 63)">
+<rect width="125" height="64" rx="8" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="2" filter="url(#drag-shadow)"/>
+<rect width="5" height="64" rx="2.5" fill="var(--sm-green-stroke)"/>
+<text class="node-title" x="16" y="24" fill="var(--sm-green-text)" dominant-baseline="central">E5: Id=B</text>
+<text class="node-sub" x="16" y="44" fill="var(--sm-green-sub)">seq=1 (Update)</text>
+</g>
+
+<g id="phys-e6" transform="translate(845, 63)">
+<rect width="125" height="64" rx="8" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="2" filter="url(#drag-shadow)"/>
+<rect width="5" height="64" rx="2.5" fill="var(--sm-blue-stroke)"/>
+<text class="node-title" x="16" y="24" fill="var(--sm-blue-text)" dominant-baseline="central">E6: Id=A</text>
+<text class="node-sub" x="16" y="44" fill="var(--sm-blue-sub)">seq=2 (Detach)</text>
+</g>
+
+<!-- Bottom Section: Logical Singly-Linked Fiber Histories -->
+<rect x="20" y="180" width="980" height="245" rx="10" fill="none" stroke="var(--sm-slate-stroke)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+<rect x="35" y="169" width="340" height="22" rx="11" fill="var(--sm-slate-bg)" stroke="var(--sm-slate-stroke)" stroke-width="1.2"/>
+<text class="tier-title" x="205" y="180" fill="var(--sm-slate-text)" dominant-baseline="central" text-anchor="middle">Logical Singly-Linked Fiber Histories</text>
+
+<!-- Fiber A Track -->
+<rect x="35" y="210" width="85" height="22" rx="11" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1.2"/>
+<text class="tier-title" x="77" y="221" fill="var(--sm-blue-text)" dominant-baseline="central" text-anchor="middle">Fiber A</text>
+
+<!-- Precursor Backward Dashed Arrows for Fiber A -->
+<!-- E6 (840) to E3 (490) -->
+<path d="M 840,223 C 740,195 590,195 498,223" class="edge-halo"/>
+<path d="M 840,223 C 740,195 590,195 498,223" class="edge-dashed" stroke="var(--sm-blue-stroke)" marker-end="url(#drag-arrow-blue)"/>
+<g>
+<rect class="badge-bg" x="625" y="190" width="80" height="20" rx="10"/>
+<text class="edge-label badge-txt" x="665" y="200" dominant-baseline="central" text-anchor="middle">precursor</text>
+</g>
+
+<!-- E3 (365) to E1 (170) -->
+<path d="M 365,223 C 300,195 230,195 178,223" class="edge-halo"/>
+<path d="M 365,223 C 300,195 230,195 178,223" class="edge-dashed" stroke="var(--sm-blue-stroke)" marker-end="url(#drag-arrow-blue)"/>
+<g>
+<rect class="badge-bg" x="235" y="190" width="80" height="20" rx="10"/>
+<text class="edge-label badge-txt" x="275" y="200" dominant-baseline="central" text-anchor="middle">precursor</text>
+</g>
+
+<g id="logic-e1" transform="translate(45, 203)">
+<rect width="125" height="50" rx="7" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1.8" filter="url(#drag-shadow)"/>
+<rect width="4" height="50" rx="2" fill="var(--sm-blue-stroke)"/>
+<text class="node-title" x="14" y="20" fill="var(--sm-blue-text)" dominant-baseline="central">E1: Create</text>
+<text class="node-sub" x="14" y="36" fill="var(--sm-blue-sub)">seq=0 (Root)</text>
+</g>
+
+<g id="logic-e3" transform="translate(365, 203)">
+<rect width="125" height="50" rx="7" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1.8" filter="url(#drag-shadow)"/>
+<rect width="4" height="50" rx="2" fill="var(--sm-blue-stroke)"/>
+<text class="node-title" x="14" y="20" fill="var(--sm-blue-text)" dominant-baseline="central">E3: Update</text>
+<text class="node-sub" x="14" y="36" fill="var(--sm-blue-sub)">seq=1</text>
+</g>
+
+<g id="logic-e6" transform="translate(845, 203)">
+<rect width="125" height="50" rx="7" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1.8" filter="url(#drag-shadow)"/>
+<rect width="4" height="50" rx="2" fill="var(--sm-blue-stroke)"/>
+<text class="node-title" x="14" y="20" fill="var(--sm-blue-text)" dominant-baseline="central">E6: Detach</text>
+<text class="node-sub" x="14" y="36" fill="var(--sm-blue-sub)">seq=2 (Head)</text>
+</g>
+
+<!-- Fiber B Track -->
+<rect x="35" y="285" width="85" height="22" rx="11" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="1.2"/>
+<text class="tier-title" x="77" y="296" fill="var(--sm-green-text)" dominant-baseline="central" text-anchor="middle">Fiber B</text>
+
+<!-- Precursor Backward Dashed Arrow for Fiber B: E5 (685) to E2 (330) -->
+<path d="M 685,298 C 580,270 430,270 338,298" class="edge-halo"/>
+<path d="M 685,298 C 580,270 430,270 338,298" class="edge-dashed" stroke="var(--sm-green-stroke)" marker-end="url(#drag-arrow-green)"/>
+<g>
+<rect class="badge-bg" x="475" y="265" width="80" height="20" rx="10"/>
+<text class="edge-label badge-txt" x="515" y="275" dominant-baseline="central" text-anchor="middle">precursor</text>
+</g>
+
+<g id="logic-e2" transform="translate(205, 278)">
+<rect width="125" height="50" rx="7" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="1.8" filter="url(#drag-shadow)"/>
+<rect width="4" height="50" rx="2" fill="var(--sm-green-stroke)"/>
+<text class="node-title" x="14" y="20" fill="var(--sm-green-text)" dominant-baseline="central">E2: Create</text>
+<text class="node-sub" x="14" y="36" fill="var(--sm-green-sub)">seq=0 (Root)</text>
+</g>
+
+<g id="logic-e5" transform="translate(685, 278)">
+<rect width="125" height="50" rx="7" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="1.8" filter="url(#drag-shadow)"/>
+<rect width="4" height="50" rx="2" fill="var(--sm-green-stroke)"/>
+<text class="node-title" x="14" y="20" fill="var(--sm-green-text)" dominant-baseline="central">E5: Update</text>
+<text class="node-sub" x="14" y="36" fill="var(--sm-green-sub)">seq=1 (Head)</text>
+</g>
+
+<!-- Fiber C Track -->
+<rect x="35" y="360" width="85" height="22" rx="11" fill="var(--sm-amber-bg)" stroke="var(--sm-amber-stroke)" stroke-width="1.2"/>
+<text class="tier-title" x="77" y="371" fill="var(--sm-amber-text)" dominant-baseline="central" text-anchor="middle">Fiber C</text>
+
+<g id="logic-e4" transform="translate(525, 353)">
+<rect width="125" height="50" rx="7" fill="var(--sm-amber-bg)" stroke="var(--sm-amber-stroke)" stroke-width="1.8" filter="url(#drag-shadow)"/>
+<rect width="4" height="50" rx="2" fill="var(--sm-amber-stroke)"/>
+<text class="node-title" x="14" y="20" fill="var(--sm-amber-text)" dominant-baseline="central">E4: Create</text>
+<text class="node-sub" x="14" y="36" fill="var(--sm-amber-sub)">seq=0 (Root)</text>
+</g>
+
+<g>
+<rect class="badge-bg" x="670" y="368" width="165" height="22" rx="11"/>
+<text class="edge-label badge-txt" x="752" y="379" dominant-baseline="central" text-anchor="middle">Root Frame (precursor=0x00)</text>
+</g>
+
+<!-- Projection Drop Lines from Physical Stream down to Logical Chains -->
+<path d="M 107,127 L 107,203" class="edge-dashed" stroke="var(--sm-blue-stroke)" opacity="0.35"/>
+<path d="M 267,127 L 267,278" class="edge-dashed" stroke="var(--sm-green-stroke)" opacity="0.35"/>
+<path d="M 427,127 L 427,203" class="edge-dashed" stroke="var(--sm-blue-stroke)" opacity="0.35"/>
+<path d="M 587,127 L 587,353" class="edge-dashed" stroke="var(--sm-amber-stroke)" opacity="0.35"/>
+<path d="M 747,127 L 747,278" class="edge-dashed" stroke="var(--sm-green-stroke)" opacity="0.35"/>
+<path d="M 907,127 L 907,203" class="edge-dashed" stroke="var(--sm-blue-stroke)" opacity="0.35"/>
+
+</svg>
+</div>
 
 - **Interleaving**: Events from thousands of concurrent fibers are committed sequentially onto a shared dragline.
 - **Per-Aggregate Linearizability**: Sequential consistency is enforced strictly per fiber. Single-writer fencing using Compare-And-Swap (CAS) ensures that an append succeeds if and only if the event's declared `precursor` matches the active head of that fiber. If a concurrent writer attempts to append to the same fiber simultaneously, the CAS check fails immediately, preventing aggregate state corruption.
@@ -1278,44 +1680,248 @@ Total unpadded envelope length is exactly $81 + 4 + N = 85 + \text{payload\_leng
 
 Pardosa maintains two complementary, orthogonal cryptographic chains:
 
-```mermaid
-flowchart TD
-    subgraph PhysicalChain ["Physical Integrity Chain (Invariant C5.26)"]
-        direction LR
-        P0["Frame 0"] -->|BLAKE3 Fold| P1["Frame 1"]
-        P1 -->|BLAKE3 Fold| P2["Frame 2"]
-        P2 -->|BLAKE3 Fold| P3["Frame 3"]
-        P3 -->|Rolling Digest H_k| PROOF["Physical Log Commitment"]
-    end
+<div class="pardosa-crypto-diagram" style="margin: 2rem 0; padding: 1.5rem 1rem; border-radius: 0.75rem; border: 1px solid var(--gray-200, #e2e8f0); background: var(--body-background, #ffffff); overflow-x: auto;">
+<svg id="crypto-diagram" viewBox="0 0 1020 410" width="100%" height="auto" style="display: block; min-width: 780px; max-width: 1020px; margin: 0 auto; overflow: visible;">
+<defs>
+<marker id="crypto-arrow-slate" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-slate-fill" />
+</marker>
+<marker id="crypto-arrow-blue" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-blue-fill" />
+</marker>
+<marker id="crypto-arrow-green" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-green-fill" />
+</marker>
+<filter id="crypto-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+<feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.08"/>
+</filter>
+</defs>
+<style>
+:root {
+--sm-edge-halo: var(--body-background, #ffffff);
+--sm-badge-bg: var(--gray-100, #f8fafc);
+--sm-badge-border: var(--gray-200, #cbd5e1);
+--sm-badge-text: var(--body-font-color, #1e293b);
+--sm-slate-bg: #f8fafc;
+--sm-slate-stroke: #475569;
+--sm-slate-text: #475569;
+--sm-slate-sub: #64748b;
+--sm-blue-bg: #eff6ff;
+--sm-blue-stroke: #2563eb;
+--sm-blue-text: #1d4ed8;
+--sm-blue-sub: #2563eb;
+--sm-green-bg: #ecfdf5;
+--sm-green-stroke: #059669;
+--sm-green-text: #047857;
+--sm-green-sub: #059669;
+--sm-purple-bg: #f5f3ff;
+--sm-purple-stroke: #7c3aed;
+--sm-purple-text: #6d28d9;
+--sm-purple-sub: #7c3aed;
+}
+@media (prefers-color-scheme: dark) {
+:root:not([data-theme="light"]) {
+--sm-edge-halo: var(--body-background, #2e3440);
+--sm-badge-bg: var(--gray-100, #3b4252);
+--sm-badge-border: var(--gray-200, #434c5e);
+--sm-badge-text: var(--body-font-color, #f1f5f9);
+--sm-slate-bg: #1e293b;
+--sm-slate-stroke: #64748b;
+--sm-slate-text: #cbd5e1;
+--sm-slate-sub: #94a3b8;
+--sm-blue-bg: #172554;
+--sm-blue-stroke: #3b82f6;
+--sm-blue-text: #93c5fd;
+--sm-blue-sub: #60a5fa;
+--sm-green-bg: #064e3b;
+--sm-green-stroke: #10b981;
+--sm-green-text: #6ee7b7;
+--sm-green-sub: #34d399;
+--sm-purple-bg: #2e1065;
+--sm-purple-stroke: #a855f7;
+--sm-purple-text: #d8b4fe;
+--sm-purple-sub: #c084fc;
+}
+}
+:root[data-theme="dark"] {
+--sm-edge-halo: var(--body-background, #2e3440);
+--sm-badge-bg: var(--gray-100, #3b4252);
+--sm-badge-border: var(--gray-200, #434c5e);
+--sm-badge-text: var(--body-font-color, #f1f5f9);
+--sm-slate-bg: #1e293b;
+--sm-slate-stroke: #64748b;
+--sm-slate-text: #cbd5e1;
+--sm-slate-sub: #94a3b8;
+--sm-blue-bg: #172554;
+--sm-blue-stroke: #3b82f6;
+--sm-blue-text: #93c5fd;
+--sm-blue-sub: #60a5fa;
+--sm-green-bg: #064e3b;
+--sm-green-stroke: #10b981;
+--sm-green-text: #6ee7b7;
+--sm-green-sub: #34d399;
+--sm-purple-bg: #2e1065;
+--sm-purple-stroke: #a855f7;
+--sm-purple-text: #d8b4fe;
+--sm-purple-sub: #c084fc;
+}
+.arrow-slate-fill { fill: var(--sm-slate-stroke); }
+.arrow-blue-fill { fill: var(--sm-blue-stroke); }
+.arrow-green-fill { fill: var(--sm-green-stroke); }
+.node-title { font-size: 13.5px; font-weight: 700; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.node-sub { font-size: 11px; font-weight: 500; opacity: 0.9; font-family: system-ui, -apple-system, sans-serif; }
+.tier-title { font-size: 12px; font-weight: 700; letter-spacing: 0.05em; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.edge-label { font-size: 10.5px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.edge-path { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.edge-dashed { fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 4 3; }
+.edge-halo { fill: none; stroke: var(--sm-edge-halo); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+.badge-bg { fill: var(--sm-badge-bg); stroke: var(--sm-badge-border); stroke-width: 1.2; }
+.badge-txt { fill: var(--sm-badge-text); }
+.callout-body { font-size: 11.5px; line-height: 1.5; font-family: system-ui, -apple-system, sans-serif; fill: var(--sm-badge-text); opacity: 0.95; }
+</style>
 
-    subgraph LogicalChains ["Logical Precursor Chains (Invariant C5.40)"]
-        direction TB
-        subgraph FiberAlpha ["Fiber Alpha"]
-            A0["E0 (Root)"]
-            A1["E2 (Update)"]
-            A1 -. precursor_hash .-> A0
-        end
-        subgraph FiberBeta ["Fiber Beta"]
-            B0["E1 (Root)"]
-            B1["E3 (Update)"]
-            B1 -. precursor_hash .-> B0
-        end
-    end
+<!-- Top Section: Physical Integrity Chain (Invariant C5.26) -->
+<rect x="20" y="25" width="980" height="130" rx="10" fill="none" stroke="var(--sm-slate-stroke)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+<rect x="35" y="14" width="330" height="22" rx="11" fill="var(--sm-slate-bg)" stroke="var(--sm-slate-stroke)" stroke-width="1.2"/>
+<text class="tier-title" x="200" y="25" fill="var(--sm-slate-text)" dominant-baseline="central" text-anchor="middle">Physical Integrity Chain (Invariant C5.26)</text>
 
-    classDef slate fill:#475569,stroke:#334155,stroke-width:1.5px,color:#ffffff
-    classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:1.5px,color:#ffffff
-    classDef green fill:#059669,stroke:#047857,stroke-width:1.5px,color:#ffffff
+<!-- Sequential Links with BLAKE3 Fold badges -->
+<path d="M 175,90 L 227,90" class="edge-path" stroke="var(--sm-slate-stroke)" marker-end="url(#crypto-arrow-slate)"/>
+<g>
+<rect class="badge-bg" x="180" y="58" width="42" height="18" rx="9"/>
+<text class="edge-label badge-txt" x="201" y="67" dominant-baseline="central" text-anchor="middle">Fold</text>
+</g>
 
-    class P0,P1,P2,P3 slate
-    class PROOF green
-    class A0,A1 blue
-    class B0,B1 green
+<path d="M 365,90 L 417,90" class="edge-path" stroke="var(--sm-slate-stroke)" marker-end="url(#crypto-arrow-slate)"/>
+<g>
+<rect class="badge-bg" x="370" y="58" width="42" height="18" rx="9"/>
+<text class="edge-label badge-txt" x="391" y="67" dominant-baseline="central" text-anchor="middle">Fold</text>
+</g>
 
-    style PhysicalChain fill:transparent,stroke:#475569,stroke-width:1.5px
-    style LogicalChains fill:transparent,stroke:#94a3b8,stroke-width:1.5px
-    style FiberAlpha fill:transparent,stroke:#2563eb,stroke-width:1.5px
-    style FiberBeta fill:transparent,stroke:#059669,stroke-width:1.5px
-```
+<path d="M 555,90 L 607,90" class="edge-path" stroke="var(--sm-slate-stroke)" marker-end="url(#crypto-arrow-slate)"/>
+<g>
+<rect class="badge-bg" x="560" y="58" width="42" height="18" rx="9"/>
+<text class="edge-label badge-txt" x="581" y="67" dominant-baseline="central" text-anchor="middle">Fold</text>
+</g>
+
+<path d="M 745,90 L 797,90" class="edge-path" stroke="var(--sm-green-stroke)" marker-end="url(#crypto-arrow-green)"/>
+<g>
+<rect class="badge-bg" x="735" y="58" width="72" height="18" rx="9"/>
+<text class="edge-label badge-txt" x="771" y="67" dominant-baseline="central" text-anchor="middle">Digest H_k</text>
+</g>
+
+<!-- Physical Frame Nodes -->
+<g id="frame-0" transform="translate(45, 62)">
+<rect width="130" height="56" rx="8" fill="var(--sm-slate-bg)" stroke="var(--sm-slate-stroke)" stroke-width="2" filter="url(#crypto-shadow)"/>
+<rect width="5" height="56" rx="2.5" fill="var(--sm-slate-stroke)"/>
+<text class="node-title" x="16" y="22" fill="var(--sm-slate-text)" dominant-baseline="central">Frame 0</text>
+<text class="node-sub" x="16" y="40" fill="var(--sm-slate-sub)">H_0 = BLAKE3(F_0)</text>
+</g>
+
+<g id="frame-1" transform="translate(235, 62)">
+<rect width="130" height="56" rx="8" fill="var(--sm-slate-bg)" stroke="var(--sm-slate-stroke)" stroke-width="2" filter="url(#crypto-shadow)"/>
+<rect width="5" height="56" rx="2.5" fill="var(--sm-slate-stroke)"/>
+<text class="node-title" x="16" y="22" fill="var(--sm-slate-text)" dominant-baseline="central">Frame 1</text>
+<text class="node-sub" x="16" y="40" fill="var(--sm-slate-sub)">H_1 = BLAKE3(H_0||F_1)</text>
+</g>
+
+<g id="frame-2" transform="translate(425, 62)">
+<rect width="130" height="56" rx="8" fill="var(--sm-slate-bg)" stroke="var(--sm-slate-stroke)" stroke-width="2" filter="url(#crypto-shadow)"/>
+<rect width="5" height="56" rx="2.5" fill="var(--sm-slate-stroke)"/>
+<text class="node-title" x="16" y="22" fill="var(--sm-slate-text)" dominant-baseline="central">Frame 2</text>
+<text class="node-sub" x="16" y="40" fill="var(--sm-slate-sub)">H_2 = BLAKE3(H_1||F_2)</text>
+</g>
+
+<g id="frame-3" transform="translate(615, 62)">
+<rect width="130" height="56" rx="8" fill="var(--sm-slate-bg)" stroke="var(--sm-slate-stroke)" stroke-width="2" filter="url(#crypto-shadow)"/>
+<rect width="5" height="56" rx="2.5" fill="var(--sm-slate-stroke)"/>
+<text class="node-title" x="16" y="22" fill="var(--sm-slate-text)" dominant-baseline="central">Frame 3</text>
+<text class="node-sub" x="16" y="40" fill="var(--sm-slate-sub)">H_3 = BLAKE3(H_2||F_3)</text>
+</g>
+
+<g id="frame-proof" transform="translate(805, 62)">
+<rect width="175" height="56" rx="8" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="2.2" filter="url(#crypto-shadow)"/>
+<rect width="5" height="56" rx="2.5" fill="var(--sm-green-stroke)"/>
+<text class="node-title" x="16" y="22" fill="var(--sm-green-text)" dominant-baseline="central">Log Commitment</text>
+<text class="node-sub" x="16" y="40" fill="var(--sm-green-sub)">Rolling Digest Proof</text>
+</g>
+
+<!-- Bottom Section Left: Logical Precursor Chains (Invariant C5.40) -->
+<rect x="20" y="175" width="630" height="215" rx="10" fill="none" stroke="var(--sm-slate-stroke)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+<rect x="35" y="164" width="340" height="22" rx="11" fill="var(--sm-slate-bg)" stroke="var(--sm-slate-stroke)" stroke-width="1.2"/>
+<text class="tier-title" x="205" y="175" fill="var(--sm-slate-text)" dominant-baseline="central" text-anchor="middle">Logical Precursor Chains (Invariant C5.40)</text>
+
+<!-- Fiber Alpha Sub-box -->
+<rect x="40" y="200" width="280" height="175" rx="8" fill="none" stroke="var(--sm-blue-stroke)" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.7"/>
+<rect x="55" y="191" width="105" height="18" rx="9" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1"/>
+<text class="tier-title" x="107" y="200" fill="var(--sm-blue-text)" dominant-baseline="central" text-anchor="middle">Fiber Alpha</text>
+
+<!-- Link from A1 up to A0 -->
+<path d="M 180,305 L 180,277" class="edge-dashed" stroke="var(--sm-blue-stroke)" marker-end="url(#crypto-arrow-blue)"/>
+<g>
+<rect class="badge-bg" x="125" y="278" width="110" height="18" rx="9"/>
+<text class="edge-label badge-txt" x="180" y="287" dominant-baseline="central" text-anchor="middle">precursor_hash</text>
+</g>
+
+<g id="fiber-a-root" transform="translate(60, 222)">
+<rect width="240" height="48" rx="7" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1.8" filter="url(#crypto-shadow)"/>
+<rect width="4" height="48" rx="2" fill="var(--sm-blue-stroke)"/>
+<text class="node-title" x="16" y="19" fill="var(--sm-blue-text)" dominant-baseline="central">E0 (Root)</text>
+<text class="node-sub" x="16" y="34" fill="var(--sm-blue-sub)">precursor_hash = 0x00...00</text>
+</g>
+
+<g id="fiber-a-update" transform="translate(60, 305)">
+<rect width="240" height="48" rx="7" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1.8" filter="url(#crypto-shadow)"/>
+<rect width="4" height="48" rx="2" fill="var(--sm-blue-stroke)"/>
+<text class="node-title" x="16" y="19" fill="var(--sm-blue-text)" dominant-baseline="central">E2 (Update)</text>
+<text class="node-sub" x="16" y="34" fill="var(--sm-blue-sub)">precursor_hash = BLAKE3(E0)</text>
+</g>
+
+<!-- Fiber Beta Sub-box -->
+<rect x="350" y="200" width="280" height="175" rx="8" fill="none" stroke="var(--sm-green-stroke)" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.7"/>
+<rect x="365" y="191" width="100" height="18" rx="9" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="1"/>
+<text class="tier-title" x="415" y="200" fill="var(--sm-green-text)" dominant-baseline="central" text-anchor="middle">Fiber Beta</text>
+
+<!-- Link from B1 up to B0 -->
+<path d="M 490,305 L 490,277" class="edge-dashed" stroke="var(--sm-green-stroke)" marker-end="url(#crypto-arrow-green)"/>
+<g>
+<rect class="badge-bg" x="435" y="278" width="110" height="18" rx="9"/>
+<text class="edge-label badge-txt" x="490" y="287" dominant-baseline="central" text-anchor="middle">precursor_hash</text>
+</g>
+
+<g id="fiber-b-root" transform="translate(370, 222)">
+<rect width="240" height="48" rx="7" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="1.8" filter="url(#crypto-shadow)"/>
+<rect width="4" height="48" rx="2" fill="var(--sm-green-stroke)"/>
+<text class="node-title" x="16" y="19" fill="var(--sm-green-text)" dominant-baseline="central">E1 (Root)</text>
+<text class="node-sub" x="16" y="34" fill="var(--sm-green-sub)">precursor_hash = 0x00...00</text>
+</g>
+
+<g id="fiber-b-update" transform="translate(370, 305)">
+<rect width="240" height="48" rx="7" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="1.8" filter="url(#crypto-shadow)"/>
+<rect width="4" height="48" rx="2" fill="var(--sm-green-stroke)"/>
+<text class="node-title" x="16" y="19" fill="var(--sm-green-text)" dominant-baseline="central">E3 (Update)</text>
+<text class="node-sub" x="16" y="34" fill="var(--sm-green-sub)">precursor_hash = BLAKE3(E1)</text>
+</g>
+
+<!-- Bottom Section Right: Orthogonality Annotation -->
+<rect x="670" y="175" width="330" height="215" rx="10" fill="none" stroke="var(--sm-purple-stroke)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+<rect x="685" y="164" width="220" height="22" rx="11" fill="var(--sm-purple-bg)" stroke="var(--sm-purple-stroke)" stroke-width="1.2"/>
+<text class="tier-title" x="795" y="175" fill="var(--sm-purple-text)" dominant-baseline="central" text-anchor="middle">Orthogonality Guarantee</text>
+
+<g transform="translate(695, 205)">
+<rect width="280" height="165" rx="8" fill="var(--sm-purple-bg)" stroke="var(--sm-purple-stroke)" stroke-width="1.5" filter="url(#crypto-shadow)"/>
+<rect width="5" height="165" rx="2.5" fill="var(--sm-purple-stroke)"/>
+<text class="node-title" x="16" y="24" fill="var(--sm-purple-text)" dominant-baseline="central">Physical ⊥ Logical</text>
+<text class="callout-body" x="16" y="52">Physical commitments (H_k) verify</text>
+<text class="callout-body" x="16" y="70">disk file framing &amp; detect bit-flips.</text>
+<text class="callout-body" x="16" y="96">Logical precursor hash chains secure</text>
+<text class="callout-body" x="16" y="114">entity provenance across fibers.</text>
+<text class="callout-body" x="16" y="140">Pruning purged fibers never breaks</text>
+<text class="callout-body" x="16" y="158">surviving entity precursor chains.</text>
+</g>
+
+</svg>
+</div>
 
 - **Physical Rolling Commitment (Invariant C5.26)**: A running 256-bit BLAKE3 hash digest computed sequentially across all container frames in `<stem>.pgno`. Each frame $k$ is folded into the rolling commitment:
   $$\mathcal{H}_k = \text{BLAKE3}(\mathcal{H}_{k-1} \parallel \text{Frame}_k)$$

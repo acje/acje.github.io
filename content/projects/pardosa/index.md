@@ -40,37 +40,30 @@ flowchart TD
 
 ---
 
-## The Strategic Problem: Enterprise State Corruption & Event-Driven Compliance
+## Domain State Governance & Verifiable Deletion
 
-Traditional storage models fail in high-integrity enterprise environments along two major failure modes:
+High-integrity enterprise applications require event storage that enforces two foundational invariants:
 
-1. **Uncoordinated Distributed Mutation**: When multiple application nodes concurrently mutate shared entity state without aggregate-level fencing, race conditions inevitably overwrite updates. In relational databases, developers resort to brittle row locks or distributed transactions (2PC) that kill availability and latency. In generic distributed log systems (like raw Kafka or message queues), partitioning keys provide ordering across partitions, but provide no native validation that an incoming event represents a legal lifecycle transition for that specific entity.
-2. **The Immutability vs. Deletion Paradox**: Event sourcing dogmatically insists that the log is forever immutable. However, enterprise systems operate under stringent regulatory and legal constraints (such as GDPR Article 17, healthcare data privacy, and legal retention limits) requiring verifiable, physical data deletion. Teams are left with unworkable workarounds: either breaking the audit log by performing out-of-band database mutations, or encrypting payloads and deleting encryption keys (crypto-shredding), which retains metadata and leaves storage reclamation unsolved.
+1. **Domain State Governance**: In enterprise systems, business entities transition through structured lifecycles governed by formal domain rules. Without aggregate-level fencing and state-transition admission control, concurrent mutations risk overwriting entity state and committing illegal transitions. Pardosa enforces first-class aggregate fencing and deterministic lifecycle admission directly at the storage boundary, guaranteeing that every committed event represents a validated, sequential state transition for that specific entity.
+2. **The Immutability vs. Deletion Paradox**: Event-sourced systems require immutable historical streams for auditability, replayability, and provenance. However, regulated enterprises operate under strict legal mandates (such as GDPR Article 17, healthcare data privacy standards, and statutory retention expirations) requiring verifiable, physical data deletion. Traditional workarounds—such as breaking audit trails via out-of-band record patching, or encrypting payloads and discarding keys (crypto-shredding)—leave metadata exposed, historical commitments unverifiable, and physical storage un-reclaimed.
 
-Pardosa resolves this conflict by separating the physical append-only log (**dragline**) from aggregate lifecycle governance (**fibers**) and introducing auditable, verifiable **line migrations**.
+Pardosa resolves this tension by separating physical append-only container files (**draglines**) from aggregate lifecycle governance (**fibers**) and introducing cryptographically auditable, verifiable **line migrations**.
 
 ---
 
 ## Fiber Semantics: Entities as Ordered Event Chains
 
-In Fiber Semantics, the lifecycle history of each domain entity is called a **fiber**.
+In Fiber Semantics, the lifecycle history of each domain entity is modeled as an independent **fiber**:
 
-- **Definition**: A fiber is a singly linked list of immutable events belonging to a unique, domain-scoped identifier (`DomainId`).
-- **Chain Topology**: Rather than storing events in a forward array that must be rewritten on mutation, each event in a fiber explicitly references its immediate predecessor through a `precursor` pointer (a cryptographic hash or logical sequence index).
-- **Head-Anchored Traversal**: The active state of a fiber is always anchored at its newest event (the head). Reading an entity's current state requires inspecting only the head; traversing backward reconstructs historical state changes without requiring full-table scans.
-
-Every event carries an immutable envelope header containing:
-- `Timestamp`: Monotonic nanoseconds since epoch, set upon successful append.
-- `DomainId`: Immutable identifier scoped to the domain namespace.
-- `Precursor`: Cryptographic pointer linking to the prior event on the same fiber.
-- `Detached`: Lifecycle marker indicating soft-deleted status.
-- `DomainEvent`: Domain-specific schema payload.
+- **Definition**: A fiber is a singly linked list of immutable events belonging to a unique, domain-scoped identifier (`fiber_id`).
+- **Chain Topology**: Rather than storing events in a forward array that must be rewritten on mutation, each event in a fiber explicitly references its immediate predecessor through a `precursor` pointer (a 16-byte predecessor event ID and a 32-byte BLAKE3 precursor hash).
+- **Head-Anchored Traversal**: The active state of a fiber is always anchored at its newest event (the head). Reading an entity's current state requires inspecting only the head; traversing backward reconstructs historical state transitions without requiring full-log scans.
 
 ---
 
 ## Draglines: Append-Only Interleaved Commit Streams
 
-While domain entities exist logically as independent fibers, disk I/O and network replication perform best when streaming sequential data. Pardosa unifies these models through the **dragline**:
+While domain entities exist logically as independent fibers, disk I/O and network replication achieve maximum efficiency through sequential streaming. Pardosa unifies these models through the **dragline**:
 
 ```mermaid
 flowchart LR
@@ -97,8 +90,113 @@ flowchart LR
 ```
 
 - **Interleaving**: Events from thousands of concurrent fibers are committed sequentially onto a shared dragline.
-- **Per-Aggregate Linearizability**: Sequential consistency is enforced strictly per fiber. Single-writer fencing using Compare-And-Swap (CAS) ensures that an append succeeds if and only if the event's declared `precursor` matches the active head of that fiber. If a concurrent writer appends to the same fiber first, the CAS check fails immediately, preventing aggregate state corruption.
-- **Physical Layout & Integrity**: Commits on the dragline are framed with BLAKE3 cryptographic hashes. Frames are appended with strict atomic durability (`write` $\rightarrow$ `fsync` $\rightarrow$ `atomic rename` $\rightarrow$ `parent dir fsync`), guaranteeing crash resilience against abrupt power loss or operating system faults.
+- **Per-Aggregate Linearizability**: Sequential consistency is enforced strictly per fiber. Single-writer fencing using Compare-And-Swap (CAS) ensures that an append succeeds if and only if the event's declared `precursor` matches the active head of that fiber. If a concurrent writer attempts to append to the same fiber simultaneously, the CAS check fails immediately, preventing aggregate state corruption.
+- **Atomic Durability**: Frames are appended with strict atomic durability (`write` $\rightarrow$ `fsync` $\rightarrow$ `atomic rename` $\rightarrow$ `parent dir fsync`), guaranteeing crash resilience against power loss or operating system faults.
+
+---
+
+## Physical Data Structure: On-Disk Dragline Layout
+
+Pardosa separates line state into an artefact pair on disk:
+
+1. **`<stem>.meta` (Descriptor File)**: Stores line metadata, schema commitments, domain namespace scope, and partition ownership.
+2. **`<stem>.pgno` (Dragline Container File)**: Append-only storage file containing the container header followed by framed event records.
+
+```text
++===================================================================================================+
+| Offset 0x00 .. 0x0B (12 Bytes) : Container Header                                                 |
+| +-------------------------------------------------------+---------------------------------------+ |
+| | Magic: "PARDOSA\x01" (8 bytes: 0x50 41 52 44 4F 53 41 01) | Format Version: 1 LE (4 bytes: 0x01 00 00 00) | |
+| +-------------------------------------------------------+---------------------------------------+ |
++===================================================================================================+
+| Offset 0x0C .. End-of-File : Sequential Framed Stream (CRC32C-Protected)                          |
+|                                                                                                   |
+| +----------------------+------------------------------------------------+-----------------------+ |
+| | frame_length (4 B)   | Frame Payload: Event Envelope                  | CRC32C Checksum (4 B) | |
+| | u32 LE               | (85 + payload_length bytes)                    | Castagnoli polynomial | |
+| +----------------------+------------------------------------------------+-----------------------+ |
+|                                                                                                   |
+| Event Envelope Layout (85 + payload_length bytes):                                                |
+| +-----------------------------------------------------------------------------------------------+ |
+| | EnvelopeHeader (81 bytes, Invariant C4.19)                                                    | |
+| | +-----------------------+-----------------------+-----------+-------------------------------+ | |
+| | | event_id (16 bytes)   | fiber_id (16 bytes)   | detached  | precursor (16 bytes)          | | |
+| | | Unique UUID/ULID      | Domain Aggregate ID   | (1 byte)  | Prior Event ID on this Fiber  | | |
+| | +-----------------------+-----------------------+-----------+-------------------------------+ | |
+| | | precursor_hash (32 bytes)                                                                 | | |
+| | | BLAKE3 cryptographic digest of immediate precursor event                                  | | |
+| | +-------------------------------------------------------------------------------------------+ | |
+| |                                                                                               | |
+| | Payload Length & Domain Event Body                                                            | |
+| | +------------------------------------+------------------------------------------------------+ | |
+| | | payload_length (4 bytes, u32 LE)   | payload_bytes (domain-specific serialized payload)   | | |
+| | +------------------------------------+------------------------------------------------------+ | |
+| +-----------------------------------------------------------------------------------------------+ |
++===================================================================================================+
+```
+
+### 1. Container Header (12 Bytes)
+At file offset `0x00000000` of `<stem>.pgno`, the container header establishes format identity:
+- **Magic Bytes (`0x00..0x07`, 8 bytes)**: Fixed byte sequence `PARDOSA\x01` (`[0x50, 0x41, 0x52, 0x44, 0x4F, 0x53, 0x41, 0x01]`).
+- **Format Version (`0x08..0x0B`, 4 bytes)**: 32-bit little-endian integer (`1` = `0x01, 0x00, 0x00, 0x00`).
+
+Any file lacking this 12-byte signature is rejected during container initialization.
+
+### 2. Frame Framing (Invariant C3.4)
+Every commit to the dragline is framed with length demarcations and hardware-accelerated checksums:
+- **Length Prefix (4 bytes)**: 32-bit little-endian unsigned integer declaring the byte length of the enclosed frame payload.
+- **Frame Payload (`frame_length` bytes)**: The unpadded event envelope.
+- **CRC32C Checksum (4 bytes)**: Castagnoli polynomial checksum (IEEE 802.3 / SSE4.2 CRC32C) computed over the frame payload bytes. Torn writes, truncated disk blocks, or silent disk bit-rot are detected prior to envelope parsing.
+
+### 3. Event Envelope Header (Invariant C4.19)
+The frame payload contains an unpadded, fixed 81-byte `EnvelopeHeader` followed by the domain event payload:
+
+| Field | Offset | Width | Type | Description |
+|---|---|---|---|---|
+| `event_id` | `0x00` | 16 bytes | `[u8; 16]` | Globally unique event identifier (UUID/ULID). |
+| `fiber_id` | `0x10` | 16 bytes | `[u8; 16]` | Scoped domain entity / aggregate identifier. |
+| `detached` | `0x20` | 1 byte | `bool` (`u8`) | Lifecycle flag: `0x00` = active, `0x01` = soft-deleted. |
+| `precursor` | `0x21` | 16 bytes | `[u8; 16]` | Predecessor `event_id` on this fiber (`[0u8; 16]` for root). |
+| `precursor_hash` | `0x31` | 32 bytes | `[u8; 32]` | 256-bit BLAKE3 cryptographic hash of precursor event. |
+| `payload_length` | `0x51` | 4 bytes | `u32` LE | Byte length $N$ of domain event payload. |
+| `payload_bytes` | `0x55` | $N$ bytes | `[u8; N]` | Serialized domain-specific event payload. |
+
+Total unpadded envelope length is exactly $81 + 4 + N = 85 + \text{payload\_length}$ bytes.
+
+### 4. Physical vs. Logical Cryptographic Commitments
+
+Pardosa maintains two complementary, orthogonal cryptographic chains:
+
+```mermaid
+flowchart TD
+    subgraph PhysicalChain ["Physical Integrity Chain (Invariant C5.26)"]
+        direction LR
+        P0["Frame 0"] -->|BLAKE3 Fold| P1["Frame 1"]
+        P1 -->|BLAKE3 Fold| P2["Frame 2"]
+        P2 -->|BLAKE3 Fold| P3["Frame 3"]
+        P3 -->|Rolling Digest H_k| PROOF["Physical Log Commitment"]
+    end
+
+    subgraph LogicalChains ["Logical Precursor Chains (Invariant C5.40)"]
+        direction TB
+        subgraph FiberAlpha ["Fiber Alpha"]
+            A0["E0 (Root)"]
+            A1["E2 (Update)"]
+            A1 -. precursor_hash .-> A0
+        end
+        subgraph FiberBeta ["Fiber Beta"]
+            B0["E1 (Root)"]
+            B1["E3 (Update)"]
+            B1 -. precursor_hash .-> B0
+        end
+    end
+```
+
+- **Physical Rolling Commitment (Invariant C5.26)**: A running 256-bit BLAKE3 hash digest computed sequentially across all container frames in `<stem>.pgno`. Each frame $k$ is folded into the rolling commitment:
+  $$\mathcal{H}_k = \text{BLAKE3}(\mathcal{H}_{k-1} \parallel \text{Frame}_k)$$
+  This guarantees immediate tamper-evidence for the physical stream: missing frames, reordered writes, or bit flips corrupt the rolling digest.
+- **Logical Precursor Chain (Invariant C5.40)**: Independent, fiber-scoped hash linkage. Each event's `precursor_hash` contains the BLAKE3 digest of the preceding event on the same `fiber_id`.
+- **Orthogonality**: Because physical commitments track file framing and logical commitments track aggregate state transitions, events from distinct fibers interleave freely without invalidating entity provenance. During line migrations, purged fibers can be pruned from `<stem>.pgno` without breaking the precursor chains of surviving fibers.
 
 ---
 
@@ -147,30 +245,63 @@ stateDiagram-v2
 
 ---
 
-## Event Carried State Transfer (ECST) & Autonomous Projections
+## Consumer Idempotency & Deterministic Projections
 
-Traditional microservice architectures rely on distributed RPC or REST calls to fetch current state, creating cascading failure domains and tight operational coupling. 
-
-Pardosa implements **Event Carried State Transfer (ECST)**:
+In event-driven architectures, downstream systems build read models, search indexes, and caches by projecting the event stream. Pardosa guarantees deterministic consumption and effectively exactly-once processing through explicit core invariants:
 
 ```mermaid
 flowchart LR
-    PARDOSA[Pardosa Dragline] -->|Stream Committed ECST Events| BUS[Event Distribution]
-    
-    subgraph Projections [Autonomous Read Projections]
+    PARDOSA["Pardosa Dragline<br/>(Physical .pgno Log)"] -->|Stream Frames| DISPATCH["Event Dispatcher"]
+
+    subgraph ConsumerTransactional ["Pattern A: Transactional Projections"]
         direction TB
-        VIEW1[Search Index Projection]
-        VIEW2[Relational Reporting Projection]
-        VIEW3[In-Memory Cache Projection]
+        TX["Atomic Unit of Work"]
+        STORE_A["Relational / Key-Value Store"]
+        CURSOR_A["Checkpoint Cursor (C5.22)"]
+        TX --> STORE_A
+        TX --> CURSOR_A
     end
 
-    BUS --> VIEW1
-    BUS --> VIEW2
-    BUS --> VIEW3
+    subgraph ConsumerIdempotent ["Pattern B: Non-Transactional Sinks"]
+        direction TB
+        DEDUP["Deduplication Filter<br/>(16-byte event_id / 32-byte BLAKE3)"]
+        STORE_B["Search Index / External Sink"]
+        DEDUP -->|Unique| STORE_B
+        DEDUP -->|Duplicate| DROP["No-Op Discard"]
+    end
+
+    DISPATCH --> TX
+    DISPATCH --> DEDUP
 ```
 
-- **Self-Contained Domain Facts**: Events emitted by Pardosa carry full state transition facts, not thin notifications ("Order #123 changed"). Downstream consumers receive all data necessary to update their local read projections without executing synchronous callback requests to the producer.
-- **Autonomous Projections**: Read models (such as search indexes, reporting databases, or in-memory HTML render caches) consume the dragline independently at their own pace. If a projection service crashes or lags, write ingestion remains entirely unaffected.
+### Core Invariants
+
+1. **Total Replay Determinism (Invariant C3.8)**: Replaying the identical sequence of dragline frames produces identical projection state bit-for-bit. Projections rely strictly on immutable event facts—timestamps, precursors, and state payloads—eliminating dependencies on consumer arrival time, wall-clock skew, or execution environment non-determinism.
+2. **Dragline-Local Resume Cursors (Invariant C5.22)**: Dragline consumers track progress using monotonic, container-local cursor offsets. Cursors represent verifiable physical frame boundaries within `<stem>.pgno`. They are valid by construction: a consumer cannot construct or advance to an unaligned offset or an uncommitted frame.
+3. **Unique Event Identity & BLAKE3 Commitments**: Every event carries an unforgeable, globally unique 16-byte `event_id` and is cryptographically bound to a 32-byte BLAKE3 commitment (both frame-level digest and fiber precursor hash).
+
+### Consumer Demarcation & Side-Effect Elimination
+
+To achieve effectively exactly-once processing across network retries, worker restarts, or consumer rebalances, downstream projections implement explicit consumer demarcation:
+
+- **Atomic Cursor Checkpointing (Transactional Sinks)**: When writing to datastores supporting transactional multi-row writes (such as relational databases or transactional key-value engines), projections store the dragline cursor position in the exact same transaction as the projection update:
+  ```sql
+  BEGIN TRANSACTION;
+  -- Apply projection updates from event
+  UPDATE customer_balances SET balance = balance + 500 WHERE customer_id = 'cust_8f2a';
+  -- Checkpoint dragline-local cursor atomically
+  UPDATE projection_checkpoints SET resume_cursor = 0x0004A2F0 WHERE projection_id = 'balance_view';
+  COMMIT;
+  ```
+  On crash recovery or consumer failover, the worker queries `resume_cursor` and requests the dragline stream starting from that exact frame offset. Events already committed within prior transactions are never re-applied.
+
+- **Idempotent Deduplication (Non-Transactional Sinks)**: When projecting into systems lacking atomic multi-resource transactions (e.g., search indexes, analytical column stores, distributed message queues, or third-party webhooks), consumers eliminate duplicate side-effects using the 16-byte `event_id` or 32-byte BLAKE3 commitment:
+  - **Natural Upsert Keys**: Projections use `event_id` or deterministic entity head versions as document keys or idempotency tokens, turning repeated frame deliveries into no-op updates.
+  - **Deduplication Windows**: Downstream workers maintain a lightweight, bounded deduplication set of processed `event_id` values within the replay buffer window. Re-delivered frames are recognized, recorded as duplicates, and dropped before invoking external side-effects.
+
+### Event Carried State Transfer (ECST)
+- **Self-Contained Domain Facts**: Events emitted by Pardosa carry full state transition facts rather than thin notifications. Downstream consumers receive all data necessary to project their read models without executing synchronous callback queries to the producer.
+- **Autonomous Projections**: Read models (search indexes, reporting databases, HTML caches) consume the dragline independently at their own pace. If a consumer crashes or lags, write ingestion remains unaffected.
 
 ---
 
@@ -181,7 +312,9 @@ In enterprise architectures, compliance cannot be an afterthought. Pardosa satis
 1. **Separation of Line and Audit**: A line contains the active operational stream. An optional audit log captures raw events separately under strict access controls.
 2. **Cryptographic Integrity**: Payloads and envelope headers are hashed using BLAKE3. Tampering with any historical event on a fiber breaks the precursor hash chain immediately.
 3. **Physical Purging via Line Migration**: When an operator executes a line migration with `Migrate(Purge)` on detached fibers:
-   - Pardosa constructs a new, compacted line version.
-   - Events belonging to purged fibers are physically excluded from the new line.
-   - Active fibers are reindexed, preserving their precursor relationships.
-   - The old line version is scrubbed from disk, providing provable, physical data destruction while preserving cryptographic proof of the migration transaction itself.
+   - Pardosa constructs a new, compacted line version (`<new_stem>.pgno` and `<new_stem>.meta`).
+   - Events belonging to purged fibers are physically excluded from the new container file.
+   - Active fibers are preserved, retaining their exact logical precursor hash relationships.
+   - A fresh physical rolling BLAKE3 commitment is computed sequentially over the new container.
+   - The old line version is verifiably scrubbed from disk, providing provable physical data destruction while preserving cryptographic proof of the migration transaction itself.
+

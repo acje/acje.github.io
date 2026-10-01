@@ -106,32 +106,72 @@ Pardosa separates line state into an artefact pair on disk:
 +===================================================================================================+
 | Offset 0x00 .. 0x0B (12 Bytes) : Container Header                                                 |
 | +-------------------------------------------------------+---------------------------------------+ |
-| | Magic: "PARDOSA\x01" (8 bytes: 0x50 41 52 44 4F 53 41 01) | Format Version: 1 LE (4 bytes: 0x01 00 00 00) | |
+| | Magic: "PARDOSA\x01" (8 B: 0x50 41 52 44 4F 53 41 01) | Version: 1 LE (4 B: 0x01 00 00 00)    | |
 | +-------------------------------------------------------+---------------------------------------+ |
 +===================================================================================================+
-| Offset 0x0C .. End-of-File : Sequential Framed Stream (CRC32C-Protected)                          |
-|                                                                                                   |
+| Offset 0x0C .. Offset 0x0C + frame_length_0 + 7 : FRAME 0 (Event 0 : Genesis on Fiber A)          |
 | +----------------------+------------------------------------------------+-----------------------+ |
-| | frame_length (4 B)   | Frame Payload: Event Envelope                  | CRC32C Checksum (4 B) | |
-| | u32 LE               | (85 + payload_length bytes)                    | Castagnoli polynomial | |
+| | frame_length_0 (4 B) | Envelope 0 Payload: 85 + payload_length_0 bytes| CRC32C Checksum (4 B) | |
+| | u32 LE               | (Castagnoli protected; folded into H_0 digest) | IEEE 802.3 / SSE4.2   | |
 | +----------------------+------------------------------------------------+-----------------------+ |
 |                                                                                                   |
-| Event Envelope Layout (85 + payload_length bytes):                                                |
+| Envelope 0 Layout (Event E0, Fiber A Genesis Aggregate):                                          |
 | +-----------------------------------------------------------------------------------------------+ |
 | | EnvelopeHeader (81 bytes, Invariant C4.19)                                                    | |
 | | +-----------------------+-----------------------+-----------+-------------------------------+ | |
-| | | event_id (16 bytes)   | fiber_id (16 bytes)   | detached  | precursor (16 bytes)          | | |
-| | | Unique UUID/ULID      | Domain Aggregate ID   | (1 byte)  | Prior Event ID on this Fiber  | | |
+| | | event_id: 0x01.. [E0] | fiber_id: 0xAA.. [A]  | detached  | precursor: [0u8; 16]          | | |
+| | | (16 bytes, UUID/ULID) | (16 bytes, Aggregate) | 0x00 (1B) | (all zeroes: root genesis)    | | |
 | | +-----------------------+-----------------------+-----------+-------------------------------+ | |
-| | | precursor_hash (32 bytes)                                                                 | | |
-| | | BLAKE3 cryptographic digest of immediate precursor event                                  | | |
+| | | precursor_hash: [0u8; 32] (all zeroes: root genesis on Fiber A, no predecessor)           | | |
 | | +-------------------------------------------------------------------------------------------+ | |
 | |                                                                                               | |
-| | Payload Length & Domain Event Body                                                            | |
+| | Payload Length & Domain Event Body (Initial State)                                            | |
 | | +------------------------------------+------------------------------------------------------+ | |
-| | | payload_length (4 bytes, u32 LE)   | payload_bytes (domain-specific serialized payload)   | | |
+| | | payload_length_0 (4 bytes, u32 LE) | payload_bytes: domain event payload (GenesisState)   | | |
 | | +------------------------------------+------------------------------------------------------+ | |
 | +-----------------------------------------------------------------------------------------------+ |
+|                                                                                                   |
+|   PHYSICAL STREAM INTEGRITY:                                                                      |
+|   Rolling Digest H_0 = BLAKE3(Frame 0)                                                            |
++===================================================================================================+
+|                                  ^  ^                                                             |
+|   LOGICAL FIBER A LINKAGE        |  | precursor      : 0x01.. (E0) points to Frame 0 event_id     |
+|   (Backward Causal Chain C5.40)  |  | precursor_hash : BLAKE3(Env 0) commits to Frame 0 envelope  |
++===================================================================================================+
+| Offset: 0x0C + frame_length_0 + 8 (immediately follows Frame 0 without padding)                   |
+| FRAME 1 (Event 1 : State Mutation on Fiber A)                                                     |
+| +----------------------+------------------------------------------------+-----------------------+ |
+| | frame_length_1 (4 B) | Envelope 1 Payload: 85 + payload_length_1 bytes| CRC32C Checksum (4 B) | |
+| | u32 LE               | (Castagnoli protected; folded into H_1 digest) | IEEE 802.3 / SSE4.2   | |
+| +----------------------+------------------------------------------------+-----------------------+ |
+|                                                                                                   |
+| Envelope 1 Layout (Event E1, Fiber A State Mutation):                                             |
+| +-----------------------------------------------------------------------------------------------+ |
+| | EnvelopeHeader (81 bytes, Invariant C4.19)                                                    | |
+| | +-----------------------+-----------------------+-----------+-------------------------------+ | |
+| | | event_id: 0x02.. [E1] | fiber_id: 0xAA.. [A]  | detached  | precursor: 0x01.. [E0]        | | |
+| | | (16 bytes, UUID/ULID) | (16 bytes, Aggregate) | 0x00 (1B) | --> CAUSAL LINK to Event E0   | | |
+| | +-----------------------+-----------------------+-----------+-------------------------------+ | |
+| | | precursor_hash: BLAKE3(Envelope 0) (32 bytes cryptographic digest)                        | | |
+| | | --> CRYPTOGRAPHIC COMMITMENT to predecessor Envelope 0 header + payload (Invariant C5.40) | | |
+| | +-------------------------------------------------------------------------------------------+ | |
+| |                                                                                               | |
+| | Payload Length & Domain Event Body (Mutation Delta)                                           | |
+| | +------------------------------------+------------------------------------------------------+ | |
+| | | payload_length_1 (4 bytes, u32 LE) | payload_bytes: domain event payload (AccountUpdated) | | |
+| | +------------------------------------+------------------------------------------------------+ | |
+| +-----------------------------------------------------------------------------------------------+ |
+|                                                                                                   |
+|   PHYSICAL STREAM INTEGRITY:                                                                      |
+|   Rolling Digest H_1 = BLAKE3(H_0 || Frame 1)  (Sequential tamper-evidence, Invariant C5.26)      |
++===================================================================================================+
+| DUAL CRYPTOGRAPHIC COMMITMENTS SUMMARY (Orthogonal Chains):                                       |
+|   1. Logical Precursor Linkage (Fiber A):                                                         |
+|      Frame 1.precursor      == Frame 0.event_id (0x01.. [E0])                                     |
+|      Frame 1.precursor_hash == BLAKE3(Envelope 0 Header || Payload)                               |
+|   2. Physical Rolling Commitment (Dragline):                                                      |
+|      H_0 = BLAKE3(Frame 0)                                                                        |
+|      H_1 = BLAKE3(H_0 || Frame 1)                                                                 |
 +===================================================================================================+
 ```
 

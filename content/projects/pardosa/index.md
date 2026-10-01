@@ -2061,8 +2061,6 @@ Pardosa encodes exactly **10 legal state transitions**. Any action attempting an
 .badge-bg { fill: var(--sm-badge-bg); stroke: var(--sm-badge-border); stroke-width: 1.2; }
 .badge-txt { fill: var(--sm-badge-text); }
 </style>
-<circle cx="210" cy="60" r="8" fill="var(--sm-slate-stroke)"/>
-<path d="M 218,60 L 277,60" class="edge-path" stroke="var(--sm-slate-stroke)" marker-end="url(#arrow-slate)"/>
 <path d="M 360,85 L 360,157" class="edge-path" stroke="var(--sm-blue-stroke)" marker-end="url(#arrow-blue)"/>
 <path d="M 280,172 C 190,130 90,130 90,187 C 90,244 190,244 280,202" class="edge-path" stroke="var(--sm-blue-stroke)" marker-end="url(#arrow-blue)"/>
 <path d="M 440,173 C 485,153 555,153 597,173" class="edge-path" stroke="var(--sm-amber-stroke)" marker-end="url(#arrow-amber)"/>

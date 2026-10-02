@@ -577,18 +577,6 @@ Pardosa separates line state into an artefact pair on disk:
     --dl-purple-tag-bg: #6d28d9;
     --dl-purple-tag-text: #ffffff;
 
-    --dl-green-border: #059669;
-    --dl-green-bg: rgba(5, 150, 105, 0.06);
-    --dl-green-tag-bg: #047857;
-    --dl-green-tag-text: #ffffff;
-
-    --dl-emerald-border: #059669;
-    --dl-emerald-bg: rgba(5, 150, 105, 0.12);
-    --dl-emerald-tag-bg: #059669;
-    --dl-emerald-tag-text: #ffffff;
-    --dl-emerald-highlight-border: #047857;
-    --dl-emerald-highlight-bg: rgba(5, 150, 105, 0.14);
-
     --dl-connector-bg: rgba(241, 245, 249, 0.95);
     --dl-connector-border: #cbd5e1;
 
@@ -627,18 +615,6 @@ Pardosa separates line state into an artefact pair on disk:
     --dl-purple-tag-bg: #5b21b6;
     --dl-purple-tag-text: #f5f3ff;
 
-    --dl-green-border: #10b981;
-    --dl-green-bg: rgba(16, 185, 129, 0.12);
-    --dl-green-tag-bg: #065f46;
-    --dl-green-tag-text: #ecfdf5;
-
-    --dl-emerald-border: #10b981;
-    --dl-emerald-bg: rgba(16, 185, 129, 0.18);
-    --dl-emerald-tag-bg: #059669;
-    --dl-emerald-tag-text: #ffffff;
-    --dl-emerald-highlight-border: #34d399;
-    --dl-emerald-highlight-bg: rgba(16, 185, 129, 0.22);
-
     --dl-connector-bg: rgba(30, 41, 59, 0.9);
     --dl-connector-border: #475569;
   }
@@ -666,18 +642,6 @@ Pardosa separates line state into an artefact pair on disk:
       --dl-purple-bg: rgba(139, 92, 246, 0.12);
       --dl-purple-tag-bg: #5b21b6;
       --dl-purple-tag-text: #f5f3ff;
-
-      --dl-green-border: #10b981;
-      --dl-green-bg: rgba(16, 185, 129, 0.12);
-      --dl-green-tag-bg: #065f46;
-      --dl-green-tag-text: #ecfdf5;
-
-      --dl-emerald-border: #10b981;
-      --dl-emerald-bg: rgba(16, 185, 129, 0.18);
-      --dl-emerald-tag-bg: #059669;
-      --dl-emerald-tag-text: #ffffff;
-      --dl-emerald-highlight-border: #34d399;
-      --dl-emerald-highlight-bg: rgba(16, 185, 129, 0.22);
 
       --dl-connector-bg: rgba(30, 41, 59, 0.9);
       --dl-connector-border: #475569;
@@ -750,8 +714,6 @@ Pardosa separates line state into an artefact pair on disk:
   .dl-tag-slate { background: var(--dl-slate-tag-bg); color: var(--dl-slate-tag-text); }
   .dl-tag-blue { background: var(--dl-blue-tag-bg); color: var(--dl-blue-tag-text); }
   .dl-tag-purple { background: var(--dl-purple-tag-bg); color: var(--dl-purple-tag-text); }
-  .dl-tag-green { background: var(--dl-green-tag-bg); color: var(--dl-green-tag-text); }
-  .dl-tag-emerald { background: var(--dl-emerald-tag-bg); color: var(--dl-emerald-tag-text); }
 
   .dl-section-label {
     font-size: 0.75rem;
@@ -787,23 +749,12 @@ Pardosa separates line state into an artefact pair on disk:
   .dl-field-slate { border-left: 3px solid var(--dl-slate-border); }
   .dl-field-blue { border-left: 3px solid var(--dl-blue-border); }
   .dl-field-purple { border-left: 3px solid var(--dl-purple-border); }
-  .dl-field-green { border-left: 3px solid var(--dl-green-border); }
-
-  .dl-field-emerald-highlight {
-    border: 1.5px solid var(--dl-emerald-highlight-border);
-    border-left: 4px solid var(--dl-emerald-highlight-border);
-    background: var(--dl-emerald-highlight-bg);
-  }
 
   .dl-field-label {
     font-size: 0.75rem;
     font-weight: 600;
     color: var(--dl-text-muted);
     margin-bottom: 0.25rem;
-  }
-
-  .dl-emerald-label {
-    color: var(--dl-emerald-highlight-border);
   }
 
   .dl-field-val {
@@ -833,53 +784,6 @@ Pardosa separates line state into an artefact pair on disk:
 
   .dl-field-desc {
     font-size: 0.72rem;
-    color: var(--dl-text-muted);
-  }
-
-  .dl-emerald-desc {
-    color: var(--dl-text);
-    font-weight: 500;
-  }
-
-  .dl-digest-badge {
-    border-radius: 6px;
-    padding: 0.625rem 0.875rem;
-    margin-top: 0.875rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-  }
-
-  .dl-digest-slate {
-    border: 1px solid var(--dl-slate-border);
-    background: var(--dl-slate-bg);
-  }
-
-  .dl-digest-emerald {
-    border: 1.5px solid var(--dl-emerald-highlight-border);
-    background: var(--dl-emerald-highlight-bg);
-  }
-
-  .dl-digest-title {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.8125rem;
-  }
-
-  .dl-digest-title code {
-    background: var(--dl-code-bg);
-    color: var(--dl-code-text);
-    padding: 0.15rem 0.4rem;
-    border-radius: 3px;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-weight: 600;
-  }
-
-  .dl-digest-desc {
-    font-size: 0.75rem;
     color: var(--dl-text-muted);
   }
 
@@ -913,113 +817,11 @@ Pardosa separates line state into an artefact pair on disk:
     line-height: 1;
   }
 
-  .dl-connector-block {
-    background: var(--dl-connector-bg);
-    border: 1.5px dashed var(--dl-connector-border);
-    border-radius: 8px;
-    padding: 1rem;
-    margin: 1.25rem 0;
-  }
-
-  .dl-connector-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--dl-connector-border);
-  }
-
-  .dl-connector-title {
-    font-weight: 700;
-    font-size: 0.8125rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--dl-text);
-  }
-
-  .dl-connector-subtitle {
-    font-size: 0.75rem;
-    color: var(--dl-text-muted);
-  }
-
-  .dl-connector-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 0.75rem;
-  }
-
-  .dl-conn-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.625rem;
-    padding: 0.625rem;
-    border-radius: 6px;
-    background: var(--dl-bg);
-    border: 1px solid rgba(100, 116, 139, 0.2);
-  }
-
-  .dl-conn-num {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: #ffffff;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .dl-conn-physical .dl-conn-num { background: #475569; }
-  .dl-conn-logical .dl-conn-num { background: #059669; }
-  .dl-conn-causal .dl-conn-num { background: #047857; }
-  .dl-conn-rolling .dl-conn-num { background: #0f766e; }
-
-  .dl-conn-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-
-  .dl-conn-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--dl-text);
-  }
-
-  .dl-conn-detail {
-    font-size: 0.75rem;
-    color: var(--dl-text);
-  }
-
-  .dl-conn-detail code {
-    background: var(--dl-code-bg);
-    color: var(--dl-code-text);
-    padding: 0.1rem 0.3rem;
-    border-radius: 3px;
-    font-size: 0.75rem;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  }
-
-  .dl-conn-desc {
-    font-size: 0.7rem;
-    color: var(--dl-text-muted);
-    line-height: 1.35;
-  }
-
   @media (max-width: 640px) {
     .dl-grid-envelope {
       grid-template-columns: 1fr 1fr;
     }
     .dl-grid-2 {
-      grid-template-columns: 1fr;
-    }
-    .dl-connector-grid {
       grid-template-columns: 1fr;
     }
   }
@@ -1430,28 +1232,28 @@ Pardosa separates line state into an artefact pair on disk:
   <div class="dl-card dl-card-header">
     <div class="dl-card-title-bar">
       <div class="dl-title-group">
-        <span class="dl-tag dl-tag-slate">Offset 0x00..0x0B · 12 Bytes</span>
+        <span class="dl-tag dl-tag-slate">Offset 0x0000..0x000B · 12 Bytes</span>
         <span class="dl-title">Container Header · Storage Format Identity</span>
       </div>
       <span class="dl-tag dl-tag-slate">Immutable Prefix</span>
     </div>
     <div class="dl-grid-2">
       <div class="dl-field dl-field-slate">
-        <div class="dl-field-label">Magic Identifier (8B)</div>
+        <div class="dl-field-label">0x00..0x07 · magic (8 Bytes)</div>
         <div class="dl-field-val"><code>PARDOSA\x01</code> <span class="dl-field-hex">[0x50, 0x41, 0x52, 0x44, 0x4F, 0x53, 0x41, 0x01]</span></div>
-        <div class="dl-field-desc">Immutable engine signature identifying dragline container format</div>
+        <div class="dl-field-desc">Immutable engine signature ([u8; 8])</div>
       </div>
       <div class="dl-field dl-field-slate">
-        <div class="dl-field-label">Format Version (4B)</div>
+        <div class="dl-field-label">0x08..0x0B · version (4 Bytes)</div>
         <div class="dl-field-val"><code>1 LE</code> <span class="dl-field-hex">[0x01, 0x00, 0x00, 0x00]</span></div>
-        <div class="dl-field-desc">32-bit unsigned little-endian integer format version</div>
+        <div class="dl-field-desc">Format version (u32 LE)</div>
       </div>
     </div>
   </div>
   <!-- Flow Boundary: Container Header to Frame 0 -->
   <div class="dl-flow-arrow">
     <div class="dl-arrow-line"></div>
-    <div class="dl-arrow-badge">Initial Append Boundary: Offset 0x0C</div>
+    <div class="dl-arrow-badge">Initial Append Boundary: Offset 0x000C</div>
     <div class="dl-arrow-head">▼</div>
   </div>
   <!-- FRAME 0 -->
@@ -1459,128 +1261,79 @@ Pardosa separates line state into an artefact pair on disk:
     <div class="dl-card-title-bar">
       <div class="dl-title-group">
         <span class="dl-tag dl-tag-slate">FRAME 0</span>
-        <span class="dl-title">Offset 0x0C · Event 0 : Genesis on Fiber A</span>
+        <span class="dl-title">Offset 0x000C · Event 0 : Genesis on Fiber A</span>
       </div>
       <span class="dl-tag dl-tag-blue">Genesis Root</span>
     </div>
-    <div class="dl-section-label">Physical Framing (8 Bytes Framing Overhead)</div>
-    <div class="dl-grid-2">
-      <div class="dl-field dl-field-slate">
-        <div class="dl-field-label">frame_length_0 (4B)</div>
-        <div class="dl-field-val"><code>u32 LE</code> <span class="dl-field-hex">81 + N₀ Bytes</span></div>
-        <div class="dl-field-desc">Byte length of enclosed Envelope 0 payload</div>
-      </div>
-      <div class="dl-field dl-field-slate">
-        <div class="dl-field-label">CRC32C Checksum (4B)</div>
-        <div class="dl-field-val"><code>Castagnoli (SSE4.2)</code> <span class="dl-field-hex">IEEE 802.3</span></div>
-        <div class="dl-field-desc">Hardware checksum detecting torn writes and disk bit-rot</div>
-      </div>
+    <div class="dl-section-label">Physical Framing Prefix (4 Bytes)</div>
+    <div class="dl-field dl-field-slate">
+      <div class="dl-field-label">0x0C..0x0F · frame_length_0 (4 Bytes)</div>
+      <div class="dl-field-val"><code>u32 LE = 85 + N₀</code> <span class="dl-field-hex">[0x51 + N₀, 0x00, 0x00, 0x00]</span></div>
+      <div class="dl-field-desc">Byte length of enclosed Envelope 0 payload (u32 LE)</div>
     </div>
     <!-- Inner Envelope 0 Card (Strictly Contained) -->
     <div class="dl-card dl-card-envelope">
       <div class="dl-card-title-bar">
         <div class="dl-title-group">
           <span class="dl-tag dl-tag-blue">Envelope 0</span>
-          <span class="dl-title">Fiber A Genesis Aggregate · Invariant C4.19</span>
+          <span class="dl-title">Offset 0x10 .. 0x10 + 85 + N₀ - 1 · Invariant C4.19</span>
         </div>
-        <span class="dl-tag dl-tag-purple">85 + payload_length_0 Bytes</span>
+        <span class="dl-tag dl-tag-purple">85 + N₀ Bytes</span>
       </div>
-      <div class="dl-section-label">EnvelopeHeader Fields (81 Bytes Fixed Layout)</div>
+      <div class="dl-section-label">Envelope Header (81 Bytes Fixed Layout)</div>
       <div class="dl-grid-envelope">
         <div class="dl-field dl-field-blue">
-          <div class="dl-field-label">event_id (16B)</div>
-          <div class="dl-field-val"><code>0x01.. [E0]</code></div>
-          <div class="dl-field-desc">UUID / ULID Identity</div>
+          <div class="dl-field-label">+0x00..+0x0F · event_id (16B)</div>
+          <div class="dl-field-val"><code>0x01.. [E0]</code> <span class="dl-field-hex">[u8; 16]</span></div>
+          <div class="dl-field-desc">UUID / ULID identifier</div>
         </div>
         <div class="dl-field dl-field-blue">
-          <div class="dl-field-label">fiber_id (16B)</div>
-          <div class="dl-field-val"><code>0xAA.. [Fiber A]</code></div>
-          <div class="dl-field-desc">Aggregate Stream ID</div>
+          <div class="dl-field-label">+0x10..+0x1F · fiber_id (16B)</div>
+          <div class="dl-field-val"><code>0xAA.. [Fiber A]</code> <span class="dl-field-hex">[u8; 16]</span></div>
+          <div class="dl-field-desc">Aggregate stream identifier</div>
         </div>
         <div class="dl-field dl-field-slate">
-          <div class="dl-field-label">detached (1B)</div>
-          <div class="dl-field-val"><code>0x00</code> (Active)</div>
-          <div class="dl-field-desc">Lifecycle status flag</div>
+          <div class="dl-field-label">+0x20 · detached (1B)</div>
+          <div class="dl-field-val"><code>0x00</code> <span class="dl-field-hex">u8</span></div>
+          <div class="dl-field-desc">0x00 active, 0x01 detached</div>
         </div>
-        <div class="dl-field dl-field-green">
-          <div class="dl-field-label">precursor (16B)</div>
-          <div class="dl-field-val"><code>[0u8; 16]</code></div>
-          <div class="dl-field-desc">Root Genesis (Null Pointer)</div>
+        <div class="dl-field dl-field-blue">
+          <div class="dl-field-label">+0x21..+0x30 · precursor (16B)</div>
+          <div class="dl-field-val"><code>[0u8; 16]</code> <span class="dl-field-hex">[u8; 16]</span></div>
+          <div class="dl-field-desc">All zeroes for genesis root</div>
         </div>
-        <div class="dl-field dl-field-green">
-          <div class="dl-field-label">precursor_hash (32B)</div>
-          <div class="dl-field-val"><code>[0u8; 32]</code></div>
-          <div class="dl-field-desc">Root Genesis (Zero Hash)</div>
+        <div class="dl-field dl-field-blue">
+          <div class="dl-field-label">+0x31..+0x50 · precursor_hash (32B)</div>
+          <div class="dl-field-val"><code>[0u8; 32]</code> <span class="dl-field-hex">[u8; 32]</span></div>
+          <div class="dl-field-desc">All zeroes for genesis root</div>
         </div>
       </div>
       <div class="dl-section-label">Domain Event Payload (N₀ Bytes)</div>
       <div class="dl-grid-2">
         <div class="dl-field dl-field-purple">
-          <div class="dl-field-label">payload_length_0 (4B)</div>
-          <div class="dl-field-val"><code>u32 LE</code> <span class="dl-field-hex">N₀</span></div>
-          <div class="dl-field-desc">32-bit integer length of Genesis payload</div>
+          <div class="dl-field-label">+0x51..+0x54 · payload_length_0 (4B)</div>
+          <div class="dl-field-val"><code>u32 LE = N₀</code> <span class="dl-field-hex">u32 LE</span></div>
+          <div class="dl-field-desc">Byte length of Genesis payload</div>
         </div>
         <div class="dl-field dl-field-purple">
-          <div class="dl-field-label">payload_bytes (N₀ B)</div>
-          <div class="dl-field-val"><code>GenesisState</code></div>
-          <div class="dl-field-desc">Initial state machine admission payload</div>
+          <div class="dl-field-label">+0x55 .. +0x55 + N₀ - 1 · payload_bytes (N₀ B)</div>
+          <div class="dl-field-val"><code>GenesisState</code> <span class="dl-field-hex">[u8; N₀]</span></div>
+          <div class="dl-field-desc">Initial state machine payload</div>
         </div>
       </div>
     </div>
-    <!-- Bottom Badge: Physical Rolling Digest H0 -->
-    <div class="dl-digest-badge dl-digest-slate">
-      <div class="dl-digest-title">
-        <span class="dl-tag dl-tag-green">H₀</span>
-        <strong>Physical Rolling Digest H₀ (32B):</strong>
-        <code>BLAKE3(Frame 0)</code>
-      </div>
-      <div class="dl-digest-desc">Base container commitment for sequential tamper-evidence</div>
+    <div class="dl-section-label">Physical Framing Trailer (4 Bytes Checksum)</div>
+    <div class="dl-field dl-field-slate">
+      <div class="dl-field-label">Offset 0x10 + 85 + N₀ .. 0x13 + 85 + N₀ · crc32c (4 Bytes)</div>
+      <div class="dl-field-val"><code>Castagnoli</code> <span class="dl-field-hex">u32 LE (IEEE 802.3 / SSE4.2)</span></div>
+      <div class="dl-field-desc">Hardware checksum over Envelope 0 payload bytes</div>
     </div>
   </div>
-  <!-- Inter-Frame Connector Block -->
-  <div class="dl-connector-block">
-    <div class="dl-connector-header">
-      <span class="dl-connector-title">Inter-Frame Linkages &amp; Transitions</span>
-      <span class="dl-connector-subtitle">Append progression, causal binding &amp; tamper verification</span>
-    </div>
-    <div class="dl-connector-grid">
-      <div class="dl-conn-card dl-conn-physical">
-        <div class="dl-conn-num">1</div>
-        <div class="dl-conn-content">
-          <div class="dl-conn-label">Physical Sequential Append</div>
-          <div class="dl-conn-detail">Offset: <code>0x0C + L₀ + 8</code></div>
-          <div class="dl-conn-desc">Advances past Frame 0 framing (8B) and envelope payload (L₀ bytes)</div>
-        </div>
-      </div>
-      <div class="dl-conn-card dl-conn-logical">
-        <div class="dl-conn-num">2</div>
-        <div class="dl-conn-content">
-          <div class="dl-conn-label">Logical Precursor Link</div>
-          <div class="dl-conn-detail">Points to <code>E0 [0x01..]</code></div>
-          <div class="dl-conn-desc">Enforces single-writer linearizability on Fiber A via CAS head check</div>
-        </div>
-      </div>
-      <div class="dl-conn-card dl-conn-causal">
-        <div class="dl-conn-num">3</div>
-        <div class="dl-conn-content">
-          <div class="dl-conn-label">Causal Commitment (Invariant C5.40)</div>
-          <div class="dl-conn-detail"><code>BLAKE3(Envelope 0)</code></div>
-          <div class="dl-conn-desc">Cryptographic parent commitment prevents silent aggregate history rewrite</div>
-        </div>
-      </div>
-      <div class="dl-conn-card dl-conn-rolling">
-        <div class="dl-conn-num">4</div>
-        <div class="dl-conn-content">
-          <div class="dl-conn-label">Physical Rolling Fold (Invariant C5.26)</div>
-          <div class="dl-conn-detail"><code>BLAKE3(H₀ ∥ Frame 1)</code></div>
-          <div class="dl-conn-desc">Sequential tamper-evidence accumulated across all physical frames</div>
-        </div>
-      </div>
-    </div>
-    <div class="dl-flow-arrow">
-      <div class="dl-arrow-line"></div>
-      <div class="dl-arrow-head">▼</div>
-    </div>
+  <!-- Contiguous On-Disk Boundary -->
+  <div class="dl-flow-arrow">
+    <div class="dl-arrow-line"></div>
+    <div class="dl-arrow-badge">Contiguous On-Disk Append · Zero Padding · Offset: 0x0C + L₀ + 8</div>
+    <div class="dl-arrow-head">▼</div>
   </div>
   <!-- FRAME 1 -->
   <div class="dl-card dl-card-frame">
@@ -1589,80 +1342,70 @@ Pardosa separates line state into an artefact pair on disk:
         <span class="dl-tag dl-tag-slate">FRAME 1</span>
         <span class="dl-title">Offset 0x0C + L₀ + 8 · Event 1 : State Mutation on Fiber A</span>
       </div>
-      <span class="dl-tag dl-tag-emerald">Fiber A Mutation</span>
+      <span class="dl-tag dl-tag-blue">Fiber A Mutation</span>
     </div>
-    <div class="dl-section-label">Physical Framing (8 Bytes Framing Overhead)</div>
-    <div class="dl-grid-2">
-      <div class="dl-field dl-field-slate">
-        <div class="dl-field-label">frame_length_1 (4B)</div>
-        <div class="dl-field-val"><code>u32 LE</code> <span class="dl-field-hex">81 + N₁ Bytes</span></div>
-        <div class="dl-field-desc">Byte length of enclosed Envelope 1 payload</div>
-      </div>
-      <div class="dl-field dl-field-slate">
-        <div class="dl-field-label">CRC32C Checksum (4B)</div>
-        <div class="dl-field-val"><code>Castagnoli (SSE4.2)</code> <span class="dl-field-hex">IEEE 802.3</span></div>
-        <div class="dl-field-desc">Hardware checksum detecting torn writes and disk bit-rot</div>
-      </div>
+    <div class="dl-section-label">Physical Framing Prefix (4 Bytes)</div>
+    <div class="dl-field dl-field-slate">
+      <div class="dl-field-label">Offset +0x00..+0x03 (0x0C + L₀ + 8 .. 0x0F + L₀ + 8) · frame_length_1 (4 Bytes)</div>
+      <div class="dl-field-val"><code>u32 LE = 85 + N₁</code> <span class="dl-field-hex">[0x51 + N₁, 0x00, 0x00, 0x00]</span></div>
+      <div class="dl-field-desc">Byte length of enclosed Envelope 1 payload (u32 LE)</div>
     </div>
     <!-- Inner Envelope 1 Card (Strictly Contained) -->
     <div class="dl-card dl-card-envelope">
       <div class="dl-card-title-bar">
         <div class="dl-title-group">
           <span class="dl-tag dl-tag-blue">Envelope 1</span>
-          <span class="dl-title">Fiber A State Mutation · Invariant C4.19</span>
+          <span class="dl-title">Offset +0x04 .. +0x04 + 85 + N₁ - 1 · Invariant C4.19</span>
         </div>
-        <span class="dl-tag dl-tag-purple">85 + payload_length_1 Bytes</span>
+        <span class="dl-tag dl-tag-purple">85 + N₁ Bytes</span>
       </div>
-      <div class="dl-section-label">EnvelopeHeader Fields (81 Bytes Fixed Layout)</div>
+      <div class="dl-section-label">Envelope Header (81 Bytes Fixed Layout)</div>
       <div class="dl-grid-envelope">
         <div class="dl-field dl-field-blue">
-          <div class="dl-field-label">event_id (16B)</div>
-          <div class="dl-field-val"><code>0x02.. [E1]</code></div>
-          <div class="dl-field-desc">UUID / ULID Identity</div>
+          <div class="dl-field-label">+0x00..+0x0F · event_id (16B)</div>
+          <div class="dl-field-val"><code>0x02.. [E1]</code> <span class="dl-field-hex">[u8; 16]</span></div>
+          <div class="dl-field-desc">UUID / ULID identifier</div>
         </div>
         <div class="dl-field dl-field-blue">
-          <div class="dl-field-label">fiber_id (16B)</div>
-          <div class="dl-field-val"><code>0xAA.. [Fiber A]</code></div>
-          <div class="dl-field-desc">Aggregate Stream ID</div>
+          <div class="dl-field-label">+0x10..+0x1F · fiber_id (16B)</div>
+          <div class="dl-field-val"><code>0xAA.. [Fiber A]</code> <span class="dl-field-hex">[u8; 16]</span></div>
+          <div class="dl-field-desc">Aggregate stream identifier</div>
         </div>
         <div class="dl-field dl-field-slate">
-          <div class="dl-field-label">detached (1B)</div>
-          <div class="dl-field-val"><code>0x00</code> (Active)</div>
-          <div class="dl-field-desc">Lifecycle status flag</div>
+          <div class="dl-field-label">+0x20 · detached (1B)</div>
+          <div class="dl-field-val"><code>0x00</code> <span class="dl-field-hex">u8</span></div>
+          <div class="dl-field-desc">0x00 active, 0x01 detached</div>
         </div>
-        <div class="dl-field dl-field-emerald-highlight">
-          <div class="dl-field-label dl-emerald-label">precursor (16B) · Link</div>
-          <div class="dl-field-val"><code>0x01.. [E0]</code></div>
-          <div class="dl-field-desc dl-emerald-desc">Points to E0 (Linear predecessor)</div>
+        <div class="dl-field dl-field-blue">
+          <div class="dl-field-label">+0x21..+0x30 · precursor (16B)</div>
+          <div class="dl-field-val"><code>0x01.. [E0]</code> <span class="dl-field-hex">[u8; 16]</span></div>
+          <div class="dl-field-desc">Preceding event_id on fiber</div>
         </div>
-        <div class="dl-field dl-field-emerald-highlight">
-          <div class="dl-field-label dl-emerald-label">precursor_hash (32B) · Causal</div>
-          <div class="dl-field-val"><code>BLAKE3(Envelope 0)</code></div>
-          <div class="dl-field-desc dl-emerald-desc">Cryptographic parent commitment</div>
+        <div class="dl-field dl-field-blue">
+          <div class="dl-field-label">+0x31..+0x50 · precursor_hash (32B)</div>
+          <div class="dl-field-val"><code>BLAKE3(Envelope 0)</code> <span class="dl-field-hex">[u8; 32]</span></div>
+          <div class="dl-field-desc">Cryptographic digest of precursor envelope</div>
         </div>
       </div>
       <div class="dl-section-label">Domain Event Payload (N₁ Bytes)</div>
       <div class="dl-grid-2">
         <div class="dl-field dl-field-purple">
-          <div class="dl-field-label">payload_length_1 (4B)</div>
-          <div class="dl-field-val"><code>u32 LE</code> <span class="dl-field-hex">N₁</span></div>
-          <div class="dl-field-desc">32-bit integer length of Mutation payload</div>
+          <div class="dl-field-label">+0x51..+0x54 · payload_length_1 (4B)</div>
+          <div class="dl-field-val"><code>u32 LE = N₁</code> <span class="dl-field-hex">u32 LE</span></div>
+          <div class="dl-field-desc">Byte length of Mutation payload</div>
         </div>
         <div class="dl-field dl-field-purple">
-          <div class="dl-field-label">payload_bytes (N₁ B)</div>
-          <div class="dl-field-val"><code>AccountUpdated</code></div>
+          <div class="dl-field-label">+0x55 .. +0x55 + N₁ - 1 · payload_bytes (N₁ B)</div>
+          <div class="dl-field-val"><code>AccountUpdated</code> <span class="dl-field-hex">[u8; N₁]</span></div>
           <div class="dl-field-desc">Committed state transition payload</div>
         </div>
       </div>
     </div>
-    <!-- Bottom Badge: Physical Rolling Digest H1 (Emerald Highlighted) -->
-    <div class="dl-digest-badge dl-digest-emerald">
-      <div class="dl-digest-title">
-        <span class="dl-tag dl-tag-emerald">H₁</span>
-        <strong>Physical Rolling Digest H₁ (32B):</strong>
-        <code>BLAKE3(H₀ ∥ Frame 1)</code>
-      </div>
-      <div class="dl-digest-desc">Sequential Tamper-Evidence (Invariant C5.26) · Folded sequentially across frames</div>
+    <div class="dl-section-label">Physical Framing Trailer (4 Bytes Checksum)</div>
+    <div class="dl-field dl-field-slate">
+      <div class="dl-field-label">Offset +0x04 + 85 + N₁ .. +0x07 + 85 + N₁ · crc32c (4 Bytes)</div>
+      <div class="dl-field-val"><code>Castagnoli</code> <span class="dl-field-hex">u32 LE (IEEE 802.3 / SSE4.2)</span></div>
+      <div class="dl-field-desc">Hardware checksum over Envelope 1 payload bytes</div>
     </div>
   </div>
 </div>

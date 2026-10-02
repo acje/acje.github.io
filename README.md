@@ -20,6 +20,8 @@ being updated.
 
 ## Links
 
+- [Visual spacing authoring reference](docs/editorial/visual-spacing.md)
+
 - https://gohugo.io/host-and-deploy/host-on-github-pages/
 - https://themes.gohugo.io/
 - https://themes.gohugo.io/themes/hugo-book/

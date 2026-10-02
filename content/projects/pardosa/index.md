@@ -7,9 +7,9 @@ homeFeatured: true
 
 ## Pardosa: Event-Driven Storage with Fiber Semantics
 
-Modern distributed applications increasingly adopt Event-Driven Architecture (EDA) to decouple services and scale ingestion. However, when complex enterprise systems migrate to event sourcing, they frequently run into severe correctness hazards: split-brain concurrent mutations, silent aggregate state corruption, and the architectural inability to satisfy legal deletion mandates (such as GDPR "right to be forgotten") without corrupting immutable event histories.
+Event-sourced applications need reliable entity histories, independent consumers, and a way to remove selected histories without corrupting the rest.
 
-`Pardosa` is an append-only event-driven storage engine implemented in Rust, built specifically upon the principles of **Fiber Semantics**. It is designed for enterprise domains where **correctness, strict auditability, and deterministic deletion policies matter far more than raw ingestion volume**. Pardosa guarantees per-aggregate linearizability and single-writer fencing, backed by a formal 5-state lifecycle state machine.
+`Pardosa` is an append-only event-driven storage engine implemented in Rust, built upon **Fiber Semantics**. It prioritizes **correctness, auditability, and controlled deletion over raw ingestion volume**, with per-fiber concurrency control and a five-state lifecycle.
 
 <div class="pardosa-architecture-diagram" style="margin: 2rem 0; padding: 1.5rem 1rem; border-radius: 0.75rem; border: 1px solid var(--gray-200, #e2e8f0); background: var(--body-background, #ffffff); overflow-x: auto;">
 <svg id="architecture-diagram" viewBox="0 0 1020 370" width="100%" height="auto" style="display: block; min-width: 780px; max-width: 1020px; margin: 0 auto; overflow: visible;">
@@ -241,12 +241,7 @@ Modern distributed applications increasingly adopt Event-Driven Architecture (ED
 
 ## Domain State Governance & Verifiable Deletion
 
-High-integrity enterprise applications require event storage that enforces two foundational invariants:
-
-1. **Domain State Governance**: In enterprise systems, business entities transition through structured lifecycles governed by formal domain rules. Without aggregate-level fencing and state-transition admission control, concurrent mutations risk overwriting entity state and committing illegal transitions. Pardosa enforces first-class aggregate fencing and deterministic lifecycle admission directly at the storage boundary, guaranteeing that every committed event represents a validated, sequential state transition for that specific entity.
-2. **The Immutability vs. Deletion Paradox**: Event-sourced systems require immutable historical streams for auditability, replayability, and provenance. However, regulated enterprises operate under strict legal mandates (such as GDPR Article 17, healthcare data privacy standards, and statutory retention expirations) requiring verifiable, physical data deletion. Traditional workarounds—such as breaking audit trails via out-of-band record patching, or encrypting payloads and discarding keys (crypto-shredding)—leave metadata exposed, historical commitments unverifiable, and physical storage un-reclaimed.
-
-Pardosa resolves this tension by separating physical append-only container files (**draglines**) from aggregate lifecycle governance (**fibers**) and introducing cryptographically auditable, verifiable **line migrations**.
+Immutable histories support replay and audit, but retention policies may require selected histories to be removed. Pardosa separates entity lifecycle governance (**fibers**) from physical append-only files (**draglines**): lifecycle rules control which operations are admitted, and **line migrations** remove selected histories while retaining the others. This is a storage mechanism, not a universal legal-compliance guarantee; separate audit storage remains a separate retention boundary.
 
 ---
 
@@ -255,7 +250,7 @@ Pardosa resolves this tension by separating physical append-only container files
 In Fiber Semantics, the lifecycle history of each domain entity is modeled as an independent **fiber**:
 
 - **Definition**: A fiber is a singly linked list of immutable events belonging to a unique, domain-scoped identifier (`fiber_id`).
-- **Chain Topology**: Rather than storing events in a forward array that must be rewritten on mutation, each event in a fiber explicitly references its immediate predecessor through a `precursor` pointer (a 16-byte predecessor event ID and a 32-byte BLAKE3 precursor hash).
+- **Chain Topology**: Each event references its immediate predecessor through a `precursor` identifier and hash, linking the entity's history independently of other fibers.
 - **Head-Anchored Traversal**: The active state of a fiber is always anchored at its newest event (the head). Reading an entity's current state requires inspecting only the head; traversing backward reconstructs historical state transitions without requiring full-log scans.
 
 ---
@@ -830,41 +825,8 @@ Pardosa separates line state into an artefact pair on disk:
     --cp-bg: #ffffff;
     --cp-text: #0f172a;
     --cp-text-muted: #475569;
-    --cp-code-bg: rgba(15, 23, 42, 0.06);
-    --cp-code-text: #0f172a;
-
     --cp-slate-border: #64748b;
-    --cp-slate-bg: rgba(100, 116, 139, 0.05);
-    --cp-slate-tag-bg: #475569;
-    --cp-slate-tag-text: #ffffff;
-
     --cp-blue-border: #2563eb;
-    --cp-blue-bg: rgba(37, 99, 235, 0.04);
-    --cp-blue-tag-bg: #1d4ed8;
-    --cp-blue-tag-text: #ffffff;
-
-    --cp-purple-border: #7c3aed;
-    --cp-purple-bg: rgba(124, 58, 237, 0.04);
-    --cp-purple-tag-bg: #6d28d9;
-    --cp-purple-tag-text: #ffffff;
-
-    --cp-green-border: #059669;
-    --cp-green-bg: rgba(5, 150, 105, 0.06);
-    --cp-green-tag-bg: #047857;
-    --cp-green-tag-text: #ffffff;
-
-    --cp-cyan-border: #0891b2;
-    --cp-cyan-bg: rgba(8, 145, 178, 0.05);
-    --cp-cyan-tag-bg: #0e7490;
-    --cp-cyan-tag-text: #ffffff;
-
-    --cp-amber-border: #d97706;
-    --cp-amber-bg: rgba(217, 119, 6, 0.05);
-    --cp-amber-tag-bg: #b45309;
-    --cp-amber-tag-text: #ffffff;
-
-    --cp-connector-bg: rgba(241, 245, 249, 0.95);
-    --cp-connector-border: #cbd5e1;
 
     box-sizing: border-box;
     width: 100%;
@@ -878,7 +840,7 @@ Pardosa separates line state into an artefact pair on disk:
     font-size: 0.875rem;
     line-height: 1.5;
     color: var(--cp-text);
-    overflow-x: hidden;
+    overflow-wrap: anywhere;
   }
 
   :root[data-theme="dark"] .consumer-proj-container,
@@ -886,41 +848,8 @@ Pardosa separates line state into an artefact pair on disk:
     --cp-bg: #0f172a;
     --cp-text: #f1f5f9;
     --cp-text-muted: #94a3b8;
-    --cp-code-bg: rgba(0, 0, 0, 0.4);
-    --cp-code-text: #f8fafc;
-
     --cp-slate-border: #64748b;
-    --cp-slate-bg: rgba(100, 116, 139, 0.15);
-    --cp-slate-tag-bg: #334155;
-    --cp-slate-tag-text: #f8fafc;
-
     --cp-blue-border: #3b82f6;
-    --cp-blue-bg: rgba(59, 130, 246, 0.12);
-    --cp-blue-tag-bg: #1d4ed8;
-    --cp-blue-tag-text: #eff6ff;
-
-    --cp-purple-border: #8b5cf6;
-    --cp-purple-bg: rgba(139, 92, 246, 0.12);
-    --cp-purple-tag-bg: #5b21b6;
-    --cp-purple-tag-text: #f5f3ff;
-
-    --cp-green-border: #10b981;
-    --cp-green-bg: rgba(16, 185, 129, 0.12);
-    --cp-green-tag-bg: #065f46;
-    --cp-green-tag-text: #ecfdf5;
-
-    --cp-cyan-border: #06b6d4;
-    --cp-cyan-bg: rgba(6, 182, 212, 0.12);
-    --cp-cyan-tag-bg: #0e7490;
-    --cp-cyan-tag-text: #ecfeff;
-
-    --cp-amber-border: #f59e0b;
-    --cp-amber-bg: rgba(245, 158, 11, 0.12);
-    --cp-amber-tag-bg: #92400e;
-    --cp-amber-tag-text: #fef3c7;
-
-    --cp-connector-bg: rgba(30, 41, 59, 0.9);
-    --cp-connector-border: #475569;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -929,41 +858,8 @@ Pardosa separates line state into an artefact pair on disk:
       --cp-bg: #0f172a;
       --cp-text: #f1f5f9;
       --cp-text-muted: #94a3b8;
-      --cp-code-bg: rgba(0, 0, 0, 0.4);
-      --cp-code-text: #f8fafc;
-
       --cp-slate-border: #64748b;
-      --cp-slate-bg: rgba(100, 116, 139, 0.15);
-      --cp-slate-tag-bg: #334155;
-      --cp-slate-tag-text: #f8fafc;
-
       --cp-blue-border: #3b82f6;
-      --cp-blue-bg: rgba(59, 130, 246, 0.12);
-      --cp-blue-tag-bg: #1d4ed8;
-      --cp-blue-tag-text: #eff6ff;
-
-      --cp-purple-border: #8b5cf6;
-      --cp-purple-bg: rgba(139, 92, 246, 0.12);
-      --cp-purple-tag-bg: #5b21b6;
-      --cp-purple-tag-text: #f5f3ff;
-
-      --cp-green-border: #10b981;
-      --cp-green-bg: rgba(16, 185, 129, 0.12);
-      --cp-green-tag-bg: #065f46;
-      --cp-green-tag-text: #ecfdf5;
-
-      --cp-cyan-border: #06b6d4;
-      --cp-cyan-bg: rgba(6, 182, 212, 0.12);
-      --cp-cyan-tag-bg: #0e7490;
-      --cp-cyan-tag-text: #ecfeff;
-
-      --cp-amber-border: #f59e0b;
-      --cp-amber-bg: rgba(245, 158, 11, 0.12);
-      --cp-amber-tag-bg: #92400e;
-      --cp-amber-tag-text: #fef3c7;
-
-      --cp-connector-bg: rgba(30, 41, 59, 0.9);
-      --cp-connector-border: #475569;
     }
   }
 
@@ -971,258 +867,87 @@ Pardosa separates line state into an artefact pair on disk:
     box-sizing: border-box;
   }
 
-  .cp-card {
-    border-radius: 8px;
+  .consumer-proj-container h3 {
+    margin: 0 0 .5rem;
+    font-size: 1rem;
+    color: var(--cp-text);
+  }
+
+  .consumer-proj-container p {
+    margin: 0 0 .75rem;
+    color: var(--cp-text-muted);
+  }
+
+  .consumer-proj-container a {
+    color: var(--cp-blue-border);
+    text-decoration: underline;
+  }
+
+  .consumer-proj-container code {
+    padding: 0;
+    background: transparent;
+    color: var(--cp-text);
+    font-size: .8125rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .consumer-proj-container .cp-layer {
     padding: 1rem;
-    margin-bottom: 0.75rem;
-    background: var(--cp-bg);
-    border: 1.5px solid var(--cp-slate-border);
-    transition: border-color 0.2s ease;
-    min-width: 0;
-  }
-
-  .cp-card-blue { border-color: var(--cp-blue-border); background: var(--cp-blue-bg); }
-  .cp-card-green { border-color: var(--cp-green-border); background: var(--cp-green-bg); }
-  .cp-card-purple { border-color: var(--cp-purple-border); background: var(--cp-purple-bg); }
-  .cp-card-cyan { border-color: var(--cp-cyan-border); background: var(--cp-cyan-bg); }
-  .cp-card-amber { border-color: var(--cp-amber-border); background: var(--cp-amber-bg); }
-
-  .cp-card-title-bar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(100, 116, 139, 0.2);
-  }
-
-  .cp-title-group {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    min-width: 0;
-  }
-
-  .cp-title {
-    font-weight: 600;
-    font-size: 0.9375rem;
-    color: var(--cp-text);
-  }
-
-  .cp-tag {
-    display: inline-block;
-    padding: 0.15rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.025em;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  .cp-tag-slate { background: var(--cp-slate-tag-bg); color: var(--cp-slate-tag-text); }
-  .cp-tag-blue { background: var(--cp-blue-tag-bg); color: var(--cp-blue-tag-text); }
-  .cp-tag-green { background: var(--cp-green-tag-bg); color: var(--cp-green-tag-text); }
-  .cp-tag-purple { background: var(--cp-purple-tag-bg); color: var(--cp-purple-tag-text); }
-  .cp-tag-cyan { background: var(--cp-cyan-tag-bg); color: var(--cp-cyan-tag-text); }
-  .cp-tag-amber { background: var(--cp-amber-tag-bg); color: var(--cp-amber-tag-text); }
-
-  .cp-section-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--cp-text-muted);
-    margin: 0.625rem 0 0.375rem 0;
-  }
-
-  .cp-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 0.75rem;
-  }
-
-  .cp-grid-2 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 0.75rem;
-  }
-
-  .cp-stack-compact {
-    display: flex;
-    flex-direction: column;
-    gap: 0.625rem;
-  }
-
-  .cp-field {
+    border: 1px solid var(--cp-slate-border);
     border-radius: 6px;
-    padding: 0.625rem 0.75rem;
-    border: 1px solid rgba(100, 116, 139, 0.25);
-    background: var(--cp-bg);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-width: 0;
   }
 
-  .cp-field-slate { border-left: 3.5px solid var(--cp-slate-border); }
-  .cp-field-blue { border-left: 3.5px solid var(--cp-blue-border); }
-  .cp-field-green { border-left: 3.5px solid var(--cp-green-border); }
-  .cp-field-purple { border-left: 3.5px solid var(--cp-purple-border); }
-  .cp-field-cyan { border-left: 3.5px solid var(--cp-cyan-border); }
-  .cp-field-amber { border-left: 3.5px solid var(--cp-amber-border); }
-
-  .cp-field-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--cp-text-muted);
-    margin-bottom: 0.25rem;
+  .consumer-proj-container .cp-layer + .cp-layer {
+    margin-top: .75rem;
   }
 
-  .cp-field-val {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0.375rem;
+  .consumer-proj-container h4 {
+    margin: 0 0 .5rem;
+    font-size: .875rem;
     color: var(--cp-text);
   }
 
-  .cp-field-val code {
-    background: var(--cp-code-bg);
-    color: var(--cp-code-text);
-    padding: 0.15rem 0.35rem;
-    border-radius: 3px;
-    font-size: 0.8125rem;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    word-break: break-all;
-    overflow-wrap: break-word;
+  .consumer-proj-container .cp-facts,
+  .consumer-proj-container .cp-paths {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .75rem;
+    margin: 0 0 .75rem;
   }
 
-  .cp-field-desc {
-    font-size: 0.72rem;
-    color: var(--cp-text-muted);
-    line-height: 1.35;
-  }
-
-  .cp-connector-block {
-    background: var(--cp-connector-bg);
-    border: 1.5px dashed var(--cp-connector-border);
-    border-radius: 8px;
+  .consumer-proj-container .cp-fact,
+  .consumer-proj-container .cp-path {
+    min-width: 0;
     padding: 1rem;
-    margin: 1rem 0;
-    min-width: 0;
-  }
-
-  .cp-connector-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--cp-connector-border);
-  }
-
-  .cp-connector-title {
-    font-weight: 700;
-    font-size: 0.8125rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--cp-text);
-  }
-
-  .cp-connector-subtitle {
-    font-size: 0.75rem;
-    color: var(--cp-text-muted);
-  }
-
-  .cp-connector-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 0.75rem;
-  }
-
-  .cp-conn-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.625rem;
-    padding: 0.625rem;
+    border: 1px solid var(--cp-slate-border);
     border-radius: 6px;
-    background: var(--cp-bg);
-    border: 1px solid rgba(100, 116, 139, 0.2);
-    min-width: 0;
   }
 
-  .cp-conn-num {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    font-size: 0.72rem;
-    font-weight: 700;
-    flex-shrink: 0;
+  .consumer-proj-container ol {
+    padding-left: 1.25rem;
+    margin: 0 0 .75rem;
   }
 
-  .cp-num-blue { background: var(--cp-blue-tag-bg); color: #ffffff; }
-  .cp-num-green { background: var(--cp-green-tag-bg); color: #ffffff; }
-  .cp-num-purple { background: var(--cp-purple-tag-bg); color: #ffffff; }
-  .cp-num-cyan { background: var(--cp-cyan-tag-bg); color: #ffffff; }
-
-  .cp-conn-content {
-    min-width: 0;
-    flex: 1;
+  .consumer-proj-container li + li {
+    margin-top: .75rem;
   }
 
-  .cp-conn-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--cp-text);
-    margin-bottom: 0.15rem;
-  }
-
-  .cp-conn-detail {
-    font-size: 0.75rem;
-    margin-bottom: 0.25rem;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.25rem;
-  }
-
-  .cp-conn-detail code {
-    background: var(--cp-code-bg);
-    color: var(--cp-code-text);
-    padding: 0.1rem 0.3rem;
-    border-radius: 3px;
-    font-size: 0.72rem;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  }
-
-  .cp-conn-desc {
-    font-size: 0.7rem;
-    color: var(--cp-text-muted);
-    line-height: 1.35;
+  .consumer-proj-container .cp-layer p:last-child,
+  .consumer-proj-container .cp-path p:last-child {
+    margin-bottom: 0;
   }
 
   @media (max-width: 640px) {
-    .cp-grid-3 {
+    .consumer-proj-container .cp-facts,
+    .consumer-proj-container .cp-paths {
       grid-template-columns: 1fr;
     }
-    .cp-grid-2 {
-      grid-template-columns: 1fr;
-    }
-    .cp-connector-grid {
-      grid-template-columns: 1fr;
-    }
+  }
+
+  .consumer-proj-container .cp-result {
+    color: var(--cp-blue-border);
+    font-weight: 600;
   }
 
 </style>
@@ -1232,20 +957,20 @@ Pardosa separates line state into an artefact pair on disk:
   <div class="dl-card dl-card-header">
     <div class="dl-card-title-bar">
       <div class="dl-title-group">
-        <span class="dl-tag dl-tag-slate">Offset 0x0000..0x000B · 12 Bytes</span>
+        <span class="dl-tag dl-tag-slate">Format Identity</span>
         <span class="dl-title">Container Header · Storage Format Identity</span>
       </div>
       <span class="dl-tag dl-tag-slate">Immutable Prefix</span>
     </div>
     <div class="dl-grid-2">
       <div class="dl-field dl-field-slate">
-        <div class="dl-field-label">magic (8B)</div>
-        <div class="dl-field-val"><code>PARDOSA\x01</code></div>
+        <div class="dl-field-label">Engine signature</div>
+        <div class="dl-field-val"><code>PARDOSA</code></div>
         <div class="dl-field-desc">Immutable engine signature</div>
       </div>
       <div class="dl-field dl-field-slate">
-        <div class="dl-field-label">version (4B)</div>
-        <div class="dl-field-val"><code>1 LE</code></div>
+        <div class="dl-field-label">Format version</div>
+        <div class="dl-field-val"><code>1</code></div>
         <div class="dl-field-desc">Format version</div>
       </div>
     </div>
@@ -1253,7 +978,7 @@ Pardosa separates line state into an artefact pair on disk:
   <!-- Flow Boundary: Container Header to Frame 0 -->
   <div class="dl-flow-arrow">
     <div class="dl-arrow-line"></div>
-    <div class="dl-arrow-badge">Initial Append Boundary: Offset 0x0C</div>
+    <div class="dl-arrow-badge">Events follow the container header</div>
     <div class="dl-arrow-head">▼</div>
   </div>
   <!-- FRAME 0 -->
@@ -1261,14 +986,14 @@ Pardosa separates line state into an artefact pair on disk:
     <div class="dl-card-title-bar">
       <div class="dl-title-group">
         <span class="dl-tag dl-tag-slate">FRAME 0</span>
-        <span class="dl-title">Offset 0x0C · Event 0 : Genesis on Fiber A</span>
+        <span class="dl-title">Event 0 : Genesis on Fiber A</span>
       </div>
       <span class="dl-tag dl-tag-blue">Genesis Root</span>
     </div>
-    <div class="dl-section-label">Physical Framing Prefix (4 Bytes)</div>
+    <div class="dl-section-label">Record Boundary</div>
     <div class="dl-field dl-field-slate">
-      <div class="dl-field-label">frame_length (4B)</div>
-      <div class="dl-field-val"><code>85 + N₀</code></div>
+      <div class="dl-field-label">Record length</div>
+      <div class="dl-field-val"><code>Envelope size</code></div>
       <div class="dl-field-desc">Enclosed envelope byte length</div>
     </div>
     <!-- Inner Envelope 0 Card (Strictly Contained) -->
@@ -1276,63 +1001,63 @@ Pardosa separates line state into an artefact pair on disk:
       <div class="dl-card-title-bar">
         <div class="dl-title-group">
           <span class="dl-tag dl-tag-blue">Envelope 0</span>
-          <span class="dl-title">Envelope 0 (85 + N₀ Bytes)</span>
+          <span class="dl-title">Envelope 0 · Event and Entity</span>
         </div>
-        <span class="dl-tag dl-tag-purple">85 + N₀ Bytes</span>
+        <span class="dl-tag dl-tag-purple">Domain Fact</span>
       </div>
-      <div class="dl-section-label">Envelope Header (81 Bytes Fixed Layout)</div>
+      <div class="dl-section-label">Identity and History Links</div>
       <div class="dl-grid-envelope">
         <div class="dl-field dl-field-blue">
-          <div class="dl-field-label">event_id (16B)</div>
+          <div class="dl-field-label">Event identity</div>
           <div class="dl-field-val"><code>E0</code></div>
           <div class="dl-field-desc">UUID / ULID identifier</div>
         </div>
         <div class="dl-field dl-field-blue">
-          <div class="dl-field-label">fiber_id (16B)</div>
+          <div class="dl-field-label">Entity identity</div>
           <div class="dl-field-val"><code>Fiber A</code></div>
           <div class="dl-field-desc">Aggregate stream identifier</div>
         </div>
         <div class="dl-field dl-field-slate">
-          <div class="dl-field-label">detached (1B)</div>
-          <div class="dl-field-val"><code>0x00</code></div>
-          <div class="dl-field-desc">Active (0x01 detached)</div>
+          <div class="dl-field-label">Attachment</div>
+          <div class="dl-field-val"><code>Attached</code></div>
+          <div class="dl-field-desc">Lifecycle marker</div>
         </div>
         <div class="dl-field dl-field-blue">
-          <div class="dl-field-label">precursor (16B)</div>
-          <div class="dl-field-val"><code>0x00..</code></div>
-          <div class="dl-field-desc">All zeroes for genesis root</div>
+          <div class="dl-field-label">Previous event</div>
+          <div class="dl-field-val"><code>No predecessor</code></div>
+          <div class="dl-field-desc">Genesis begins the fiber</div>
         </div>
         <div class="dl-field dl-field-blue">
-          <div class="dl-field-label">precursor_hash (32B)</div>
-          <div class="dl-field-val"><code>0x00..</code></div>
-          <div class="dl-field-desc">All zeroes for genesis root</div>
+          <div class="dl-field-label">Predecessor commitment</div>
+          <div class="dl-field-val"><code>Root marker</code></div>
+          <div class="dl-field-desc">No earlier event to verify</div>
         </div>
       </div>
-      <div class="dl-section-label">Domain Event Payload (N₀ Bytes)</div>
+      <div class="dl-section-label">Domain Event Payload</div>
       <div class="dl-grid-2">
         <div class="dl-field dl-field-purple">
-          <div class="dl-field-label">payload_length (4B)</div>
-          <div class="dl-field-val"><code>N₀</code></div>
+          <div class="dl-field-label">Payload length</div>
+          <div class="dl-field-val"><code>Fact size</code></div>
           <div class="dl-field-desc">Domain payload byte length</div>
         </div>
         <div class="dl-field dl-field-purple">
-          <div class="dl-field-label">payload_bytes (N₀ B)</div>
+          <div class="dl-field-label">Domain fact</div>
           <div class="dl-field-val"><code>GenesisState</code></div>
           <div class="dl-field-desc">State transition payload</div>
         </div>
       </div>
     </div>
-    <div class="dl-section-label">Physical Framing Trailer (4 Bytes Checksum)</div>
+    <div class="dl-section-label">Corruption Check</div>
     <div class="dl-field dl-field-slate">
-      <div class="dl-field-label">crc32c (4B)</div>
-      <div class="dl-field-val"><code>Castagnoli</code></div>
+      <div class="dl-field-label">Frame checksum</div>
+      <div class="dl-field-val"><code>CRC32C</code></div>
       <div class="dl-field-desc">Envelope payload checksum</div>
     </div>
   </div>
   <!-- Contiguous On-Disk Boundary -->
   <div class="dl-flow-arrow">
     <div class="dl-arrow-line"></div>
-    <div class="dl-arrow-badge">Contiguous On-Disk Append · Zero Padding · Offset: 0x0C + L₀ + 8</div>
+    <div class="dl-arrow-badge">Next event appends after the previous frame</div>
     <div class="dl-arrow-head">▼</div>
   </div>
   <!-- FRAME 1 -->
@@ -1340,14 +1065,14 @@ Pardosa separates line state into an artefact pair on disk:
     <div class="dl-card-title-bar">
       <div class="dl-title-group">
         <span class="dl-tag dl-tag-slate">FRAME 1</span>
-        <span class="dl-title">Offset 0x0C + L₀ + 8 · Event 1 : State Mutation on Fiber A</span>
+        <span class="dl-title">Event 1 : State Mutation on Fiber A</span>
       </div>
       <span class="dl-tag dl-tag-blue">Fiber A Mutation</span>
     </div>
-    <div class="dl-section-label">Physical Framing Prefix (4 Bytes)</div>
+    <div class="dl-section-label">Record Boundary</div>
     <div class="dl-field dl-field-slate">
-      <div class="dl-field-label">frame_length (4B)</div>
-      <div class="dl-field-val"><code>85 + N₁</code></div>
+      <div class="dl-field-label">Record length</div>
+      <div class="dl-field-val"><code>Envelope size</code></div>
       <div class="dl-field-desc">Enclosed envelope byte length</div>
     </div>
     <!-- Inner Envelope 1 Card (Strictly Contained) -->
@@ -1355,95 +1080,69 @@ Pardosa separates line state into an artefact pair on disk:
       <div class="dl-card-title-bar">
         <div class="dl-title-group">
           <span class="dl-tag dl-tag-blue">Envelope 1</span>
-          <span class="dl-title">Envelope 1 (85 + N₁ Bytes)</span>
+          <span class="dl-title">Envelope 1 · Event and Entity</span>
         </div>
-        <span class="dl-tag dl-tag-purple">85 + N₁ Bytes</span>
+        <span class="dl-tag dl-tag-purple">Domain Fact</span>
       </div>
-      <div class="dl-section-label">Envelope Header (81 Bytes Fixed Layout)</div>
+      <div class="dl-section-label">Identity and History Links</div>
       <div class="dl-grid-envelope">
         <div class="dl-field dl-field-blue">
-          <div class="dl-field-label">event_id (16B)</div>
+          <div class="dl-field-label">Event identity</div>
           <div class="dl-field-val"><code>E1</code></div>
           <div class="dl-field-desc">UUID / ULID identifier</div>
         </div>
         <div class="dl-field dl-field-blue">
-          <div class="dl-field-label">fiber_id (16B)</div>
+          <div class="dl-field-label">Entity identity</div>
           <div class="dl-field-val"><code>Fiber A</code></div>
           <div class="dl-field-desc">Aggregate stream identifier</div>
         </div>
         <div class="dl-field dl-field-slate">
-          <div class="dl-field-label">detached (1B)</div>
-          <div class="dl-field-val"><code>0x00</code></div>
-          <div class="dl-field-desc">Active (0x01 detached)</div>
+          <div class="dl-field-label">Attachment</div>
+          <div class="dl-field-val"><code>Attached</code></div>
+          <div class="dl-field-desc">Lifecycle marker</div>
         </div>
         <div class="dl-field dl-field-blue">
-          <div class="dl-field-label">precursor (16B)</div>
+          <div class="dl-field-label">Previous event</div>
           <div class="dl-field-val"><code>E0</code></div>
           <div class="dl-field-desc">Preceding event on fiber</div>
         </div>
         <div class="dl-field dl-field-blue">
-          <div class="dl-field-label">precursor_hash (32B)</div>
+          <div class="dl-field-label">Predecessor commitment</div>
           <div class="dl-field-val"><code>BLAKE3(Env 0)</code></div>
           <div class="dl-field-desc">Digest of precursor envelope</div>
         </div>
       </div>
-      <div class="dl-section-label">Domain Event Payload (N₁ Bytes)</div>
+      <div class="dl-section-label">Domain Event Payload</div>
       <div class="dl-grid-2">
         <div class="dl-field dl-field-purple">
-          <div class="dl-field-label">payload_length (4B)</div>
-          <div class="dl-field-val"><code>N₁</code></div>
+          <div class="dl-field-label">Payload length</div>
+          <div class="dl-field-val"><code>Fact size</code></div>
           <div class="dl-field-desc">Domain payload byte length</div>
         </div>
         <div class="dl-field dl-field-purple">
-          <div class="dl-field-label">payload_bytes (N₁ B)</div>
+          <div class="dl-field-label">Domain fact</div>
           <div class="dl-field-val"><code>AccountUpdated</code></div>
           <div class="dl-field-desc">State transition payload</div>
         </div>
       </div>
     </div>
-    <div class="dl-section-label">Physical Framing Trailer (4 Bytes Checksum)</div>
+    <div class="dl-section-label">Corruption Check</div>
     <div class="dl-field dl-field-slate">
-      <div class="dl-field-label">crc32c (4B)</div>
-      <div class="dl-field-val"><code>Castagnoli</code></div>
+      <div class="dl-field-label">Frame checksum</div>
+      <div class="dl-field-val"><code>CRC32C</code></div>
       <div class="dl-field-desc">Envelope payload checksum</div>
     </div>
   </div>
 </div>
 
-### 1. Container Header (12 Bytes)
-At file offset `0x00000000` of `<stem>.pgno`, the container header establishes format identity:
-- **Magic Bytes (`0x00..0x07`, 8 bytes)**: Fixed byte sequence `PARDOSA\x01` (`[0x50, 0x41, 0x52, 0x44, 0x4F, 0x53, 0x41, 0x01]`).
-- **Format Version (`0x08..0x0B`, 4 bytes)**: 32-bit little-endian integer (`1` = `0x01, 0x00, 0x00, 0x00`).
+The cards show why the layers exist: the **container header** identifies the format; **framing** delimits records and checks for corruption ([C3.4](https://github.com/acje/pardosa/blob/main/docs/spec/pardosa-1.0.md)); the **event envelope** identifies an event and its fiber, links its predecessor, and carries the domain payload ([C4.19](https://github.com/acje/pardosa/blob/main/docs/spec/pardosa-1.0.md)). Exact encodings belong in that specification, not in this overview.
 
-Any file lacking this 12-byte signature is rejected during container initialization.
-
-### 2. Frame Framing (Invariant C3.4)
-Every commit to the dragline is framed with length demarcations and hardware-accelerated checksums:
-- **Length Prefix (4 bytes)**: 32-bit little-endian unsigned integer declaring the byte length of the enclosed frame payload.
-- **Frame Payload (`frame_length` bytes)**: The unpadded event envelope.
-- **CRC32C Checksum (4 bytes)**: Castagnoli polynomial checksum (IEEE 802.3 / SSE4.2 CRC32C) computed over the frame payload bytes. Torn writes, truncated disk blocks, or silent disk bit-rot are detected prior to envelope parsing.
-
-### 3. Event Envelope Header (Invariant C4.19)
-The frame payload contains an unpadded, fixed 81-byte `EnvelopeHeader` followed by the domain event payload:
-
-| Field | Offset | Width | Type | Description |
-|---|---|---|---|---|
-| `event_id` | `0x00` | 16 bytes | `[u8; 16]` | Globally unique event identifier (UUID/ULID). |
-| `fiber_id` | `0x10` | 16 bytes | `[u8; 16]` | Scoped domain entity / aggregate identifier. |
-| `detached` | `0x20` | 1 byte | `bool` (`u8`) | Lifecycle flag: `0x00` = active, `0x01` = soft-deleted. |
-| `precursor` | `0x21` | 16 bytes | `[u8; 16]` | Predecessor `event_id` on this fiber (`[0u8; 16]` for root). |
-| `precursor_hash` | `0x31` | 32 bytes | `[u8; 32]` | 256-bit BLAKE3 cryptographic hash of precursor event. |
-| `payload_length` | `0x51` | 4 bytes | `u32` LE | Byte length $N$ of domain event payload. |
-| `payload_bytes` | `0x55` | $N$ bytes | `[u8; N]` | Serialized domain-specific event payload. |
-
-Total unpadded envelope length is exactly $81 + 4 + N = 85 + \text{payload\_length}$ bytes.
-
-### 4. Physical vs. Logical Cryptographic Commitments
+### Physical vs. Logical Cryptographic Commitments
 
 Pardosa maintains two complementary, orthogonal cryptographic chains:
 
 <div class="pardosa-crypto-diagram" style="margin: 2rem 0; padding: 1.5rem 1rem; border-radius: 0.75rem; border: 1px solid var(--gray-200, #e2e8f0); background: var(--body-background, #ffffff); overflow-x: auto;">
-<svg id="crypto-diagram" viewBox="0 0 1020 410" width="100%" height="auto" style="display: block; min-width: 780px; max-width: 1020px; margin: 0 auto; overflow: visible;">
+<svg id="crypto-diagram" viewBox="0 0 1020 456" width="100%" height="auto" style="display: block; min-width: 780px; max-width: 1020px; margin: 0 auto; overflow: visible;">
 <defs>
 <marker id="crypto-arrow-slate" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
 <path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-slate-fill" />
@@ -1545,7 +1244,7 @@ Pardosa maintains two complementary, orthogonal cryptographic chains:
 <!-- Top Section: Physical Integrity Chain (Invariant C5.26) -->
 <rect x="20" y="25" width="980" height="130" rx="10" fill="none" stroke="var(--sm-slate-stroke)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
 <rect x="35" y="14" width="330" height="22" rx="11" fill="var(--sm-slate-bg)" stroke="var(--sm-slate-stroke)" stroke-width="1.2"/>
-<text class="tier-title" x="200" y="25" fill="var(--sm-slate-text)" dominant-baseline="central" text-anchor="middle">Physical Integrity Chain (Invariant C5.26)</text>
+<text class="tier-title" x="200" y="25" fill="var(--sm-slate-text)" dominant-baseline="central" text-anchor="middle">Physical Integrity Chain (Invariant <a href="https://github.com/acje/pardosa/blob/main/docs/spec/pardosa-1.0.md">C5.26</a>)</text>
 
 <!-- Sequential Links with BLAKE3 Fold badges -->
 <path d="M 175,90 L 227,90" class="edge-path" stroke="var(--sm-slate-stroke)" marker-end="url(#crypto-arrow-slate)"/>
@@ -1609,30 +1308,30 @@ Pardosa maintains two complementary, orthogonal cryptographic chains:
 </g>
 
 <!-- Bottom Section Left: Logical Precursor Chains (Invariant C5.40) -->
-<rect x="20" y="175" width="630" height="215" rx="10" fill="none" stroke="var(--sm-slate-stroke)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
-<rect x="35" y="164" width="340" height="22" rx="11" fill="var(--sm-slate-bg)" stroke="var(--sm-slate-stroke)" stroke-width="1.2"/>
-<text class="tier-title" x="205" y="175" fill="var(--sm-slate-text)" dominant-baseline="central" text-anchor="middle">Logical Precursor Chains (Invariant C5.40)</text>
+<rect x="20" y="175" width="630" height="261" rx="10" fill="none" stroke="var(--sm-slate-stroke)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+<rect x="30" y="164" width="350" height="22" rx="11" fill="var(--sm-slate-bg)" stroke="var(--sm-slate-stroke)" stroke-width="1.2"/>
+<text class="tier-title" x="205" y="175" fill="var(--sm-slate-text)" dominant-baseline="central" text-anchor="middle">Logical Precursor Chains (Invariant <a href="https://github.com/acje/pardosa/blob/main/docs/spec/pardosa-1.0.md">C5.40</a>)</text>
 
 <!-- Fiber Alpha Sub-box -->
-<rect x="40" y="200" width="280" height="175" rx="8" fill="none" stroke="var(--sm-blue-stroke)" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.7"/>
-<rect x="55" y="191" width="105" height="18" rx="9" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1"/>
-<text class="tier-title" x="107" y="200" fill="var(--sm-blue-text)" dominant-baseline="central" text-anchor="middle">Fiber Alpha</text>
+<rect x="40" y="225" width="280" height="187" rx="8" fill="none" stroke="var(--sm-blue-stroke)" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.7"/>
+<rect x="55" y="216" width="105" height="18" rx="9" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1"/>
+<text class="tier-title" x="107" y="225" fill="var(--sm-blue-text)" dominant-baseline="central" text-anchor="middle">Fiber Alpha</text>
 
 <!-- Link from A1 up to A0 -->
-<path d="M 180,305 L 180,277" class="edge-dashed" stroke="var(--sm-blue-stroke)" marker-end="url(#crypto-arrow-blue)"/>
+<path d="M 180,340 L 180,305" class="edge-dashed" stroke="var(--sm-blue-stroke)" marker-end="url(#crypto-arrow-blue)"/>
 <g>
-<rect class="badge-bg" x="125" y="278" width="110" height="18" rx="9"/>
-<text class="edge-label badge-txt" x="180" y="287" dominant-baseline="central" text-anchor="middle">precursor_hash</text>
+<rect class="badge-bg" x="123" y="310" width="114" height="18" rx="9"/>
+<text class="edge-label badge-txt" x="180" y="319" dominant-baseline="central" text-anchor="middle">precursor_hash</text>
 </g>
 
-<g id="fiber-a-root" transform="translate(60, 222)">
+<g id="fiber-a-root" transform="translate(60, 250)">
 <rect width="240" height="48" rx="7" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1.8" filter="url(#crypto-shadow)"/>
 <rect width="4" height="48" rx="2" fill="var(--sm-blue-stroke)"/>
 <text class="node-title" x="16" y="19" fill="var(--sm-blue-text)" dominant-baseline="central">E0 (Root)</text>
 <text class="node-sub" x="16" y="34" fill="var(--sm-blue-sub)">precursor_hash = 0x00...00</text>
 </g>
 
-<g id="fiber-a-update" transform="translate(60, 305)">
+<g id="fiber-a-update" transform="translate(60, 340)">
 <rect width="240" height="48" rx="7" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1.8" filter="url(#crypto-shadow)"/>
 <rect width="4" height="48" rx="2" fill="var(--sm-blue-stroke)"/>
 <text class="node-title" x="16" y="19" fill="var(--sm-blue-text)" dominant-baseline="central">E2 (Update)</text>
@@ -1640,25 +1339,25 @@ Pardosa maintains two complementary, orthogonal cryptographic chains:
 </g>
 
 <!-- Fiber Beta Sub-box -->
-<rect x="350" y="200" width="280" height="175" rx="8" fill="none" stroke="var(--sm-green-stroke)" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.7"/>
-<rect x="365" y="191" width="100" height="18" rx="9" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="1"/>
-<text class="tier-title" x="415" y="200" fill="var(--sm-green-text)" dominant-baseline="central" text-anchor="middle">Fiber Beta</text>
+<rect x="350" y="225" width="280" height="187" rx="8" fill="none" stroke="var(--sm-green-stroke)" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.7"/>
+<rect x="365" y="216" width="100" height="18" rx="9" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="1"/>
+<text class="tier-title" x="415" y="225" fill="var(--sm-green-text)" dominant-baseline="central" text-anchor="middle">Fiber Beta</text>
 
 <!-- Link from B1 up to B0 -->
-<path d="M 490,305 L 490,277" class="edge-dashed" stroke="var(--sm-green-stroke)" marker-end="url(#crypto-arrow-green)"/>
+<path d="M 490,340 L 490,305" class="edge-dashed" stroke="var(--sm-green-stroke)" marker-end="url(#crypto-arrow-green)"/>
 <g>
-<rect class="badge-bg" x="435" y="278" width="110" height="18" rx="9"/>
-<text class="edge-label badge-txt" x="490" y="287" dominant-baseline="central" text-anchor="middle">precursor_hash</text>
+<rect class="badge-bg" x="433" y="310" width="114" height="18" rx="9"/>
+<text class="edge-label badge-txt" x="490" y="319" dominant-baseline="central" text-anchor="middle">precursor_hash</text>
 </g>
 
-<g id="fiber-b-root" transform="translate(370, 222)">
+<g id="fiber-b-root" transform="translate(370, 250)">
 <rect width="240" height="48" rx="7" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="1.8" filter="url(#crypto-shadow)"/>
 <rect width="4" height="48" rx="2" fill="var(--sm-green-stroke)"/>
 <text class="node-title" x="16" y="19" fill="var(--sm-green-text)" dominant-baseline="central">E1 (Root)</text>
 <text class="node-sub" x="16" y="34" fill="var(--sm-green-sub)">precursor_hash = 0x00...00</text>
 </g>
 
-<g id="fiber-b-update" transform="translate(370, 305)">
+<g id="fiber-b-update" transform="translate(370, 340)">
 <rect width="240" height="48" rx="7" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="1.8" filter="url(#crypto-shadow)"/>
 <rect width="4" height="48" rx="2" fill="var(--sm-green-stroke)"/>
 <text class="node-title" x="16" y="19" fill="var(--sm-green-text)" dominant-baseline="central">E3 (Update)</text>
@@ -1666,7 +1365,7 @@ Pardosa maintains two complementary, orthogonal cryptographic chains:
 </g>
 
 <!-- Bottom Section Right: Orthogonality Annotation -->
-<rect x="670" y="175" width="330" height="215" rx="10" fill="none" stroke="var(--sm-purple-stroke)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+<rect x="670" y="175" width="330" height="261" rx="10" fill="none" stroke="var(--sm-purple-stroke)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
 <rect x="685" y="164" width="220" height="22" rx="11" fill="var(--sm-purple-bg)" stroke="var(--sm-purple-stroke)" stroke-width="1.2"/>
 <text class="tier-title" x="795" y="175" fill="var(--sm-purple-text)" dominant-baseline="central" text-anchor="middle">Orthogonality Guarantee</text>
 
@@ -1685,11 +1384,7 @@ Pardosa maintains two complementary, orthogonal cryptographic chains:
 </svg>
 </div>
 
-- **Physical Rolling Commitment (Invariant C5.26)**: A running 256-bit BLAKE3 hash digest computed sequentially across all container frames in `<stem>.pgno`. Each frame $k$ is folded into the rolling commitment:
-  $$\mathcal{H}_k = \text{BLAKE3}(\mathcal{H}_{k-1} \parallel \text{Frame}_k)$$
-  This guarantees immediate tamper-evidence for the physical stream: missing frames, reordered writes, or bit flips corrupt the rolling digest.
-- **Logical Precursor Chain (Invariant C5.40)**: Independent, fiber-scoped hash linkage. Each event's `precursor_hash` contains the BLAKE3 digest of the preceding event on the same `fiber_id`.
-- **Orthogonality**: Because physical commitments track file framing and logical commitments track aggregate state transitions, events from distinct fibers interleave freely without invalidating entity provenance. During line migrations, purged fibers can be pruned from `<stem>.pgno` without breaking the precursor chains of surviving fibers.
+**Two scopes of integrity:** the physical rolling BLAKE3 commitment checks the recorded frame sequence ([C5.26](https://github.com/acje/pardosa/blob/main/docs/spec/pardosa-1.0.md)); fiber-local precursor hashes check recorded predecessor links within a generation ([C5.40](https://github.com/acje/pardosa/blob/main/docs/spec/pardosa-1.0.md)). Migration retains surviving histories and computes a fresh physical commitment. Link integrity alone proves neither completeness nor authorship nor continuity across generations. Detecting a full-file rewrite requires an anchor held by an external observer; a writer can otherwise recompute a valid rolling commitment.
 
 ---
 
@@ -1700,7 +1395,7 @@ At the core of Pardosa is an explicit, formal state machine governing every fibe
 1. **`Undefined`**: The entity has never existed within the domain namespace.
 2. **`Defined`**: The fiber is active, exists, and accepts updates.
 3. **`Detached`**: The fiber is soft-deleted; it remains on the dragline for historical auditability and can be rescued or migrated.
-4. **`Purged`**: The fiber has been permanently removed from the line following an auditable migration, satisfying regulatory deletion mandates while preserving optional audit records.
+4. **`Purged`**: The fiber has been removed from the active line by migration; separate audit records are outside that removal.
 5. **`Locked`**: The fiber has been pruned and frozen; the identifier cannot be reused, preventing replay attacks or accidental recreation.
 
 ### The 10 Legal Transitions
@@ -1907,209 +1602,82 @@ Pardosa encodes exactly **10 legal state transitions**. Any action attempting an
 </svg>
 </div>
 
-| # | Action | Source State | Target State | Operational Semantics |
-|---|---|---|---|---|
-| 1 | `Create` | `Undefined` | `Defined` | Initial creation of an entity from an empty state. |
-| 2 | `Update` | `Defined` | `Defined` | Appending a new state-modifying event to an active fiber. |
-| 3 | `Detach` | `Defined` | `Detached` | Soft-deleting an aggregate; marks head as detached. |
-| 4 | `Rescue` | `Detached` | `Defined` | Reversing a soft delete; returns the fiber to active status. |
-| 5 | `Migrate(Keep)` | `Detached` | `Detached` | Retains the soft-deleted fiber across a line migration. |
-| 6 | `Migrate(LockAndPrune)` | `Detached` | `Locked` | Prunes fiber history, retaining only the tombstone; prevents reuse. |
-| 7 | `Migrate(Purge)` | `Detached` | `Purged` | Verifiably scrubs all event payloads and keys from the active line. |
-| 8 | `Rescue` | `Locked` | `Defined` | Administrative rescue of a locked fiber under an explicit audit policy. |
-| 9 | `Migrate(Purge)` | `Locked` | `Purged` | Permanently purges a previously locked fiber during migration. |
-| 10 | `Create` | `Purged` | `Defined` | Re-allocates the domain identifier cleanly following a complete purge. |
+| # | Action | Operational Semantics |
+|---|---|---|
+| 1 | `Create` | Initial creation of an entity from an empty state. |
+| 2 | `Update` | Appending a new state-modifying event to an active fiber. |
+| 3 | `Detach` | Soft-deleting an aggregate; marks head as detached. |
+| 4 | `Rescue` | Reversing a soft delete; returns the fiber to active status. |
+| 5 | `Migrate(Keep)` | Retains the soft-deleted fiber across a line migration. |
+| 6 | `Migrate(LockAndPrune)` | Prunes fiber history, retaining only the tombstone; prevents reuse. |
+| 7 | `Migrate(Purge)` | Verifiably scrubs all event payloads and keys from the active line. |
+| 8 | `Rescue` | Administrative rescue of a locked fiber under an explicit audit policy. |
+| 9 | `Migrate(Purge)` | Permanently purges a previously locked fiber during migration. |
+| 10 | `Create` | Re-allocates the domain identifier cleanly following a complete purge. |
 
 ---
 
 ## Consumer Idempotency & Deterministic Projections
 
-In event-driven architectures, downstream systems build read models, search indexes, in-memory view models, and pre-rendered caches by projecting the event stream. Pardosa guarantees deterministic consumption and effectively exactly-once processing through authoritative core engine invariants and architectural demarcation rather than relying on external database transactions:
+In event-driven architectures, downstream systems build read models, search indexes, in-memory view models, and pre-rendered caches by projecting the event stream. Pardosa supplies ordered, self-contained facts and event identity; adapters define deterministic projections and coordinate sink delivery, identity retention and recovery. Rebuilding a view and suppressing a retry are separate mechanisms:
 
-<div class="consumer-proj-container">
-  <div class="cp-card cp-card-blue" style="margin-bottom: 1rem;">
-    <div class="cp-card-title-bar">
-      <div class="cp-title-group">
-        <span class="cp-tag cp-tag-blue">Pipeline Architecture</span>
-        <span class="cp-title">Pardosa Dragline ➔ Monotonic Cursor ➔ Consumer Adapter Fold</span>
-      </div>
-      <span class="cp-tag cp-tag-slate">Demarcated Pipeline</span>
+<div class="consumer-proj-container" id="consumer-reconstruction">
+  <section class="cp-layer" aria-labelledby="consumer-facts-title">
+    <h3 id="consumer-facts-title">Complete facts enable independent consumers</h3>
+    <p>Illustrative issue-status facts, in order within one dragline (<a href="https://github.com/acje/pardosa/blob/main/docs/spec/pardosa-1.0.md">C3.8</a>). Each carries the data needed for this view—not just an ID that requires a producer lookup.</p>
+    <div class="cp-facts">
+      <div class="cp-fact"><strong>E₁ · first fact</strong><br><code>issue: A, status: open</code></div>
+      <div class="cp-fact"><strong>E₂ · next fact</strong><br><code>issue: A, status: closed</code></div>
     </div>
-    <div class="cp-field-desc">
-      Architectural demarcation separating engine-level append guarantees from downstream read-model projections. Downstream adapters fold immutable event facts autonomously with zero RPC callbacks and zero relational multi-row transaction coupling.
+    <p class="cp-result">Ordered facts → independent consumers → consumer-defined views</p>
+    <p><strong>What changes:</strong> a read-model adapter or search-index adapter can use these facts at its own pace, without a synchronous callback to the producer. This is event-carried state transfer, not a prescription for one shared view.</p>
+  </section>
+  <section class="cp-layer" aria-labelledby="consumer-rules-title">
+    <h3 id="consumer-rules-title">The adapter defines how facts are processed</h3>
+    <p>Pardosa provides order, dragline-local cursors (<a href="https://github.com/acje/pardosa/blob/main/docs/spec/pardosa-1.0.md">C5.22</a>) and event identity (<a href="https://github.com/acje/pardosa/blob/main/docs/spec/pardosa-1.0.md">C4.19</a>). The adapter owns the fold, sink writes, retained identities and recovery coordination.</p>
+    <div class="cp-paths">
+      <section class="cp-path" aria-labelledby="consumer-replay-title">
+        <h4 id="consumer-replay-title">Path A · Fresh reconstruction</h4>
+        <p><strong>Rule:</strong> same initial state, same ordered facts, same deterministic fold. Set A’s status from each fact; do not use arrival time or producer queries.</p>
+        <ol>
+          <li>Start each independent run at <code>S₀ = {}</code>.</li>
+          <li>Fold E₁ → <code>{A: open}</code>.</li>
+          <li>Fold E₂ → <code>{A: closed}</code>.</li>
+        </ol>
+        <p class="cp-result">First build = fresh replay → <code>{A: closed}</code></p>
+        <p>Rebuild from S₀, not by applying the log again to the finished model. Equal results do not prove duplicate sink invocations were suppressed.</p>
+      </section>
+      <section class="cp-path" aria-labelledby="consumer-retry-title">
+        <h4 id="consumer-retry-title">Path B · Bounded retry suppression</h4>
+        <p><strong>Rule:</strong> check the event identity retained by the adapter before invoking its sink. Both deliveries here carry E₂’s same identity.</p>
+        <ol>
+          <li><strong>First E₂:</strong> handle the fact, upsert <code>A: closed</code>, retain E₂’s identity.</li>
+          <li><strong>Repeated E₂, identity still retained:</strong> recognize and drop the delivery → <strong>no sink invocation</strong>.</li>
+        </ol>
+        <p class="cp-result">Retained identity → retry gate → delivery dropped</p>
+        <p>Outside the adapter’s replay window, no suppression guarantee is made. Coordinating sink writes, identity retention and checkpoints across a crash is adapter-owned; engine metadata alone does not make recovery exactly-once.</p>
+      </section>
     </div>
-  </div>
-  <div class="cp-grid-3">
-    <!-- Stage 1: Pardosa Core Engine -->
-    <div class="cp-card cp-card-blue">
-      <div class="cp-card-title-bar">
-        <div class="cp-title-group">
-          <span class="cp-tag cp-tag-blue">Stage 1</span>
-          <span class="cp-title">Pardosa Dragline</span>
-        </div>
-        <span class="cp-tag cp-tag-slate">Core Engine</span>
-      </div>
-      <div class="cp-section-label">Log Guarantees (C3.8 · C4.19)</div>
-      <div class="cp-stack-compact">
-        <div class="cp-field cp-field-blue">
-          <div class="cp-field-label">Total Replay Order (C3.8)</div>
-          <div class="cp-field-val"><code>&lt;stem&gt;.pgno Append Log</code></div>
-          <div class="cp-field-desc">Immutable physical total order over all events [E₁, E₂, ..., E_N] within the container.</div>
-        </div>
-        <div class="cp-field cp-field-blue">
-          <div class="cp-field-label">Cryptographic Identity (C4.19)</div>
-          <div class="cp-field-val"><code>81B Header · BLAKE3</code></div>
-          <div class="cp-field-desc">16B event_id and 32B BLAKE3 precursor commitment hash per event envelope.</div>
-        </div>
-        <div class="cp-field cp-field-blue">
-          <div class="cp-field-label">Sequential Streaming API</div>
-          <div class="cp-field-val"><code>stream_from(cursor)</code></div>
-          <div class="cp-field-desc">Linear non-blocking frame dispatch to registered consumer adapters.</div>
-        </div>
-      </div>
-    </div>
-    <!-- Stage 2: Monotonic Resume Cursor -->
-    <div class="cp-card cp-card-green">
-      <div class="cp-card-title-bar">
-        <div class="cp-title-group">
-          <span class="cp-tag cp-tag-green">Stage 2</span>
-          <span class="cp-title">Monotonic Cursor</span>
-        </div>
-        <span class="cp-tag cp-tag-green">Invariant C5.22</span>
-      </div>
-      <div class="cp-section-label">Cursor Guarantees (C5.22)</div>
-      <div class="cp-stack-compact">
-        <div class="cp-field cp-field-green">
-          <div class="cp-field-label">Physical Frame Boundary</div>
-          <div class="cp-field-val"><code>u64 Byte Offset</code></div>
-          <div class="cp-field-desc">Monotonic 64-bit physical byte offset pointing strictly to verified frame boundaries.</div>
-        </div>
-        <div class="cp-field cp-field-green">
-          <div class="cp-field-label">Valid by Construction</div>
-          <div class="cp-field-val"><code>Zero-Scan Resumption</code></div>
-          <div class="cp-field-desc">Unaligned offsets are unrepresentable; resumes immediately without log parsing.</div>
-        </div>
-        <div class="cp-field cp-field-green">
-          <div class="cp-field-label">Lifecycle Scope</div>
-          <div class="cp-field-val"><code>Dragline-Local Scope</code></div>
-          <div class="cp-field-desc">Bound to container lifetime; regenerated during migrations with no cross-line leakage.</div>
-        </div>
-      </div>
-    </div>
-    <!-- Stage 3: Consumer Adapter Fold -->
-    <div class="cp-card cp-card-purple">
-      <div class="cp-card-title-bar">
-        <div class="cp-title-group">
-          <span class="cp-tag cp-tag-purple">Stage 3</span>
-          <span class="cp-title">Consumer Adapter</span>
-        </div>
-        <span class="cp-tag cp-tag-purple">Projection Fold</span>
-      </div>
-      <div class="cp-section-label">Adapter Ownership (Demarcation)</div>
-      <div class="cp-stack-compact">
-        <div class="cp-field cp-field-purple">
-          <div class="cp-field-label">Pure Deterministic Fold</div>
-          <div class="cp-field-val"><code>State_N = fold(State₀, [E₁..E_N])</code></div>
-          <div class="cp-field-desc">Pure reduction function transforms immutable event stream into typed view models.</div>
-        </div>
-        <div class="cp-field cp-field-purple">
-          <div class="cp-field-label">ECST Autonomy</div>
-          <div class="cp-field-val"><code>Self-Contained Facts</code></div>
-          <div class="cp-field-desc">Events carry complete domain transition facts; zero synchronous RPC callback queries.</div>
-        </div>
-        <div class="cp-field cp-field-purple">
-          <div class="cp-field-label">Idempotency &amp; Dedup</div>
-          <div class="cp-field-val"><code>16B event_id / Upsert Keys</code></div>
-          <div class="cp-field-desc">Deduplication windows and natural upsert keys eliminate side effects across retries.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Connector / Progression Bar -->
-  <div class="cp-connector-block">
-    <div class="cp-connector-header">
-      <div class="cp-connector-title">End-to-End Projection Lifecycle</div>
-      <div class="cp-connector-subtitle">Sequential Fact Propagation Across Demarcation Boundary</div>
-    </div>
-    <div class="cp-connector-grid">
-      <div class="cp-conn-card">
-        <div class="cp-conn-num cp-num-blue">1</div>
-        <div class="cp-conn-content">
-          <div class="cp-conn-label">Frame Append &amp; Commit</div>
-          <div class="cp-conn-detail"><code>Single-Writer CAS</code> ➔ <code>.pgno</code></div>
-          <div class="cp-conn-desc">Linearizable append logs frame with CRC32C framing and rolling BLAKE3 commitment.</div>
-        </div>
-      </div>
-      <div class="cp-conn-card">
-        <div class="cp-conn-num cp-num-green">2</div>
-        <div class="cp-conn-content">
-          <div class="cp-conn-label">Cursor Query &amp; Dispatch</div>
-          <div class="cp-conn-detail"><code>stream_from(cursor)</code> ➔ <code>Events [E_k]</code></div>
-          <div class="cp-conn-desc">Consumer adapter queries stream from its persisted monotonic byte offset (C5.22).</div>
-        </div>
-      </div>
-      <div class="cp-conn-card">
-        <div class="cp-conn-num cp-num-purple">3</div>
-        <div class="cp-conn-content">
-          <div class="cp-conn-label">Deterministic State Fold</div>
-          <div class="cp-conn-detail"><code>State_N = fold(State_{N-1}, E_N)</code></div>
-          <div class="cp-conn-desc">Adapter folds self-contained facts (ECST) into view models without RPC callbacks.</div>
-        </div>
-      </div>
-      <div class="cp-conn-card">
-        <div class="cp-conn-num cp-num-cyan">4</div>
-        <div class="cp-conn-content">
-          <div class="cp-conn-label">Autonomous Read Serving</div>
-          <div class="cp-conn-detail"><code>Read Models</code> ➔ <code>O(1) Queries</code></div>
-          <div class="cp-conn-desc">Downstream consumers (e.g. Spandrel static cache) serve reads with zero write contention.</div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <p><strong>Keep the paths separate:</strong> fresh reconstruction processes the ordered facts into a new view; the retry gate skips an already-handled delivery only while its identity remains retained.</p>
+  </section>
 </div>
 
-### Core Engine Invariants
+### Resume and Adapter Boundaries
 
-1. **Deterministic Event Folds (Invariant C3.8)**: An artefact holds exactly one total order over all events it carries on `<stem>.pgno`, and replaying it yields that identical order every time. Replaying the identical sequence of dragline frames produces identical projection state bit-for-bit:
-   $$\text{State}_N = \text{fold}(\text{State}_0, [E_1, E_2, \dots, E_N])$$
-   Projections rely strictly on immutable event facts—timestamps, precursors, and state payloads—eliminating dependencies on consumer arrival time, wall-clock skew, network transit delays, or execution environment non-determinism. Downstream read models can rebuild their entire state deterministically from genesis ($\text{State}_0$) or incrementally from any verified checkpoint frame.
-2. **Dragline-Local Resume Cursors (Invariant C5.22)**: Pardosa exposes a resume cursor that is dragline-local and valid by construction. Monotonic 64-bit physical byte offsets point directly to verified frame boundaries within `<stem>.pgno`. Cursors are valid by construction: a consumer cannot construct or advance to an unaligned offset or an uncommitted frame. When resuming after restarts or failovers, consumers invoke `stream_from(cursor)` to resume streaming directly from that byte boundary without scanning logs, indexing tables, or re-processing previously committed frames. Cursors are regenerated during migrations and have no meaning across migrations.
-3. **Cryptographic Event Identity & Commitments (Invariant C4.19)**: Every event envelope carries a fixed 81-byte wire header containing a globally unique 16-byte `event_id` (128-bit UUID), a 16-byte `fiber_id`, a 1-byte detachment flag, a 16-byte `precursor` UUID, and a 32-byte BLAKE3 `precursor_hash` commitment (both frame-level digest and fiber precursor hash). Combined with hardware-accelerated CRC32C framing, this cryptographic commitment enables unconditional deduplication: downstream consumer adapters can detect re-delivered frames and eliminate duplicate side-effects unconditionally.
+The engine replays one recorded order per artefact ([C3.8](https://github.com/acje/pardosa/blob/main/docs/spec/pardosa-1.0.md)); it does not prescribe how concurrent fibers interleave. Resume cursors are dragline-local, regenerated during migrations, and invalid across migrations ([C5.22](https://github.com/acje/pardosa/blob/main/docs/spec/pardosa-1.0.md)). Persisting a cursor alone does not close the crash gap between an external action and recording its completion.
 
-### Event Carried State Transfer (ECST)
-
-- **Self-Contained Domain Facts**: Events emitted by Pardosa carry full state transition facts rather than thin notifications (e.g., entity IDs requiring subsequent queries). Downstream consumers receive all data necessary to project their read models without executing synchronous callback queries or RPC round-trips to the producer or source datastore.
-- **Autonomous Projections**: Read models (in-memory view models, search indexes, analytical column stores, Spandrel static cache stores) consume the dragline independently at their own pace. If a consumer crashes, restarts, or lags during bulk backpressure, write ingestion into the Pardosa dragline remains completely unaffected.
-
-### Adapter Demarcation & Side-Effect Elimination
-
-To maintain clean architectural boundaries and prevent coupling engine storage to external sinks, Pardosa enforces strict demarcation between core engine responsibilities and consumer-side adapter responsibilities:
-
-| Responsibility | Pardosa Core Engine | Consumer-Side Adapter (e.g., Spandrel) |
-|---|---|---|
-| **Log Storage & Framing** | Physical append log (`.pgno`), frame CRC32C, BLAKE3 rolling commitments | Downstream read models (SQLite, memory maps, search indexes, static HTML caches) |
-| **Ordering & Cursors** | Total log order (C3.8), dragline-local cursor offsets (C5.22) | Cursor offset persistence, checkpoint retention, replay coordination |
-| **Identity & Mapping** | 16-byte `event_id`, 16-byte `fiber_id`, precursor causal chains | Domain aggregate IDs (`IssueId`, `AccountId`), in-memory `FiberIndex` mapping |
-| **State Transformation** | Raw frame envelope serialization, byte-level framing validation | Pure projection fold functions (`State_N = fold(State_{N-1}, E_N)`), view models |
-| **Side-Effect Elimination** | Unconditional deduplication metadata (C4.19 BLAKE3 commitments) | Idempotent upserts, bounded dedup filters, zero RPC callbacks |
-
-Downstream consumer adapters achieve side-effect elimination and effectively exactly-once processing through:
-- **Pure Mathematical Folds**: Downstream projections model state accumulation as pure, deterministic functions over immutable events: $\text{State}_N = \text{fold}(\text{State}_{N-1}, E_N)$. Reprocessing the log from genesis or from a verified checkpoint cursor yields identical bit-level state.
-- **Cryptographic Deduplication (C4.19)**: For sinks with external side effects (e.g., message queues, webhook dispatchers, search indexes), adapters use the 16-byte `event_id` or 32-byte BLAKE3 precursor hash as natural idempotency tokens. Duplicate deliveries within a replay window are identified and dropped as no-ops prior to external invocation.
-- **Adapter-Owned Cursor Persistence**: Adapters record their dragline-local cursor alongside their projected view model. On crash recovery, the adapter reads its persisted cursor and calls `stream_from(cursor)` to resume exactly where processing halted without requiring engine-level multi-row database transactions.
+Read models, search indexes, analytical stores and **static cache stores** can consume facts at their own pace. A **consumer-side adapter (for example, a cache renderer)** owns its view transformation, sink writes, retained event identities and checkpoint/recovery coordination. The worked paths above show why deterministic reconstruction is not duplicate suppression, and why neither engine ordering nor integrity metadata supplies exactly-once sink recovery.
 
 ---
 
-## Regulatory Compliance & Verifiable Deletion
+## Line Migration & Audit Boundaries
 
-In enterprise architectures, compliance cannot be an afterthought. Pardosa satisfies privacy legislation (such as GDPR Article 17) through **auditable line migrations**:
+Removal from the active stream proceeds through **line migration**:
 
 1. **Separation of Line and Audit**: A line contains the active operational stream. An optional audit log captures raw events separately under strict access controls.
-2. **Cryptographic Integrity**: Payloads and envelope headers are hashed using BLAKE3. Tampering with any historical event on a fiber breaks the precursor hash chain immediately.
-3. **Physical Purging via Line Migration**: When an operator executes a line migration with `Migrate(Purge)` on detached fibers:
+2. **Physical Purging via Line Migration**: When an operator executes a line migration with `Migrate(Purge)` on detached fibers:
    - Pardosa constructs a new, compacted line version (`<new_stem>.pgno` and `<new_stem>.meta`).
    - Events belonging to purged fibers are physically excluded from the new container file.
    - Active fibers are preserved, retaining their exact logical precursor hash relationships.
    - A fresh physical rolling BLAKE3 commitment is computed sequentially over the new container.
-   - The old line version is verifiably scrubbed from disk, providing provable physical data destruction while preserving cryptographic proof of the migration transaction itself.
-
+   - The old line version must also be removed; exclusion from the new file alone does not erase it. Separate audit copies, backups and downstream views require their own retention handling.

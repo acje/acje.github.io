@@ -732,8 +732,8 @@ Pardosa separates line state into an artefact pair on disk:
 
   .dl-grid-envelope {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 0.625rem;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.5rem;
   }
 
   .dl-field {
@@ -1269,7 +1269,7 @@ Pardosa separates line state into an artefact pair on disk:
     <div class="dl-field dl-field-slate">
       <div class="dl-field-label">frame_length (4B)</div>
       <div class="dl-field-val"><code>85 + N₀</code> <span class="dl-field-hex">[u32 LE]</span></div>
-      <div class="dl-field-desc">Byte length of enclosed Envelope 0 payload (u32 LE)</div>
+      <div class="dl-field-desc">Byte length of enclosed Envelope 0 payload</div>
     </div>
     <!-- Inner Envelope 0 Card (Strictly Contained) -->
     <div class="dl-card dl-card-envelope">
@@ -1284,28 +1284,23 @@ Pardosa separates line state into an artefact pair on disk:
       <div class="dl-grid-envelope">
         <div class="dl-field dl-field-blue">
           <div class="dl-field-label">event_id (16B)</div>
-          <div class="dl-field-val"><code>[E0]</code> <span class="dl-field-hex">[u8; 16]</span></div>
-          <div class="dl-field-desc">UUID / ULID identifier</div>
+          <div class="dl-field-val"><code>[E0]</code></div>
         </div>
         <div class="dl-field dl-field-blue">
           <div class="dl-field-label">fiber_id (16B)</div>
-          <div class="dl-field-val"><code>[Fiber A]</code> <span class="dl-field-hex">[u8; 16]</span></div>
-          <div class="dl-field-desc">Aggregate stream identifier</div>
+          <div class="dl-field-val"><code>[Fiber A]</code></div>
         </div>
         <div class="dl-field dl-field-slate">
           <div class="dl-field-label">detached (1B)</div>
-          <div class="dl-field-val"><code>0x00</code> <span class="dl-field-hex">u8</span></div>
-          <div class="dl-field-desc">0x00 active, 0x01 detached</div>
+          <div class="dl-field-val"><code>0x00</code></div>
         </div>
         <div class="dl-field dl-field-blue">
           <div class="dl-field-label">precursor (16B)</div>
-          <div class="dl-field-val"><code>[0u8; 16]</code> <span class="dl-field-hex">[u8; 16]</span></div>
-          <div class="dl-field-desc">All zeroes for genesis root</div>
+          <div class="dl-field-val"><code>[0u8; 16]</code></div>
         </div>
         <div class="dl-field dl-field-blue">
           <div class="dl-field-label">precursor_hash (32B)</div>
-          <div class="dl-field-val"><code>[0u8; 32]</code> <span class="dl-field-hex">[u8; 32]</span></div>
-          <div class="dl-field-desc">All zeroes for genesis root</div>
+          <div class="dl-field-val"><code>[0u8; 32]</code></div>
         </div>
       </div>
       <div class="dl-section-label">Domain Event Payload (N₀ Bytes)</div>
@@ -1326,7 +1321,7 @@ Pardosa separates line state into an artefact pair on disk:
     <div class="dl-field dl-field-slate">
       <div class="dl-field-label">crc32c (4B)</div>
       <div class="dl-field-val"><code>Castagnoli</code> <span class="dl-field-hex">[u32 LE]</span></div>
-      <div class="dl-field-desc">Hardware checksum over Envelope 0 payload bytes</div>
+      <div class="dl-field-desc">Hardware checksum over Envelope 0 payload</div>
     </div>
   </div>
   <!-- Contiguous On-Disk Boundary -->
@@ -1348,7 +1343,7 @@ Pardosa separates line state into an artefact pair on disk:
     <div class="dl-field dl-field-slate">
       <div class="dl-field-label">frame_length (4B)</div>
       <div class="dl-field-val"><code>85 + N₁</code> <span class="dl-field-hex">[u32 LE]</span></div>
-      <div class="dl-field-desc">Byte length of enclosed Envelope 1 payload (u32 LE)</div>
+      <div class="dl-field-desc">Byte length of enclosed Envelope 1 payload</div>
     </div>
     <!-- Inner Envelope 1 Card (Strictly Contained) -->
     <div class="dl-card dl-card-envelope">
@@ -1363,28 +1358,23 @@ Pardosa separates line state into an artefact pair on disk:
       <div class="dl-grid-envelope">
         <div class="dl-field dl-field-blue">
           <div class="dl-field-label">event_id (16B)</div>
-          <div class="dl-field-val"><code>[E1]</code> <span class="dl-field-hex">[u8; 16]</span></div>
-          <div class="dl-field-desc">UUID / ULID identifier</div>
+          <div class="dl-field-val"><code>[E1]</code></div>
         </div>
         <div class="dl-field dl-field-blue">
           <div class="dl-field-label">fiber_id (16B)</div>
-          <div class="dl-field-val"><code>[Fiber A]</code> <span class="dl-field-hex">[u8; 16]</span></div>
-          <div class="dl-field-desc">Aggregate stream identifier</div>
+          <div class="dl-field-val"><code>[Fiber A]</code></div>
         </div>
         <div class="dl-field dl-field-slate">
           <div class="dl-field-label">detached (1B)</div>
-          <div class="dl-field-val"><code>0x00</code> <span class="dl-field-hex">u8</span></div>
-          <div class="dl-field-desc">0x00 active, 0x01 detached</div>
+          <div class="dl-field-val"><code>0x00</code></div>
         </div>
         <div class="dl-field dl-field-blue">
           <div class="dl-field-label">precursor (16B)</div>
-          <div class="dl-field-val"><code>[E0]</code> <span class="dl-field-hex">[u8; 16]</span></div>
-          <div class="dl-field-desc">Preceding event_id on fiber</div>
+          <div class="dl-field-val"><code>[E0]</code></div>
         </div>
         <div class="dl-field dl-field-blue">
           <div class="dl-field-label">precursor_hash (32B)</div>
-          <div class="dl-field-val"><code>BLAKE3(Envelope 0)</code> <span class="dl-field-hex">[u8; 32]</span></div>
-          <div class="dl-field-desc">Cryptographic digest of precursor envelope</div>
+          <div class="dl-field-val"><code>BLAKE3(Env 0)</code></div>
         </div>
       </div>
       <div class="dl-section-label">Domain Event Payload (N₁ Bytes)</div>
@@ -1405,7 +1395,7 @@ Pardosa separates line state into an artefact pair on disk:
     <div class="dl-field dl-field-slate">
       <div class="dl-field-label">crc32c (4B)</div>
       <div class="dl-field-val"><code>Castagnoli</code> <span class="dl-field-hex">[u32 LE]</span></div>
-      <div class="dl-field-desc">Hardware checksum over Envelope 1 payload bytes</div>
+      <div class="dl-field-desc">Hardware checksum over Envelope 1 payload</div>
     </div>
   </div>
 </div>

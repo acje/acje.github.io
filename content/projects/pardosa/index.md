@@ -265,7 +265,7 @@ In Fiber Semantics, the lifecycle history of each domain entity is modeled as an
 While domain entities exist logically as independent fibers, disk I/O and network replication achieve maximum efficiency through sequential streaming. Pardosa unifies these models through the **dragline**:
 
 <div class="pardosa-dragline-diagram" style="margin: 2rem 0; padding: 1.5rem 1rem; border-radius: 0.75rem; border: 1px solid var(--gray-200, #e2e8f0); background: var(--body-background, #ffffff); overflow-x: auto;">
-<svg id="dragline-diagram" viewBox="0 0 1040 450" width="100%" height="auto" style="display: block; min-width: 780px; max-width: 1040px; margin: 0 auto; overflow: visible;">
+<svg id="dragline-diagram" viewBox="0 0 1040 480" width="100%" height="auto" style="display: block; min-width: 780px; max-width: 1040px; margin: 0 auto; overflow: visible;">
 <defs>
 <marker id="drag-arrow-slate" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
 <path d="M 0 1.5 L 8 5 L 0 8.5 z" class="arrow-slate-fill" />
@@ -430,64 +430,64 @@ While domain entities exist logically as independent fibers, disk I/O and networ
 </g>
 
 <!-- Bottom Section: Logical Singly-Linked Fiber Histories -->
-<rect x="15" y="180" width="1010" height="248" rx="10" fill="none" stroke="var(--sm-slate-stroke)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+<rect x="15" y="180" width="1010" height="275" rx="10" fill="none" stroke="var(--sm-slate-stroke)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
 <rect x="35" y="169" width="340" height="22" rx="11" fill="var(--sm-slate-bg)" stroke="var(--sm-slate-stroke)" stroke-width="1.2"/>
 <text class="tier-title" x="205" y="180" fill="var(--sm-slate-text)" dominant-baseline="central" text-anchor="middle">Logical Singly-Linked Fiber Histories</text>
 
 <!-- Horizontal Swimlane Backgrounds -->
-<rect x="20" y="195" width="1000" height="70" rx="6" fill="var(--sm-blue-bg)" opacity="0.35"/>
-<rect x="20" y="275" width="1000" height="70" rx="6" fill="var(--sm-green-bg)" opacity="0.35"/>
-<rect x="20" y="355" width="1000" height="65" rx="6" fill="var(--sm-amber-bg)" opacity="0.35"/>
+<rect x="20" y="221" width="1000" height="70" rx="6" fill="var(--sm-blue-bg)" opacity="0.35"/>
+<rect x="20" y="301" width="1000" height="70" rx="6" fill="var(--sm-green-bg)" opacity="0.35"/>
+<rect x="20" y="381" width="1000" height="65" rx="6" fill="var(--sm-amber-bg)" opacity="0.35"/>
 
 <!-- Left Gutter: Swimlane Badges -->
 <g id="badge-fiber-a">
-<rect x="25" y="218" width="95" height="24" rx="12" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1.2"/>
-<text class="tier-title" x="72.5" y="230" fill="var(--sm-blue-text)" dominant-baseline="central" text-anchor="middle">Fiber A</text>
+<rect x="25" y="244" width="95" height="24" rx="12" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1.2"/>
+<text class="tier-title" x="72.5" y="256" fill="var(--sm-blue-text)" dominant-baseline="central" text-anchor="middle">Fiber A</text>
 </g>
 
 <g id="badge-fiber-b">
-<rect x="25" y="298" width="95" height="24" rx="12" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="1.2"/>
-<text class="tier-title" x="72.5" y="310" fill="var(--sm-green-text)" dominant-baseline="central" text-anchor="middle">Fiber B</text>
+<rect x="25" y="324" width="95" height="24" rx="12" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="1.2"/>
+<text class="tier-title" x="72.5" y="336" fill="var(--sm-green-text)" dominant-baseline="central" text-anchor="middle">Fiber B</text>
 </g>
 
 <g id="badge-fiber-c">
-<rect x="25" y="375" width="95" height="24" rx="12" fill="var(--sm-amber-bg)" stroke="var(--sm-amber-stroke)" stroke-width="1.2"/>
-<text class="tier-title" x="72.5" y="387" fill="var(--sm-amber-text)" dominant-baseline="central" text-anchor="middle">Fiber C</text>
+<rect x="25" y="401" width="95" height="24" rx="12" fill="var(--sm-amber-bg)" stroke="var(--sm-amber-stroke)" stroke-width="1.2"/>
+<text class="tier-title" x="72.5" y="413" fill="var(--sm-amber-text)" dominant-baseline="central" text-anchor="middle">Fiber C</text>
 </g>
 
 <!-- Precursor Backward Dashed Arrows for Fiber A -->
 <!-- E6 (895) to E3 (445+115=560) -->
-<path d="M 895,225 C 785,198 675,198 568,225" class="edge-halo"/>
-<path d="M 895,225 C 785,198 675,198 568,225" class="edge-dashed" stroke="var(--sm-blue-stroke)" marker-end="url(#drag-arrow-blue)"/>
+<path d="M 895,251 C 785,224 675,224 568,251" class="edge-halo"/>
+<path d="M 895,251 C 785,224 675,224 568,251" class="edge-dashed" stroke="var(--sm-blue-stroke)" marker-end="url(#drag-arrow-blue)"/>
 <g>
-<rect class="badge-bg" x="688" y="193" width="80" height="20" rx="10"/>
-<text class="edge-label badge-txt" x="728" y="203" dominant-baseline="central" text-anchor="middle">precursor</text>
+<rect class="badge-bg" x="688" y="219" width="80" height="20" rx="10"/>
+<text class="edge-label badge-txt" x="728" y="229" dominant-baseline="central" text-anchor="middle">precursor</text>
 </g>
 
 <!-- E3 (445) to E1 (145+115=260) -->
-<path d="M 445,225 C 385,198 320,198 268,225" class="edge-halo"/>
-<path d="M 445,225 C 385,198 320,198 268,225" class="edge-dashed" stroke="var(--sm-blue-stroke)" marker-end="url(#drag-arrow-blue)"/>
+<path d="M 445,251 C 385,224 320,224 268,251" class="edge-halo"/>
+<path d="M 445,251 C 385,224 320,224 268,251" class="edge-dashed" stroke="var(--sm-blue-stroke)" marker-end="url(#drag-arrow-blue)"/>
 <g>
-<rect class="badge-bg" x="313" y="193" width="80" height="20" rx="10"/>
-<text class="edge-label badge-txt" x="353" y="203" dominant-baseline="central" text-anchor="middle">precursor</text>
+<rect class="badge-bg" x="313" y="219" width="80" height="20" rx="10"/>
+<text class="edge-label badge-txt" x="353" y="229" dominant-baseline="central" text-anchor="middle">precursor</text>
 </g>
 
 <!-- Swimlane A Event Cards -->
-<g id="logic-e1" transform="translate(145, 205)">
+<g id="logic-e1" transform="translate(145, 231)">
 <rect width="115" height="50" rx="7" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1.8" filter="url(#drag-shadow)"/>
 <rect width="4" height="50" rx="2" fill="var(--sm-blue-stroke)"/>
 <text class="node-title" x="14" y="20" fill="var(--sm-blue-text)" dominant-baseline="central">E1: Create</text>
 <text class="node-sub" x="14" y="36" fill="var(--sm-blue-sub)">seq=0 (Root)</text>
 </g>
 
-<g id="logic-e3" transform="translate(445, 205)">
+<g id="logic-e3" transform="translate(445, 231)">
 <rect width="115" height="50" rx="7" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1.8" filter="url(#drag-shadow)"/>
 <rect width="4" height="50" rx="2" fill="var(--sm-blue-stroke)"/>
 <text class="node-title" x="14" y="20" fill="var(--sm-blue-text)" dominant-baseline="central">E3: Update</text>
 <text class="node-sub" x="14" y="36" fill="var(--sm-blue-sub)">seq=1</text>
 </g>
 
-<g id="logic-e6" transform="translate(895, 205)">
+<g id="logic-e6" transform="translate(895, 231)">
 <rect width="115" height="50" rx="7" fill="var(--sm-blue-bg)" stroke="var(--sm-blue-stroke)" stroke-width="1.8" filter="url(#drag-shadow)"/>
 <rect width="4" height="50" rx="2" fill="var(--sm-blue-stroke)"/>
 <text class="node-title" x="14" y="20" fill="var(--sm-blue-text)" dominant-baseline="central">E6: Detach</text>
@@ -495,22 +495,22 @@ While domain entities exist logically as independent fibers, disk I/O and networ
 </g>
 
 <!-- Precursor Backward Dashed Arrow for Fiber B: E5 (745) to E2 (295+115=410) -->
-<path d="M 745,305 C 655,278 510,278 418,305" class="edge-halo"/>
-<path d="M 745,305 C 655,278 510,278 418,305" class="edge-dashed" stroke="var(--sm-green-stroke)" marker-end="url(#drag-arrow-green)"/>
+<path d="M 745,331 C 655,304 510,304 418,331" class="edge-halo"/>
+<path d="M 745,331 C 655,304 510,304 418,331" class="edge-dashed" stroke="var(--sm-green-stroke)" marker-end="url(#drag-arrow-green)"/>
 <g>
-<rect class="badge-bg" x="538" y="273" width="80" height="20" rx="10"/>
-<text class="edge-label badge-txt" x="578" y="283" dominant-baseline="central" text-anchor="middle">precursor</text>
+<rect class="badge-bg" x="538" y="299" width="80" height="20" rx="10"/>
+<text class="edge-label badge-txt" x="578" y="309" dominant-baseline="central" text-anchor="middle">precursor</text>
 </g>
 
 <!-- Swimlane B Event Cards -->
-<g id="logic-e2" transform="translate(295, 285)">
+<g id="logic-e2" transform="translate(295, 311)">
 <rect width="115" height="50" rx="7" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="1.8" filter="url(#drag-shadow)"/>
 <rect width="4" height="50" rx="2" fill="var(--sm-green-stroke)"/>
 <text class="node-title" x="14" y="20" fill="var(--sm-green-text)" dominant-baseline="central">E2: Create</text>
 <text class="node-sub" x="14" y="36" fill="var(--sm-green-sub)">seq=0 (Root)</text>
 </g>
 
-<g id="logic-e5" transform="translate(745, 285)">
+<g id="logic-e5" transform="translate(745, 311)">
 <rect width="115" height="50" rx="7" fill="var(--sm-green-bg)" stroke="var(--sm-green-stroke)" stroke-width="1.8" filter="url(#drag-shadow)"/>
 <rect width="4" height="50" rx="2" fill="var(--sm-green-stroke)"/>
 <text class="node-title" x="14" y="20" fill="var(--sm-green-text)" dominant-baseline="central">E5: Update</text>
@@ -518,7 +518,7 @@ While domain entities exist logically as independent fibers, disk I/O and networ
 </g>
 
 <!-- Swimlane C Event Card & Root Frame Badge -->
-<g id="logic-e4" transform="translate(595, 362)">
+<g id="logic-e4" transform="translate(595, 388)">
 <rect width="115" height="50" rx="7" fill="var(--sm-amber-bg)" stroke="var(--sm-amber-stroke)" stroke-width="1.8" filter="url(#drag-shadow)"/>
 <rect width="4" height="50" rx="2" fill="var(--sm-amber-stroke)"/>
 <text class="node-title" x="14" y="20" fill="var(--sm-amber-text)" dominant-baseline="central">E4: Create</text>
@@ -526,17 +526,17 @@ While domain entities exist logically as independent fibers, disk I/O and networ
 </g>
 
 <g>
-<rect class="badge-bg" x="735" y="376" width="165" height="22" rx="11"/>
-<text class="edge-label badge-txt" x="817" y="387" dominant-baseline="central" text-anchor="middle">Root Frame (precursor=0x00)</text>
+<rect class="badge-bg" x="735" y="394" width="165" height="22" rx="11"/>
+<text class="edge-label badge-txt" x="817" y="405" dominant-baseline="central" text-anchor="middle">Root Frame (precursor=0x00)</text>
 </g>
 
 <!-- Projection Drop Lines from Physical Stream down to Logical Chains -->
-<path d="M 202.5,127 L 202.5,205" class="edge-dashed" stroke="var(--sm-blue-stroke)" opacity="0.35"/>
-<path d="M 352.5,127 L 352.5,285" class="edge-dashed" stroke="var(--sm-green-stroke)" opacity="0.35"/>
-<path d="M 502.5,127 L 502.5,205" class="edge-dashed" stroke="var(--sm-blue-stroke)" opacity="0.35"/>
-<path d="M 652.5,127 L 652.5,362" class="edge-dashed" stroke="var(--sm-amber-stroke)" opacity="0.35"/>
-<path d="M 802.5,127 L 802.5,285" class="edge-dashed" stroke="var(--sm-green-stroke)" opacity="0.35"/>
-<path d="M 952.5,127 L 952.5,205" class="edge-dashed" stroke="var(--sm-blue-stroke)" opacity="0.35"/>
+<path d="M 202.5,127 L 202.5,231" class="edge-dashed" stroke="var(--sm-blue-stroke)" opacity="0.35"/>
+<path d="M 352.5,127 L 352.5,311" class="edge-dashed" stroke="var(--sm-green-stroke)" opacity="0.35"/>
+<path d="M 502.5,127 L 502.5,231" class="edge-dashed" stroke="var(--sm-blue-stroke)" opacity="0.35"/>
+<path d="M 652.5,127 L 652.5,388" class="edge-dashed" stroke="var(--sm-amber-stroke)" opacity="0.35"/>
+<path d="M 802.5,127 L 802.5,311" class="edge-dashed" stroke="var(--sm-green-stroke)" opacity="0.35"/>
+<path d="M 952.5,127 L 952.5,231" class="edge-dashed" stroke="var(--sm-blue-stroke)" opacity="0.35"/>
 
 </svg>
 </div>

@@ -251,7 +251,7 @@ In Fiber Semantics, the lifecycle history of each domain entity is modeled as an
 
 - **Definition**: A fiber is a singly linked list of immutable events belonging to a unique, domain-scoped identifier (`fiber_id`).
 - **Chain Topology**: Each event references its immediate predecessor through a `precursor` identifier and hash, linking the entity's history independently of other fibers.
-- **Head-Anchored Traversal**: The active state of a fiber is always anchored at its newest event (the head). Reading an entity's current state requires inspecting only the head; traversing backward reconstructs historical state transitions without requiring full-log scans.
+- **Head-Anchored Traversal**: A fiber's newest event is its head. A latest-event lookup returns that event's envelope, not an automatically reconstructed entity view. Reading only the head suffices when its payload contains all data needed for the requested view; delta events require a consumer-defined fold or projection over the relevant history. Fiber-local links support historical traversal without requiring a full-log scan.
 
 ---
 
@@ -1400,7 +1400,7 @@ At the core of Pardosa is an explicit, formal state machine governing every fibe
 
 ### The 10 Legal Transitions
 
-Pardosa encodes exactly **10 legal state transitions**. Any action attempting an unlisted transition is rejected at compile time and runtime by the `IllegalStateTransition` error:
+Pardosa encodes exactly **10 legal state transitions**. General transition methods return `Result`; an action attempting an unlisted transition returns `Err(IllegalStateTransition)` at runtime. A narrower type-level constraint applies to reopened fibers: `ReopenedFiberState` has no `Locked` variant, and validation rejects a raw `Locked` state on reopen:
 
 <div class="pardosa-lifecycle-diagram" style="margin: 2rem 0; padding: 1.5rem 1rem; border-radius: 0.75rem; border: 1px solid var(--gray-200, #e2e8f0); background: var(--body-background, #ffffff); overflow-x: auto;">
 <svg id="state-diagram" viewBox="0 0 1060 510" width="100%" height="auto" style="display: block; min-width: 780px; max-width: 1060px; margin: 0 auto; overflow: visible;">
@@ -1619,7 +1619,7 @@ Pardosa encodes exactly **10 legal state transitions**. Any action attempting an
 
 ## Consumer Idempotency & Deterministic Projections
 
-In event-driven architectures, downstream systems build read models, search indexes, in-memory view models, and pre-rendered caches by projecting the event stream. Pardosa supplies ordered, self-contained facts and event identity; adapters define deterministic projections and coordinate sink delivery, identity retention and recovery. Rebuilding a view and suppressing a retry are separate mechanisms:
+In event-driven architectures, downstream systems build read models, search indexes, in-memory view models, and pre-rendered caches by projecting the event stream. Pardosa supplies ordered events and event identity; consumers define payloads that carry the facts needed by their views, while adapters define deterministic projections and coordinate sink delivery, identity retention and recovery. Payload completeness for a particular view is consumer-defined, not guaranteed by an envelope or schema descriptor. Rebuilding a view and suppressing a retry are separate mechanisms:
 
 <div class="consumer-proj-container" id="consumer-reconstruction">
   <section class="cp-layer" aria-labelledby="consumer-facts-title">

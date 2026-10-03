@@ -2,6 +2,7 @@
 title: "Software Factory SDLC (sf-sdlc)"
 description: "Authoritative engineering lifecycle and monotonic quality ratchet for software fleets"
 weight: 10
+draft: true
 homeFeatured: true
 ---
 

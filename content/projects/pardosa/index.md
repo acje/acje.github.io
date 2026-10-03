@@ -2,6 +2,7 @@
 title: "Pardosa: Event-Driven Storage with Fiber Semantics"
 description: "Append-only fiber storage, generation-local integrity, and consumer-owned event projections"
 weight: 20
+draft: true
 homeFeatured: true
 ---
 

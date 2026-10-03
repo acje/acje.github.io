@@ -2,6 +2,7 @@
 title: "Spandrel: Modular DDD/CQRS/EDA Substrate"
 description: "Unbundled application-side domain traits, projection fold pipelines, and resource-bounded serving"
 weight: 30
+draft: true
 homeFeatured: true
 homePrefix: "TODO:"
 ---

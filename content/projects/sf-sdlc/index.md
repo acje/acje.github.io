@@ -348,7 +348,7 @@ Multi-repository software fleets inevitably suffer from structural entropy: arch
 
   .sdlc-arrow-head {
     font-size: 0.75rem;
-    color: var(--sdlc-slate-border);
+    color: var(--sdlc-text-muted);
     line-height: 1;
   }
 
@@ -420,8 +420,8 @@ Multi-repository software fleets inevitably suffer from structural entropy: arch
   .sdlc-num-blue { background: #2563eb; }
   .sdlc-num-purple { background: #7c3aed; }
   .sdlc-num-green { background: #059669; }
-  .sdlc-num-cyan { background: #0891b2; }
-  .sdlc-num-amber { background: #d97706; }
+  .sdlc-num-cyan { background: var(--sdlc-cyan-tag-bg); }
+  .sdlc-num-amber { background: var(--sdlc-amber-tag-bg); }
   .sdlc-num-rose { background: #e11d48; }
 
   .sdlc-conn-content {
@@ -502,7 +502,6 @@ Multi-repository software fleets inevitably suffer from structural entropy: arch
         </div>
       </div>
     </div>
-
     <!-- Card 2: Software Factory SDLC Engine -->
     <div class="sdlc-card sdlc-card-blue">
       <div class="sdlc-card-title-bar">
@@ -583,7 +582,7 @@ Traditional software development lifecycles (SDLCs) fail across multi-repository
 
 When architectural options, resource constraints, or review criteria conflict, `sf-sdlc` mandates an unambiguous, five-tier decision hierarchy. Every engineering decision—from type design to runtime telemetry—resolves strictly in this order:
 
-$$\text{Maintainability} > \text{Correctness by design} > \text{Response times} > \text{Energy efficiency in code} > \text{Features}$$
+Maintainability > Correctness by design > Response times > Energy efficiency in code > Features
 
 <div class="sdlc-container">
   <!-- Tier 1: Maintainability -->
@@ -760,7 +759,6 @@ $$\text{Maintainability} > \text{Correctness by design} > \text{Response times} 
         <div class="sdlc-field-desc">Establish intent, boundary constraints, and non-negotiables before touching code.</div>
       </div>
     </div>
-
     <!-- Phase 2: Design & Planning -->
     <div class="sdlc-card sdlc-card-purple">
       <div class="sdlc-card-title-bar">
@@ -773,7 +771,6 @@ $$\text{Maintainability} > \text{Correctness by design} > \text{Response times} 
         <div class="sdlc-field-desc">Formalize domain interfaces, explicit state transitions, and immutable ADRs via adr-fmt.</div>
       </div>
     </div>
-
     <!-- Phase 3: Building -->
     <div class="sdlc-card sdlc-card-blue">
       <div class="sdlc-card-title-bar">
@@ -786,7 +783,6 @@ $$\text{Maintainability} > \text{Correctness by design} > \text{Response times} 
         <div class="sdlc-field-desc">Execute red-green-refactor cycles; one axis of advance (Tidy First) committed to trunk.</div>
       </div>
     </div>
-
     <!-- Phase 4: Verification -->
     <div class="sdlc-card sdlc-card-green">
       <div class="sdlc-card-title-bar">
@@ -799,7 +795,6 @@ $$\text{Maintainability} > \text{Correctness by design} > \text{Response times} 
         <div class="sdlc-field-desc">Inner (&lt;5s), Mid (reverse closure), and Boundary (workspace &amp; timeouts) verification.</div>
       </div>
     </div>
-
     <!-- Phase 5: Release -->
     <div class="sdlc-card sdlc-card-blue">
       <div class="sdlc-card-title-bar">
@@ -812,7 +807,6 @@ $$\text{Maintainability} > \text{Correctness by design} > \text{Response times} 
         <div class="sdlc-field-desc">Reproducible, signed binaries verified with cargo-deny and cargo-audit provenance.</div>
       </div>
     </div>
-
     <!-- Phase 6: Operation & Learning -->
     <div class="sdlc-card sdlc-card-cyan">
       <div class="sdlc-card-title-bar">
@@ -825,7 +819,6 @@ $$\text{Maintainability} > \text{Correctness by design} > \text{Response times} 
         <div class="sdlc-field-desc">Monitor real-world latency distributions and error telemetry feeding back to design.</div>
       </div>
     </div>
-
     <!-- Phase 7: Evolution & Retirement -->
     <div class="sdlc-card sdlc-card-amber">
       <div class="sdlc-card-title-bar">
@@ -893,9 +886,9 @@ $$\text{Maintainability} > \text{Correctness by design} > \text{Response times} 
 
 1. **Framing**: Establish the fundamental intent, operational boundaries, and system invariant definitions before touching code. Distinguishes hard constraints from speculative requirements.
 2. **Design & Planning**: Formalize domain interfaces, explicit state machine transitions, and resource contracts. Strategic decisions are committed to immutable Architectural Decision Records (ADRs) via `adr-fmt`.
-3. **Building**: Execute implementation through strict Kent Beck test-driven development (TDD: red $\rightarrow$ green $\rightarrow$ refactor). Enforces "one axis of advance" (Tidy First): structural changes and behavioral changes never land in the same commit.
+3. **Building**: Execute implementation through strict Kent Beck test-driven development (TDD: red → green → refactor). Enforces "one axis of advance" (Tidy First): structural changes and behavioral changes never land in the same commit.
 4. **Verification**: Enforce a rigid three-tier verification cadence:
-   - **INNER**: Local crate-level tests and clippy checks for rapid TDD loops ($< 5\text{s}$).
+   - **INNER**: Local crate-level tests and clippy checks for rapid TDD loops (< 5s).
    - **MID**: Reverse-dependent closure verification executed prior to sub-mission completion.
    - **BOUNDARY**: Full workspace compilation, all-features test suites under strict timeouts, linting, and formatting executed before epic merge.
 5. **Release**: Produce reproducible, cryptographically signed artifacts with full supply-chain provenance (`cargo deny`, `cargo audit`).
@@ -937,7 +930,6 @@ Elevating quality across a multi-repository organization without stalling delive
         </div>
       </div>
     </div>
-
     <!-- Phase 2: Deliberate Adoption -->
     <div class="sdlc-card sdlc-card-blue">
       <div class="sdlc-card-title-bar">
@@ -966,7 +958,6 @@ Elevating quality across a multi-repository organization without stalling delive
         </div>
       </div>
     </div>
-
     <!-- Phase 3: Ratchet Advancement -->
     <div class="sdlc-card sdlc-card-green">
       <div class="sdlc-card-title-bar">
@@ -1048,7 +1039,6 @@ To prevent verification tooling from becoming a source of state corruption, the 
         </div>
       </div>
     </div>
-
     <!-- Column 2: Conformance Engine -->
     <div class="sdlc-card sdlc-card-blue">
       <div class="sdlc-card-title-bar">
@@ -1077,7 +1067,6 @@ To prevent verification tooling from becoming a source of state corruption, the 
         </div>
       </div>
     </div>
-
     <!-- Column 3: Neutral Situation Evidence -->
     <div class="sdlc-card sdlc-card-cyan">
       <div class="sdlc-card-title-bar">
@@ -1178,7 +1167,6 @@ To prevent verification tooling from becoming a source of state corruption, the 
         </div>
       </div>
     </div>
-
     <!-- Pillar 2: Graph & Issue Substrates -->
     <div class="sdlc-card sdlc-card-slate">
       <div class="sdlc-card-title-bar">

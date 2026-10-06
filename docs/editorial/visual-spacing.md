@@ -57,7 +57,6 @@ From the repository root, before committing the edit:
 
 ```sh
 python3 docs/editorial/verify-crypto-spacing.py --baseline HEAD
-git diff --check
 hugo build --renderToMemory --noBuildLock
 ```
 

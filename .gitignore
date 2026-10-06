@@ -35,3 +35,4 @@ package-lock.json
 # Unpublished manuscripts. Kept local by choice, not tracked anywhere.
 # Nothing here is recoverable from git — back it up outside the repo.
 content/book/
+/graphify-out/

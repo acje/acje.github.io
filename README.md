@@ -20,6 +20,8 @@ being updated.
 
 ## Links
 
+- [Manuscripts](docs/manuscripts.md) — unpublished book, kept outside the repo
+
 - [Visual spacing authoring reference](docs/editorial/visual-spacing.md)
 
 - https://gohugo.io/host-and-deploy/host-on-github-pages/

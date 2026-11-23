@@ -1,0 +1,30 @@
+# Local-only overlay for previewing the unpublished manuscripts, which live
+# outside this repository. Copy this file, set the path, and merge it:
+#
+#   cp hugo.local.yaml.example hugo.local.yaml
+#   hugo server --config hugo.yaml,hugo.local.yaml
+#
+# hugo.local.yaml is gitignored and deploy builds never load it, so these
+# pages are never published.
+#
+# A site-level module.mounts list REPLACES Hugo's default mounts, so the
+# defaults (content, static, layouts, data, assets, i18n, archetypes) are
+# repeated here. Only the final entry is site-specific.
+module:
+  mounts:
+    - source: archetypes
+      target: archetypes
+    - source: content
+      target: content
+    - source: data
+      target: data
+    - source: layouts
+      target: layouts
+    - source: i18n
+      target: i18n
+    - source: assets
+      target: assets
+    - source: static
+      target: static
+    - source: /Users/YOUR-USER/Documents/manuscripts/acje.github.io/book
+      target: content/book

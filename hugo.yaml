@@ -62,8 +62,6 @@ frontmatter:
 params:
   # Book-specific theme parameters
   BookTheme: "auto"
-  BookRepo: "https://github.com/acje/acje.github.io"
-  BookEditPath: "edit/main/content"
   BookDateFormat: "January 2, 2006"
   BookToC: true
   BookComments: false

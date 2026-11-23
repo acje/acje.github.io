@@ -7,8 +7,6 @@ homePrefix: "Under construction"
 weight: 10
 ---
 
-## Scaling Agile
-
 **!!! Under construction !!!**
 
 These notes document how an organization transformed from facing challenges with concurrent digitalization projects and inconsistent value delivery into a fast-moving agile organization. I have observed this type of transition twice as an architect in two different organizations, both with dozens of projects and, later, dozens of teams running in parallel. The first transition targeted the Scaled Agile Framework (SAFe). The second transition took a much more deliberate and tailored approach. This bespoke transition is the primary focus of these notes, though I reference the first transition where appropriate.

@@ -10,8 +10,6 @@ homeFeatured: true
 weight: 20
 ---
 
-## Digital sovereignty - Pervasive Supply Chain Provenance
-
 TODO
 
 Implements [Digital Sovereignty]({{< relref "systems/digital_sovereignty/index.md" >}}) chapter "1. Trusted Supply Chains"

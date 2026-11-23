@@ -10,8 +10,6 @@ homeFeatured: true
 weight: 60
 ---
 
-## LLMs for coding, we´re holding it wrong
-
 Here are some perhaps counterintuitive lessons I have picked up, in no particular order, during my first ~1M lines of code;
 
 Note of warning. If you havent internalised [Stop Looking at Your Code](https://www.oreilly.com/radar/steve-yegge-wants-you-to-stop-looking-at-your-code/) then this will not make any sense.

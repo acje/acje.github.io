@@ -6,8 +6,6 @@ draft: true
 homeFeatured: true
 ---
 
-## Pardosa: Event-Driven Storage with Fiber Semantics
-
 Event-sourced applications need reliable entity histories, independent consumers, and a way to remove selected histories without corrupting the rest.
 
 `Pardosa` is an append-only event-driven storage engine implemented in Rust, built upon **Fiber Semantics**. Its storage core admits event envelopes, checks fiber-local predecessor links and lifecycle rules, and records interleaved frames. Applications supply domain facts and define their views.

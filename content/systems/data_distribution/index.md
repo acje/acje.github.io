@@ -10,8 +10,6 @@ weight: 30
 
 ---
 
-## Reliable Data Product Distribution
-
 This article describes a secure, cross-organizational platform for timely information sharing. It focuses on a specific integration pattern, typically referred to as data replication or data propagation. Other integration patterns, such as request-response, are out of scope.
 
 ![Information sharing overview](information_sharing_clean.png)

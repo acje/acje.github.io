@@ -8,7 +8,6 @@ lastmod: 2026-02-24
 homeFeatured: true
 weight: 20
 ---
-## Maturity levels in the CISQ security model
 
 | ![CISQ security model version 1.0](CISQ-simplified.png)                         |
 |                      :--:                                                       |

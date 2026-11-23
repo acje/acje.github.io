@@ -10,8 +10,6 @@ homePrefix: "TODO:"
 > **Status Notice: Specification & Target Design Phase (TODO)**<br/>
 > Spandrel is currently in its formal specification and architectural design phase. It defines the unbundled substrate contracts and neutral domain traits required before implementing production Rust crates. Construction follows clean-room discipline: the specification and neutral test vectors are authored prior to implementation.
 
-## Spandrel: Modular DDD/CQRS/EDA Substrate
-
 Modern web frameworks tend to be monolithic. They bind domain business logic tightly to specific object-relational mappers (ORMs), assume synchronous request-response relational databases, and conflate HTTP request handling with state mutation and view rendering. When engineering teams attempt to adopt Domain-Driven Design (DDD), Command Query Responsibility Segregation (CQRS), and Event-Driven Architecture (EDA) in Rust, they are often forced to choose between heavyweight, all-or-nothing enterprise frameworks or assembling ad-hoc, brittle glue code across dozens of disparate crates.
 
 `Spandrel` provides an **unbundled, modular substrate** for CQRS/DDD/EDA applications in Rust. Rather than acting as an invasive framework that dictates application control flow, Spandrel offers composable, high-performance primitives: neutral domain traits, change-driven projection fold pipelines, admission regulators, bounded work queues, and zero-query static HTTP serving.

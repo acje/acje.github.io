@@ -11,8 +11,6 @@ weight: 40
 
 ---
 
-## Digital Sovereignty by Design
-
 There are times when the world gets tight and choices grow sharp. This is one of those times. The machines we depend on are not neutral; they shape power, trust, and freedom.
 
 [![Digital castle](digital_castle.jpg)](digital_castle.jpg)

@@ -11,8 +11,6 @@ weight: 10
 
 ---
 
-## Digital Sovereignty
-
 ![Castle](/systems/digital_sovereignty/Borg.png)
 
 *Break digital vassalage. Use politics and architecture to reshape the systems that run our infrastructure and services. By targeting the ecosystem, every sector of society gains.*

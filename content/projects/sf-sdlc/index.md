@@ -6,8 +6,6 @@ draft: true
 homeFeatured: true
 ---
 
-## Software Factory SDLC (sf-sdlc)
-
 Multi-repository software fleets inevitably suffer from structural entropy: architectural drift, divergent dependency baselines, silent quality regressions, and what can only be termed *compliance theatre*. In the absence of an authoritative, mechanically enforced lifecycle, organizational standards devolve into static wiki pages, subjective code review debates, and disconnected audit checklists that teams satisfy symbolically rather than structurally.
 
 `sf-sdlc` establishes a rigorous, normative software engineering lifecycle and an automated quality ratchet designed specifically for modern autonomous agent and human engineering fleets. It defines how software moves from initial intent to retirement, governs technical trade-offs through an explicit priority hierarchy, and enforces baseline hygiene across repositories using high-speed, read-only mechanical checkers.

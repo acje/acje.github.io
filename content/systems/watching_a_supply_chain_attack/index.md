@@ -10,8 +10,6 @@ homeFeatured: true
 weight: 80
 ---
 
-## Watching my software factory handle a live supply chain attack
-
 I was not looking for a supply chain attack. I was working on [gh-report](https://github.com/Mattilsynet/gh-report), a Rust project that has nothing to do with `arrayref`, on a task that had nothing to do with `arrayref`, and my build went red.
 
 `cargo deny` had fired. The reason was that a dependency the project had pinned for months — `arrayref 0.3.9` had just been yanked out from under it.

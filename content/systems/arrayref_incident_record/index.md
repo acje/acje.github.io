@@ -10,8 +10,6 @@ homeFeatured: true
 weight: 90
 ---
 
-## crates.io / arrayref: a contemporaneous incident record
-
 **Original document title:** crates.io incident follow-up — `droundy` account compromise + `dtolney` impersonation
 
 This is a contemporaneous record. My agents and I compiled it on 2026-08-20

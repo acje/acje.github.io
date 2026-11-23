@@ -1,1 +1,4 @@
+{{- if ne .Kind "404" -}}
+<h1 class="book-page-title">{{ .Title }}</h1>
+{{- end -}}
 {{- partial "docs/post-meta" . -}}

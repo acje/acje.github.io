@@ -10,8 +10,6 @@ homeFeatured: true
 weight: 30
 ---
 
-## Digital Sovereignty - Ecosystem of Defensible Systems
-
 TODO
 
 Implements [Digital Sovereignty]({{< relref "systems/digital_sovereignty/index.md" >}}) chapter "4. Maximally Isolated Components of Least Capability"

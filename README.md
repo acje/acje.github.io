@@ -8,15 +8,29 @@ Deployed to GitHub Pages by
 ## Build locally
 
 ```
-hugo server -D
+hugo server
 ```
+
+`hugo server -D` additionally renders drafts, which the deploy build never
+publishes; use it only for previewing draft content.
+
+## Gate locally, exactly as CI does
+
+```
+hugo build --gc --minify --baseURL "https://acje.github.io/" --panicOnWarning --printPathWarnings --printI18nWarnings
+python3 scripts/check_site.py public
+```
+
+The checker takes the destination directory as its argument, so build to a
+scratch directory (for example `--destination .ooda/tmp/site`) when you do not
+want to disturb `public/`.
 
 ## Toolchain
 
-Hugo and Go versions are pinned in the `env:` block of
-[`.github/workflows/hugo.yaml`](.github/workflows/hugo.yaml) — read that
-file for the versions actually in use; they change without this README
-being updated.
+Hugo is pinned in the `env:` block of
+[`.github/workflows/hugo.yaml`](.github/workflows/hugo.yaml), together with its
+release checksum; read that file for the version actually in use. There is no
+Go toolchain in the build.
 
 ## Links
 

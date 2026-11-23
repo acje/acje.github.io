@@ -56,17 +56,8 @@ width and horizontally scrollable wrapper on small screens.
 From the repository root, before committing the edit:
 
 ```sh
-python3 docs/editorial/verify-crypto-spacing.py --baseline HEAD
 hugo build --renderToMemory --noBuildLock
 ```
-
-After committing, supply the pre-edit revision instead of `HEAD`. The verifier
-checks both fibers' gaps, equal spacing, horizontal insets/sibling gap, backward
-arrows and canvas clearance. It compares text, structure, IDs, non-layout
-attributes and content outside the diagram against the selected Git baseline.
-It does not prove rendered font fit, visual appearance or arbitrary geometry
-changes in the permitted layout attributes. Run Python normally, **not with
-`-O`**, which disables assertions.
 
 For browser inspection, build a fresh local preview into an ignored directory:
 

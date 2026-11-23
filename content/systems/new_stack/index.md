@@ -158,7 +158,7 @@ While writing part four, an additional credible commitment problem has arisen fr
 
 In part four I will try to expand on what we mean by isolation, but first let us take a brief look at what an end-game hardware architecture could look like. This is a total paper tiger but hopefully also a high-level design to visualize a desired state. The hardware design has two primary goals: low-overhead communication and durable isolation to deal with the credible commitment problem in software. It may look fancy at first glance, but it is just a computer cluster on a chip that draws some inspiration from isolation mechanisms like Apple’s Secure Enclave and scale-out strategies like Tenstorrent Grayskull.
 
-[![Actor tiles](images/part4-img3.png "Actor tiles")](images/part4-img7.png)
+[![Actor tiles](images/part4-img3.webp "Actor tiles")](images/part4-img7.webp)
 
 High-level sketch of a cluster-on-a-chip where fully isolated “Actor enclaves” represent the fundamental unit of compute. Tiles help scale the mesh network, memory, and control plane but are of little consequence for software running on the platform.
 
@@ -202,7 +202,7 @@ Assume that an adversary can modify A to gain functionality like inspecting B an
 
 But it gets worse, a lot worse. Consider a typical PC or PC-derived server. There really is only one huge isolated entity, and it contains a lot of black boxes. Let us expand on how we think about defending compute devices. There are surfaces, gaps, and interfaces. Surfaces are prepared defensive structures designed to stop anything within the scope of the system. Gaps are places we haven’t prepared any structures, so anyone can get in if they find one. It may be an oversight, a hidden backdoor, or simply risk acceptance. Interfaces are the gates of the castle. Your interaction depends on your privileges. But then we have designs like this.
 
-[![Article content](images/part4-img5.png "Article content")](images/part4-img9.png)
+[![Article content](images/part4-img5.webp "Article content")](images/part4-img9.webp)
 
 The PC can be thought of as a single actor with multiple compute elements, many of which are completely out of your control and the OS’s control. This is perhaps a reason why coming up with a reasonable model for computer security tends to fail. There simply is no way you should be able to reason about the security guarantees of systems designed like this, because there obviously aren’t any.
 
@@ -210,7 +210,7 @@ The PC can be thought of as a single actor with multiple compute elements, many 
 
 This all leads to the following perspective on the evolution of workload segmentation where software mechanisms contribute “pliable containment”, and hardware contributes “durable isolation”. Of course, software isn’t always compromised, but we are considering guaranteed sustainability of capabilities here. This does not mean that pliable containment is useless, but it is a risk. I do realize that the following model takes a swing at every actor framework out there by grouping all of them in the “single actor paradigm”. The goal is not to claim that they are wrong, but to show that they could do much better with a scale-out von Neumann architecture than they are with the current crop of scale-up von Neumann architectures.
 
-[![Article content](images/part4-img6.png "Article content")](images/part4-img10.png)
+[![Article content](images/part4-img6.webp "Article content")](images/part4-img10.webp)
 
 Note how little changes in the last step from “WebAssembly” to “Actor Enclaves”. This is the importance of the strategic contract from part two. Massive rebuild of the underlying hardware and OS construct, but no change to the application.
 

@@ -21,7 +21,7 @@ The CISQ model describes *security qualities*: positive, naturally emerging qual
 
 Together with related perspectives, this is a useful representation and starting point for most teams managing information systems. The higher maturity levels are meant for security professionals and infrastructure or platform teams focusing on a deeper understanding of their security posture.
 
-| ![CISQ security model version 1.0](CISQ-L2-overview.png)           |
+| ![CISQ security model version 1.0](CISQ-L2-overview.webp)           |
 |                      :--:                                          |
 |  *CISQ security model v1.0, Maturity level 2, simplified overview* |
 
@@ -95,7 +95,7 @@ At maturity level two, we introduce some common higher-order qualities that are 
 
 Maturity level two is also represented in the simplified view.
 
-| ![CISQ security model version 1.0](CISQ-transformation.png)                                       |
+| ![CISQ security model version 1.0](CISQ-transformation.webp)                                       |
 |                      :--:                                                                         |
 |  *The CISQ security model has a base view covering all maturity levels and a simplified overview* |
 
@@ -203,7 +203,7 @@ Organizational controls bound blast radius, enable predictable escalation, and s
 
 [Download Excalidraw source](https://github.com/acje/acje.github.io/blob/main/docs/diagrams/cisq-maturity/CISQ.excalidraw)
 
-[Download CISQ-simplified-large](CISQ-simplified-large.png)  
+[Download CISQ-simplified-large](CISQ-simplified-large.webp)  
 
 ### Maturity level, Qualities, Composition, Threat
 

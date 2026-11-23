@@ -49,11 +49,11 @@ For behavior in an information system, such as a service, we have the same four 
 
 The CISQ-model uses composition to expand the four basic security qualities (Integrity, Authenticity, Availability, Control) into a total of 16 qualities as shown in the table below.
 
-![CISQ-table](CISQ-table.png)
+![CISQ-table](CISQ-table.webp)
 
 Visualizing the composition of four aspects is not easy to get right. This view shows how we can simplify the model by splitting the model into two separate views. One model for systems that are controlled, typically by an organization and the other for public domain objects such as certificates.
 
-![CISQ-Model](CISQ-3-model-views.png)
+![CISQ-Model](CISQ-3-model-views.webp)
 
 ### Vocabulary of the CISQ-Model
 

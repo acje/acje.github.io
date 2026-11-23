@@ -42,7 +42,7 @@ Cargo had already said as much in its own output `Adding proc-macro1 v1.0.107`, 
 
 Looking into the reasoning Hopper used to halt we find these four signals. what It could not deliver and the keyword "Surprise" used for agents to back brief other agents or me.
 
-![Hopper's halt report, titled "Why I stopped", quoting the Cargo.lock entries for arrayref 0.3.10 and proc-macro1 1.0.107 with its base64, rustls, unicode-ident and ureq dependencies, listing four reasons this is a stop-the-line signal rather than dependency churn, and a table of requested deliverables marked mostly undeliverable by design](hopper-reasoning.png)
+![Hopper's halt report, titled "Why I stopped", quoting the Cargo.lock entries for arrayref 0.3.10 and proc-macro1 1.0.107 with its base64, rustls, unicode-ident and ureq dependencies, listing four reasons this is a stop-the-line signal rather than dependency churn, and a table of requested deliverables marked mostly undeliverable by design](hopper-reasoning.webp)
 
 *`Outcome::Surprise` the agent has an escape hatch where it halts rather than trying too hard.*
 
@@ -72,7 +72,7 @@ Two names have been doing work in this post without introduction, so: I run [ope
 
 After the fact I ran an audit over gh-report's own ADRs, asking what they had to say about our readiness for such attacks. SEC-0009 — the one mandating `cargo deny` on every PR, the gate that fired at the top of this post — names its threat model outright: *"The xz-utils incident (CVE-2024-3094) demonstrates dependency supply chain is the highest-impact attack vector."* The control that caught this was written for exactly this class of attack.
 
-![an ADR audit table for gh-report with a Wired? column citing ci-reusable.yml, tools/tripwires.sh and rust-toolchain.toml, and SEC-0009 naming the xz-utils incident CVE-2024-3094 as its threat model](adr-evidence.png)
+![an ADR audit table for gh-report with a Wired? column citing ci-reusable.yml, tools/tripwires.sh and rust-toolchain.toml, and SEC-0009 naming the xz-utils incident CVE-2024-3094 as its threat model](adr-evidence.webp)
 
 *Run after the incident, looking back at what was already in place*
 

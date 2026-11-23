@@ -8,8 +8,9 @@ Browsers ignore `X-Frame-Options`, `X-XSS-Protection` and
 withdrawn, and frame-ancestors cannot be expressed by a meta CSP. Keeping
 them advertised protection the site did not have, so they were removed.
 
-Remaining, browser-honoured markup:
-- `X-Content-Type-Options: nosniff`
-- `Referrer-Policy: strict-origin-when-cross-origin` via `<meta name="referrer">`
+Among the remaining markup only `<meta name="referrer">` is honoured:
+`Referrer-Policy: strict-origin-when-cross-origin`.
 
-Real headers (HSTS, frame-ancestors, CSP) need a proxy/CDN in front of Pages.
+`X-Content-Type-Options: nosniff` was removed too, since browsers honour
+it only as a real header. Serve it, HSTS, frame-ancestors and CSP from a
+proxy/CDN in front of Pages.

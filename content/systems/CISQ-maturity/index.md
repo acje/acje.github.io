@@ -9,7 +9,7 @@ homeFeatured: true
 weight: 20
 ---
 
-| ![CISQ security model version 1.0](CISQ-simplified.png)                         |
+| ![CISQ security model version 1.0](CISQ-simplified.webp)                         |
 |                      :--:                                                       |
 |  *A good place to start: CISQ security model v1.0, Maturity level 2 simplified* |
 

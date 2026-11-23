@@ -37,4 +37,8 @@ package-lock.json
 # Git does not hold or back them up; keep the external tarball.
 # This overlay previews them locally and deploy builds never load it.
 hugo.local.yaml
+
+# Safety net: accidental in-repo copies of the unpublished manuscripts
+# must never become committable.
+content/book/
 /graphify-out/

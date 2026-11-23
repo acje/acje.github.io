@@ -8,7 +8,7 @@ weight: 50
 ---
 ## A structured view on information security
 
-Please use this instead: [CISQ maturity levels](/systems/CISQ-maturity/)
+Please use this instead: [CISQ maturity levels](/systems/cisq-maturity/)
 
 ## The CISQ-model hypothesis
 

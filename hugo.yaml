@@ -22,7 +22,24 @@ disableKinds:
   - taxonomy
   - term
  
-theme: "hugo-book"
+module:
+  imports:
+    - path: hugo-book
+      mounts:
+        - source: archetypes
+          target: archetypes
+        - source: assets
+          target: assets
+        - source: i18n
+          target: i18n
+        - source: layouts
+          target: layouts
+        - source: static
+          target: static
+          files:
+            - favicon.png
+            - favicon.svg
+            - fuse.min.mjs
 
 frontmatter:
   date:

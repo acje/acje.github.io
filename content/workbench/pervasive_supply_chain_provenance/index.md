@@ -5,8 +5,8 @@ aliases:
   - "/pervasive_supply_chain_provenance/"
 date: 2026-02-24
 lastmod: 2026-02-24
+draft: true
 homeFeatured: true
-homePrefix: "TODO:"
 weight: 20
 ---
 

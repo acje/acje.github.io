@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://acje.github.io/sitemap.xml

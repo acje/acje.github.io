@@ -2,8 +2,11 @@
 {{- $src := $u.String -}}
 {{- if not $u.IsAbs -}}
   {{- $path := strings.TrimPrefix "./" $u.Path -}}
-  {{- with or (.Page.Resources.GetMatch $path) (resources.GetMatch $path) -}}
-    {{- $img := . -}}
+  {{- $img := or (.Page.Resources.GetMatch $path) (resources.GetMatch $path) -}}
+  {{- if not $img -}}
+    {{- $img = or (.Page.Resources.GetMatch (path.Base $u.Path)) (resources.GetMatch (strings.TrimPrefix "/" $u.Path)) -}}
+  {{- end -}}
+  {{- with $img -}}
     {{- if and (eq $img.MediaType.MainType "image") (ne $img.MediaType.SubType "svg") -}}
       {{- $sizes := slice 480 768 1024 1600 -}}
       {{- $srcset := slice -}}

@@ -2,6 +2,7 @@
 title: "Projects"
 weight: 15
 bookCollapseSection: false
+bookHidden: true
 ---
 
 Active systems architecture, software engineering lifecycles, and event-driven storage primitives.

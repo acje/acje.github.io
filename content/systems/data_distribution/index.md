@@ -94,7 +94,7 @@ Conceptually, we must accept Charles Perrow's thesis in _Normal Accidents_ that 
 
 ## Resources
 
-[Excalidraw](data_distribution.excalidraw)
+[Excalidraw source](https://github.com/acje/acje.github.io/blob/main/docs/diagrams/data_distribution/data_distribution.excalidraw)
 
 ## More to Read
 

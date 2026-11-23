@@ -52,7 +52,6 @@ frontmatter:
   lastmod:
     - lastmod
     - modified
-    - :fileModTime
 
 # Site parameters
 params:

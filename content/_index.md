@@ -6,7 +6,7 @@ weight: 1
 bookFlatSection: true
 ---
 
-Strategic insights on information security, systems architecture, and organizational agency. Explore practical approaches to security governance, digital sovereignty, and infrastructure design—from hardware and networks to cloud systems and organizational capacity.
+Exploring practical approaches to information security, systems architecture and organizational agency.
 
 ## Systems and security
 
@@ -18,10 +18,6 @@ Strategic insights on information security, systems architecture, and organizati
 - [Structured service addressing. A new take on load balancing in IPv6 (Repository)](https://github.com/acje/structured-service-addressing)
 - Under construction [Fiber semantics. Event sourcing for complex domains (Repository)](https://github.com/acje/Fiber-semantics)
 - [Quality attributes (Repository)](https://github.com/acje/quality-attributes)
-
-## Projects
-
-{{% home-section-links section="projects" %}}
 
 ## Workbench - Idea to impact
 
@@ -36,5 +32,4 @@ Strategic insights on information security, systems architecture, and organizati
 
 - [Email](mailto:anders.c.jensen@gmail.com)
 - [LinkedIn](https://www.linkedin.com/in/anders-jensen-481a3374/)
-- [Substack](https://anderscj.substack.com/)
 - [GitHub](https://github.com/acje/)

@@ -201,7 +201,7 @@ Organizational controls bound blast radius, enable predictable escalation, and s
 
 ## Resources
 
-[Download Excalidraw file](CISQ.excalidraw)
+[Download Excalidraw source](https://github.com/acje/acje.github.io/blob/main/docs/diagrams/cisq-maturity/CISQ.excalidraw)
 
 [Download CISQ-simplified-large](CISQ-simplified-large.png)  
 

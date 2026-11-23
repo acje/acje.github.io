@@ -3,18 +3,18 @@
 {{- $published = .Date -}}
 {{- end -}}
 {{- $updated := .Lastmod -}}
-{{- if $updated.IsZero -}}
-{{- $updated = $published -}}
-{{- end -}}
+{{- $sameDay := and (not $published.IsZero) (not $updated.IsZero) (eq ($published.Format "2006-01-02") ($updated.Format "2006-01-02")) -}}
+{{- $showPublished := and (or .Params.date .Params.publishdate .Params.pubdate .Params.published) (not $published.IsZero) -}}
+{{- $showUpdated := and (or .Params.lastmod .Params.modified) (not $updated.IsZero) (not $sameDay) -}}
 
-{{ if or (not $published.IsZero) (not $updated.IsZero) }}
+{{ if or $showPublished $showUpdated }}
 <div class="text-small book-post-date">
-    {{ if not $published.IsZero }}
+    {{ if $showPublished }}
     <div class="flex align-center">
         <span>Published: {{ partial "docs/date" (dict "Date" $published "Format" $.Site.Params.BookDateFormat) }}</span>
     </div>
     {{ end }}
-    {{ if not $updated.IsZero }}
+    {{ if $showUpdated }}
     <div class="flex align-center">
         <span>Updated: {{ partial "docs/date" (dict "Date" $updated "Format" $.Site.Params.BookDateFormat) }}</span>
     </div>

@@ -43,7 +43,8 @@ module:
           files:
             - favicon.png
             - favicon.svg
-            - fuse.min.mjs
+            - apple-touch-icon.png
+            - minisearch.min.js
 
 frontmatter:
   date:
@@ -68,7 +69,6 @@ params:
   BookComments: false
   BookSearch: true
   BookSection: "*"
-  BookFavicon: "favicon.svg"
   
   # Author and site metadata
   author: "Anders Jensen"

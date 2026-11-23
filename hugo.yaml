@@ -72,9 +72,9 @@ params:
   description: "Strategic insights on agency, systems architecture, and information security"
   email: "anders.c.jensen@gmail.com"
   
-  # SEO: Default Open Graph image
+  # SEO: Default Open Graph image (raster 1200x630 card, see assets/og/)
   images:
-    - /favicon.svg
+    - /og-card.png
   
 # Social and external links
 menu:

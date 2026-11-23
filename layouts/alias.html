@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ .Page.Language.Lang }}">
+  <head>
+    <title>{{ .Permalink }}</title>
+    <link rel="canonical" href="{{ .Permalink }}">
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="0; url={{ .Permalink }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{- $title := .Page.Title | default .Page.Site.Title }}
+    {{- $description := partial "seo-description.html" .Page }}
+    {{- $image := index .Page.Site.Params.images 0 | absURL }}
+    <meta property="og:title" content="{{ $title }}">
+    <meta property="og:description" content="{{ $description }}">
+    <meta property="og:image" content="{{ $image }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $title }}">
+    <meta name="twitter:description" content="{{ $description }}">
+    <meta name="twitter:image" content="{{ $image }}">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+  </head>
+</html>

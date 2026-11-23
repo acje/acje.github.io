@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Anders Jensen — Agency, systems architecture and information security">
+  <!--
+    Social share card source for static/og-card.png (1200x630 raster).
+    Regenerate the PNG with exactly:
+
+      rsvg-convert -w 1200 -h 630 -o static/og-card.png assets/og/og-card.svg
+
+    Plain typographic design: white background, #111111 text, #0044aa accent
+    rule. No external images, no embedded bitmaps, no downloaded fonts.
+  -->
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <rect x="100" y="158" width="140" height="10" fill="#0044aa"/>
+  <text x="100" y="312" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="104" font-weight="700" fill="#111111">Anders Jensen</text>
+  <text x="100" y="402" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" fill="#111111">Agency, systems architecture and information security</text>
+  <text x="100" y="534" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" letter-spacing="2" fill="#0044aa">acje.github.io</text>
+</svg>

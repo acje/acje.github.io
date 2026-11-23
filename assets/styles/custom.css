@@ -51,6 +51,19 @@ li {
   margin-bottom: 0.5rem;
 }
 
+/*
+ * Front page only: the link groups there are navigation, not prose lists.
+ * The theme already renders its own nav lists without markers (`nav ul`),
+ * so match that and let the links align with the headings above them.
+ * Scoped by the `book-kind-home` body class so article lists keep their
+ * markers and the search-results list is untouched.
+ */
+.book-kind-home .book-article ul,
+.book-kind-home .book-article ol {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
 /* Code blocks */
 code {
   background-color: var(--gray-100);

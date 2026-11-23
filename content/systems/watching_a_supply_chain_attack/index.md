@@ -1,5 +1,6 @@
 ---
 title: "Watching my software factory handle a live supply chain attack"
+description: "I was not looking for a supply chain attack. I was working on gh-report, a Rust project that has nothing to do with arrayref, and my build went red."
 aliases:
   - "/watching_a_supply_chain_attack/"
 

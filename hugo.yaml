@@ -5,6 +5,10 @@ title: "Anders Jensen"
 # Use a standard content directory to avoid scanning theme/public
 contentDir: "content"
 
+# Caps .Summary at 20 words, which bounds the theme's plain
+# <meta name="description"> for pages without an explicit description
+summaryLength: 20
+
 # Canonify URLs for GitHub Pages and avoid relative link pitfalls
 relativeURLs: false
 

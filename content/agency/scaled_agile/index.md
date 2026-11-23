@@ -1,5 +1,6 @@
 ---
 title: "Scaling Agile"
+description: "These notes document how an organization transformed from facing challenges with concurrent digitalization projects and inconsistent value delivery."
 aliases:
   - "/scaled_agile/"
 homeFeatured: true

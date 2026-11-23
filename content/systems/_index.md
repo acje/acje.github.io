@@ -1,5 +1,6 @@
 ---
 title: "Systems and Security"
+description: "Architecture, security models, and information technology ecosystem analysis."
 weight: 20
 bookCollapseSection: false
 ---

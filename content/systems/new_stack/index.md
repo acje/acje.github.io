@@ -1,5 +1,6 @@
 ---
 title: "Digital Sovereignty by Design"
+description: "The machines we depend on are not neutral; they shape power, trust, and freedom."
 aliases:
   - "/new_stack/"
 

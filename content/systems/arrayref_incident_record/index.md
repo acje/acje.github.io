@@ -1,5 +1,6 @@
 ---
 title: "crates.io / arrayref: a contemporaneous incident record"
+description: "This is a contemporaneous record. My agents and I compiled it on 2026-08-20, while the incident was still moving, and it is published here as written."
 aliases:
   - "/arrayref_incident_record/"
 

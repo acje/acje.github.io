@@ -1,6 +1,6 @@
 ---
 title: "Digital Sovereignty"
-description: "Why systemic risk demands a new digital ecosystem—and the five necessities to make it real. Linking resilience engineering, security, political economy, and behavioral economics"
+description: "Why systemic risk demands a new digital ecosystem—and the five necessities to make it real."
 aliases:
   - "/digital_sovereignty/"
 

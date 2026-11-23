@@ -1,5 +1,6 @@
 ---
 title: "A simple model for computing capabilities"
+description: "I hold that there are exactly four basic capabilities of a computing node: Processing, Persisting, Communicating and Transducing."
 aliases:
   - "/computing_capabilities/"
 date: 2026-08-10

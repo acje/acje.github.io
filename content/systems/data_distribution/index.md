@@ -1,5 +1,6 @@
 ---
 title: "Reliable Data Product Distribution"
+description: "This article describes a secure, cross-organizational platform for timely information sharing."
 aliases:
   - "/data_distribution/"
 

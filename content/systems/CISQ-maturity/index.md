@@ -1,5 +1,6 @@
 ---
 title: "Maturity levels in the CISQ security model"
+description: "The CISQ model describes security qualities: positive, naturally emerging qualities we want to preserve in information objects."
 aliases:
   - "/CISQ-maturity/"
 

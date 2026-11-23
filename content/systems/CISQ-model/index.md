@@ -1,5 +1,6 @@
 ---
 title: "CISQ-Model of security qualities"
+description: "The CISQ-model (Composing Information Security Qualities) builds on the hypothesis that there are exactly four basic security qualities."
 aliases:
   - "/CISQ-model/"
 homeFeatured: true

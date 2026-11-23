@@ -12,7 +12,7 @@ weight: 30
 
 This article describes a secure, cross-organizational platform for timely information sharing. It focuses on a specific integration pattern, typically referred to as data replication or data propagation. Other integration patterns, such as request-response, are out of scope.
 
-![Information sharing overview](information_sharing_clean.png)
+![Information sharing overview](information_sharing_clean.webp)
 
 ## A Common Challenge
 
@@ -51,17 +51,17 @@ To achieve this state convergence reliably, we implement _effectively-once proce
 
 ### Visualized requirements
 
-![Visualized requirements](requirements_visualized.png)
+![Visualized requirements](requirements_visualized.webp)
 
 Together, these mechanisms ensure the destination dataset mirrors the source without duplication or data loss. In _Designing Data-Intensive Applications_, Martin Kleppmann refers to this pattern as _leader-based replication_, where the source system acts as the leader responsible for writing and broadcasting state changes to follower systems.
 
-![Information sharing between organizations](information_sharing.png)
+![Information sharing between organizations](information_sharing.webp)
 
 ## Characteristics of the design
 
 To satisfy the stringent requirements outlined above, the system architecture is built upon **NATS**, a high-performance cloud-native messaging system for transportation of data products. The architecture further specifies responsibilities of producers and consumers as well as patterns to ensure completeness and correctness of the consumed data product.
 
-![Source system](source_system.png)
+![Source system](source_system.webp)
 
 **Defense-in-Depth (Leaf Nodes).** To meet the requirement for isolating endpoints, we employ NATS Leaf Nodes. A Leaf Node runs locally within a secure enclave and initiates an _outbound_ connection to the central NATS cluster. This architecture requires no inbound firewall ports to be opened on the secure network, significantly reducing the attack surface while safely extending the messaging plane into restricted environments.
 

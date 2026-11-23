@@ -11,7 +11,7 @@ weight: 10
 
 ---
 
-![Castle](/systems/digital_sovereignty/Borg.png)
+![Castle](/systems/digital_sovereignty/Borg.webp)
 
 *Break digital vassalage. Use politics and architecture to reshape the systems that run our infrastructure and services. By targeting the ecosystem, every sector of society gains.*
 
@@ -141,7 +141,7 @@ The scope is to point out the two most long-term, unappreciated aspects of compu
 
 ## 4. Maximally Isolated Components of Least Capability
 
-![Digital castle](/systems/digital_sovereignty/Borg2.png)
+![Digital castle](/systems/digital_sovereignty/Borg2.webp)
 
 My previous series; A new compute stack. [Part 1](/systems/new_stack/#chapter-1--geopolitics-security-trust-and-transparency),
 [Part 2](/systems/new_stack/#chapter-2--strategic-contract),

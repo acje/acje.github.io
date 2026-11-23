@@ -55,7 +55,7 @@ This section covers:
 * **Places to Innovate.**
   * *The Art of Action – Directed Opportunism [4]*
     * *Operational Gaps*
-        ![Decision making at scale](three_gaps.png)
+        ![Decision making at scale](three_gaps.webp)
         [Three Critical Gaps](https://medium.com/10x-curiosity/taking-the-project-management-theme-one-step-further-and-examining-why-the-agile-styles-of-project-5ec97cb2eb37)
 
     * *Hierarchy of Cascading Intent* (<https://planadigm.com/knowledge/the-art-of-action-part-2/>) [4]

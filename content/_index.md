@@ -19,10 +19,6 @@ Exploring practical approaches to information security, systems architecture and
 - Under construction [Fiber semantics. Event sourcing for complex domains (Repository)](https://github.com/acje/Fiber-semantics)
 - [Quality attributes (Repository)](https://github.com/acje/quality-attributes)
 
-## Workbench - Idea to impact
-
-{{% home-section-links section="workbench" %}}
-
 ## Agency
 
 - [Alignment and autonomy (Repository)](https://github.com/acje/Alignment_autonomy)

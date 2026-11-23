@@ -5,11 +5,12 @@ aliases:
   - "/national_robust_information_sharing/"
   - "/workbench/national_robust_information_sharing/"
   - "/robust_national_information_sharing/"
+  - "/workbench/robust_national_information_sharing/"
 
 date: 2026-02-25
 lastmod: 2026-02-28
 homeFeatured: true
-weight: 10
+weight: 5
 ---
 
 ### Strategic Imperative

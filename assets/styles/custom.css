@@ -102,14 +102,15 @@ strong {
  * Post-meta is injected ahead of the article wrapper, so it no longer inherits
  * the theme's .markdown line-height and the article's first content block now
  * carries the theme's "first child has no top margin" rule. Hold the original
- * article rhythm: meta line spacing, and the heading gap below it.
+ * article rhythm: meta line spacing and a gap before the opening text.
  */
 .book-page > .book-post-date {
   line-height: 1.6;
 }
 
 .book-post-date + .book-article > h1,
-.book-post-date + .book-article > h2 {
+.book-post-date + .book-article > h2,
+.book-post-date + .book-article > p:first-child {
   margin-top: 1.5em;
 }
 

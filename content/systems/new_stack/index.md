@@ -12,13 +12,14 @@ weight: 40
 
 ---
 
-There are times when the world gets tight and choices grow sharp. This is one of those times. The machines we depend on are not neutral; they shape power, trust, and freedom.
+
+It is not always pleasant to live in interesting times. This is may be one of those times. The systems we depend on are not neutral; they shape power, trust, and freedom in our world.
 
 [![Digital castle](digital_castle.jpg)](digital_castle.jpg)
 
-One reason we miss this is paradigm blindness, the structural failure in science not as a single dramatic event, but as the accumulation of "anomalies" that violate the expectations of the reigning paradigm.[1] Experts are trained to solve puzzles inside the accepted frame. They get very good at normal work and bad at seeing that the frame itself is the problem.
+One reason we miss this is paradigm blindness. Experts are trained to solve puzzles inside the accepted frame. We get very good at normal work and bad at seeing that the frame itself is the problem.
 
-This essay starts in that atmosphere and goes down into the metal. It moves past slogans and policy talk and looks at what is built, what was inherited, and what can fail. The current stack did not arrive by fate; it came from bargains, habits, and fear of breaking what already runs. What follows argues for another path: keep complexity on a short leash, treat interfaces as commitments rather than fashion, and build isolation that holds when pressure comes. From motive to method, from diagnosis to design, this is a map for the work ahead. The concrete adversarial protagonist in this analysis is a state-sponsored advanced persistent threat (APT): patient, well-resourced, and optimized for long-term leverage.
+This essay starts in that atmosphere and goes down into the metal. It moves past slogans and policy talk and looks at the systems we built, what was inherited, and how it fails. The current stack did not arrive by fate; it came from bargains, habits, and fear of breaking backwards compatibility. Here I argue for another path; keep complexity on a short leash, treat interfaces as commitments rather than fashion, and build isolation that holds under real pressure. This is a map for the work ahead.
 
 - [Chapter 1 — Geopolitics, security, trust and transparency](#chapter-1--geopolitics-security-trust-and-transparency)
 - [Chapter 2 — Strategic contract](#chapter-2--strategic-contract)
@@ -29,7 +30,7 @@ This essay starts in that atmosphere and goes down into the metal. It moves past
 
 ### Introduction
 
-Here is why and how we can create a new technology stack, a tale about computer architecture and geopolitics in four parts.
+In this series i argue why and how we can create a new technology stack, a tale about computer architecture and geopolitics in four parts.
 
 It is February 2025, and the MAGAs are running the White House according to Steve Bannon’s “muzzle velocity strategy,” or “wrestling,” as historian Stephen Kotkin aptly characterizes this fourth-power distraction strategy. The Trump-Vance administration is doing wonders to awaken a sleepy and confused Europe. As a European, I can’t help but welcome this development to some limited extent. I’m certainly happy Putin isn’t doing all the heavy lifting on his own. The side effects of the tools in his toolbox are simply too horrendous.
 

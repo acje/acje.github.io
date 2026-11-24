@@ -12,14 +12,13 @@ weight: 40
 
 ---
 
-
-It is not always pleasant to live in interesting times. This is may be one of those times. The systems we depend on are not neutral; they shape power, trust, and freedom in our world.
+It is not always pleasant to live in interesting times. The systems we depend on are not neutral; they shape power, trust, and freedom in our world.
 
 [![Digital castle](digital_castle.jpg)](digital_castle.jpg)
 
-One reason we miss this is paradigm blindness. Experts are trained to solve puzzles inside the accepted frame. We get very good at normal work and bad at seeing that the frame itself is the problem.
+One reason we miss this is paradigm blindness. Experts are trained to solve puzzles inside the accepted frame. We get good at solving problems within the frame and bad at noticing when the frame itself is the problem.
 
-This essay starts in that atmosphere and goes down into the metal. It moves past slogans and policy talk and looks at the systems we built, what was inherited, and how it fails. The current stack did not arrive by fate; it came from bargains, habits, and fear of breaking backwards compatibility. Here I argue for another path; keep complexity on a short leash, treat interfaces as commitments rather than fashion, and build isolation that holds under real pressure. This is a map for the work ahead.
+This essay moves from questions of power and trust down to the metal. It moves past slogans and policy talk and looks at what we built, what we inherited, and where the resulting stack fails. The current stack did not arrive by fate; it came from bargains, habits, and fear of breaking backwards compatibility. Here I argue for another path: keep complexity on a short leash, treat interfaces as commitments rather than fashion, and build isolation that holds under real pressure. This is a map for the work ahead.
 
 - [Chapter 1 — Geopolitics, security, trust and transparency](#chapter-1--geopolitics-security-trust-and-transparency)
 - [Chapter 2 — Strategic contract](#chapter-2--strategic-contract)

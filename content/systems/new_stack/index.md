@@ -5,7 +5,7 @@ aliases:
   - "/new_stack/"
 
 date: 2025-02-20
-lastmod: 2026-03-10
+lastmod: 2026-11-24
 draft: false
 homeFeatured: true
 weight: 40

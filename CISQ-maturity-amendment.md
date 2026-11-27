@@ -1,11 +1,12 @@
 # Amendment — CISQ Maturity Model: validation findings and proof methods
 
-> This amendment documents a formal validation audit of the **15-term** Composing Information
+> This amendment documents a validation audit of the **15-term** Composing Information
 > Security Qualities (CISQ) maturity taxonomy in
-> [`content/systems/CISQ-maturity/index.md`](content/systems/CISQ-maturity/index.md). It explains
-> the five proof methods used (in detail), applies them to every term, and reports the finding:
-> **two terms are logically equivalent to existing terms rather than distinct qualities.** The
-> underlying capability model has **15 lattice cells but 13 distinct qualities.**
+> [`content/systems/CISQ-maturity/index.md`](content/systems/CISQ-maturity/index.md).
+> The taxonomy covers **all 15 non-empty combinations** of the four primaries. The audit
+> identifies two possible aliases, but neither equivalence nor the number of distinct
+> capabilities is proven. It also tests two single-word replacements: **Attributability** for
+> C ⊕ Au and **Stewardship** for I ⊕ C.
 
 ---
 
@@ -27,54 +28,54 @@ any single link fails the higher-order capability collapses. The post's worked e
 link is removed.
 
 Because there are 4 primaries, there are exactly 2⁴ − 1 = **15 non-empty subsets** (the empty
-set is excluded). The post assigns one named quality per subset and claims (:37) the result is
-both **complete** and **non-overlapping** — but adds "this has not yet been formally proven."
-This amendment supplies that proof attempt and its result.
+set is excluded). The post assigns one named quality per subset and aims for both
+**completeness** and **non-overlap**. Counting subsets establishes coverage of the possible
+combinations, not completeness as a taxonomy of capabilities. Distinct capabilities can coexist;
+the relevant test is whether one can hold without the other, not whether they are disjoint.
 
 ---
 
 ## 2. The five proof methods
 
-The audit applies five complementary proof methods. M1–M4 are the original four; necessity
-(M2) is split out from sufficiency (M3) so the subtraction form carries its own weight.
+The audit applies five complementary checks. Fix the system or object, the actors whose agency
+counts, the operation, and the evaluation conditions before testing. A composition needs both
+directions: the capability implies each listed primary (M2), and the listed primaries jointly
+imply the capability (M3). An example can refute either implication or demonstrate realizability;
+it cannot by itself prove a universal claim.
 
 ### M1 — Proof by Adversarial Counterexample (Threat Mapping)
-Instead of proving a quality exists, prove that **every unique subset produces a distinct
-failure mode when one link is attacked**. If two combinations produced the exact same threat,
-one of them would be redundant. This is the distinctness/separability gate: it fails if two
-subsets map to the same operational failure class.
+Identify observable failures when a link is attacked. Look for a scenario where one capability
+fails and the other survives. A shared failure mode is worth investigating, but does not establish
+equivalence; one incident can break several different capabilities.
 
 ### M2 — Necessity Testing (Subtraction)
-The chain-link premise, checked one link at a time: **if I remove one quality from the formula,
-does the capability collapse?** This is the "without-X" argument the post uses for
-Non-repudiation. It proves each listed link is *load-bearing*. If removing a link does **not**
-collapse the capability, that link is inert and the composition is over-specified.
+The chain-link premise, checked one link at a time: **can the capability still hold when a listed
+primary does not?** A counterexample refutes the necessity of that primary. A missing primary
+does not belong in this test; if it turns out to be required, the listed set fails sufficiency.
 
 ### M3 — Sufficiency Testing (Isolation)
-The converse: **if I have ONLY these qualities and deliberately set the excluded ones to zero,
-does the core capability still hold?** This is sharp for compositions that exclude a primary.
-If the capability fails when an excluded primary is zeroed, that excluded primary was actually
-required — the composition is under-specified.
+The converse: **do the listed primaries together guarantee the capability?** Test whether the
+capability can fail even with all the listed primaries in place, especially when the excluded
+ones do not hold. Such a counterexample refutes sufficiency, but does not by itself identify
+which extra condition is required.
 
 ### M4 — Orthogonal Distinction (Pairwise Contrast)
-Take two compositions that share most ingredients and differ by exactly **one** quality, then
-contrast them side by side to isolate what that single differing link contributes. This is the
-tool for separating adjacent-looking terms (e.g. Credibility vs Traceability) and for showing a
-link genuinely adds something.
+Compare a composition with one that adds or removes exactly **one** primary. A scenario where
+one capability holds and the other fails shows that the two are distinct. For example, comparing
+Credibility with Non-repudiation isolates the proposed contribution of Integrity.
 
 ### M5 — Operational Construction (Architecture Walkthrough)
-Prove a composition by **building a minimal real-world system, control by control**, showing how
-adding each primary unlocks the next tier of capability. This is the realizability gate: if a
-faithful build cannot stop at the stated composition (it necessarily overshoots or undershoots),
-the composition is false.
+Walk through a minimal system and check which primaries and capabilities it actually realizes.
+A construction that realizes the intended combination shows it is possible. A failed
+construction exposes a problem with that example; it does not rule out all implementations.
 
 ---
 
 ## 3. Application to all 15 terms
 
-Legend: **PASS** (survives) · **PASS\*** (survives, with a definitional caveat) · **AT-RISK**
-(survives only if a definition is tightened — redeemable) · **FAIL** (the term is not a distinct
-quality as defined).
+These are qualitative assessments, not proofs. **PASS** means the audit found a supporting
+argument; **PASS\*** notes a definitional caveat; **AT-RISK** marks an unresolved definition
+or distinction; **OPEN** means the available arguments do not settle the check.
 
 | # | Term | Composition | M1 | M2 | M3 | M4 | M5 | Note |
 |---|---|---|---|---|---|---|---|---|
@@ -86,55 +87,39 @@ quality as defined).
 | 6 | Confidentiality | A⊕C⊕Au | AT-RISK | PASS\* | PASS\* | PASS | PASS | overlaps Authorization (M4 separates by Au) |
 | 7 | Non-repudiation | I⊕C⊕Au | PASS | PASS | PASS | PASS | PASS | the post's strongest worked example |
 | 8 | Authorization | A⊕C | AT-RISK | AT-RISK | AT-RISK | PASS | PASS | Availability link is weak; needs a "decision must be evaluable" framing |
-| 9 | Durability | I⊕C | PASS | **FAIL** | **FAIL** | **FAIL** | **FAIL** | Control is inert (see §5.2) |
-| 10 | Credibility | C⊕Au | **FAIL** | **FAIL** | **FAIL** | **FAIL** | **FAIL** | Integrity is required but excluded (see §5.1) |
+| 9 | Durability | I⊕C | PASS | OPEN | OPEN | AT-RISK | OPEN | whether Control is necessary depends on whose agency counts (see §4.2) |
+| 10 | Credibility | C⊕Au | AT-RISK | OPEN | AT-RISK | AT-RISK | OPEN | sufficiency depends on what verification must establish (see §4.1) |
 | 11 | Certifiability | A⊕I⊕Au | PASS | PASS | PASS | PASS | PASS | |
 | 12 | Assurance | A⊕Au | AT-RISK | AT-RISK | PASS\* | PASS | PASS | scope as "evidence of behavior," not correctness |
-| 13 | Traceability | I⊕Au | AT-RISK | PASS | PASS | AT-RISK | PASS | the post's own Authenticity definition subsumes it |
+| 13 | Traceability | I⊕Au | AT-RISK | PASS | PASS | AT-RISK | PASS | overlaps the post's Authenticity definition; distinction not established |
 | 14 | Usefulness | A⊕I | AT-RISK | AT-RISK | PASS\* | PASS | PASS | "format" vs "completeness"; Availability link is weak |
 | 15 | Reliability | A⊕I⊕C⊕Au | PASS | PASS | PASS | PASS | PASS | the full-set composition; strongest construction |
 
-The result is binary and decisive at exactly two cells: **Credibility** and **Durability**.
-The other 13 terms are distinct and survivable with definitional tightening (the AT-RISK cases
-are redeemable by making an existing definition explicit — they are *not* composition failures).
+The audit examines **Credibility** and **Durability** in more detail below. The matrix does not
+establish that those are the only unresolved cells or that the other terms are pairwise distinct.
 
 ---
 
 ## 4. The findings
 
-### 4.1 Credibility is logically equivalent to Non-repudiation
+### 4.1 Credibility may overlap Non-repudiation
 
 Definitions, as the post states them:
 - **Credibility**: "Ability to **verify** information and behavior."
 - **Non-repudiation**: "Assurance of the **correctness, completeness, and origin** of information
   and behavior."
 
-Every row of the post's own Credibility controls — cryptographic signatures, certificate pinning,
-PKI validation, trusted timestamping, tamper-evident logging — is **tamper-evident**. A signature
-verifies *both* origin *and* intact payload. Verifying that the payload is unaltered **is**
-Integrity's function. The post makes this exact point for Non-repudiation: *"Without Integrity: the
-origin is known, but the payload may have been altered — the actor can claim, 'That isn't what I
-sent.'"*
+Both terms list signatures as a safeguard. A valid signature can bind a report to its source
+and show its signed contents have not changed. It does not show that those contents were correct
+or complete in the first place. An incomplete report can therefore pass an origin verification
+check without meeting the post's definition of Non-repudiation.
 
-Therefore:
+If **verify** includes correctness and completeness, C ⊕ Au alone may be insufficient (M3).
+If it means verifying only the source, the missing Integrity link has not been shown to be
+necessary. Neither sharing safeguards nor adding I to the written composition proves that the
+two capabilities imply each other.
 
-> **Lemma (mechanism identity).** Verifying information and behavior requires detecting that
-> content has been modified — which is an **Integrity** function. Signatures and tamper-evident
-> logging already perform it.
->
-> **Corollary (set identity).** Credibility ⊕ Integrity = Non-repudiation, because
-> {C, Au} ∪ {I} = {I, C, Au}, which is exactly the documented Non-repudiation composition.
-
-Because Integrity is a *necessary* link for "verify information and behavior," Credibility's real
-requirement set is **{Integrity, Control, Authenticity}** — identical to Non-repudiation. The two
-terms are **co-extensive**: you cannot realize one without realizing the other. They are the same
-capability under two labels.
-
-**Conclusion — Credibility ≡ Non-repudiation.** The C⊕Au cell does not name a new quality; it
-names Non-repudiation minus the Integrity it cannot in fact shed. (Controls corroborate: the
-Credibility control list is the Non-repudiation control list.)
-
-### 4.2 Durability is logically equivalent to Integrity
+### 4.2 Durability may overlap Integrity
 
 Definitions, as the post states them:
 - **Durability**: "Ability to **withstand degradation of the integrity** of information and
@@ -142,56 +127,35 @@ Definitions, as the post states them:
 - **Integrity**: "Preserving correctness and completeness ... preventing, detecting, and recovering
   from unauthorized or accidental changes."
 
-Withstanding degradation is delivered by **redundancy and error-correction** — the post's own
-Durability controls are "automatic rebuilding, forward error correction (FEC), error correction
-codes (ECC)." These preserve correctness/completeness with **no agency**. The decisive falsifier:
+Redundancy and error correction can preserve data without a customer's direct intervention.
+For example, S3 customers need not control the physical media. But the post counts Control
+shared across customers, operators, and providers, and automated rebuilding still changes system
+state. Neither example shows that Control is absent at the system scope.
 
-> **Necessity counterexample.** Amazon S3 publishes 11-nines durability while the customer holds
-> **zero** control (no agency, no authority) over the underlying storage medium. RAID-5, ECC and
-> erasure coding behave the same: they resist corruption mathematically, with no control over the
-> medium. Removing **Control** from Durability does **not** collapse the capability.
+Even a valid example of Durability without Control would only refute the necessity of C (M2).
+It would not show that Integrity guarantees survival under the same degradation conditions (M3).
+An intact record does not by itself demonstrate that the record will survive a specified loss.
+The comparison must fix the fault and the conditions under which correctness and completeness
+are expected to hold.
 
-Because Control is non-necessary (M2 fails), and no Authenticity or Availability is required
-either, Durability's real requirement set is **{Integrity}** — identical to Integrity.
-"Withstand degradation of integrity" is Integrity *under degradation stress*; the underlying
-property is the same.
+### 4.3 What the audit establishes
 
-**Conclusion — Durability ≡ Integrity.** The I⊕C cell over-specifies a single-requirement
-quality. (Note this is an equivalence of *capability/property*; the two terms retain a *threat-label*
-difference — tampering vs data corruption — but both are Integrity failures under a different
-attack vector, so they still denote the same property.)
-
-### 4.3 Consequence: 15 cells, 13 distinct qualities
-
-Applying both collapse relations over the full lattice (computed from the 15 non-empty subsets):
-
-| Distinct effective composition | Terms sharing it |
-|---|---|
-| {Integrity} | Integrity, **Durability** |
-| {Integrity, Control, Authenticity} | Non-repudiation, **Credibility** |
-
-**15 lattice cells → 13 distinct qualities**, with exactly two redundant-cell pairs. The post's
-"completeness and non-overlapping concepts" claim (:37) therefore holds for the **lattice
-geometry** (15 cells, since it is the full power set) but **not for distinct capabilities** (13).
-Two cells are logical aliases.
-
-### 4.4 The mirror symmetry of the two defects
-
-| Cell | Defect | Direction | Collapses to |
+| Cell | Possible defect | Proof obligation |
 |---|---|---|---|
-| Credibility (C⊕Au) | **under-specified** — omits a mandatory link (Integrity) | expands up | Non-repudiation |
-| Durability (I⊕C) | **over-specified** — includes an inert link (Control) | contracts down | Integrity |
+| Credibility (C⊕Au) | Under-specified if verification requires Integrity | Define the claims being verified and test whether C and Au suffice. |
+| Durability (I⊕C) | Over-specified if it can hold without Control | Test a specified degradation with the same definition and scope of Control throughout. |
 
-One omission, one over-inclusion. Both defects resolve to a *duplicate*, not a new quality — this
-is why the taxonomy is not simply "two wrong labels" but "two non-distinct labels."
+There are **15 combinations**. There would be **13 distinct capabilities** if both proposed
+equivalences held in both directions and the remaining capabilities were pairwise distinguishable.
+The audit has not established those conditions.
 
 ---
 
-## 5. The subtraction (necessity) proofs, term by term
+## 5. The subtraction (necessity) checks, term by term
 
 M2 (subtraction), extended to every composition as the post does for Non-repudiation. For a
-composition to stand, removing any listed link must collapse it. (**Atomic links 1–4 have no link
-to remove; they are the references.**)
+composition to stand, removing any listed link must collapse it. The four atomic qualities are
+the references; there is no composed capability to subtract from in those cells.
 
 - **Utility (A⊕I⊕C):** without A → nothing to operate/maintain; without I → state untrustworthy,
   maintainability collapses; without C → no agency to change/evolve. Robust. ✓
@@ -203,10 +167,12 @@ to remove; they are the references.**)
 - **Authorization (A⊕C):** without C → no power to grant; without A → the decision point must be
   evaluable (deny-by-default). The Availability link is the weakest — a pre-provisioned grant holds
   even if the granter is offline (see §3 AT-RISK).
-- **Durability (I⊕C):** without I → nothing to withstand degradation of; **without C → durability
-  survives (S3/RAID/ECC, zero control) — M2 FAILS.** See §4.2.
-- **Credibility (C⊕Au):** without C → no custody of verification context; without Au → cannot verify
-  source. But **Integrity is required and excluded — M2 FAILS** (the excluded link is necessary). See §4.1.
+- **Durability (I⊕C):** test whether correctness and completeness withstand a specified fault
+  when no in-scope actor or mechanism has the power to influence the system. Lack of direct
+  customer control does not establish that condition (§4.2).
+- **Credibility (C⊕Au):** test whether verification survives without custody of the verification
+  context (C) or without a source binding (Au). Which is necessary depends on what is being
+  verified. Whether the excluded I is also needed is a sufficiency question (M3, §4.1).
 - **Certifiability (A⊕I⊕Au):** without I → invalid attestation; without Au → untrusted proof; without
   A → the attestation must be available/current to verify. ✓ (Control intentionally excluded —
   a third party can certify validity without holding control.)
@@ -222,44 +188,67 @@ to remove; they are the references.**)
 
 ---
 
-## 6. Resolution fork and recommendation
+## 6. Resolution options and candidate checks
 
-The findings above are a logical consequence of the post's *current definitions*. That leaves two
-internally consistent ways to read and fix the taxonomy:
+### Option A — Retain the terms and test the proposed aliases
 
-### Option A — Reduce to 13 distinct qualities (accept the equivalences)
-Treat Credibility ≡ Non-repudiation and Durability ≡ Integrity as true. Then the taxonomy has
-**13 genuinely distinct qualities**; the two redundant cells are recognised as aliases and either
-removed from the term table (`:217–233`) or annotated ("Credibility = Non-repudiation; Durability =
-Integrity"), and the :37 claim is amended to "**13 distinct qualities** over a 15-cell lattice."
-- **Virtue:** honest to the current definitions; introduces no new vocabulary.
-- **Cost:** surrenders the clean 15-distinct uniformity and the "15 variants" framing.
+Keep the published labels while the equivalences are unresolved. Treat a term as an alias only
+after showing that each capability implies the other under the same conditions. A revised count
+would also require showing that the remaining capabilities are pairwise distinguishable.
 
-### Option B — Relabel to 15 distinct qualities (change two definitions)
-Replace the two mis-fitted *definitions* with meanings that genuinely load only their cell's
-primaries, e.g. **Ownership** for C⊕Au (legitimate possession vested in a genuine principal) and
-**Recoverability** for I⊕C (the ability to use control to restore integrity). Then the equivalences
-no longer hold, and the taxonomy keeps 15 distinct cells.
-- **Virtue:** preserves the 15-distinct + non-overlapping elegance.
-- **Cost:** introduces new terms and changes the post's vocabulary for two cells.
+### Option B — Test single-word replacements
+
+**Ownership** does not follow from C ⊕ Au: an authenticated delegate can have effective control
+without owning the resource. **Recoverability** needs a specified fault and a restoration
+criterion; current Integrity need not hold when restoration starts, and the published definition
+of Integrity already includes recovery.
+
+| Cell | Candidate | Working definition or reason not to prefer it |
+|---|---|---|
+| C ⊕ Au | **Attributability** | The ability to effect a change through an action tied to its actual source. This does not imply entitlement, a correct outcome, or proof to a third party. The definition requires an effective action; ordinary attribution can also apply to passive observations. |
+| C ⊕ Au | Accountability | A genuine source does not establish responsibility, and proving responsibility later may require intact evidence. |
+| I ⊕ C | **Stewardship** | The ability to change information or behavior while preserving specified correctness and completeness invariants. An assigned duty does not guarantee that ability. The definition concerns preserving integrity through a change rather than restoring it after a fault. |
+| I ⊕ C | Modifiability | The term alone does not require integrity preservation and is close to Utility's maintainability and evolvability. |
+
+### Applying M1–M5 to the shortlist
+
+Use one configuration service, one class of update, the same completion deadline, and the same
+correctness and completeness rules. Compare two alternative runs:
+
+- An update takes effect after the deadline and is tied to its genuine source, but it leaves
+  a required setting missing. It exhibits Attributability without Stewardship.
+- An update takes effect after the same deadline and preserves every specified invariant, but
+  it is credited to the wrong source. It exhibits Stewardship without Attributability.
+
+| Check | Attributability (C ⊕ Au) | Stewardship (I ⊕ C) |
+|---|---|---|
+| M1 — Threat mapping | An effective action is tied to the wrong source, even though the resulting configuration is valid. | An effective change violates an invariant, even though its source is genuine. |
+| M2 — Necessity | Without C, attributing an observation is not effecting a change. Without Au, the change is not tied to its actual source. | Without C, a correct configuration may remain unchanged. Without I, effective changes need not preserve correctness and completeness. |
+| M3 — Sufficiency | A genuine action can take effect despite an incomplete result and a missed deadline. C and Au must apply to the same action; an unrelated genuine event would not suffice. | A change can preserve invariants despite incorrect attribution and a missed deadline. I must hold through the change that C enables, not merely for an untouched copy. |
+| M4 — Adjacent contrast | Adding Au to C binds the action to its actual source. This does not establish the correct and complete result required by Non-repudiation. | Adding C to I requires effective agency, which preservation alone does not establish. The change can preserve integrity without meeting the Availability requirement in Utility's composition. |
+| M5 — Construction | The first run needs a change path and a source binding, but does not need to enforce every configuration invariant. | The second run needs a change path that enforces the specified invariants, but does not need to establish the source of the action. |
+
+These walkthroughs separate the two candidates from each other and illustrate that neither needs
+timely completion for the stated operation. They do not prove that the proposed primaries are
+sufficient in all cases, or that the failure modes and capabilities are distinct from all the
+other terms.
 
 ### Recommendation
-Either way, **the equivalence cannot be left unstated** — it is a provable consequence of the
-current definitions, and the "non-overlapping" claim is currently false (two cells are duplicate). If
-the priority is fidelity to the existing vocabulary, take **Option A**. If the priority is the
-15-cell one-term-per-subset structure, take **Option B** (which must remove the equivalence by
-changing the definitions). The amendment documents the finding and the methods either way.
+
+Shortlist **Attributability** and **Stewardship** for further testing. Keep the current labels and
+report **15 combinations; distinct-capability count unproven** until either option meets its
+proof obligations.
 
 ---
 
 ## 7. Notes and provenance
 
-- The audit source is the post at `content/systems/CISQ-maturity/index.md` (all line/section
-  references are to that file; the composition, threat, and term table is at `:217–233`).
+- The audit source is the [CISQ maturity post](content/systems/CISQ-maturity/index.md). Its
+  [maturity table](content/systems/CISQ-maturity/index.md#maturity-level-qualities-composition-threat)
+  lists the published terms, compositions, and threats.
 - The post introduces the chain-link / "links in a chain" framing of ⊕ and the worked
   Non-repudiation subtraction (the "example" this audit extends to every composition).
 - Supporting working notes (per-method breakdowns, the reconciled validation matrix, the
-  relabeling candidates, and the equivalence verification) are retained in the repository's
-  gitignored `.ooda/` scratch directory and are not part of this committed amendment.
-- The `2⁴ − 1 = 15` / `2^4` duplicate-collapse computations were verified over the full
-  power set of {A, I, C, Au}.
+  relabeling candidates, and the proposed equivalences) are retained in the repository's
+  gitignored `.ooda/` scratch directory and are not part of this amendment.
+- The subset count follows from `2⁴ − 1 = 15`, excluding the empty set.

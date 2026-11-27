@@ -10,7 +10,7 @@ homeFeatured: true
 weight: 20
 ---
 
-| ![CISQ security model version 1.0](CISQ-simplified.webp)                         |
+| ![CISQ security model version 1.0](CISQ-simplified.webp)                        |
 |                      :--:                                                       |
 |  *A good place to start: CISQ security model v1.0, Maturity level 2 simplified* |
 
@@ -22,7 +22,7 @@ The CISQ model describes *security qualities*: positive, naturally emerging qual
 
 Together with related perspectives, this is a useful representation and starting point for most teams managing information systems. The higher maturity levels are meant for security professionals and infrastructure or platform teams focusing on a deeper understanding of their security posture.
 
-| ![CISQ security model version 1.0](CISQ-L2-overview.webp)           |
+| ![CISQ security model version 1.0](CISQ-L2-overview.webp)          |
 |                      :--:                                          |
 |  *CISQ security model v1.0, Maturity level 2, simplified overview* |
 
@@ -34,13 +34,17 @@ Throughout this model, the phrase “information and behavior” is central. Beh
 
 ### Model concept “composition”
 
-> *Nature’s order is the foundation of our understanding*
-
 A key concept in Composing Information Security Qualities (CISQ) is composition. The four primary security qualities (Availability, Integrity, Control, Authenticity) are composed to create new qualities. All 15 possible compositions are included in the model, the 16th variant the empty set, is excluded. The purpose is to achieve both completeness and non-overlapping concepts. However, this has not yet been formally proven.
 
-In this model, the composition operator (⊕) represents mutual constraint rather than simple addition—each quality in a composition actively scopes and conditions the others.
+In this model, the composition operator (⊕) represents an interlocking dependency rather than simple addition. Think of a bicycle: a rigid frame, rolling wheels, and a drive chain each have standalone properties, yet the capability to ride only emerges when they are coupled together. Similarly, composed security qualities act like links in a chain—each primary quality actively conditions the others, and if any single link fails, the higher-order capability collapses.
 
 Example: Non-repudiation = Control ⊕ Integrity ⊕ Authenticity.
+
+Non-repudiation (Control ⊕ Integrity ⊕ Authenticity) – Assurance of the correctness, completeness, and origin of information and behavior.
+Like links in a chain, all three primary qualities must hold for non-repudiation to exist:
+• Without Integrity: The origin is known, but the payload may have been altered—the actor can plausibly claim, "That isn't what I sent."
+• Without Authenticity: The message is intact, but its origin is unverified—the actor can claim, "Someone else impersonated me."
+• Without Control: Even with intact, signed data, if an unauthorized party could access the signing keys or manipulate the execution environment, the actor can claim, "My environment was compromised; I didn't authorize that action."
 
 ## How to use the model
 
@@ -98,7 +102,7 @@ At maturity level two, we introduce some common higher-order qualities that are 
 
 Maturity level two is also represented in the simplified view.
 
-| ![CISQ security model version 1.0](CISQ-transformation.webp)                                       |
+| ![CISQ security model version 1.0](CISQ-transformation.webp)                                      |
 |                      :--:                                                                         |
 |  *The CISQ security model has a base view covering all maturity levels and a simplified overview* |
 
@@ -136,17 +140,17 @@ At maturity level three, we introduce more precise definitions of concepts. Incr
 
 *Typical security controls*: Policy‑based access control (RBAC/ABAC), centralized policy engines (e.g., OPA), deny‑by‑default and least privilege, resource‑scoped checks at API/service/data layers, tenant isolation, permission boundaries/guardrails, entitlement reviews and audited authorization decisions
 
-**Durability** – Ability to withstand degradation of the integrity of information and behavior
+**Stewardship** – Ability to change information and behavior while preserving specified correctness and completeness invariants
 
-*Corresponding threat category*: Data corruption — integrity degradation of stored or transmitted data
+*Corresponding threat category*: Corrupting change — an effective change that violates an invariant of correctness or completeness
 
-*Typical security controls*: Automatic rebuilding, forward error correction (FEC), error correction codes (ECC)
+*Typical security controls*: Transactional updates with rollback, immutable and versioned configuration, authenticated change pipelines, integrity checks and guardrails enforced on every change, separation of duties on change approval
 
-**Credibility** – Ability to verify information and behavior
+**Attributability** – Ability to effect a change through an action tied to its actual source
 
-*Corresponding threat category*: Misinformation — deceptive or misleading content undermining verification
+*Corresponding threat category*: Misattribution — an effective action is bound to the wrong source
 
-*Typical security controls*: Cryptographic signatures, certificate pinning, PKI validation, trusted timestamping, source verification policies, tamper-evident logging, content validation workflows, reputation/trust lists
+*Typical security controls*: Authenticated change execution bounded to a verified acting principal, identity and source binding on every change, permission-scoped least-privilege actions, provenance records of the actor and the deed
 
 **Certifiability** – Ability to prove the validity of information and behavior
 
@@ -220,8 +224,8 @@ Organizational controls bound blast radius, enable predictable escalation, and s
 | 2   | Confidentiality | Availability ⊕ Control ⊕ Authenticity             | Information disclosure |
 | 2   | Non-repudiation | Integrity ⊕ Control ⊕ Authenticity                | Repudiation            |
 | 3   | Authorization   | Availability ⊕ Control                            | Broken access control  |
-| 3   | Durability      | Integrity ⊕ Control                               | Data corruption        |
-| 3   | Credibility     | Control ⊕ Authenticity                            | Misinformation         |
+| 3   | Stewardship     | Integrity ⊕ Control                               | Corrupting change      |
+| 3   | Attributability | Control ⊕ Authenticity                            | Misattribution         |
 | 3   | Certifiability  | Availability ⊕ Integrity ⊕ Authenticity           | Invalid attestation    |
 | 3   | Assurance       | Availability ⊕ Authenticity                       | Unverified behavior    |
 | 3   | Traceability    | Integrity ⊕ Authenticity                          | Obfuscation            |

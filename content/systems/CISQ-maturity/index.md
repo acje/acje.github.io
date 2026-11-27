@@ -5,7 +5,7 @@ aliases:
   - "/CISQ-maturity/"
 
 date: 2026-01-22
-lastmod: 2026-02-24
+lastmod: 2026-11-27
 homeFeatured: true
 weight: 20
 ---
@@ -198,7 +198,7 @@ Organizational controls bound blast radius, enable predictable escalation, and s
 
 *Corresponding threat category*: Dependability loss — systemic failures reducing trust in outcomes
 
-*Typical security controls*: Balance technological, organizational or process controls to compensate for weaknesses. Smart contacts, transactional integrity, idempotency, distributed consensus, circuit breakers and retry/backoff, disaster recovery and business continuity plans, chaos engineering
+*Typical security controls*: Balance technological, organizational or process controls to compensate for weaknesses. Smart contracts, transactional integrity, idempotency, distributed consensus, circuit breakers and retry/backoff, disaster recovery and business continuity plans, chaos engineering
 
 ## Resources
 
@@ -221,7 +221,7 @@ Organizational controls bound blast radius, enable predictable escalation, and s
 | 3   | Durability      | Integrity ⊕ Control                               | Data corruption        |
 | 3   | Credibility     | Control ⊕ Authenticity                            | Misinformation         |
 | 3   | Certifiability  | Availability ⊕ Integrity ⊕ Authenticity           | Invalid attestation    |
-| 3   | Assurance       | Availability ⊕ Integrity                          | Unverified behavior    |
+| 3   | Assurance       | Availability ⊕ Authenticity                       | Unverified behavior    |
 | 3   | Traceability    | Integrity ⊕ Authenticity                          | Obfuscation            |
 | 3   | Usefulness      | Availability ⊕ Integrity                          | Data misformatting     |
 | 4   | Reliability     | Availability ⊕ Integrity ⊕ Control ⊕ Authenticity | Dependability loss     |

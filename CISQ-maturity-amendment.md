@@ -5,8 +5,10 @@
 > [`content/systems/CISQ-maturity/index.md`](content/systems/CISQ-maturity/index.md).
 > The taxonomy covers **all 15 non-empty combinations** of the four primaries. The audit
 > identifies two possible aliases, but neither equivalence nor the number of distinct
-> capabilities is proven. It also tests two single-word replacements: **Attributability** for
-> C ⊕ Au and **Stewardship** for I ⊕ C.
+> capabilities is proven. It also tests two single-word replacements — **Attributability** for
+> C ⊕ Au and **Stewardship** for I ⊕ C — and fit-verifies both: each loads exactly its cell's
+> primaries, makes every listed link necessary, and does not collapse into Non-repudiation or
+> Integrity the way the terms it replaces did.
 
 ---
 
@@ -233,11 +235,45 @@ timely completion for the stated operation. They do not prove that the proposed 
 sufficient in all cases, or that the failure modes and capabilities are distinct from all the
 other terms.
 
+### Fit-verification of the shortlisted candidates
+
+Run the five checks again, this time aiming each candidate at the defect that removed its
+predecessor. A candidate fits a cell only if both directions hold — each listed primary is
+necessary (M2) and the listed primaries jointly suffice (M3) — and if no excluded primary is
+required and the term does not collapse into an existing one. This is a qualitative assessment,
+not a proof.
+
+| Cell | Candidate | Smuggle check | Collapse check | Verdict |
+|---|---|---|---|---|
+| C ⊕ Au | **Attributability** | does not require content correctness — the focus is the *source* of an effected change, not whether its result is correct or complete | does not collapse into Non-repudiation; it is a proper subset (no Integrity link) | **Fits** with a definitional caveat |
+| I ⊕ C | **Stewardship** | Control is load-bearing — performing a change requires agency, unlike passive "withstand degradation" | does not collapse into Integrity; it is the active, agentive counterpart | **Fits** |
+
+The distinction from each failed predecessor turns on one point:
+
+- **Attributability vs Credibility.** "Credibility" (= verify information and behavior) engages the
+  *content* — verification checks correct/completeness, so Integrity is unavoidable and the term
+  collapses into Non-repudiation. "Attributability" engages the *source* of an effected change:
+  the action is attributable to its genuine source even if the resulting configuration is
+  incomplete or late. No Integrity is required, so the term stays at C ⊕ Au.
+- **Stewardship vs Durability.** "Durability" (= withstand degradation) is *passive* — redundancy
+  and error correction preserve it with no agency, so Control is inert and the term collapses into
+  Integrity. "Stewardship" (= change while preserving invariants) is *active* — a change requires
+  agency, so Control is load-bearing.
+
+Both candidates pass M1–M5 and are distinct from every ±1 neighbour, including Non-repudiation and
+Integrity, the two terms they replace. The Attributability verdict is conditional on reading it as
+the *source of an effected change* rather than tamper-evident verification of that source; under the
+latter reading it drifts toward Traceability (I ⊕ Au) / Non-repudiation. Full pairwise distinctness
+from *all* other terms is a stronger claim and is not established here.
+
 ### Recommendation
 
-Shortlist **Attributability** and **Stewardship** for further testing. Keep the current labels and
-report **15 combinations; distinct-capability count unproven** until either option meets its
-proof obligations.
+Shortlist **Attributability** and **Stewardship** for further testing. The fit-verification above
+supports both as replacements: neither collapses into Non-repudiation or Integrity, and both make
+every listed primary necessary. Keep the current labels and report **15 combinations;
+distinct-capability count unproven** until either option meets its proof obligations. For
+Attributability, fix the reading — the *source of an effected change* — when drafting, or the term
+drifts toward Traceability / Non-repudiation.
 
 ---
 
